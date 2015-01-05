@@ -1,0 +1,32 @@
+#!/usr/bin/env ruby
+
+compile '*' do
+  if item[:extension] == 'css'
+    # don't filter stylesheets
+  elsif item[:extension] == 'js'
+    # don't filter javascripts
+  elsif item[:extension] == 'md'
+    filter :maruku
+    layout item[:layout]
+  elsif item[:extension] == 'sass'
+    filter :sass
+  elsif item.binary?
+    # don't filter binary items
+  end
+end
+
+route '*' do
+  if item[:extension] == 'css'
+    "#{item.identifier.chop}.css"
+  elsif item[:extension] == 'js'
+    "#{item.identifier.chop}.js"
+  elsif item[:extension] == 'sass'
+    "#{item.identifier.chop}.css"
+  elsif item.binary?
+    "#{item.identifier.chop}.#{item[:extension]}"
+  else
+    "#{item.identifier}index.html"
+  end
+end
+
+layout '*', :haml
