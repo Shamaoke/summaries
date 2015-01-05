@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href='/stylesheet.css' rel='stylesheet'>
+  </head>
+  <body>
+    <div>
+      
+      <h1 id="">Содержание</h1>
+      
+      <p><a href="#Глоссарий">Глоссарий</a></p>
+      
+      <p><a href="#Перечень-элементов">Перечень элементов</a></p>
+      
+      <p><a href="#Перечень-методов">Перечень методов</a></p>
+      
+      <p><a href="#Свойства-методов">Свойства методов</a></p>
+      
+      <p><a href="#Перечень-субъектов-коммуникации">Перечень субъектов коммуникации</a></p>
+      
+      <p><a href="#URL">URL</a></p>
+      
+      <p><a href="#Свойства-URL">Свойства URL</a></p>
+      
+      <p><a href="#Формы-URL">Формы URL</a></p>
+      
+      <p><a href="#Относительный-URL">Относительный URL</a></p>
+      
+      <p><a href="#Перечень-параметров">Перечень параметров</a></p>
+      
+      <p><a href="#Перечень-кодов-состояния">Перечень кодов состояния</a></p>
+      
+      <p><a href="#Типы-полей-заголовка">Типы полей заголовка</a></p>
+      
+      <p><a href="#Перечень-полей-заголовка">Перечень полей заголовка</a></p>
+      
+      <p><a href="#Перечень-кодировок-содержимого">Перечень кодировок содержимого</a></p>
+      
+      <p><a href="#Перечень-директив-кэширования">Перечень директив кэширования</a></p>
+      
+      <p><a href="#Перечень-протоколов-TCP-IP">Перечень протоколов TCP/IP</a></p>
+      
+      <p><a href="#Перечень-инструментов">Перечень инструментов</a></p>
+      
+      <p><a href="#Ссылки">Ссылки</a></p>
+      
+      <p><a href="#RFC">RFC</a></p>
+      
+      <p><a href="#Книги">Книги</a></p>
+      
+      <h1 id="Глоссарий">Глоссарий</h1>
+      
+      <p><strong>authority</strong></p>
+      
+      <p>авторитетный источник; первоисточник</p>
+      
+      <p>служба; центр; источник; администрация; ответственная организация</p>
+      
+      <p>В контексте URL/URI данный термин следует понимать как <em>имя/идентификатор, выданный ответственной организацией</em>.</p>
+      
+      <p><strong>character set</strong></p>
+      
+      <p>набор символов</p>
+      
+      <p><strong>content encoding</strong></p>
+      
+      <p>кодирование содержимого; кодировка содержимого</p>
+      
+      <p><strong>content negotiation</strong></p>
+      
+      <p>согласование содержимого</p>
+      
+      <p><strong>chunked transfer encoding</strong></p>
+      
+      <p>порционная трансферная кодировка</p>
+      
+      <p><strong>downstream</strong></p>
+      
+      <p>по направлению трафика, по трафику; ниже; нижестоящий</p>
+      
+      <p><strong>downstream flow</strong></p>
+      
+      <p>нисходящий поток (данных)</p>
+      
+      <p><strong>end-to-end</strong></p>
+      
+      <p>сквозной (относящийся только к конечным точкам соединения, не к посредникам)</p>
+      
+      <p><strong>entity-body</strong></p>
+      
+      <p>объект; сущность-тело; содержимое</p>
+      
+      <p><strong>extension transfer-coding</strong></p>
+      
+      <p>расширенная трансферная кодировка (любая кодировка за исключением порционной)</p>
+      
+      <p><strong>framework</strong></p>
+      
+      <p>порядок (действий); модель</p>
+      
+      <p><strong>hop-by-hop</strong></p>
+      
+      <p>несквозной (относящийся ко всем точкам соединения)</p>
+      
+      <p><strong>hostname</strong></p>
+      
+      <p>имя узла сети</p>
+      
+      <p><strong>inbound message</strong></p>
+      
+      <p>входящее сообщение</p>
+      
+      <p><strong>loopback diagnostic</strong></p>
+      
+      <p>кольцевая проверка</p>
+      
+      <p><strong>media range</strong></p>
+      
+      <p>диапазон медиатипов</p>
+      
+      <p><strong>media type</strong></p>
+      
+      <p>медиатип</p>
+      
+      <p><strong>offset</strong></p>
+      
+      <p>смещение</p>
+      
+      <p><strong>origin server</strong></p>
+      
+      <p>сервер назначения</p>
+      
+      <p><strong>outbound message</strong></p>
+      
+      <p>исходящее сообщение</p>
+      
+      <p><strong>packet-switched network protocol</strong></p>
+      
+      <p>протокол сети с пакетной коммутацией</p>
+      
+      <p><strong>quality factor</strong></p>
+      
+      <p>коэффициент значимости</p>
+      
+      <p><strong>revalidation</strong></p>
+      
+      <p>перепроверка</p>
+      
+      <p><strong>semantics</strong></p>
+      
+      <p>значение (указание, инструкция, предписание)</p>
+      
+      <p><strong>shared cache</strong></p>
+      
+      <p>кэширующий прокси-сервер общего пользования</p>
+      
+      <p><strong>token</strong></p>
+      
+      <p>имя</p>
+      
+      <p><strong>transfer encoding</strong></p>
+      
+      <p>трансферная кодировка</p>
+      
+      <p><strong>track</strong></p>
+      
+      <p>подход, модель</p>
+      
+      <p><em>standarts track</em> — стандартная модель (интернет-стандарт)</p>
+      
+      <p><strong>upstream</strong></p>
+      
+      <p>в направлении, противоположном трафику, против трафика; выше; вышестоящий</p>
+      
+      <p><strong>upstream flow</strong></p>
+      
+      <p>восходящий поток (данных)</p>
+      
+      <p><strong>URL</strong></p>
+      
+      <p>унифицированный ресурсный указатель</p>
+      
+      <p><strong>validation</strong></p>
+      
+      <p>проверка</p>
+      
+      <h1 id="Перечень-элементов">Перечень элементов</h1>
+      
+      <p><strong>Входящее сообщение</strong> (<em>inbound message</em>)</p>
+      
+      <p>Сообщение, отправляемое клиентом серверу.</p>
+      
+      <p><strong>Заголовок сообщения</strong></p>
+      
+      <p>Часть сообщения, содержит поля. Бывают заголовки запроса и заголовки ответа. Заголовок оканчивается пустой строкой.</p>
+      
+      <p><strong>Запрос</strong></p>
+      
+      <p>Http-сообщение, посылаемое клиентом серверу.</p>
+      
+      <p><strong>Идентификатор ресурса</strong> (<em>URI</em>)</p>
+      
+      <p>Имя ресурса, по которому он доступен.</p>
+      
+      <p><strong>Имя хоста</strong></p>
+      
+      <p>Алиас для IP-адреса.</p>
+      
+      <p><strong>Исходящее сообщение</strong> (<em>outbound message</em>)</p>
+      
+      <p>Сообщение, отправляемое сервером клиенту.</p>
+      
+      <p><strong>Клиент</strong></p>
+      
+      <p>Субъект коммуникации, отправляющий запрос на сервер и ждущий от него ответа.</p>
+      
+      <p><strong>Код состояния</strong></p>
+      
+      <p>Числовой код, сообщающий клиенту результат запроса. Содержится в стартовой строке ответа.</p>
+      
+      <p><strong>Кэширование</strong></p>
+      
+      <p><strong>Медиатип</strong></p>
+      
+      <p>Тип и формат содержимого, на основе которого клиент принимает решение о способе его обработки.</p>
+      
+      <p><strong>Метод</strong></p>
+      
+      <p>Команда http-запроса. Метод сообщает серверу, что нужно сделать с ресурсом.</p>
+      
+      <p><strong>Объект</strong> (<em>Entity-body</em>)</p>
+      
+      <p>Сущность, содержащаяся в ресурсе и передаваемая в теле сообщения.</p>
+      
+      <p><strong>Ответ</strong></p>
+      
+      <p>Http-сообщение, посылаемое сервером в ответ на запрос.</p>
+      
+      <p><strong>Поле заголовка</strong></p>
+      
+      <p>Часть заголовка имеющая имя и значение. Содержит различную метаинформацию о сообщении. Заголовок сообщения может содержать несколько полей.</p>
+      
+      <p><strong>Порт</strong></p>
+      
+      <p>Элемент протокола TCP, идентифицируемый номером системный ресурс, выделяемый приложению, работающему на некотором сетевом хосте.</p>
+      
+      <p><strong>Поясняющая фраза</strong></p>
+      
+      <p>Часть стартовой строки ответа, поясняющая код состояния.</p>
+      
+      <p><strong>Репрезентация</strong></p>
+      
+      <p>Форма предстваления содержимого.</p>
+      
+      <p><strong>Ресурс</strong></p>
+      
+      <p>Контейнер (файл), либо служба (программа), имеющие уникальный идентификатор (URI).</p>
+      
+      <p><strong>Сеанс</strong></p>
+      
+      <p>Отрезок времени, в течении которого происходит непрерывный обмен информацией между клиентом и сервером.</p>
+      
+      <p><strong>Сервер</strong></p>
+      
+      <p>Субъект коммуникации, получающий запрос от клиента и посылающий ему ответ.</p>
+      
+      <p><strong>Согласование содержимого</strong></p>
+      
+      <p><strong>Содержимое</strong></p>
+      
+      <p>Информация, полезная для пользователя (данные). Может содержаться в контейнере, либо генерироваться службой по запросу. Может иметь несколько репрезентаций.</p>
+      
+      <p><strong>Сообщение</strong></p>
+      
+      <p>Объект коммуникации. Содержит стартовую строку, заголовок и тело.</p>
+      
+      <p><strong>Стартовая строка</strong></p>
+      
+      <p>Часть сообщения, описывающая его.</p>
+      
+      <p><strong>Тело сообщения</strong></p>
+      
+      <p>Часть сообщения, содержащее объект с данными.</p>
+      
+      <p><strong>Транзакция</strong></p>
+      
+      <p>Операция обмена информацией между клиентом и сервером, состоящая из одного запроса и одного ответа.</p>
+      
+      <h1 id="Перечень-методов">Перечень методов</h1>
+      
+      <p><strong>DELETE</strong></p>
+      
+      <p>Удалить указанный ресурс.</p>
+      
+      <p><strong>GET</strong></p>
+      
+      <p>Передать объект, содержащийся в запрашиваемом ресурсе.</p>
+      
+      <p><strong>HEAD</strong></p>
+      
+      <p>Передать объектные заголовки для объекта, содержащегося в запрашиваемом ресурсе.</p>
+      
+      <p><strong>OPTIONS</strong></p>
+      
+      <p>Возвратить заголовки ответа для запрашиваемого ресурса, описывающие действия, возможные для осуществления с ним.</p>
+      
+      <p><strong>POST</strong></p>
+      
+      <p>Создать ресурс в названной коллекции и добавить в него переданный объект.</p>
+      
+      <p><strong>PUT</strong></p>
+      
+      <p>Сохранить переданный объект в названном ресурсе.</p>
+      
+      <p><strong>TRACE</strong></p>
+      
+      <p>Возвратить объект, содержащий заголовки запроса, передаваемые в исходном сообщении.</p>
+      
+      <h1 id="Свойства-методов">Свойства методов</h1>
+      
+      <p><strong>Безопасность</strong> (<em>safety</em>)</p>
+      
+      <p>Свойство метода осуществлять действия, не изменяющие ресурс.</p>
+      
+      <p><strong>Идемпотентность</strong> (<em>idempotency</em>)</p>
+      
+      <p>Свойство метода осуществлять действия, однократное выполнение которых приводит к тем же результатам, что и многократное.</p>
+      
+      <h1 id="Перечень-субъектов-коммуникации">Перечень субъектов коммуникации</h1>
+      
+      <p><strong>Agent</strong> (<em>Агент</em>)</p>
+      
+      <p>Агент — это вид клиентского приложения, способного отправлять запросы от лица пользователя.</p>
+      
+      <p><strong>Cache</strong> (<em>Кеширующий прокси-сервер</em>)</p>
+      
+      <p>Кеширущий прокси-сервер — это прокси-сервер, управляющий локальным хранилищем часто запрашиваемых клиентом ресурсов.</p>
+      
+      <p><strong>Client</strong> (<em>Клиент</em>)</p>
+      
+      <p>Клиент — это сетевое приложение, способное отправлять запросы на сервера и принимать ответы от них.</p>
+      
+      <p><strong>Forward proxy</strong> (<em>прямой прокси-сервер</em>)</p>
+      
+      <p>Прямой прокси-сервер — это прокси-сервер, ретранслирующий запросы клиентов из внутренней сети на сервера внешней сети.</p>
+      
+      <p><strong>Gateway</strong> (<em>HTTP-шлюз</em>)</p>
+      
+      <p>Http-шлюз — это прокси-сервер, позволяющая клиентам запрашивать по протоколу HTTP ресурсы, находящиеся на серверах, работающих по другим протоколам.</p>
+      
+      <p><strong>Open proxy</strong> (<em>открытый прокси-сервер</em>)</p>
+      
+      <p>Открытый прокси-сервер — это прокси-сервер, ретранслирующий запросы клиентов из внешней сети на сервера внешней сети.</p>
+      
+      <p><strong>Proxy</strong> (<em>Прокси-сервер</em>)</p>
+      
+      <p>Прокси-сервер — это программа-посредник, находящаяся между клиентом и сервером и используемая для решения различных вспомогательных задач.</p>
+      
+      <p><strong>Reverse proxy</strong> (<em>обратный прокси-сервер</em>)</p>
+      
+      <p>Обратный прокси-сервер — это прокси-сервер, ретранслирующий запросы клиентов из внешней сети на сервера внутренней сети.</p>
+      
+      <p><strong>Server</strong> (<em>Сервер</em>)</p>
+      
+      <p>Сервер — это сетевое приложение, способное принимать запросы от клиентов и отправлять им ответы.</p>
+      
+      <p><strong>Tunnel</strong> (<em>Туннель</em>)</p>
+      
+      <p>Туннель — это приложение, позволяющее передавать данные по одному протоколу, используя инфраструктуру другого.</p>
+      
+      <h1 id="URL">URL</h1>
+      
+      <p><strong>&lt;схема&gt;://&lt;логин&gt;:&lt;пароль&gt;@&lt;хост&gt;:&lt;порт&gt;/&lt;путь&gt;;&lt;параметр&gt;?&lt;запрос&gt;#&lt;фрагмент&gt;</strong></p>
+      
+      <p><strong>Схема</strong></p>
+      
+      <p>Часть ресурсного указателя, определяющая то, как получить доступ к указанному ресурсу.</p>
+      
+      <p><strong>Логин</strong></p>
+      
+      <p>Часть ресурсного указателя, определяющая имя учетной записи для которой открыт доступ к ресурсу на удаленном компьютере.</p>
+      
+      <p><strong>Пароль</strong></p>
+      
+      <p>Часть ресурсного указателя, определяющая пароль указанной учетной записи на удаленном компьютере, для владельца которой открыт доступ к указанному ресурсу.</p>
+      
+      <p><strong>Хост</strong></p>
+      
+      <p>Часть ресурсного указателя, определяющая имя или ip-адрес компьютера в сети, на котором хранится указанный ресурс.</p>
+      
+      <p><strong>Порт</strong></p>
+      
+      <p>Часть ресурсного указателя, идентифицирующая системный ресурс на удаленном компьютере, выделенный приложениию, которое имеет доступ к указанному ресурсу.</p>
+      
+      <p><strong>Путь</strong></p>
+      
+      <p>Часть ресурсного указателя, указывающая местоположения ресурса на удаленном компьютере. Путь может состоять из нескольких частей. Такие части называются сегменты. Сегменты разделяются символами «/» (слеш).</p>
+      
+      <p><strong>Параметр</strong></p>
+      
+      <p>Часть ресурсного указателя, указывающая приложению на удаленном компьютере различную дополнительную информацию относительно хранящегося ресурса. Параметр представляет из себя пару имя-значение, разделенную символом «=» (равно). Каждый сегмент пути может иметь один или несколько параметров. Параметры отделяются от сегмента и друг от друга символом «;» (точка с запятой).</p>
+      
+      <p><strong>Запрос</strong></p>
+      
+      <p>Часть ресурсного указателя, позволяющая уточнить информацию по запрашиваемому ресурсу (например, при запросе некоторого списка сократить его размер на основе переданных критериев). Запрос может иметь произвольный формат.</p>
+      
+      <p><strong>Фрагмент</strong></p>
+      
+      <p>Часть ресурсного указателя, указывающая на часть комплексного ресурса. Фрагмент не передается в запросе, а используется клиентским приложением для ссылки.</p>
+      
+      <h1 id="Свойства-URL">Свойства URL</h1>
+      
+      <p><strong>Портируемость</strong> (<em>portability</em>)</p>
+      
+      <p>Данное свойство предполагает возможность передачи URL посредством множества протоколов. Реализуется посредством использования ограниченного набора символов, понимаемых большинством программ, использующих ресурсные локаторы в своей работе.</p>
+      
+      <p><strong>Читаемось</strong> (<em>readability</em>)</p>
+      
+      <p>Данное свойство предполагает возможность прочтения URL людьми. Реализуется посредством запрета использования невидимых символов в ресурсных локаторах.</p>
+      
+      <p><strong>Завершенность</strong> (<em>completeness</em>)</p>
+      
+      <p>Данное свойство предполагает, что URL может содержать большой объем символов. Реализуется посредством механизма управляющих символов в составе ресурсного локатора. Данный механизм является компромисом в реализации портируемости без ущерба для завершенности.</p>
+      
+      <h1 id="Формы-URL">Формы URL</h1>
+      
+      <p><strong>Каноническая</strong> (<em>Canonical</em>)</p>
+      
+      <p>Форма, в которой используются только символы входящие в алфавит URL. Такая форма гарантирует, что данный ресурсный указатель будет понятен подавляющему большинству существующих приложений.</p>
+      
+      <p><strong>Неканоническая</strong></p>
+      
+      <p>Форма, в которой используются символы не входящие в алфавит URL. Такая форма, хотя и будет понятна некоторым существующим приложениям, останется неясной для подавляющего их большинства. Клиентские приложения должны кодировать подобные символы, используя управляющий механизм URL.</p>
+      
+      <h1 id="Относительный-URL">Относительный URL</h1>
+      
+      <p><strong>Относительный URL</strong></p>
+      
+      <p>Компактная форма URL, исключающая схему и имя хоста, и состоящая только из пути. Упрощает составление документа, содержащего ресурсные указатели, а так же улучшает портируемость группы связанных ресурсов.</p>
+      
+      <p><strong>Базовый URL</strong></p>
+      
+      <p>URL ресурса, содержащего документ с относительным URL. Служит контекстом для последнего.</p>
+      
+      <h1 id="Перечень-параметров">Перечень параметров</h1>
+      
+      <p><strong>byte-range</strong> (<em>байтовый диапазон</em>)</p>
+      
+      <p>Определяет последовательность байт, являющихся частью некоторой сущности.</p>
+      
+      <pre><code>ranges-specifier       = byte-ranges-specifier&#x000A;&#x000A;byte-ranges-specifier  = byte-unit &quot;=&quot; byte-range-set&#x000A;&#x000A;byte-range-set         = 1#(byte-range-spec | suffix-byte-range-spec)&#x000A;&#x000A;byte-range-spec        = first-byte-pos &quot;-&quot; [last-byte-pos]&#x000A;&#x000A;first-byte-pos         = 1*DIGIT&#x000A;&#x000A;last-byte-pos          = 1*DIGIT&#x000A;&#x000A;suffix-byte-range-spec = &quot;-&quot; suffix-length&#x000A;&#x000A;suffix-length          = 1*DIGIT</code></pre>
+      
+      <p>Примеры:</p>
+      
+      <pre><code>bytes=0-499 ;первые 500 байт&#x000A;&#x000A;&#x000A;bytes=500-999 ;вторые 500 байт&#x000A;&#x000A;&#x000A;bytes=-500 ;последние 500 байт&#x000A;&#x000A;&#x000A;bytes=9500- ;последние 500 байт, при размере сущности равной 10000 байт&#x000A;&#x000A;&#x000A;bytes=0-0,-1 ;первый и последние байты</code></pre>
+      
+      <p><strong>charset</strong> (<em>набор символов</em>)</p>
+      
+      <p>Определяет метод, служащий для преобразования последовательности октетов в последовательность символов.</p>
+      
+      <p>~~~ charset = token</p>
+      
+      <p>~~~</p>
+      
+      <p><em>token</em> репрезентует зарегестрированный IANA набор символов. Список допустимых токенов доступен в RFC 1700 [RFC 1700. Assigned Numbers (Page 101, CHARACTER SETS)].</p>
+      
+      <p><strong>content-coding</strong> (<em>кодировка содержимого</em>)</p>
+      
+      <p>Определяет метод шифрования содержимого.</p>
+      
+      <p>~~~ content-coding = token</p>
+      
+      <p>~~~</p>
+      
+      <p><em>token</em> репрезентует зарегестрированный IANA метод. В настоящий момент реестр содержит следущие токены: <em>gzip</em>, <em>compress</em>, <em>deflate</em>, <em>identity</em>.</p>
+      
+      <p><strong>delta-seconds</strong> (<em>временна́я разница</em>)</p>
+      
+      <p>Определяет время, прошедшее с некоторого события, произошедшего в рамках http-коммуникации.</p>
+      
+      <p>~~~ delta-seconds = 1<em>DIGIT</em></p>
+      
+      <p>~~~</p>
+      
+      <p><strong>entity-tag</strong> (<em>сущностный тэг</em>)</p>
+      
+      <p>Используется при сравнении объектов, относящихся ко одному и тому же ресурсу.</p>
+      
+      <p>~~~ entity-tag = [weak] opaque-tag</p>
+      
+      <p>weak = “W/”</p>
+      
+      <p>opaque-tag = quoted-string</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>HTTP-date</strong> (<em>дата HTTP</em>)</p>
+      
+      <p>Определяет дату и время того или иного события в рамках http-коммуникации.</p>
+      
+      <p>~~~ HTTP-date = rfc1123-date | rfc850-date | asctime-date</p>
+      
+      <p>rfc1123-date = wkday “,” SP date1 SP time SP “GMT”</p>
+      
+      <p>rfc850-date = weekday “,” SP date2 SP time SP “GMT”</p>
+      
+      <p>asctime-date = wkday SP date3 SP time SP 4DIGIT</p>
+      
+      <p>date1 = 2DIGIT SP month SP 4DIGIT ;day month year (e.g., 02 Jun 1982)</p>
+      
+      <p>date2 = 2DIGIT “-” month “-” 2DIGIT ;day-month-year (e.g., 02-Jun-82)</p>
+      
+      <p>date3 = month SP (2DIGIT | (SP 1DIGIT)) ;month day (e.g., Jun 2)</p>
+      
+      <p>wkday = “Mon” | “Tue” | “Wed” | “Thu” | “Fri” | “Sat” | “Sun”</p>
+      
+      <p>weekday = “Monday” | “Tuesday” | “Wednesday” | “Thursday” | “Friday” | “Saturday” | “Sunday”</p>
+      
+      <p>month = “Jan” | “Feb” | “Mar” | “Apr” | “May” | “Jun” | “Jul” | “Aug” | “Sep” | “Oct” | “Nov” | “Dec”</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Sun, 06 Nov 1994 08:49:37 GMT</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Sunday, 06-Nov-94 08:49:37 GMT</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Sun Nov 6 08:49:37 1994</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>language-tag</strong> (<em>языковой тэг</em>)</p>
+      
+      <p>~~~ language-tag = primary-tag <em>(“-” subtag)</em></p>
+      
+      <p>primary-tag = 1<em>8ALPHA</em></p>
+      
+      <p>subtag = 1<em>8ALPHA</em></p>
+      
+      <p>~~~</p>
+      
+      <p><strong>product</strong> (<em>продукт</em>)</p>
+      
+      <p>Является идентификатором субъекта коммуникации.</p>
+      
+      <p>~~~ product = token [/ product-version]</p>
+      
+      <p>product-version = token</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ User-Agent: CERN-LineMode/2.15 libwww/2.17b3</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Server: Apache/0.8.4</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>qvalue</strong> (<em>коэффициент значимости</em>)</p>
+      
+      <p>Служит относительным показателем важности некоторого параметра.</p>
+      
+      <p>~~~ qvalue = (“0” [. 03DIGIT]) | (1 . 03(0)])]</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>range-unit</strong> (<em>единица измерения диапазона</em>)</p>
+      
+      <p>Определяет единицу измерения диапазона.</p>
+      
+      <p>~~~ range-unit = bytes-unit | other-range-unit</p>
+      
+      <p>bytes-unit = “bytes”</p>
+      
+      <p>other-range-unit = token</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>transfer-coding</strong> (<em>трансферная кодировка</em>)</p>
+      
+      <p>Определяет метод трансферного шифрования.</p>
+      
+      <p>~~~ transfer-coding = “chunked” | transfer-extension</p>
+      
+      <p>transfer-extension = token <em>(“;” parameter)</em></p>
+      
+      <p>parameter = attribute “=” value</p>
+      
+      <p>attribute = token</p>
+      
+      <p>value = token | quoted-string</p>
+      
+      <p>~~~</p>
+      
+      <h1 id="Перечень-кодов-состояния">Перечень кодов состояния</h1>
+      
+      <p><strong>100</strong> Continue</p>
+      
+      <p><strong>101</strong> Switching Protocols</p>
+      
+      <p><strong>200</strong> OK</p>
+      
+      <p><strong>201</strong> Created</p>
+      
+      <p><strong>202</strong> Accepted</p>
+      
+      <p><strong>203</strong> Non-Authoritative Information</p>
+      
+      <p><strong>204</strong> No Content</p>
+      
+      <p><strong>205</strong> Reset Content</p>
+      
+      <p><strong>206</strong> Partial Content</p>
+      
+      <p><strong>300</strong> Multiple Choices</p>
+      
+      <p><strong>301</strong> Moved Permanently</p>
+      
+      <p><strong>302</strong> Found</p>
+      
+      <p><strong>303</strong> See Other</p>
+      
+      <p><strong>304</strong> Not Modified</p>
+      
+      <p><strong>305</strong> Use Proxy</p>
+      
+      <p><strong>307</strong> Temporary Redirect</p>
+      
+      <p><strong>400</strong> Bad Request</p>
+      
+      <p><strong>401</strong> Unauthorized</p>
+      
+      <p><strong>402</strong> Payment Required</p>
+      
+      <p><strong>403</strong> Forbidden</p>
+      
+      <p><strong>404</strong> Not Found</p>
+      
+      <p><strong>405</strong> Method Not Allowed</p>
+      
+      <p><strong>406</strong> Not Acceptable</p>
+      
+      <p><strong>407</strong> Proxy Authentication Required</p>
+      
+      <p><strong>408</strong> Request Timeout</p>
+      
+      <p><strong>409</strong> Conflict</p>
+      
+      <p><strong>410</strong> Gone</p>
+      
+      <p><strong>411</strong> Length Required</p>
+      
+      <p><strong>412</strong> Precondition Failed</p>
+      
+      <p><strong>413</strong> Request Entity Too Large</p>
+      
+      <p><strong>414</strong> Request-URI Too Long</p>
+      
+      <p><strong>415</strong> Unsupported Media Type</p>
+      
+      <p><strong>416</strong> Requested Range Not Satisfiable</p>
+      
+      <p><strong>417</strong> Expectation Failed</p>
+      
+      <p><strong>500</strong> Internal Server Error</p>
+      
+      <p><strong>501</strong> Not Implemented</p>
+      
+      <p><strong>502</strong> Bad Gateway</p>
+      
+      <p><strong>503</strong> Service Unavailable</p>
+      
+      <p><strong>504</strong> Gateway Timeout</p>
+      
+      <p><strong>505</strong> HTTP Version Not Supported</p>
+      
+      <h1 id="Типы-полей-заголовка">Типы полей заголовка</h1>
+      
+      <p><strong>Общие</strong> (<em>General header fields</em>)</p>
+      
+      <p>Поля, которые могут быть использованы как в заголовке запроса, так и ответа.</p>
+      
+      <p><strong>Поля запроса</strong> (<em>Request header fields</em>)</p>
+      
+      <p>Поля, которые могут быть использованы только в заголовке запроса.</p>
+      
+      <p><strong>Поля ответа</strong> (<em>Response header fields</em>)</p>
+      
+      <p>Поля, которые могут быть использованы только в заголовке ответа.</p>
+      
+      <p><strong>Объектные поля</strong> (<em>Entity header fields</em>)</p>
+      
+      <p>Поля определяющие объект, передаваемый в теле сообщения.</p>
+      
+      <p><strong>Поля, расширяющие стандарт</strong> (<em>Extension header fields</em>)</p>
+      
+      <p>Нестандартные поля, расширяющие HTTP.</p>
+      
+      <h1 id="Перечень-полей-заголовка">Перечень полей заголовка</h1>
+      
+      <p><strong>Accept</strong> [request]</p>
+      
+      <p>Определить приемлемые медиатипы для запрашиваемого объекта.</p>
+      
+      <p>~~~ Accept = “Accept” “:” #(media-range [accept-params])</p>
+      
+      <p>media-range = (“<em>/</em>” | (type “/” “<em>“) | (type ”/“ subtype))</em>(”;“ parameter)</p>
+      
+      <p>accept-params = “;” “q” “=” qvalue <em>(accept-extension)</em></p>
+      
+      <p>accept-extension = “;” token [= (token | quoted-string)]</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Accept: text/html</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Accept: text/html;level=1</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Accept: text/html;level=1;q=0.5, text/html;level=2;q=0.7, text/html</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Accept: <em>/</em></p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Accept: text/*</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Accept-Charset</strong> [request]</p>
+      
+      <p>Определить приемлемые наборы символов для запрашиваемого объекта.</p>
+      
+      <p>~~~ Accept-Charset = “Accept-Charset” “:” 1#((charset | “<em>“)[; q = qvalue])</em></p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Accept-Charset: iso-8859-5, unicode-1-1;q=0.8</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Accept-Encoding</strong> [request]</p>
+      
+      <p>Определить приемлемые типы кодировки содержимого.</p>
+      
+      <p>~~~ Accept-Encoding = “Accept-Encoding” “:” 1#(codings [; q = qvalue])</p>
+      
+      <p>codings = (content-coding | “<em>“)</em></p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Accept-Encoding: *</p>
+      
+      <p>Accept-Encoding: compress, gzip</p>
+      
+      <p>Accept-Encoding: compress;q=0.7, gzip;q=1.0</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Accept-Language</strong> [request]</p>
+      
+      <p>Определить естественные языки, приемлемые для запрашиваемого документа.</p>
+      
+      <p>~~~ Accept-Language = “Accept-Language” “:” 1#(language-range [; q = qvalue])</p>
+      
+      <p>language-range = ((1<em>8ALPHA</em>(“-” 1<em>8ALPHA)) | “</em>“)</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Accept-Language: da, en-gb;q=0.8, en;q=0.7</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Authentication-Info</strong> [response]</p>
+      
+      <ul>
+      <li>
+      <p>Передать клиенту следующее окказиональное значение;</p>
+      </li>
+      
+      <li>
+      <p>Передать клиенту хэш-сумму, вычисленную на серверной стороне.</p>
+      </li>
+      </ul>
+      
+      <p><strong>Authorization</strong> [request]</p>
+      
+      <p>Указать данные, необходимые для авторизации.</p>
+      
+      <p>~~~ Authorization = “Authorization” “:” credentials</p>
+      
+      <p>credentials = auth-scheme #auth-param</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== ; Base64 of “Aladdin:open sesame”</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Authorization: Digest username=“Aladdin”,response=“54ef36ec71201fdf9d1423fd26f97f6b” ; MD5 of “open sesame”</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Cache-Control</strong> [request] [response]</p>
+      
+      <p>Определить директивы, управляющие механизмом кэширования.</p>
+      
+      <p>~~~ Cache-Control = “Cache-Control” “:” 1#cache-directive</p>
+      
+      <p>cache-directive = cache-request-directive | cache-response-directive</p>
+      
+      <p>cache-request-directive = “no-cache” | “no-store” | “max-age” “=” delta-seconds | “max-stale” [= delta-seconds] | “min-fresh” “=” delta-seconds | “no-transform” | “only-if-cached” | cache-extension</p>
+      
+      <p>cache-response-directive = “public” | “private” [= <> 1#field-name <>] | “no-cache” [= <> 1#field-name <>] | “no-store” | “no-transform” | “must-revalidate” | “proxy-revalidate” | “max-age” “=” delta-seconds | “s-maxage” “=” delta-seconds | cache-extension</p>
+      
+      <p>cache-extension = token [= (token | quoted-string)]</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Connection</strong> [request] [response]</p>
+      
+      <ul>
+      <li>
+      <p>Показать, что текущее соединение будет закрыто отправителем по завершению отправки текущего сообщения.</p>
+      </li>
+      
+      <li>
+      <p>Указать поля заголовков, относящихся только к текущему соединению.</p>
+      </li>
+      </ul>
+      
+      <p>~~~ Connection = “Connection” “:” “close” | 1#(connection-token)</p>
+      
+      <p>connection-token = token</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Connection: Upgrade</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Connection: TE</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Connection: close</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Date</strong> [request] [response]</p>
+      
+      <p>Указать дату создания сообщения.</p>
+      
+      <p>~~~ Date = “Date” “:” HTTP-date</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Date: Tue, 15 Nov 1994 08:12:31 GMT</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Expect</strong> [request]</p>
+      
+      <p>Определить действия, необходимые для выполнения на сервере.</p>
+      
+      <p>~~~ Expect = “Expect” “:” 1#expectation</p>
+      
+      <p>expectation = “100-Continue” | expectation-token</p>
+      
+      <p>expectation-token = token [= (token | quoted-string) expect-params]]</p>
+      
+      <p>expect-params = “;” token [= (token | quoted-string)]</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>From</strong> [request]</p>
+      
+      <p>Указать адрес электронной почты персоны, от лица которой выполняются http-запросы.</p>
+      
+      <p>~~~ From = “From” “:” mailbox</p>
+      
+      <p>~~~</p>
+      
+      <p>Пример:</p>
+      
+      <p>~~~ From: <a href="mailto:&#110;&#097;&#109;&#101;&#064;&#100;&#111;&#109;&#097;&#105;&#110;&#046;&#110;&#101;&#116;">&#110;&#097;&#109;&#101;&#064;&#100;&#111;&#109;&#097;&#105;&#110;&#046;&#110;&#101;&#116;</a></p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Host</strong> [request]</p>
+      
+      <p>Определить хост и порт сервера хранящего запрашиваемый ресурс.</p>
+      
+      <p>~~~ Host = “Host” “:” host [: port]</p>
+      
+      <p>~~~</p>
+      
+      <p>Пример:</p>
+      
+      <p>~~~ Host: www.w3.org</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>If-Match</strong> [request]</p>
+      
+      <p>Проверить, какая из содержащихся в кэше сущностей является текущей действительной репрезентацией запрашиваемого ресурса.</p>
+      
+      <p>~~~ If-Match = “If-Match” “:” (“<em>“ | 1#entity-tag)</em></p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ If-Match: “xyzzy”</p>
+      
+      <p>If-Match: “xyzzy”, “r2d2xxxx”, “i3piozzzz”</p>
+      
+      <p>If-Match: *</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>If-Modified-Since</strong> [request]</p>
+      
+      <p>Проверить, был ли изменен документ, содержащийся в запрашиваемом ресурсе со времени, указанном в значении данного поля.</p>
+      
+      <p>~~~ If-Modified-Since = “If-Modified-Since” “:” HTTP-date</p>
+      
+      <p>~~~</p>
+      
+      <p>Пример:</p>
+      
+      <p>~~~ If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>If-None-Match</strong> [request]</p>
+      
+      <p>Убедиться, что ни одна из содержащихся в кэше сущностей не является текущей действительной репрезентацией запрашиваемого ресурса.</p>
+      
+      <p>~~~ If-None-Match = “If-None-Match” “:” (“<em>“ | 1#entity-tag)</em></p>
+      
+      <p>~~~</p>
+      
+      <p>Пример:</p>
+      
+      <p>~~~ If-None-Match: “xyzzz”</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ If-None-Match: W/“xyzzz”</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ If-None-Match: “xyzzz”, “r2d2xxxx”, “c3piozzzz”</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ If-None-Match: W&quot;xyzzz“, W&quot;r2d2xxxx”, W&quot;c3piozzzz“</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ If-None-Match: *</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>If-Range</strong> [request]</p>
+      
+      <p>Убедиться, что запрашиваемый байтовый диапазон является частью той сущности, частичная копия которой содержится в кэше клиента.</p>
+      
+      <p>~~~ If-Range = “If-Range” “:” (entity-tag | HTTP-date)</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>If-Unmodified-Since</strong> [request]</p>
+      
+      <p>Проверить, что содержащийся в кэше документ не был изменен с момента, указанного в значении данного поля.</p>
+      
+      <p>~~~ If-Unmodified-Since = “If-Unmodified-Since” “:” HTTP-date</p>
+      
+      <p>~~~</p>
+      
+      <p>Пример:</p>
+      
+      <p>~~~ If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Pragma</strong> [request] [response]</p>
+      
+      <p>Включить директиву, понимаемую некоторой специфичной реализацией протокола.</p>
+      
+      <p>~~~ Pragma = “Pragma” “:” 1#pragma-directive</p>
+      
+      <p>pragma-directive = “no-cache” | extension-pragma</p>
+      
+      <p>extension-pragma = token [= (token | query-string)]</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Referer</strong> [request]</p>
+      
+      <p>Указать идентификатор ресурса, содержащего документ с сылкой на текущий запрашиваемый ресурс.</p>
+      
+      <p>~~~ Referer: “Referer” “:” (absoluteURI | relativeURI)</p>
+      
+      <p>~~~</p>
+      
+      <p>~~~ Referer: http://www.w3.org/hypertext/DataSources/Overview.html</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Range</strong> [request]</p>
+      
+      <p>Определить диапазон сущности, содержащейся в запрашиваемом ресурсе, в частичном запросе.</p>
+      
+      <p>~~~ Range = “Range” “:” ranges-specifier</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Range: bytes=0-499,-500</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Server</strong> [response]</p>
+      
+      <p><strong>Trailer</strong> [request] [response]</p>
+      
+      <p>Определить поля заголовка, присутствующие в трейлере сообщения, зашифрованного с помощью порционной трансферной кодировки.</p>
+      
+      <p>~~~ Trailer = “Trailer” “:” 1#field-name</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>TE</strong> [request]</p>
+      
+      <ul>
+      <li>
+      <p>Определить приемлемые типы расширенной трансферной кодировки.</p>
+      </li>
+      
+      <li>
+      <p>Выразить желание принимать поля заголовков в трейлере, при использовании порционной трансферной кодировки.</p>
+      </li>
+      </ul>
+      
+      <p>~~~ TE = “TE” “:” #(t-codings)</p>
+      
+      <p>t-codings = “trailers” | (transfer-extension [accept-params])</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ TE: trailers, deflate;q=0.5, gzip;q=0.2</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Transfer-Encoding</strong> [request] [response]</p>
+      
+      <p>Определить используемые типы трансферной кодировки.</p>
+      
+      <p>~~~ Transfer-Encoding = “Transfer-Encoding” “:” 1#transfer-coding</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Upgrade</strong> [request] [response]</p>
+      
+      <p>В запросе: определить приемлемые протоколы прикладного уровня.</p>
+      
+      <p>В ответе: определить используемые протоколы прикладного уровня.</p>
+      
+      <p>~~~ Upgrade = “Upgrade” “:” 1#product</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>User-Agent</strong> [request]</p>
+      
+      <p>Определить тип и версию используемого клиентского программного обеспечения.</p>
+      
+      <p>~~~ User-Agent = “User-Agent” “:” 1<em>(product | comment)</em></p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ User-Agent: CERN-LineMode/2.15 libwww/2.17b3</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>Via</strong> [request] [response]</p>
+      
+      <p>Определить названия промежуточных субъектов коммуникации, а так же названия и версии протоколов используемых ими.</p>
+      
+      <p>~~~ Via = “Via” “:” 1#(received-protocol received-by [comment])</p>
+      
+      <p>received-protocol = [protocol-name /] protocol-version</p>
+      
+      <p>protocol-name = token</p>
+      
+      <p>protocol-version = token</p>
+      
+      <p>received-by = (host [: port]) | pseudonym</p>
+      
+      <p>pseudonym = token</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</p>
+      
+      <p>~~~</p>
+      
+      <p><strong>WWW-Authenticate</strong> [response]</p>
+      
+      <p>Задать требование, необходимое для аутентификации.</p>
+      
+      <p>~~~ WWW-Authenticate = “WWW-Authenticate” “:” challenge</p>
+      
+      <p>challenge = auth-scheme 1<em>SP 1#auth-param</em></p>
+      
+      <p>auth-scheme = token</p>
+      
+      <p>auth-param = token “=” (token | quoted-string)</p>
+      
+      <p>~~~</p>
+      
+      <p>Примеры:</p>
+      
+      <p>~~~ WWW-Authenticate: Basic realm=“WallyWord”</p>
+      
+      <p>~~~</p>
+      
+      <h1 id="Перечень-кодировок-содержимого">Перечень кодировок содержимого</h1>
+      
+      <p><strong>compress</strong></p>
+      
+      <p>Содержимое было закодированно с использованием алгоритма LZW.</p>
+      
+      <p><strong>deflate</strong></p>
+      
+      <p>Содержимое было закодированно с использованием алгоритма Deflate, представляющим из себя комбинацию LZ77 и алгоритма Хаффмана.</p>
+      
+      <p><strong>gzip</strong></p>
+      
+      <p>Содержимое было закодированно с использованием алгоритма LZ77.</p>
+      
+      <p><strong>identity</strong></p>
+      
+      <p>Содержимое не было закодированно.</p>
+      
+      <h1 id="Перечень-директив-кэширования">Перечень директив кэширования</h1>
+      
+      <p>Директивы кэширования могут относиться к следующим сущностям в рамках механизма кэширования:</p>
+      
+      <ul>
+      <li>
+      <p>к субъекту</p>
+      </li>
+      
+      <li>
+      <p>к объекту</p>
+      </li>
+      
+      <li>
+      <p>к свойствам субъекта</p>
+      </li>
+      
+      <li>
+      <p>к свойствам объекта</p>
+      </li>
+      </ul>
+      
+      <p>Директивы кэширования могут изменять следующие механизмы работы кэша:</p>
+      
+      <ul>
+      <li>
+      <p>сохранение в кэше</p>
+      </li>
+      
+      <li>
+      <p>извлечение из кэша</p>
+      </li>
+      
+      <li>
+      <p>перепроверка</p>
+      </li>
+      
+      <li>
+      <p>перезагрузка</p>
+      </li>
+      
+      <li>
+      <p>трансформацию</p>
+      </li>
+      </ul>
+      
+      <p>Объект кэширования имеет следующие свойства:</p>
+      
+      <ul>
+      <li>
+      <p>действительность (<em>validity</em>)</p>
+      </li>
+      
+      <li>
+      <p>срок годности (<em>expiration time</em>)</p>
+      </li>
+      
+      <li>
+      <p>возраст (<em>age</em>)</p>
+      </li>
+      </ul>
+      
+      <h2 id="Директивы-запроса">Директивы запроса</h2>
+      
+      <p><strong>max-age</strong></p>
+      
+      <p>Сообщение должно быть извлечено из кэша только в том случае, если оно действительно и его возраст не превышает величины, указанной в значении данной директивы.</p>
+      
+      <p><strong>min-fresh</strong></p>
+      
+      <p>Сообщение должно быть извлечено из кэша только в том случае, если сумма его возраста и величины, указанной в значении данной директивы, не превышает срока его годности.</p>
+      
+      <p><strong>max-stale</strong></p>
+      
+      <p>Сообщение должно быть извлечено из кэша только в том случае, если сумма срока его годности и величины, указанной в значении данной директивы, не превышает его возраста.</p>
+      
+      <p><strong>no-cache</strong></p>
+      
+      <p>Сообщение должно быть загружено с сервера.</p>
+      
+      <p><strong>only-if-cached</strong></p>
+      
+      <p>Сообщение должно быть извлечено из кэша.</p>
+      
+      <p><strong>no-store</strong></p>
+      
+      <p>Сообщение не должно быть сохранено в кэше ни при каких обстоятельствах.</p>
+      
+      <p><strong>no-transform</strong></p>
+      
+      <p>Любой из аспектов сущности, содержащейся в теле сообщения, описываемый заголовками <em>Content-Encoding</em>, <em>Content-Length</em>, <em>Content-Type</em>, не должен изменяться при сохранении данного сообщения в кэше.</p>
+      
+      <h2 id="Директивы-ответа">Директивы ответа</h2>
+      
+      <p><strong>public</strong></p>
+      
+      <p>Сообщение может быть сохранено и в публичном, и в частном кэше.</p>
+      
+      <p><strong>private</strong></p>
+      
+      <p>Сообщение <em>или его часть</em> может быть сохранено только в частном кэше.</p>
+      
+      <p><strong>no-cache</strong></p>
+      
+      <p>Сообщение <em>или его часть</em> может быть сохранено в кэше, но оно не должно быть использовано при последующих запросах без предварительной проверки действительности.</p>
+      
+      <p><strong>no-store</strong></p>
+      
+      <p>Сообщение не должно быть сохранено в кэше ни при каких обстоятельствах.</p>
+      
+      <p><strong>max-age</strong></p>
+      
+      <p>Сообщение становится недействительным по истечении срока, указанного в значении данной директивы.</p>
+      
+      <p><strong>s-maxage</strong></p>
+      
+      <p>Сообщение, <em>содержащееся в публичном кэше</em>, становится недействительным по истечению срока, указанного в значении данной директивы.</p>
+      
+      <p><strong>must-revalidate</strong></p>
+      
+      <p>Сообщение не должно использоваться по истечению срока годности без предварительной проверки действительности.</p>
+      
+      <p><strong>proxy-revalidate</strong></p>
+      
+      <p>Сообщение, <em>содержащиееся в публичном кэше</em>, не должно использоваться по истечению срока годности без предварительной проверки действительности.</p>
+      
+      <p><strong>no-transform</strong></p>
+      
+      <p>Любой из аспектов сущности, содержащейся в теле сообщения, описываемый заголовками <em>Content-Encoding</em>, <em>Content-Length</em>, <em>Content-Type</em>, не должен изменяться при сохранении данного сообщения в кэше.</p>
+      
+      <h1 id="Перечень-протоколов-TCP-IP">Перечень протоколов TCP/IP</h1>
+      
+      <p><strong>TCP</strong> (<em>Transmission Control Protocol</em>)</p>
+      
+      <p>Протокол транспортного уровня, обеспечивающий надежность передачи данных. Надежность предполагает получение данных без потерь, повреждений и в заданном порядке.</p>
+      
+      <p><strong>IP</strong> (<em>Internet Protocol</em>)</p>
+      
+      <p>Протокол сетевого уровня, обеспечивающий передачу данных, но не гарантирующий надежность этой передачи. Данные, переданные с использованием этого протокола, могут быть потеряны, повреждены или получены не в заданном порядке.</p>
+      
+      <h1 id="Перечень-инструментов">Перечень инструментов</h1>
+      
+      <p><strong>telnet</strong></p>
+      
+      <p><strong>nc</strong></p>
+      
+      <h1 id="Ссылки">Ссылки</h1>
+      
+      <p>[[Контроль доступа средствами HTTP]]</p>
+      <hr />
+      <p><a href="http://en.wikipedia.org/wiki/Augmented_Backus–Naur_Form">Augmented Backus—Naur Form</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked transfer encoding</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/DEFLATE">Deflate</a></p>
+      
+      <p><a href="http://en.wikipedia.org/wiki/Fragment_identifier">Fragment identifier</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/LZ77">LZ77</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/LZW">LZW</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Netcat">Netcat</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/HTTP_referer">Referer</a></p>
+      
+      <p><a href='http://en.wikipedia.org/wiki/Slug_(web_publishing)'>Slug</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/TCP/IP">TCP/IP</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Telnet">Telnet</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/User_Agent">User Agent</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Заголовки_HTTP#.D0.91.D0.B0.D0.B9.D1.82.D0.BE.D0.B2.D1.8B.D0.B5_.D0.B4.D0.B8.D0.B0.D0.BF.D0.B0.D0.B7.D0.BE.D0.BD.D1.8B">Заголовки HTTP. Байтовые диапазоны</a></p>
+      <nowiki><a href='http://ru.wikipedia.org/wiki/Порт_(TCP/IP)'>Порт (TCP/IP)</a></nowiki>
+      <p><a href="http://ru.wikipedia.org/wiki/Прокси-сервер">Прокси-сервер</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Сервис_туннелей">Сервис туннелей</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Сетевой_шлюз">Сетевой шлюз</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Список_заголовков_HTTP">Список заголовков HTTP</a></p>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Коды_состояния_HTTP">Список кодов состояния HTTP</a></p>
+      <nowiki><a href='http://ru.wikipedia.org/wiki/Туннелирование_(компьютерные_сети)'>Туннелирование (компьютерные сети)</a></nowiki>
+      <h1 id="RFC">RFC</h1>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc822.txt">RFC 822. STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc1123.txt">RFC 1123. Requirements for Internet Hosts – Application and Support</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc1700.txt">RFC 1700. Assigned Numbers</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc1738.txt">RFC 1738. Uniform Resource Locators (URL)</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc1766.txt">RFC 1766. Tags for the Identification of Languages</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc1808.txt">RFC 1808. Relative Uniform Resource Locators</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc2119.txt">RFC 2119. Key words for use in RFCs to Indicate Requirement Levels</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc2616.txt">RFC 2616. Hypertext Transfer Protocol – HTTP/1.1</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc2617.txt">RFC 2617. HTTP Authentication: Basic and Digest Access Authentication</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc3040.txt">RFC 3040. Internet Web Replication and Caching Taxonomy</a></p>
+      
+      <p><a href="http://www.ietf.org/rfc/rfc3986.txt">RFC 3986. Uniform Resource Identifier (URI): Generic Syntax</a></p>
+      
+      <h1 id="Книги">Книги</h1>
+      
+      <p><a href="http://shop.oreilly.com/product/9781565928626.do">HTTP Pocket Reference</a></p>
+      
+      <p><a href="http://shop.oreilly.com/product/9781565925090.do?green=2ddffc00-9694-ec7c0d-3097-121ff07a48e9&intcmp=af-mybuy-9781565925090.IP">HTTP: The Definitive Guide</a></p>
+      
+      <p><a href="http://my.safaribooksonline.com/book/web-development/http/0672324547">HTTP Developer’s Handbook</a></p>
+    </div>
+  </body>
+</html>
