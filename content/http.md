@@ -3,6 +3,7 @@ layout: default
 ---
 
 #Содержание
+{: id="Содержание"}
 
 [Глоссарий](#Глоссарий)
 
@@ -44,7 +45,8 @@ layout: default
 
 [Книги](#Книги)
 
-#Глоссарий{#Глоссарий}
+#Глоссарий
+{: id="Глоссарий"}
 
 **authority**
 
@@ -180,7 +182,8 @@ layout: default
 
 проверка
 
-#Перечень элементов{#Перечень-элементов}
+#Перечень элементов
+{: id="Перечень-элементов"}
 
 **Входящее сообщение** (*inbound message*)
 
@@ -282,7 +285,8 @@ Http-сообщение, посылаемое сервером в ответ н�
 
 Операция обмена информацией между клиентом и сервером, состоящая из одного запроса и одного ответа.
 
-#Перечень методов{#Перечень-методов}
+#Перечень методов
+{: id="Перечень-методов"}
 
 **DELETE**
 
@@ -312,7 +316,8 @@ Http-сообщение, посылаемое сервером в ответ н�
 
 Возвратить объект, содержащий заголовки запроса, передаваемые в исходном сообщении.
 
-#Свойства методов{#Свойства-методов}
+#Свойства методов
+{: id="Свойства-методов"}
 
 **Безопасность** (*safety*)
 
@@ -322,7 +327,8 @@ Http-сообщение, посылаемое сервером в ответ н�
 
 Свойство метода осуществлять действия, однократное выполнение которых приводит к тем же результатам, что и многократное.
 
-#Перечень субъектов коммуникации{#Перечень-субъектов-коммуникации}
+#Перечень субъектов коммуникации
+{: id="Перечень-субъектов-коммуникации"}
 
 **Agent** (*Агент*)
 
@@ -364,9 +370,10 @@ Http-шлюз — это прокси-сервер, позволяющая кл�
 
 Туннель — это приложение, позволяющее передавать данные по одному протоколу, используя инфраструктуру другого.
 
-#URL{#URL}
+#URL
+{: id="URL"}
 
-**<схема>://<логин>:<пароль>@<хост>:<порт>/<путь>;<параметр>?<запрос>#<фрагмент>**
+    <схема>://<логин>:<пароль>@<хост>:<порт>/<путь>;<параметр>?<запрос>#<фрагмент>
 
 **Схема**
 
@@ -404,7 +411,8 @@ Http-шлюз — это прокси-сервер, позволяющая кл�
 
 Часть ресурсного указателя, указывающая на часть комплексного ресурса. Фрагмент не передается в запросе, а используется клиентским приложением для ссылки.
 
-#Свойства URL{#Свойства-URL}
+#Свойства URL
+{: id="Свойства-URL"}
 
 **Портируемость** (*portability*)
 
@@ -418,7 +426,8 @@ Http-шлюз — это прокси-сервер, позволяющая кл�
 
 Данное свойство предполагает, что URL может содержать большой объем символов. Реализуется посредством механизма управляющих символов в составе ресурсного локатора. Данный механизм является компромисом в реализации портируемости без ущерба для завершенности.
 
-#Формы URL{#Формы-URL}
+#Формы URL
+{: id="Формы-URL"}
 
 **Каноническая** (*Canonical*)
 
@@ -428,7 +437,8 @@ Http-шлюз — это прокси-сервер, позволяющая кл�
 
 Форма, в которой используются символы не входящие в алфавит URL. Такая форма, хотя и будет понятна некоторым существующим приложениям, останется неясной для подавляющего их большинства. Клиентские приложения должны кодировать подобные символы, используя управляющий механизм URL.
 
-#Относительный URL{#Относительный-URL}
+#Относительный URL
+{: id="Относительный-URL"}
 
 **Относительный URL**
 
@@ -438,26 +448,27 @@ Http-шлюз — это прокси-сервер, позволяющая кл�
 
 URL ресурса, содержащего документ с относительным URL. Служит контекстом для последнего.
 
-#Перечень параметров{#Перечень-параметров}
+#Перечень параметров
+{: id="Перечень-параметров"}
 
 **byte-range** (*байтовый диапазон*)
 
 Определяет последовательность байт, являющихся частью некоторой сущности.
 
     ranges-specifier       = byte-ranges-specifier
-    
+
     byte-ranges-specifier  = byte-unit "=" byte-range-set
-    
+
     byte-range-set         = 1#(byte-range-spec | suffix-byte-range-spec)
-    
+
     byte-range-spec        = first-byte-pos "-" [last-byte-pos]
-    
+
     first-byte-pos         = 1*DIGIT
-    
+
     last-byte-pos          = 1*DIGIT
-    
+
     suffix-byte-range-spec = "-" suffix-length
-    
+
     suffix-length          = 1*DIGIT
 
 Примеры:
@@ -480,9 +491,7 @@ URL ресурса, содержащего документ с относите�
 
 Определяет метод, служащий для преобразования последовательности октетов в последовательность символов.
 
-~~~
-charset = token
-~~~
+    charset = token
 
 *token* репрезентует зарегестрированный IANA набор символов. Список допустимых токенов доступен в RFC 1700 \[RFC 1700. Assigned Numbers (Page 101, CHARACTER SETS)\].
 
@@ -490,9 +499,7 @@ charset = token
 
 Определяет метод шифрования содержимого.
 
-~~~
-content-coding = token
-~~~
+    content-coding = token
 
 *token* репрезентует зарегестрированный IANA метод. В настоящий момент реестр содержит следущие токены:
 *gzip*, *compress*, *deflate*, *identity*.
@@ -501,129 +508,104 @@ content-coding = token
 
 Определяет время, прошедшее с некоторого события, произошедшего в рамках http-коммуникации.
 
-~~~
-delta-seconds = 1*DIGIT
-~~~
+    delta-seconds = 1*DIGIT
 
 **entity-tag** (*сущностный тэг*)
 
 Используется при сравнении объектов, относящихся ко одному и тому же ресурсу.
 
-~~~
-entity-tag = [weak] opaque-tag
+    entity-tag = [weak] opaque-tag
 
-weak       = "W/"
+    weak       = "W/"
 
-opaque-tag = quoted-string
-~~~
+    opaque-tag = quoted-string
 
 **HTTP-date** (*дата HTTP*)
 
 Определяет дату и время того или иного события в рамках http-коммуникации.
 
-~~~
-HTTP-date    = rfc1123-date | rfc850-date | asctime-date
+    HTTP-date    = rfc1123-date | rfc850-date | asctime-date
 
-rfc1123-date = wkday "," SP date1 SP time SP "GMT"
+    rfc1123-date = wkday "," SP date1 SP time SP "GMT"
 
-rfc850-date  = weekday "," SP date2 SP time SP "GMT"
+    rfc850-date  = weekday "," SP date2 SP time SP "GMT"
 
-asctime-date = wkday SP date3 SP time SP 4DIGIT
+    asctime-date = wkday SP date3 SP time SP 4DIGIT
 
-date1        = 2DIGIT SP month SP 4DIGIT ;day month year (e.g., 02 Jun 1982)
+    date1        = 2DIGIT SP month SP 4DIGIT ;day month year (e.g., 02 Jun 1982)
 
-date2        = 2DIGIT "-" month "-" 2DIGIT ;day-month-year (e.g., 02-Jun-82)
+    date2        = 2DIGIT "-" month "-" 2DIGIT ;day-month-year (e.g., 02-Jun-82)
 
-date3        = month SP (2DIGIT | (SP 1DIGIT)) ;month day (e.g., Jun  2)
+    date3        = month SP (2DIGIT | (SP 1DIGIT)) ;month day (e.g., Jun  2)
 
-wkday        = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun"
+    wkday        = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun"
 
-weekday      = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"
+    weekday      = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"
 
-month        = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"
-~~~
+    month        = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"
 
 Примеры:
 
-~~~
-Sun, 06 Nov 1994 08:49:37 GMT
-~~~
+    Sun, 06 Nov 1994 08:49:37 GMT
 
-~~~
-Sunday, 06-Nov-94 08:49:37 GMT
-~~~
+    Sunday, 06-Nov-94 08:49:37 GMT
 
-~~~
-Sun Nov  6 08:49:37 1994
-~~~
+    Sun Nov  6 08:49:37 1994
 
 **language-tag** (*языковой тэг*)
 
-~~~
-language-tag = primary-tag *("-" subtag)
+    language-tag = primary-tag *("-" subtag)
 
-primary-tag  = 1*8ALPHA
+    primary-tag  = 1*8ALPHA
 
-subtag       = 1*8ALPHA
-~~~
+    subtag       = 1*8ALPHA
 
 **product** (*продукт*)
 
 Является идентификатором субъекта коммуникации.
 
-~~~
-product         = token ["/" product-version]
+    product         = token ["/" product-version]
 
-product-version = token
-~~~
+    product-version = token
 
 Примеры:
 
-~~~
-User-Agent: CERN-LineMode/2.15 libwww/2.17b3
-~~~
+    User-Agent: CERN-LineMode/2.15 libwww/2.17b3
 
-~~~
-Server: Apache/0.8.4
-~~~
+    Server: Apache/0.8.4
 
 **qvalue** (*коэффициент значимости*)
 
 Служит относительным показателем важности некоторого параметра.
 
-~~~
-qvalue = ("0" ["." 0*3DIGIT]) | ("1" ["." 0*3("0")])
-~~~
+    qvalue = ("0" ["." 0*3DIGIT]) | ("1" ["." 0*3("0")])
 
 **range-unit** (*единица измерения диапазона*)
 
 Определяет единицу измерения диапазона.
 
-~~~
-range-unit       = bytes-unit | other-range-unit
+    range-unit       = bytes-unit | other-range-unit
 
-bytes-unit       = "bytes"
+    bytes-unit       = "bytes"
 
-other-range-unit = token
-~~~
+    other-range-unit = token
 
 **transfer-coding** (*трансферная кодировка*)
 
 Определяет метод трансферного шифрования.
 
-~~~
-transfer-coding    = "chunked" | transfer-extension
+    transfer-coding    = "chunked" | transfer-extension
 
-transfer-extension = token *(";" parameter)
+    transfer-extension = token *(";" parameter)
 
-parameter          = attribute "=" value
+    parameter          = attribute "=" value
 
-attribute          = token
+    attribute          = token
 
-value              = token | quoted-string
-~~~
+    value              = token | quoted-string
 
-#Перечень кодов состояния{#Перечень-кодов-состояния}
+#Перечень кодов состояния
+{: id="Перечень-кодов-состояния"}
 
 **100** Continue
 
@@ -705,7 +687,8 @@ value              = token | quoted-string
 
 **505** HTTP Version Not Supported
 
-#Типы полей заголовка{#Типы-полей-заголовка}
+#Типы полей заголовка
+{: id="Типы-полей-заголовка"}
 
 **Общие** (*General header fields*)
 
@@ -727,91 +710,70 @@ value              = token | quoted-string
 
 Нестандартные поля, расширяющие HTTP.
 
-#Перечень полей заголовка{#Перечень-полей-заголовка}
+#Перечень полей заголовка
+{: id="Перечень-полей-заголовка"}
 
 **Accept** \[request\]
 
 Определить приемлемые медиатипы для запрашиваемого объекта.
 
-~~~
-Accept           = "Accept" ":" #(media-range [accept-params])
+    Accept           = "Accept" ":" #(media-range [accept-params])
 
-media-range      = ("*/*" | (type "/" "*") | (type "/" subtype)) *(";" parameter)
+    media-range      = ("*/*" | (type "/" "*") | (type "/" subtype)) *(";" parameter)
 
-accept-params    = ";" "q" "=" qvalue *(accept-extension)
+    accept-params    = ";" "q" "=" qvalue *(accept-extension)
 
-accept-extension = ";" token ["=" (token | quoted-string)]
-~~~
+    accept-extension = ";" token ["=" (token | quoted-string)]
 
 Примеры:
 
-~~~
-Accept: text/html
-~~~
+    Accept: text/html
 
-~~~
-Accept: text/html;level=1
-~~~
+    Accept: text/html;level=1
 
-~~~
-Accept: text/html;level=1;q=0.5, text/html;level=2;q=0.7, text/html
-~~~
+    Accept: text/html;level=1;q=0.5, text/html;level=2;q=0.7, text/html
 
-~~~
-Accept: */*
-~~~
+    Accept: */*
 
-~~~
-Accept: text/*
-~~~
+    Accept: text/*
 
 **Accept-Charset** \[request\]
 
 Определить приемлемые наборы символов для запрашиваемого объекта.
 
-~~~
-Accept-Charset = "Accept-Charset" ":" 1#((charset | "*")[ ";" "q" "=" qvalue])
-~~~
+    Accept-Charset = "Accept-Charset" ":" 1#((charset | "*")[ ";" "q" "=" qvalue])
 
-~~~
-Accept-Charset: iso-8859-5, unicode-1-1;q=0.8
-~~~
+Пример:
+
+    Accept-Charset: iso-8859-5, unicode-1-1;q=0.8
 
 **Accept-Encoding** \[request\]
 
 Определить приемлемые типы кодировки содержимого.
 
-~~~
-Accept-Encoding = "Accept-Encoding" ":" 1#(codings [";" "q" "=" qvalue])
+    Accept-Encoding = "Accept-Encoding" ":" 1#(codings [";" "q" "=" qvalue])
 
-codings         = (content-coding | "*")
-~~~
+    codings         = (content-coding | "*")
 
 Примеры:
 
-~~~
-Accept-Encoding: *
+    Accept-Encoding: *
 
-Accept-Encoding: compress, gzip
+    Accept-Encoding: compress, gzip
 
-Accept-Encoding: compress;q=0.7, gzip;q=1.0
-~~~
+    Accept-Encoding: compress;q=0.7, gzip;q=1.0
 
 **Accept-Language** \[request\]
 
 Определить естественные языки, приемлемые для запрашиваемого документа.
 
-~~~
-Accept-Language = "Accept-Language" ":" 1#(language-range [";" "q" "=" qvalue])
+    Accept-Language = "Accept-Language" ":" 1#(language-range [";" "q" "=" qvalue])
 
-language-range  = ((1*8ALPHA *("-" 1*8ALPHA)) | "*")
-~~~
+    language-range  = ((1*8ALPHA *("-" 1*8ALPHA)) | "*")
 
 Примеры:
 
-~~~
-Accept-Language: da, en-gb;q=0.8, en;q=0.7
-~~~
+    Accept-Language: da, en-gb;q=0.8, en;q=0.7
 
 **Authentication-Info** \[response\]
 
@@ -823,257 +785,191 @@ Accept-Language: da, en-gb;q=0.8, en;q=0.7
 
 Указать данные, необходимые для авторизации.
 
-~~~
-Authorization = "Authorization" ":" credentials
+    Authorization = "Authorization" ":" credentials
 
-credentials   = auth-scheme #auth-param
-~~~
+    credentials   = auth-scheme #auth-param
 
 Примеры:
 
-~~~
-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== ; Base64 of "Aladdin:open sesame"
-~~~
+    Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== ; Base64 of "Aladdin:open sesame"
 
-~~~
-Authorization: Digest username="Aladdin",response="54ef36ec71201fdf9d1423fd26f97f6b" ; MD5 of "open sesame"
-~~~
+    Authorization: Digest username="Aladdin",response="54ef36ec71201fdf9d1423fd26f97f6b" ; MD5 of "open sesame"
 
 **Cache-Control** \[request\] \[response\]
 
 Определить директивы, управляющие механизмом кэширования.
 
-~~~
-Cache-Control            = "Cache-Control" ":" 1#cache-directive
+    Cache-Control            = "Cache-Control" ":" 1#cache-directive
 
-cache-directive          = cache-request-directive | cache-response-directive
+    cache-directive          = cache-request-directive | cache-response-directive
 
-cache-request-directive  = "no-cache"
-                         | "no-store"
-                         | "max-age" "=" delta-seconds
-                         | "max-stale" ["=" delta-seconds]
-                         | "min-fresh" "=" delta-seconds
-                         | "no-transform"
-                         | "only-if-cached"
-                         | cache-extension
+    cache-request-directive  = "no-cache"
+                             | "no-store"
+                             | "max-age" "=" delta-seconds
+                             | "max-stale" ["=" delta-seconds]
+                             | "min-fresh" "=" delta-seconds
+                             | "no-transform"
+                             | "only-if-cached"
+                             | cache-extension
 
-cache-response-directive = "public"
-                         | "private" ["=" <"> 1#field-name <">]
-                         | "no-cache" ["=" <"> 1#field-name <">]
-                         | "no-store"
-                         | "no-transform"
-                         | "must-revalidate"
-                         | "proxy-revalidate"
-                         | "max-age" "=" delta-seconds
-                         | "s-maxage" "=" delta-seconds
-                         | cache-extension
+    cache-response-directive = "public"
+                             | "private" ["=" <"> 1#field-name <">]
+                             | "no-cache" ["=" <"> 1#field-name <">]
+                             | "no-store"
+                             | "no-transform"
+                             | "must-revalidate"
+                             | "proxy-revalidate"
+                             | "max-age" "=" delta-seconds
+                             | "s-maxage" "=" delta-seconds
+                             | cache-extension
 
-cache-extension          = token ["=" (token | quoted-string)]
-~~~
+    cache-extension          = token ["=" (token | quoted-string)]
 
 **Connection** \[request\] \[response\]
 
-- Показать, что текущее соединение будет закрыто отправителем по завершению отправки текущего сообщения.
+Показать, что текущее соединение будет закрыто отправителем по завершению отправки текущего сообщения.
 
-- Указать поля заголовков, относящихся только к текущему соединению.
+Указать поля заголовков, относящихся только к текущему соединению.
 
-~~~
-Connection       = "Connection" ":" "close" | 1#(connection-token)
+    Connection       = "Connection" ":" "close" | 1#(connection-token)
 
-connection-token = token
-~~~
+    connection-token = token
 
 Примеры:
 
-~~~
-Connection: Upgrade
-~~~
+    Connection: Upgrade
 
-~~~
-Connection: TE
-~~~
+    Connection: TE
 
-~~~
-Connection: close
-~~~
+    Connection: close
 
 **Date** \[request\] \[response\]
 
 Указать дату создания сообщения.
 
-~~~
-Date = "Date" ":" HTTP-date
-~~~
+    Date = "Date" ":" HTTP-date
 
 Примеры:
 
-~~~
-Date: Tue, 15 Nov 1994 08:12:31 GMT
-~~~
+    Date: Tue, 15 Nov 1994 08:12:31 GMT
 
 **Expect** \[request\]
 
 Определить действия, необходимые для выполнения на сервере.
 
-~~~
-Expect            = "Expect" ":" 1#expectation
+    Expect            = "Expect" ":" 1#expectation
 
-expectation       = "100-Continue" | expectation-token
+    expectation       = "100-Continue" | expectation-token
 
-expectation-token = token ["=" (token | quoted-string) *expect-params]
+    expectation-token = token ["=" (token | quoted-string) *expect-params]
 
-expect-params     = ";" token ["=" (token | quoted-string)]
-~~~
+    expect-params     = ";" token ["=" (token | quoted-string)]
 
 **From** \[request\]
 
 Указать адрес электронной почты персоны, от лица которой выполняются http-запросы.
 
-~~~
-From = "From" ":" mailbox
-~~~
+    From = "From" ":" mailbox
 
 Пример:
 
-~~~
-From: <name@domain.net>
-~~~
+    From: <name@domain.net>
 
 **Host** \[request\]
 
 Определить хост и порт сервера хранящего запрашиваемый ресурс.
 
-~~~
-Host = "Host" ":" host [":" port]
-~~~
+    Host = "Host" ":" host [":" port]
 
 Пример:
 
-~~~
-Host: www.w3.org
-~~~
+    Host: www.w3.org
 
 **If-Match** \[request\]
 
 Проверить, какая из содержащихся в кэше сущностей является текущей действительной репрезентацией запрашиваемого ресурса.
 
-~~~
-If-Match = "If-Match" ":" ("*" | 1#entity-tag)
-~~~
+    If-Match = "If-Match" ":" ("*" | 1#entity-tag)
 
 Примеры:
 
-~~~
-If-Match: "xyzzy"
+    If-Match: "xyzzy"
 
-If-Match: "xyzzy", "r2d2xxxx", "i3piozzzz"
+    If-Match: "xyzzy", "r2d2xxxx", "i3piozzzz"
 
-If-Match: *
-~~~
+    If-Match: *
 
 **If-Modified-Since** \[request\]
 
 Проверить, был ли изменен документ, содержащийся в запрашиваемом ресурсе со времени, указанном в значении данного поля.
 
-~~~
-If-Modified-Since = "If-Modified-Since" ":" HTTP-date
-~~~
+    If-Modified-Since = "If-Modified-Since" ":" HTTP-date
 
 Пример:
 
-~~~
-If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-~~~
+    If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT
 
 **If-None-Match** \[request\]
 
 Убедиться, что ни одна из содержащихся в кэше сущностей не является текущей действительной репрезентацией запрашиваемого ресурса.
 
-~~~
-If-None-Match = "If-None-Match" ":" ("*" | 1#entity-tag)
-~~~
+    If-None-Match = "If-None-Match" ":" ("*" | 1#entity-tag)
 
 Пример:
 
-~~~
-If-None-Match: "xyzzz"
-~~~
+    If-None-Match: "xyzzz"
 
-~~~
-If-None-Match: W/"xyzzz"
-~~~
+    If-None-Match: W/"xyzzz"
 
-~~~
-If-None-Match: "xyzzz", "r2d2xxxx", "c3piozzzz"
-~~~
+    If-None-Match: "xyzzz", "r2d2xxxx", "c3piozzzz"
 
-~~~
-If-None-Match: W\"xyzzz", W\"r2d2xxxx", W\"c3piozzzz"
-~~~
+    If-None-Match: W\"xyzzz", W\"r2d2xxxx", W\"c3piozzzz"
 
-~~~
-If-None-Match: *
-~~~
+    If-None-Match: *
 
 **If-Range** \[request\]
 
 Убедиться, что запрашиваемый байтовый диапазон является частью той сущности, частичная копия которой содержится в кэше клиента.
 
-~~~
-If-Range = "If-Range" ":" (entity-tag | HTTP-date)
-~~~
+    If-Range = "If-Range" ":" (entity-tag | HTTP-date)
 
 **If-Unmodified-Since** \[request\]
 
 Проверить, что содержащийся в кэше документ не был изменен с момента, указанного в значении данного поля.
 
-~~~
-If-Unmodified-Since = "If-Unmodified-Since" ":" HTTP-date
-~~~
+    If-Unmodified-Since = "If-Unmodified-Since" ":" HTTP-date
 
 Пример:
 
-~~~
-If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
-~~~
+    If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT
 
 **Pragma** \[request\] \[response\]
 
 Включить директиву, понимаемую некоторой специфичной реализацией протокола.
 
-~~~
-Pragma           = "Pragma" ":" 1#pragma-directive
+    Pragma           = "Pragma" ":" 1#pragma-directive
 
-pragma-directive = "no-cache" | extension-pragma
+    pragma-directive = "no-cache" | extension-pragma
 
-extension-pragma = token ["=" (token | query-string)]
-~~~
+    extension-pragma = token ["=" (token | query-string)]
 
 **Referer** \[request\]
 
 Указать идентификатор ресурса, содержащего документ с сылкой на текущий запрашиваемый ресурс.
 
-~~~
-Referer: "Referer" ":" (absoluteURI | relativeURI)
-~~~
+    Referer: "Referer" ":" (absoluteURI | relativeURI)
 
-~~~
-Referer: http://www.w3.org/hypertext/DataSources/Overview.html
-~~~
+    Referer: http://www.w3.org/hypertext/DataSources/Overview.html
 
 **Range** \[request\]
 
 Определить диапазон сущности, содержащейся в запрашиваемом ресурсе, в частичном запросе.
 
-~~~
-Range = "Range" ":" ranges-specifier
-~~~
+    Range = "Range" ":" ranges-specifier
 
-Примеры:
+Пример:
 
-~~~
-Range: bytes=0-499,-500
-~~~
+    Range: bytes=0-499,-500
 
 **Server** \[response\]
 
@@ -1081,35 +977,27 @@ Range: bytes=0-499,-500
 
 Определить поля заголовка, присутствующие в трейлере сообщения, зашифрованного с помощью порционной трансферной кодировки.
 
-~~~
-Trailer = "Trailer" ":" 1#field-name
-~~~
+    Trailer = "Trailer" ":" 1#field-name
 
 **TE** \[request\]
 
-- Определить приемлемые типы расширенной трансферной кодировки.
+Определить приемлемые типы расширенной трансферной кодировки.
 
-- Выразить желание принимать поля заголовков в трейлере, при использовании порционной трансферной кодировки.
+Выразить желание принимать поля заголовков в трейлере, при использовании порционной трансферной кодировки.
 
-~~~
-TE        = "TE" ":" #(t-codings)
+    TE        = "TE" ":" #(t-codings)
 
-t-codings = "trailers" | (transfer-extension [accept-params])
-~~~
+    t-codings = "trailers" | (transfer-extension [accept-params])
 
 Примеры:
 
-~~~
-TE: trailers, deflate;q=0.5, gzip;q=0.2
-~~~
+    TE: trailers, deflate;q=0.5, gzip;q=0.2
 
 **Transfer-Encoding** \[request\] \[response\]
 
 Определить используемые типы трансферной кодировки.
 
-~~~
-Transfer-Encoding = "Transfer-Encoding" ":" 1#transfer-coding
-~~~
+    Transfer-Encoding = "Transfer-Encoding" ":" 1#transfer-coding
 
 **Upgrade** \[request\] \[response\]
 
@@ -1117,75 +1005,60 @@ Transfer-Encoding = "Transfer-Encoding" ":" 1#transfer-coding
 
 В ответе: определить используемые протоколы прикладного уровня.
 
-~~~
-Upgrade = "Upgrade" ":" 1#product
-~~~
+    Upgrade = "Upgrade" ":" 1#product
 
 Примеры:
 
-~~~
-Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
-~~~
+    Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11
 
 **User-Agent** \[request\]
 
 Определить тип и версию используемого клиентского программного обеспечения.
 
-~~~
-User-Agent = "User-Agent" ":" 1*(product | comment)
-~~~
+    User-Agent = "User-Agent" ":" 1*(product | comment)
 
 Примеры:
 
-~~~
-User-Agent: CERN-LineMode/2.15 libwww/2.17b3
-~~~
+    User-Agent: CERN-LineMode/2.15 libwww/2.17b3
 
 **Via** \[request\] \[response\]
 
 Определить названия промежуточных субъектов коммуникации, а так же названия и версии протоколов используемых ими.
 
-~~~
-Via               = "Via" ":" 1#(received-protocol received-by [comment])
+    Via               = "Via" ":" 1#(received-protocol received-by [comment])
 
-received-protocol = [protocol-name "/"] protocol-version
+    received-protocol = [protocol-name "/"] protocol-version
 
-protocol-name     = token
+    protocol-name     = token
 
-protocol-version  = token
+    protocol-version  = token
 
-received-by       = (host [":" port]) | pseudonym
+    received-by       = (host [":" port]) | pseudonym
 
-pseudonym         = token
-~~~
+    pseudonym         = token
 
 Примеры:
 
-~~~
-Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
-~~~
+    Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)
 
 **WWW-Authenticate** \[response\]
 
 Задать требование, необходимое для аутентификации.
 
-~~~
-WWW-Authenticate = "WWW-Authenticate" ":" challenge
+    WWW-Authenticate = "WWW-Authenticate" ":" challenge
 
-challenge        = auth-scheme 1*SP 1#auth-param
+    challenge        = auth-scheme 1*SP 1#auth-param
 
-auth-scheme      = token
+    auth-scheme      = token
 
-auth-param       = token "=" (token | quoted-string)
-~~~
+    auth-param       = token "=" (token | quoted-string)
 
 Примеры:
 
-~~~
-WWW-Authenticate: Basic realm="WallyWord"
-~~~
+    WWW-Authenticate: Basic realm="WallyWord"
 
-#Перечень кодировок содержимого{#Перечень-кодировок-содержимого}
+#Перечень кодировок содержимого
+{: id="Перечень-кодировок-содержимого"}
 
 **compress**
 
@@ -1203,7 +1076,8 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 Содержимое не было закодированно.
 
-#Перечень директив кэширования{#Перечень-директив-кэширования}
+#Перечень директив кэширования
+{: id="Перечень-директив-кэширования"}
 
 Директивы кэширования могут относиться к следующим сущностям в рамках механизма кэширования:
 
@@ -1235,7 +1109,8 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 - возраст (*age*)
 
-##Директивы запроса{#Директивы-запроса}
+##Директивы запроса
+{: id="Директивы-запроса"}
 
 **max-age**
 
@@ -1265,7 +1140,8 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 Любой из аспектов сущности, содержащейся в теле сообщения, описываемый заголовками *Content-Encoding*, *Content-Length*, *Content-Type*, не должен изменяться при сохранении данного сообщения в кэше.
 
-##Директивы ответа{#Директивы-ответа}
+##Директивы ответа
+{: id="Директивы-ответа"}
 
 **public**
 
@@ -1303,7 +1179,8 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 Любой из аспектов сущности, содержащейся в теле сообщения, описываемый заголовками *Content-Encoding*, *Content-Length*, *Content-Type*, не должен изменяться при сохранении данного сообщения в кэше.
 
-#Перечень протоколов TCP/IP{#Перечень-протоколов-TCP-IP}
+#Перечень протоколов TCP/IP
+{: id="Перечень-протоколов-TCP-IP"}
 
 **TCP** (*Transmission Control Protocol*)
 
@@ -1313,17 +1190,15 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 Протокол сетевого уровня, обеспечивающий передачу данных, но не гарантирующий надежность этой передачи. Данные, переданные с использованием этого протокола, могут быть потеряны, повреждены или получены не в заданном порядке.
 
-#Перечень инструментов{#Перечень-инструментов}
+#Перечень инструментов
+{: id="Перечень-инструментов"}
 
 **telnet**
 
 **nc**
 
-#Ссылки{#Ссылки}
-
-[[Контроль доступа средствами HTTP]]
-
----
+#Ссылки
+{: id="Ссылки"}
 
 [Augmented Backus—Naur Form](http://en.wikipedia.org/wiki/Augmented_Backus–Naur_Form)
 
@@ -1341,7 +1216,7 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 [Referer](http://ru.wikipedia.org/wiki/HTTP_referer)
 
-<a href="http://en.wikipedia.org/wiki/Slug_(web_publishing)">Slug</a>
+[Slug](http://en.wikipedia.org/wiki/Slug_%28web_publishing%29)
 
 [TCP/IP](http://ru.wikipedia.org/wiki/TCP/IP)
 
@@ -1351,7 +1226,7 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 [Заголовки HTTP. Байтовые диапазоны](http://ru.wikipedia.org/wiki/Заголовки_HTTP#.D0.91.D0.B0.D0.B9.D1.82.D0.BE.D0.B2.D1.8B.D0.B5_.D0.B4.D0.B8.D0.B0.D0.BF.D0.B0.D0.B7.D0.BE.D0.BD.D1.8B)
 
-<nowiki><a href="http://ru.wikipedia.org/wiki/Порт_(TCP/IP)">Порт (TCP/IP)</a></nowiki>
+[Порт (TCP/IP)](http://ru.wikipedia.org/wiki/Порт_%28TCP/IP%29)
 
 [Прокси-сервер](http://ru.wikipedia.org/wiki/Прокси-сервер)
 
@@ -1363,9 +1238,10 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 [Список кодов состояния HTTP](http://ru.wikipedia.org/wiki/Коды_состояния_HTTP)
 
-<nowiki><a href="http://ru.wikipedia.org/wiki/Туннелирование_(компьютерные_сети)">Туннелирование (компьютерные сети)</a></nowiki>
+[Туннелирование (компьютерные сети)](http://ru.wikipedia.org/wiki/Туннелирование_%28компьютерные_сети%29)
 
-#RFC{#RFC}
+#RFC
+{: id="RFC"}
 
 [RFC 822. STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES](http://www.ietf.org/rfc/rfc822.txt)
 
@@ -1389,7 +1265,8 @@ WWW-Authenticate: Basic realm="WallyWord"
 
 [RFC 3986. Uniform Resource Identifier (URI): Generic Syntax](http://www.ietf.org/rfc/rfc3986.txt)
 
-#Книги{#Книги}
+#Книги
+{: id="Книги"}
 
 [HTTP Pocket Reference](http://shop.oreilly.com/product/9781565928626.do)
 
