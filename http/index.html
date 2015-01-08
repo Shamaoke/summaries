@@ -7,7 +7,7 @@
   <body>
     <div>
       
-      <h1 id="">Содержание</h1>
+      <h1 id="Содержание">Содержание</h1>
       
       <p><a href="#Глоссарий">Глоссарий</a></p>
       
@@ -371,7 +371,7 @@
       
       <h1 id="URL">URL</h1>
       
-      <p><strong>&lt;схема&gt;://&lt;логин&gt;:&lt;пароль&gt;@&lt;хост&gt;:&lt;порт&gt;/&lt;путь&gt;;&lt;параметр&gt;?&lt;запрос&gt;#&lt;фрагмент&gt;</strong></p>
+      <pre><code>&lt;схема&gt;://&lt;логин&gt;:&lt;пароль&gt;@&lt;хост&gt;:&lt;порт&gt;/&lt;путь&gt;;&lt;параметр&gt;?&lt;запрос&gt;#&lt;фрагмент&gt;&#x000A;</code></pre>
       
       <p><strong>Схема</strong></p>
       
@@ -449,19 +449,17 @@
       
       <p>Определяет последовательность байт, являющихся частью некоторой сущности.</p>
       
-      <pre><code>ranges-specifier       = byte-ranges-specifier&#x000A;&#x000A;byte-ranges-specifier  = byte-unit &quot;=&quot; byte-range-set&#x000A;&#x000A;byte-range-set         = 1#(byte-range-spec | suffix-byte-range-spec)&#x000A;&#x000A;byte-range-spec        = first-byte-pos &quot;-&quot; [last-byte-pos]&#x000A;&#x000A;first-byte-pos         = 1*DIGIT&#x000A;&#x000A;last-byte-pos          = 1*DIGIT&#x000A;&#x000A;suffix-byte-range-spec = &quot;-&quot; suffix-length&#x000A;&#x000A;suffix-length          = 1*DIGIT</code></pre>
+      <pre><code>ranges-specifier       = byte-ranges-specifier&#x000A;&#x000A;byte-ranges-specifier  = byte-unit "=" byte-range-set&#x000A;&#x000A;byte-range-set         = 1#(byte-range-spec | suffix-byte-range-spec)&#x000A;&#x000A;byte-range-spec        = first-byte-pos "-" [last-byte-pos]&#x000A;&#x000A;first-byte-pos         = 1*DIGIT&#x000A;&#x000A;last-byte-pos          = 1*DIGIT&#x000A;&#x000A;suffix-byte-range-spec = "-" suffix-length&#x000A;&#x000A;suffix-length          = 1*DIGIT&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <pre><code>bytes=0-499 ;первые 500 байт&#x000A;&#x000A;&#x000A;bytes=500-999 ;вторые 500 байт&#x000A;&#x000A;&#x000A;bytes=-500 ;последние 500 байт&#x000A;&#x000A;&#x000A;bytes=9500- ;последние 500 байт, при размере сущности равной 10000 байт&#x000A;&#x000A;&#x000A;bytes=0-0,-1 ;первый и последние байты</code></pre>
+      <pre><code>bytes=0-499 ;первые 500 байт&#x000A;&#x000A;&#x000A;bytes=500-999 ;вторые 500 байт&#x000A;&#x000A;&#x000A;bytes=-500 ;последние 500 байт&#x000A;&#x000A;&#x000A;bytes=9500- ;последние 500 байт, при размере сущности равной 10000 байт&#x000A;&#x000A;&#x000A;bytes=0-0,-1 ;первый и последние байты&#x000A;</code></pre>
       
       <p><strong>charset</strong> (<em>набор символов</em>)</p>
       
       <p>Определяет метод, служащий для преобразования последовательности октетов в последовательность символов.</p>
       
-      <p>~~~ charset = token</p>
-      
-      <p>~~~</p>
+      <pre><code>charset = token&#x000A;</code></pre>
       
       <p><em>token</em> репрезентует зарегестрированный IANA набор символов. Список допустимых токенов доступен в RFC 1700 [RFC 1700. Assigned Numbers (Page 101, CHARACTER SETS)].</p>
       
@@ -469,137 +467,64 @@
       
       <p>Определяет метод шифрования содержимого.</p>
       
-      <p>~~~ content-coding = token</p>
+      <pre><code>content-coding = token&#x000A;</code></pre>
       
-      <p>~~~</p>
-      
-      <p><em>token</em> репрезентует зарегестрированный IANA метод. В настоящий момент реестр содержит следущие токены: <em>gzip</em>, <em>compress</em>, <em>deflate</em>, <em>identity</em>.</p>
+      <p><em>token</em> репрезентует зарегестрированный IANA метод. В настоящий момент реестр содержит следущие токены:
+      <em>gzip</em>, <em>compress</em>, <em>deflate</em>, <em>identity</em>.</p>
       
       <p><strong>delta-seconds</strong> (<em>временна́я разница</em>)</p>
       
       <p>Определяет время, прошедшее с некоторого события, произошедшего в рамках http-коммуникации.</p>
       
-      <p>~~~ delta-seconds = 1<em>DIGIT</em></p>
-      
-      <p>~~~</p>
+      <pre><code>delta-seconds = 1*DIGIT&#x000A;</code></pre>
       
       <p><strong>entity-tag</strong> (<em>сущностный тэг</em>)</p>
       
       <p>Используется при сравнении объектов, относящихся ко одному и тому же ресурсу.</p>
       
-      <p>~~~ entity-tag = [weak] opaque-tag</p>
-      
-      <p>weak = “W/”</p>
-      
-      <p>opaque-tag = quoted-string</p>
-      
-      <p>~~~</p>
+      <pre><code>entity-tag = [weak] opaque-tag&#x000A;&#x000A;weak       = "W/"&#x000A;&#x000A;opaque-tag = quoted-string&#x000A;</code></pre>
       
       <p><strong>HTTP-date</strong> (<em>дата HTTP</em>)</p>
       
       <p>Определяет дату и время того или иного события в рамках http-коммуникации.</p>
       
-      <p>~~~ HTTP-date = rfc1123-date | rfc850-date | asctime-date</p>
-      
-      <p>rfc1123-date = wkday “,” SP date1 SP time SP “GMT”</p>
-      
-      <p>rfc850-date = weekday “,” SP date2 SP time SP “GMT”</p>
-      
-      <p>asctime-date = wkday SP date3 SP time SP 4DIGIT</p>
-      
-      <p>date1 = 2DIGIT SP month SP 4DIGIT ;day month year (e.g., 02 Jun 1982)</p>
-      
-      <p>date2 = 2DIGIT “-” month “-” 2DIGIT ;day-month-year (e.g., 02-Jun-82)</p>
-      
-      <p>date3 = month SP (2DIGIT | (SP 1DIGIT)) ;month day (e.g., Jun 2)</p>
-      
-      <p>wkday = “Mon” | “Tue” | “Wed” | “Thu” | “Fri” | “Sat” | “Sun”</p>
-      
-      <p>weekday = “Monday” | “Tuesday” | “Wednesday” | “Thursday” | “Friday” | “Saturday” | “Sunday”</p>
-      
-      <p>month = “Jan” | “Feb” | “Mar” | “Apr” | “May” | “Jun” | “Jul” | “Aug” | “Sep” | “Oct” | “Nov” | “Dec”</p>
-      
-      <p>~~~</p>
+      <pre><code>HTTP-date    = rfc1123-date | rfc850-date | asctime-date&#x000A;&#x000A;rfc1123-date = wkday "," SP date1 SP time SP "GMT"&#x000A;&#x000A;rfc850-date  = weekday "," SP date2 SP time SP "GMT"&#x000A;&#x000A;asctime-date = wkday SP date3 SP time SP 4DIGIT&#x000A;&#x000A;date1        = 2DIGIT SP month SP 4DIGIT ;day month year (e.g., 02 Jun 1982)&#x000A;&#x000A;date2        = 2DIGIT "-" month "-" 2DIGIT ;day-month-year (e.g., 02-Jun-82)&#x000A;&#x000A;date3        = month SP (2DIGIT | (SP 1DIGIT)) ;month day (e.g., Jun  2)&#x000A;&#x000A;wkday        = "Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun"&#x000A;&#x000A;weekday      = "Monday" | "Tuesday" | "Wednesday" | "Thursday" | "Friday" | "Saturday" | "Sunday"&#x000A;&#x000A;month        = "Jan" | "Feb" | "Mar" | "Apr" | "May" | "Jun" | "Jul" | "Aug" | "Sep" | "Oct" | "Nov" | "Dec"&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Sun, 06 Nov 1994 08:49:37 GMT</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Sunday, 06-Nov-94 08:49:37 GMT</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Sun Nov 6 08:49:37 1994</p>
-      
-      <p>~~~</p>
+      <pre><code>Sun, 06 Nov 1994 08:49:37 GMT&#x000A;&#x000A;Sunday, 06-Nov-94 08:49:37 GMT&#x000A;&#x000A;Sun Nov  6 08:49:37 1994&#x000A;</code></pre>
       
       <p><strong>language-tag</strong> (<em>языковой тэг</em>)</p>
       
-      <p>~~~ language-tag = primary-tag <em>(“-” subtag)</em></p>
-      
-      <p>primary-tag = 1<em>8ALPHA</em></p>
-      
-      <p>subtag = 1<em>8ALPHA</em></p>
-      
-      <p>~~~</p>
+      <pre><code>language-tag = primary-tag *("-" subtag)&#x000A;&#x000A;primary-tag  = 1*8ALPHA&#x000A;&#x000A;subtag       = 1*8ALPHA&#x000A;</code></pre>
       
       <p><strong>product</strong> (<em>продукт</em>)</p>
       
       <p>Является идентификатором субъекта коммуникации.</p>
       
-      <p>~~~ product = token [/ product-version]</p>
-      
-      <p>product-version = token</p>
-      
-      <p>~~~</p>
+      <pre><code>product         = token ["/" product-version]&#x000A;&#x000A;product-version = token&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ User-Agent: CERN-LineMode/2.15 libwww/2.17b3</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Server: Apache/0.8.4</p>
-      
-      <p>~~~</p>
+      <pre><code>User-Agent: CERN-LineMode/2.15 libwww/2.17b3&#x000A;&#x000A;Server: Apache/0.8.4&#x000A;</code></pre>
       
       <p><strong>qvalue</strong> (<em>коэффициент значимости</em>)</p>
       
       <p>Служит относительным показателем важности некоторого параметра.</p>
       
-      <p>~~~ qvalue = (“0” [. 03DIGIT]) | (1 . 03(0)])]</p>
-      
-      <p>~~~</p>
+      <pre><code>qvalue = ("0" ["." 0*3DIGIT]) | ("1" ["." 0*3("0")])&#x000A;</code></pre>
       
       <p><strong>range-unit</strong> (<em>единица измерения диапазона</em>)</p>
       
       <p>Определяет единицу измерения диапазона.</p>
       
-      <p>~~~ range-unit = bytes-unit | other-range-unit</p>
-      
-      <p>bytes-unit = “bytes”</p>
-      
-      <p>other-range-unit = token</p>
-      
-      <p>~~~</p>
+      <pre><code>range-unit       = bytes-unit | other-range-unit&#x000A;&#x000A;bytes-unit       = "bytes"&#x000A;&#x000A;other-range-unit = token&#x000A;</code></pre>
       
       <p><strong>transfer-coding</strong> (<em>трансферная кодировка</em>)</p>
       
       <p>Определяет метод трансферного шифрования.</p>
       
-      <p>~~~ transfer-coding = “chunked” | transfer-extension</p>
-      
-      <p>transfer-extension = token <em>(“;” parameter)</em></p>
-      
-      <p>parameter = attribute “=” value</p>
-      
-      <p>attribute = token</p>
-      
-      <p>value = token | quoted-string</p>
-      
-      <p>~~~</p>
+      <pre><code>transfer-coding    = "chunked" | transfer-extension&#x000A;&#x000A;transfer-extension = token *(";" parameter)&#x000A;&#x000A;parameter          = attribute "=" value&#x000A;&#x000A;attribute          = token&#x000A;&#x000A;value              = token | quoted-string&#x000A;</code></pre>
       
       <h1 id="Перечень-кодов-состояния">Перечень кодов состояния</h1>
       
@@ -711,343 +636,184 @@
       
       <p>Определить приемлемые медиатипы для запрашиваемого объекта.</p>
       
-      <p>~~~ Accept = “Accept” “:” #(media-range [accept-params])</p>
-      
-      <p>media-range = (“<em>/</em>” | (type “/” “<em>“) | (type ”/“ subtype))</em>(”;“ parameter)</p>
-      
-      <p>accept-params = “;” “q” “=” qvalue <em>(accept-extension)</em></p>
-      
-      <p>accept-extension = “;” token [= (token | quoted-string)]</p>
-      
-      <p>~~~</p>
+      <pre><code>Accept           = "Accept" ":" #(media-range [accept-params])&#x000A;&#x000A;media-range      = ("*/*" | (type "/" "*") | (type "/" subtype)) *(";" parameter)&#x000A;&#x000A;accept-params    = ";" "q" "=" qvalue *(accept-extension)&#x000A;&#x000A;accept-extension = ";" token ["=" (token | quoted-string)]&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Accept: text/html</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Accept: text/html;level=1</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Accept: text/html;level=1;q=0.5, text/html;level=2;q=0.7, text/html</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Accept: <em>/</em></p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Accept: text/*</p>
-      
-      <p>~~~</p>
+      <pre><code>Accept: text/html&#x000A;&#x000A;Accept: text/html;level=1&#x000A;&#x000A;Accept: text/html;level=1;q=0.5, text/html;level=2;q=0.7, text/html&#x000A;&#x000A;Accept: */*&#x000A;&#x000A;Accept: text/*&#x000A;</code></pre>
       
       <p><strong>Accept-Charset</strong> [request]</p>
       
       <p>Определить приемлемые наборы символов для запрашиваемого объекта.</p>
       
-      <p>~~~ Accept-Charset = “Accept-Charset” “:” 1#((charset | “<em>“)[; q = qvalue])</em></p>
+      <pre><code>Accept-Charset = "Accept-Charset" ":" 1#((charset | "*")[ ";" "q" "=" qvalue])&#x000A;</code></pre>
       
-      <p>~~~</p>
+      <p>Пример:</p>
       
-      <p>~~~ Accept-Charset: iso-8859-5, unicode-1-1;q=0.8</p>
-      
-      <p>~~~</p>
+      <pre><code>Accept-Charset: iso-8859-5, unicode-1-1;q=0.8&#x000A;</code></pre>
       
       <p><strong>Accept-Encoding</strong> [request]</p>
       
       <p>Определить приемлемые типы кодировки содержимого.</p>
       
-      <p>~~~ Accept-Encoding = “Accept-Encoding” “:” 1#(codings [; q = qvalue])</p>
-      
-      <p>codings = (content-coding | “<em>“)</em></p>
-      
-      <p>~~~</p>
+      <pre><code>Accept-Encoding = "Accept-Encoding" ":" 1#(codings [";" "q" "=" qvalue])&#x000A;&#x000A;codings         = (content-coding | "*")&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Accept-Encoding: *</p>
-      
-      <p>Accept-Encoding: compress, gzip</p>
-      
-      <p>Accept-Encoding: compress;q=0.7, gzip;q=1.0</p>
-      
-      <p>~~~</p>
+      <pre><code>Accept-Encoding: *&#x000A;&#x000A;Accept-Encoding: compress, gzip&#x000A;&#x000A;Accept-Encoding: compress;q=0.7, gzip;q=1.0&#x000A;</code></pre>
       
       <p><strong>Accept-Language</strong> [request]</p>
       
       <p>Определить естественные языки, приемлемые для запрашиваемого документа.</p>
       
-      <p>~~~ Accept-Language = “Accept-Language” “:” 1#(language-range [; q = qvalue])</p>
-      
-      <p>language-range = ((1<em>8ALPHA</em>(“-” 1<em>8ALPHA)) | “</em>“)</p>
-      
-      <p>~~~</p>
+      <pre><code>Accept-Language = "Accept-Language" ":" 1#(language-range [";" "q" "=" qvalue])&#x000A;&#x000A;language-range  = ((1*8ALPHA *("-" 1*8ALPHA)) | "*")&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Accept-Language: da, en-gb;q=0.8, en;q=0.7</p>
-      
-      <p>~~~</p>
+      <pre><code>Accept-Language: da, en-gb;q=0.8, en;q=0.7&#x000A;</code></pre>
       
       <p><strong>Authentication-Info</strong> [response]</p>
       
       <ul>
-      <li>
-      <p>Передать клиенту следующее окказиональное значение;</p>
-      </li>
-      
-      <li>
-      <p>Передать клиенту хэш-сумму, вычисленную на серверной стороне.</p>
-      </li>
+        <li>
+          <p>Передать клиенту следующее окказиональное значение;</p>
+        </li>
+        <li>
+          <p>Передать клиенту хэш-сумму, вычисленную на серверной стороне.</p>
+        </li>
       </ul>
       
       <p><strong>Authorization</strong> [request]</p>
       
       <p>Указать данные, необходимые для авторизации.</p>
       
-      <p>~~~ Authorization = “Authorization” “:” credentials</p>
-      
-      <p>credentials = auth-scheme #auth-param</p>
-      
-      <p>~~~</p>
+      <pre><code>Authorization = "Authorization" ":" credentials&#x000A;&#x000A;credentials   = auth-scheme #auth-param&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== ; Base64 of “Aladdin:open sesame”</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Authorization: Digest username=“Aladdin”,response=“54ef36ec71201fdf9d1423fd26f97f6b” ; MD5 of “open sesame”</p>
-      
-      <p>~~~</p>
+      <pre><code>Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== ; Base64 of "Aladdin:open sesame"&#x000A;&#x000A;Authorization: Digest username="Aladdin",response="54ef36ec71201fdf9d1423fd26f97f6b" ; MD5 of "open sesame"&#x000A;</code></pre>
       
       <p><strong>Cache-Control</strong> [request] [response]</p>
       
       <p>Определить директивы, управляющие механизмом кэширования.</p>
       
-      <p>~~~ Cache-Control = “Cache-Control” “:” 1#cache-directive</p>
-      
-      <p>cache-directive = cache-request-directive | cache-response-directive</p>
-      
-      <p>cache-request-directive = “no-cache” | “no-store” | “max-age” “=” delta-seconds | “max-stale” [= delta-seconds] | “min-fresh” “=” delta-seconds | “no-transform” | “only-if-cached” | cache-extension</p>
-      
-      <p>cache-response-directive = “public” | “private” [= <> 1#field-name <>] | “no-cache” [= <> 1#field-name <>] | “no-store” | “no-transform” | “must-revalidate” | “proxy-revalidate” | “max-age” “=” delta-seconds | “s-maxage” “=” delta-seconds | cache-extension</p>
-      
-      <p>cache-extension = token [= (token | quoted-string)]</p>
-      
-      <p>~~~</p>
+      <pre><code>Cache-Control            = "Cache-Control" ":" 1#cache-directive&#x000A;&#x000A;cache-directive          = cache-request-directive | cache-response-directive&#x000A;&#x000A;cache-request-directive  = "no-cache"&#x000A;                         | "no-store"&#x000A;                         | "max-age" "=" delta-seconds&#x000A;                         | "max-stale" ["=" delta-seconds]&#x000A;                         | "min-fresh" "=" delta-seconds&#x000A;                         | "no-transform"&#x000A;                         | "only-if-cached"&#x000A;                         | cache-extension&#x000A;&#x000A;cache-response-directive = "public"&#x000A;                         | "private" ["=" &lt;"&gt; 1#field-name &lt;"&gt;]&#x000A;                         | "no-cache" ["=" &lt;"&gt; 1#field-name &lt;"&gt;]&#x000A;                         | "no-store"&#x000A;                         | "no-transform"&#x000A;                         | "must-revalidate"&#x000A;                         | "proxy-revalidate"&#x000A;                         | "max-age" "=" delta-seconds&#x000A;                         | "s-maxage" "=" delta-seconds&#x000A;                         | cache-extension&#x000A;&#x000A;cache-extension          = token ["=" (token | quoted-string)]&#x000A;</code></pre>
       
       <p><strong>Connection</strong> [request] [response]</p>
       
-      <ul>
-      <li>
       <p>Показать, что текущее соединение будет закрыто отправителем по завершению отправки текущего сообщения.</p>
-      </li>
       
-      <li>
       <p>Указать поля заголовков, относящихся только к текущему соединению.</p>
-      </li>
-      </ul>
       
-      <p>~~~ Connection = “Connection” “:” “close” | 1#(connection-token)</p>
-      
-      <p>connection-token = token</p>
-      
-      <p>~~~</p>
+      <pre><code>Connection       = "Connection" ":" "close" | 1#(connection-token)&#x000A;&#x000A;connection-token = token&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Connection: Upgrade</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Connection: TE</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Connection: close</p>
-      
-      <p>~~~</p>
+      <pre><code>Connection: Upgrade&#x000A;&#x000A;Connection: TE&#x000A;&#x000A;Connection: close&#x000A;</code></pre>
       
       <p><strong>Date</strong> [request] [response]</p>
       
       <p>Указать дату создания сообщения.</p>
       
-      <p>~~~ Date = “Date” “:” HTTP-date</p>
-      
-      <p>~~~</p>
+      <pre><code>Date = "Date" ":" HTTP-date&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Date: Tue, 15 Nov 1994 08:12:31 GMT</p>
-      
-      <p>~~~</p>
+      <pre><code>Date: Tue, 15 Nov 1994 08:12:31 GMT&#x000A;</code></pre>
       
       <p><strong>Expect</strong> [request]</p>
       
       <p>Определить действия, необходимые для выполнения на сервере.</p>
       
-      <p>~~~ Expect = “Expect” “:” 1#expectation</p>
-      
-      <p>expectation = “100-Continue” | expectation-token</p>
-      
-      <p>expectation-token = token [= (token | quoted-string) expect-params]]</p>
-      
-      <p>expect-params = “;” token [= (token | quoted-string)]</p>
-      
-      <p>~~~</p>
+      <pre><code>Expect            = "Expect" ":" 1#expectation&#x000A;&#x000A;expectation       = "100-Continue" | expectation-token&#x000A;&#x000A;expectation-token = token ["=" (token | quoted-string) *expect-params]&#x000A;&#x000A;expect-params     = ";" token ["=" (token | quoted-string)]&#x000A;</code></pre>
       
       <p><strong>From</strong> [request]</p>
       
       <p>Указать адрес электронной почты персоны, от лица которой выполняются http-запросы.</p>
       
-      <p>~~~ From = “From” “:” mailbox</p>
-      
-      <p>~~~</p>
+      <pre><code>From = "From" ":" mailbox&#x000A;</code></pre>
       
       <p>Пример:</p>
       
-      <p>~~~ From: <a href="mailto:&#110;&#097;&#109;&#101;&#064;&#100;&#111;&#109;&#097;&#105;&#110;&#046;&#110;&#101;&#116;">&#110;&#097;&#109;&#101;&#064;&#100;&#111;&#109;&#097;&#105;&#110;&#046;&#110;&#101;&#116;</a></p>
-      
-      <p>~~~</p>
+      <pre><code>From: &lt;name@domain.net&gt;&#x000A;</code></pre>
       
       <p><strong>Host</strong> [request]</p>
       
       <p>Определить хост и порт сервера хранящего запрашиваемый ресурс.</p>
       
-      <p>~~~ Host = “Host” “:” host [: port]</p>
-      
-      <p>~~~</p>
+      <pre><code>Host = "Host" ":" host [":" port]&#x000A;</code></pre>
       
       <p>Пример:</p>
       
-      <p>~~~ Host: www.w3.org</p>
-      
-      <p>~~~</p>
+      <pre><code>Host: www.w3.org&#x000A;</code></pre>
       
       <p><strong>If-Match</strong> [request]</p>
       
       <p>Проверить, какая из содержащихся в кэше сущностей является текущей действительной репрезентацией запрашиваемого ресурса.</p>
       
-      <p>~~~ If-Match = “If-Match” “:” (“<em>“ | 1#entity-tag)</em></p>
-      
-      <p>~~~</p>
+      <pre><code>If-Match = "If-Match" ":" ("*" | 1#entity-tag)&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ If-Match: “xyzzy”</p>
-      
-      <p>If-Match: “xyzzy”, “r2d2xxxx”, “i3piozzzz”</p>
-      
-      <p>If-Match: *</p>
-      
-      <p>~~~</p>
+      <pre><code>If-Match: "xyzzy"&#x000A;&#x000A;If-Match: "xyzzy", "r2d2xxxx", "i3piozzzz"&#x000A;&#x000A;If-Match: *&#x000A;</code></pre>
       
       <p><strong>If-Modified-Since</strong> [request]</p>
       
       <p>Проверить, был ли изменен документ, содержащийся в запрашиваемом ресурсе со времени, указанном в значении данного поля.</p>
       
-      <p>~~~ If-Modified-Since = “If-Modified-Since” “:” HTTP-date</p>
-      
-      <p>~~~</p>
+      <pre><code>If-Modified-Since = "If-Modified-Since" ":" HTTP-date&#x000A;</code></pre>
       
       <p>Пример:</p>
       
-      <p>~~~ If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT</p>
-      
-      <p>~~~</p>
+      <pre><code>If-Modified-Since: Sat, 29 Oct 1994 19:43:31 GMT&#x000A;</code></pre>
       
       <p><strong>If-None-Match</strong> [request]</p>
       
       <p>Убедиться, что ни одна из содержащихся в кэше сущностей не является текущей действительной репрезентацией запрашиваемого ресурса.</p>
       
-      <p>~~~ If-None-Match = “If-None-Match” “:” (“<em>“ | 1#entity-tag)</em></p>
-      
-      <p>~~~</p>
+      <pre><code>If-None-Match = "If-None-Match" ":" ("*" | 1#entity-tag)&#x000A;</code></pre>
       
       <p>Пример:</p>
       
-      <p>~~~ If-None-Match: “xyzzz”</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ If-None-Match: W/“xyzzz”</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ If-None-Match: “xyzzz”, “r2d2xxxx”, “c3piozzzz”</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ If-None-Match: W&quot;xyzzz“, W&quot;r2d2xxxx”, W&quot;c3piozzzz“</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ If-None-Match: *</p>
-      
-      <p>~~~</p>
+      <pre><code>If-None-Match: "xyzzz"&#x000A;&#x000A;If-None-Match: W/"xyzzz"&#x000A;&#x000A;If-None-Match: "xyzzz", "r2d2xxxx", "c3piozzzz"&#x000A;&#x000A;If-None-Match: W\"xyzzz", W\"r2d2xxxx", W\"c3piozzzz"&#x000A;&#x000A;If-None-Match: *&#x000A;</code></pre>
       
       <p><strong>If-Range</strong> [request]</p>
       
       <p>Убедиться, что запрашиваемый байтовый диапазон является частью той сущности, частичная копия которой содержится в кэше клиента.</p>
       
-      <p>~~~ If-Range = “If-Range” “:” (entity-tag | HTTP-date)</p>
-      
-      <p>~~~</p>
+      <pre><code>If-Range = "If-Range" ":" (entity-tag | HTTP-date)&#x000A;</code></pre>
       
       <p><strong>If-Unmodified-Since</strong> [request]</p>
       
       <p>Проверить, что содержащийся в кэше документ не был изменен с момента, указанного в значении данного поля.</p>
       
-      <p>~~~ If-Unmodified-Since = “If-Unmodified-Since” “:” HTTP-date</p>
-      
-      <p>~~~</p>
+      <pre><code>If-Unmodified-Since = "If-Unmodified-Since" ":" HTTP-date&#x000A;</code></pre>
       
       <p>Пример:</p>
       
-      <p>~~~ If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT</p>
-      
-      <p>~~~</p>
+      <pre><code>If-Unmodified-Since: Sat, 29 Oct 1994 19:43:31 GMT&#x000A;</code></pre>
       
       <p><strong>Pragma</strong> [request] [response]</p>
       
       <p>Включить директиву, понимаемую некоторой специфичной реализацией протокола.</p>
       
-      <p>~~~ Pragma = “Pragma” “:” 1#pragma-directive</p>
-      
-      <p>pragma-directive = “no-cache” | extension-pragma</p>
-      
-      <p>extension-pragma = token [= (token | query-string)]</p>
-      
-      <p>~~~</p>
+      <pre><code>Pragma           = "Pragma" ":" 1#pragma-directive&#x000A;&#x000A;pragma-directive = "no-cache" | extension-pragma&#x000A;&#x000A;extension-pragma = token ["=" (token | query-string)]&#x000A;</code></pre>
       
       <p><strong>Referer</strong> [request]</p>
       
       <p>Указать идентификатор ресурса, содержащего документ с сылкой на текущий запрашиваемый ресурс.</p>
       
-      <p>~~~ Referer: “Referer” “:” (absoluteURI | relativeURI)</p>
-      
-      <p>~~~</p>
-      
-      <p>~~~ Referer: http://www.w3.org/hypertext/DataSources/Overview.html</p>
-      
-      <p>~~~</p>
+      <pre><code>Referer: "Referer" ":" (absoluteURI | relativeURI)&#x000A;&#x000A;Referer: http://www.w3.org/hypertext/DataSources/Overview.html&#x000A;</code></pre>
       
       <p><strong>Range</strong> [request]</p>
       
       <p>Определить диапазон сущности, содержащейся в запрашиваемом ресурсе, в частичном запросе.</p>
       
-      <p>~~~ Range = “Range” “:” ranges-specifier</p>
+      <pre><code>Range = "Range" ":" ranges-specifier&#x000A;</code></pre>
       
-      <p>~~~</p>
+      <p>Пример:</p>
       
-      <p>Примеры:</p>
-      
-      <p>~~~ Range: bytes=0-499,-500</p>
-      
-      <p>~~~</p>
+      <pre><code>Range: bytes=0-499,-500&#x000A;</code></pre>
       
       <p><strong>Server</strong> [response]</p>
       
@@ -1055,41 +821,25 @@
       
       <p>Определить поля заголовка, присутствующие в трейлере сообщения, зашифрованного с помощью порционной трансферной кодировки.</p>
       
-      <p>~~~ Trailer = “Trailer” “:” 1#field-name</p>
-      
-      <p>~~~</p>
+      <pre><code>Trailer = "Trailer" ":" 1#field-name&#x000A;</code></pre>
       
       <p><strong>TE</strong> [request]</p>
       
-      <ul>
-      <li>
       <p>Определить приемлемые типы расширенной трансферной кодировки.</p>
-      </li>
       
-      <li>
       <p>Выразить желание принимать поля заголовков в трейлере, при использовании порционной трансферной кодировки.</p>
-      </li>
-      </ul>
       
-      <p>~~~ TE = “TE” “:” #(t-codings)</p>
-      
-      <p>t-codings = “trailers” | (transfer-extension [accept-params])</p>
-      
-      <p>~~~</p>
+      <pre><code>TE        = "TE" ":" #(t-codings)&#x000A;&#x000A;t-codings = "trailers" | (transfer-extension [accept-params])&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ TE: trailers, deflate;q=0.5, gzip;q=0.2</p>
-      
-      <p>~~~</p>
+      <pre><code>TE: trailers, deflate;q=0.5, gzip;q=0.2&#x000A;</code></pre>
       
       <p><strong>Transfer-Encoding</strong> [request] [response]</p>
       
       <p>Определить используемые типы трансферной кодировки.</p>
       
-      <p>~~~ Transfer-Encoding = “Transfer-Encoding” “:” 1#transfer-coding</p>
-      
-      <p>~~~</p>
+      <pre><code>Transfer-Encoding = "Transfer-Encoding" ":" 1#transfer-coding&#x000A;</code></pre>
       
       <p><strong>Upgrade</strong> [request] [response]</p>
       
@@ -1097,73 +847,41 @@
       
       <p>В ответе: определить используемые протоколы прикладного уровня.</p>
       
-      <p>~~~ Upgrade = “Upgrade” “:” 1#product</p>
-      
-      <p>~~~</p>
+      <pre><code>Upgrade = "Upgrade" ":" 1#product&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11</p>
-      
-      <p>~~~</p>
+      <pre><code>Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11&#x000A;</code></pre>
       
       <p><strong>User-Agent</strong> [request]</p>
       
       <p>Определить тип и версию используемого клиентского программного обеспечения.</p>
       
-      <p>~~~ User-Agent = “User-Agent” “:” 1<em>(product | comment)</em></p>
-      
-      <p>~~~</p>
+      <pre><code>User-Agent = "User-Agent" ":" 1*(product | comment)&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ User-Agent: CERN-LineMode/2.15 libwww/2.17b3</p>
-      
-      <p>~~~</p>
+      <pre><code>User-Agent: CERN-LineMode/2.15 libwww/2.17b3&#x000A;</code></pre>
       
       <p><strong>Via</strong> [request] [response]</p>
       
       <p>Определить названия промежуточных субъектов коммуникации, а так же названия и версии протоколов используемых ими.</p>
       
-      <p>~~~ Via = “Via” “:” 1#(received-protocol received-by [comment])</p>
-      
-      <p>received-protocol = [protocol-name /] protocol-version</p>
-      
-      <p>protocol-name = token</p>
-      
-      <p>protocol-version = token</p>
-      
-      <p>received-by = (host [: port]) | pseudonym</p>
-      
-      <p>pseudonym = token</p>
-      
-      <p>~~~</p>
+      <pre><code>Via               = "Via" ":" 1#(received-protocol received-by [comment])&#x000A;&#x000A;received-protocol = [protocol-name "/"] protocol-version&#x000A;&#x000A;protocol-name     = token&#x000A;&#x000A;protocol-version  = token&#x000A;&#x000A;received-by       = (host [":" port]) | pseudonym&#x000A;&#x000A;pseudonym         = token&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)</p>
-      
-      <p>~~~</p>
+      <pre><code>Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1)&#x000A;</code></pre>
       
       <p><strong>WWW-Authenticate</strong> [response]</p>
       
       <p>Задать требование, необходимое для аутентификации.</p>
       
-      <p>~~~ WWW-Authenticate = “WWW-Authenticate” “:” challenge</p>
-      
-      <p>challenge = auth-scheme 1<em>SP 1#auth-param</em></p>
-      
-      <p>auth-scheme = token</p>
-      
-      <p>auth-param = token “=” (token | quoted-string)</p>
-      
-      <p>~~~</p>
+      <pre><code>WWW-Authenticate = "WWW-Authenticate" ":" challenge&#x000A;&#x000A;challenge        = auth-scheme 1*SP 1#auth-param&#x000A;&#x000A;auth-scheme      = token&#x000A;&#x000A;auth-param       = token "=" (token | quoted-string)&#x000A;</code></pre>
       
       <p>Примеры:</p>
       
-      <p>~~~ WWW-Authenticate: Basic realm=“WallyWord”</p>
-      
-      <p>~~~</p>
+      <pre><code>WWW-Authenticate: Basic realm="WallyWord"&#x000A;</code></pre>
       
       <h1 id="Перечень-кодировок-содержимого">Перечень кодировок содержимого</h1>
       
@@ -1173,7 +891,7 @@
       
       <p><strong>deflate</strong></p>
       
-      <p>Содержимое было закодированно с использованием алгоритма Deflate, представляющим из себя комбинацию LZ77 и алгоритма Хаффмана.</p>
+      <p>Содержимое было закодированно с использованием алгоритма Deflate, представляющим из себя комбинацию LZ77 и  алгоритма Хаффмана.</p>
       
       <p><strong>gzip</strong></p>
       
@@ -1188,61 +906,52 @@
       <p>Директивы кэширования могут относиться к следующим сущностям в рамках механизма кэширования:</p>
       
       <ul>
-      <li>
-      <p>к субъекту</p>
-      </li>
-      
-      <li>
-      <p>к объекту</p>
-      </li>
-      
-      <li>
-      <p>к свойствам субъекта</p>
-      </li>
-      
-      <li>
-      <p>к свойствам объекта</p>
-      </li>
+        <li>
+          <p>к субъекту</p>
+        </li>
+        <li>
+          <p>к объекту</p>
+        </li>
+        <li>
+          <p>к свойствам субъекта</p>
+        </li>
+        <li>
+          <p>к свойствам объекта</p>
+        </li>
       </ul>
       
       <p>Директивы кэширования могут изменять следующие механизмы работы кэша:</p>
       
       <ul>
-      <li>
-      <p>сохранение в кэше</p>
-      </li>
-      
-      <li>
-      <p>извлечение из кэша</p>
-      </li>
-      
-      <li>
-      <p>перепроверка</p>
-      </li>
-      
-      <li>
-      <p>перезагрузка</p>
-      </li>
-      
-      <li>
-      <p>трансформацию</p>
-      </li>
+        <li>
+          <p>сохранение в кэше</p>
+        </li>
+        <li>
+          <p>извлечение из кэша</p>
+        </li>
+        <li>
+          <p>перепроверка</p>
+        </li>
+        <li>
+          <p>перезагрузка</p>
+        </li>
+        <li>
+          <p>трансформацию</p>
+        </li>
       </ul>
       
       <p>Объект кэширования имеет следующие свойства:</p>
       
       <ul>
-      <li>
-      <p>действительность (<em>validity</em>)</p>
-      </li>
-      
-      <li>
-      <p>срок годности (<em>expiration time</em>)</p>
-      </li>
-      
-      <li>
-      <p>возраст (<em>age</em>)</p>
-      </li>
+        <li>
+          <p>действительность (<em>validity</em>)</p>
+        </li>
+        <li>
+          <p>срок годности (<em>expiration time</em>)</p>
+        </li>
+        <li>
+          <p>возраст (<em>age</em>)</p>
+        </li>
       </ul>
       
       <h2 id="Директивы-запроса">Директивы запроса</h2>
@@ -1331,8 +1040,6 @@
       
       <h1 id="Ссылки">Ссылки</h1>
       
-      <p>[[Контроль доступа средствами HTTP]]</p>
-      <hr />
       <p><a href="http://en.wikipedia.org/wiki/Augmented_Backus–Naur_Form">Augmented Backus—Naur Form</a></p>
       
       <p><a href="http://ru.wikipedia.org/wiki/Chunked_transfer_encoding">Chunked transfer encoding</a></p>
@@ -1349,7 +1056,7 @@
       
       <p><a href="http://ru.wikipedia.org/wiki/HTTP_referer">Referer</a></p>
       
-      <p><a href='http://en.wikipedia.org/wiki/Slug_(web_publishing)'>Slug</a></p>
+      <p><a href="http://en.wikipedia.org/wiki/Slug_%28web_publishing%29">Slug</a></p>
       
       <p><a href="http://ru.wikipedia.org/wiki/TCP/IP">TCP/IP</a></p>
       
@@ -1358,7 +1065,9 @@
       <p><a href="http://ru.wikipedia.org/wiki/User_Agent">User Agent</a></p>
       
       <p><a href="http://ru.wikipedia.org/wiki/Заголовки_HTTP#.D0.91.D0.B0.D0.B9.D1.82.D0.BE.D0.B2.D1.8B.D0.B5_.D0.B4.D0.B8.D0.B0.D0.BF.D0.B0.D0.B7.D0.BE.D0.BD.D1.8B">Заголовки HTTP. Байтовые диапазоны</a></p>
-      <nowiki><a href='http://ru.wikipedia.org/wiki/Порт_(TCP/IP)'>Порт (TCP/IP)</a></nowiki>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Порт_%28TCP/IP%29">Порт (TCP/IP)</a></p>
+      
       <p><a href="http://ru.wikipedia.org/wiki/Прокси-сервер">Прокси-сервер</a></p>
       
       <p><a href="http://ru.wikipedia.org/wiki/Сервис_туннелей">Сервис туннелей</a></p>
@@ -1368,7 +1077,9 @@
       <p><a href="http://ru.wikipedia.org/wiki/Список_заголовков_HTTP">Список заголовков HTTP</a></p>
       
       <p><a href="http://ru.wikipedia.org/wiki/Коды_состояния_HTTP">Список кодов состояния HTTP</a></p>
-      <nowiki><a href='http://ru.wikipedia.org/wiki/Туннелирование_(компьютерные_сети)'>Туннелирование (компьютерные сети)</a></nowiki>
+      
+      <p><a href="http://ru.wikipedia.org/wiki/Туннелирование_%28компьютерные_сети%29">Туннелирование (компьютерные сети)</a></p>
+      
       <h1 id="RFC">RFC</h1>
       
       <p><a href="http://www.ietf.org/rfc/rfc822.txt">RFC 822. STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES</a></p>
@@ -1397,7 +1108,7 @@
       
       <p><a href="http://shop.oreilly.com/product/9781565928626.do">HTTP Pocket Reference</a></p>
       
-      <p><a href="http://shop.oreilly.com/product/9781565925090.do?green=2ddffc00-9694-ec7c0d-3097-121ff07a48e9&intcmp=af-mybuy-9781565925090.IP">HTTP: The Definitive Guide</a></p>
+      <p><a href="http://shop.oreilly.com/product/9781565925090.do?green=2ddffc00-9694-ec7c0d-3097-121ff07a48e9&amp;intcmp=af-mybuy-9781565925090.IP">HTTP: The Definitive Guide</a></p>
       
       <p><a href="http://my.safaribooksonline.com/book/web-development/http/0672324547">HTTP Developer’s Handbook</a></p>
     </div>
