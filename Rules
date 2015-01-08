@@ -6,7 +6,7 @@ compile '*' do
   elsif item[:extension] == 'js'
     # don't filter javascripts
   elsif item[:extension] == 'md'
-    filter :maruku
+    filter :kramdown
     layout item[:layout]
   elsif item[:extension] == 'sass'
     filter :sass
