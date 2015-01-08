@@ -8,7 +8,7 @@ GEM
       colored (~> 1.2)
     haml (4.0.6)
       tilt
-    maruku (0.7.2)
+    kramdown (1.5.0)
     nanoc (3.7.4)
       cri (~> 2.3)
     rack (1.6.0)
@@ -21,6 +21,6 @@ PLATFORMS
 DEPENDENCIES
   adsf
   haml
-  maruku
+  kramdown
   nanoc
   sass
