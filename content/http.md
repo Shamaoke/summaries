@@ -1271,6 +1271,8 @@ URL ресурса, содержащего документ с относите�
 
 [RFC 3986. Uniform Resource Identifier (URI): Generic Syntax](http://www.ietf.org/rfc/rfc3986.txt)
 
+[RFC 5789. PATCH Method for HTTP](http://www.ietf.org/rfc/rfc5789.txt)
+
 #Книги
 {: id="Книги"}
 
