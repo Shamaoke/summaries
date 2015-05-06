@@ -2,4 +2,4 @@
 layout: default
 ---
 
-A new nanoc site.
+[HTTP](/wiki/http)
