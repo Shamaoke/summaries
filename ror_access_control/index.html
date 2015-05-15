@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href='/wiki/stylesheet.css' rel='stylesheet'>
+    <title>Контроль доступа</title>
+  </head>
+  <body>
+    <div>
+      
+      <h1 id="Содержание">Содержание</h1>
+      
+      <p><a href="#Глоссарий">Глоссарий</a></p>
+      
+      <p><a href="#Внешние_инструменты">Внешние инструменты</a></p>
+      
+      <p><a href="#Перечень_методов">Перечень методов</a></p>
+      
+      <p><a href="#Ссылки">Ссылки</a></p>
+      
+      <h1 id="Глоссарий">Глоссарий</h1>
+      
+      <p><strong>Авторизация</strong></p>
+      
+      <p>Регламентирование доступа к ресурсам.</p>
+      
+      <p><strong>Аутентификация</strong></p>
+      
+      <p>Подтверждения права на доступ к ресурсу.</p>
+      
+      <p><strong>Идентификатор</strong></p>
+      
+      <p>Имя учетной записи.</p>
+      
+      <p><strong>Идентификация</strong></p>
+      
+      <p>Представление системе.</p>
+      
+      <p><strong>Пароль</strong></p>
+      
+      <p>Секретное слово для доступа к учетной записи.</p>
+      
+      <p><strong>Учетная запись</strong></p>
+      
+      <p>Запись в БД, содержащая сведения о пользователе.</p>
+      
+      <h1 id="Внешние_инструменты">Внешние инструменты</h1>
+      
+      <p><strong>Devise</strong></p>
+      
+      <p>Внешний инструмент для реализации системы аутентификации в Rails.</p>
+      
+      <p><strong>Warden</strong></p>
+      
+      <p>Внешний инструмент общего назначения для реализации системы аутентификации в Rails.</p>
+      
+      <h1 id="Перечень_методов">Перечень методов</h1>
+      
+      <p><strong>attr_accessible</strong> [ruby on rails] <a href="http://rdoc.info/gems/activemodel/ActiveModel/MassAssignmentSecurity/ClassMethods"><code>AtiveveModel::MassAssignmentSecurity::ClassMethods</code></a></p>
+      
+      <p>Определить список атрибутов, которым можно передавать значения посредством массированного назначения.</p>
+      
+      <p><strong>attr_protected</strong> [ruby on rails] <a href="http://rdoc.info/gems/activemodel/ActiveModel/MassAssignmentSecurity/ClassMethods"><code>AtiveveModel::MassAssignmentSecurity::ClassMethods</code></a></p>
+      
+      <p>Определить список атрибутов, которым нельзя передaвать значения посредством массированного назначения.</p>
+      
+      <p><strong>authenticate</strong> [ruby on rails] <a href="http://rdoc.info/gems/activemodel/ActiveModel/SecurePassword/InstanceMethodsOnActivation"><code>ActiveModel::SecurePassword::InstanceMethodsOnActivation</code></a></p>
+      
+      <p>Возвратить текущую модель, если пароль верен. В противном случае, возвратить <code>false</code>.</p>
+      
+      <p><strong>devise</strong> [devise] <a href="http://rdoc.info/gems/devise/Devise/Models"><code>Devise::Models</code></a></p>
+      
+      <p>Включить в модель указанный модуль Devise.</p>
+      
+      <p><strong>devise_for</strong> [devise] <a href="http://rdoc.info/gems/devise/ActionDispatch/Routing/Mapper"><code>ActionDispatch::Routing::Mapper</code></a></p>
+      
+      <p>Установить все необходимые маршруты для включенных в модель модулей Devise.</p>
+      
+      <p><strong>has_secure_password</strong> [ruby on rails] <a href="http://rdoc.info/gems/activemodel/ActiveModel/SecurePassword/ClassMethods"><code>ActiveModel::SecurePassword::ClassMethods</code></a></p>
+      
+      <p>Добавить для данной модели методы password= и authenticate. Установить проверку наличия пароля и его подтверждения. Модель должна иметь атрибут <code>password_digest</code>.</p>
+      
+      <p><strong>password=</strong> [ruby on rails] <a href="http://rdoc.info/gems/activemodel/ActiveModel/SecurePassword/InstanceMethodsOnActivation"><code>ActiveModel::SecurePassword::InstanceMethodsOnActivation</code></a></p>
+      
+      <p>Зашифровать пароль и сохранить его в атрибуте <code>password_digest</code> текущей модели.</p>
+      
+      <h1 id="Ссылки">Ссылки</h1>
+      
+      <p><a href="http://rubydoc.info/gems/devise/frames">Devise RDoc</a></p>
+      
+      <p><a href="https://github.com/plataformatec/devise/wiki">Devise вики</a></p>
+      
+      <p><a href="https://github.com/hassox/warden">Warden Github</a></p>
+    </div>
+  </body>
+</html>
