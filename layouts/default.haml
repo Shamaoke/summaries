@@ -3,6 +3,7 @@
   %head
     %meta{charset: 'utf-8'}
     %link{rel: 'stylesheet', href: "#{@items['/wiki/stylesheet/'].path}"}
+    %title= @item[:title]
   %body
     %div
       ~ yield
