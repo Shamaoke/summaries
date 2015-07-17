@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <link href='/wiki/stylesheet.css' rel='stylesheet'>
+    <title>Java</title>
+  </head>
+  <body>
+    <div>
+      
+      <h1 id="Содержание">Содержание</h1>
+      
+      <p><a href="#Глоссарий">Глоссарий</a></p>
+      
+      <p><a href="#Стандартные_инструменты">Стандартные инструменты</a></p>
+      
+      <p><a href="#Перечень_команд">Перечень команд</a></p>
+      
+      <p><a href="#Типы_требований">Типы требований</a></p>
+      
+      <p><a href="#Многопоточность">Многопоточность</a></p>
+      
+      <p><a href="#Ввод_и_вывод">Ввод и вывод</a></p>
+      
+      <p><a href="#Параметризуемые_классы">Параметризуемые классы</a></p>
+      
+      <p><a href="#Примеры">Примеры</a></p>
+      
+      <p><a href="#Ссылки">Ссылки</a></p>
+      
+      <h1 id="Глоссарий">Глоссарий</h1>
+      
+      <p><strong>access modifier</strong></p>
+      
+      <p>модификатор доступа</p>
+      
+      <p><strong>autoboxing</strong></p>
+      
+      <p>автоупаковка</p>
+      
+      <p><strong>compilation unit</strong></p>
+      
+      <p>единица компиляции</p>
+      
+      <p><strong>generic</strong></p>
+      
+      <p>параметризуемый класс/тип; полиморфный класс/тип</p>
+      
+      <p><strong>enumeration</strong></p>
+      
+      <p>перечисление; перечень; перечислимый тип</p>
+      
+      <p><strong>enumerator</strong></p>
+      
+      <p>перечислитель</p>
+      
+      <p><strong>persistent object</strong></p>
+      
+      <p>перманентный (постоянно хранимый) объект</p>
+      
+      <p><strong>retention</strong></p>
+      
+      <p>удерживание</p>
+      
+      <p><strong>runtime</strong></p>
+      
+      <p>время исполнения</p>
+      
+      <p><strong>wrapper</strong></p>
+      
+      <p>упаковщик</p>
+      
+      <h1 id="Стандартные_инструменты">Стандартные инструменты</h1>
+      
+      <p><strong>javac</strong></p>
+      
+      <p>Компилятор программы, написанной на языке Java, в байт-код виртуальной машины Java’ы (JVM)</p>
+      
+      <p><strong>java</strong></p>
+      
+      <p>Программа запуска java-приложения (Java application launcher)</p>
+      
+      <p><strong>jdb</strong></p>
+      
+      <p>Отладчик програм на Java’е</p>
+      
+      <h1 id="Перечень_команд">Перечень команд</h1>
+      
+      <p><code>javac -X</code></p>
+      
+      <p>вывести перечень дополнительных опций</p>
+      
+      <p><code>javac -Xdiags:verbose &lt;file&gt;</code></p>
+      
+      <p>вывести более подробное диагностическое сообщение при наличии ошибок компиляции</p>
+      
+      <h1 id="Типы_требований">Типы требований</h1>
+      
+      <p><strong>требование выразительности</strong></p>
+      
+      <p><strong>соглашение</strong></p>
+      
+      <p><strong>техническое требование</strong></p>
+      
+      <p><strong>требование производительности</strong></p>
+      
+      <h1 id="Многопоточность">Многопоточность</h1>
+      
+      <h2 id="Глоссарий">Глоссарий</h2>
+      
+      <p><strong>context switch</strong></p>
+      
+      <p>переключение контекста</p>
+      
+      <p><strong>deadlock</strong></p>
+      
+      <p>взаимная блокировка</p>
+      
+      <p><strong>monitor</strong></p>
+      
+      <p>диспетчер, контролёр</p>
+      
+      <p><strong>to enter a monitor on an object</strong></p>
+      
+      <p>зарегистрировать диспетчера/контролера для объекта;</p>
+      
+      <p>назначить диспетчера/контролера на объект;</p>
+      
+      <p>установить диспетчера/контролера на объект</p>
+      
+      <p><strong>preemption</strong></p>
+      
+      <p>вытеснение</p>
+      
+      <p><strong>race</strong></p>
+      
+      <p>конкуренция</p>
+      
+      <p><strong>race condition</strong></p>
+      
+      <p>состояние гонки</p>
+      
+      <p><strong>scheduler</strong></p>
+      
+      <p>планировщик</p>
+      
+      <p><strong>spawn</strong></p>
+      
+      <p>порождать</p>
+      
+      <h2 id="Перечень состояний треда">Перечень состояний треда</h2>
+      
+      <p><strong>blocked</strong> (<em>заблокирован</em>)</p>
+      
+      <p><strong>interrupted</strong> (<em>прерван</em>)</p>
+      
+      <p><strong>ready to run</strong> (<em>готов к запуску</em>)</p>
+      
+      <p><strong>resumed</strong> (<em>возобновлен</em>)</p>
+      
+      <p><strong>running</strong> (<em>запущен</em>)</p>
+      
+      <p><strong>suspended</strong> (<em>приостановлен</em>)</p>
+      
+      <p><strong>terminated</strong> (<em>завершен</em>)</p>
+      
+      <h2 id="Перечень методов">Перечень методов</h2>
+      
+      <p><strong><code>currentThread</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#currentThread--"><code>java.lang.Thread</code></a></p>
+      
+      <p><strong><code>getPriority</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#getPriority--"><code>java.lang.Thread</code></a></p>
+      
+      <p><strong><code>isAlive</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#isAlive--"><code>java.lang.Thread</code></a></p>
+      
+      <p><strong><code>join</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#join--"><code>java.lang.Thread</code></a></p>
+      
+      <p><strong><code>notify</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#notify--"><code>java.lang.Object</code></a></p>
+      
+      <p><strong><code>setPriority</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Thread.html#setPriority-int-"><code>java.lang.Thread</code></a></p>
+      
+      <p><strong><code>wait</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Object.html#wait--"><code>java.lang.Object</code></a></p>
+      
+      <h1 id="Ввод_и_вывод">Ввод и вывод</h1>
+      
+      <h2 id="Перечень_объектов">Перечень объектов</h2>
+      
+      <p><strong><code>InputStream</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/InputStream.html"><code>java.io.InputStream</code></a></p>
+      
+      <p>Объект-обёртка для различных источников данных.</p>
+      
+      <p><strong><code>InputStreamReader</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/InputStreamReader.html"><code>java.io.InputStreamReader</code></a></p>
+      
+      <p>Объект, предоставляющий возможность извлекать данные из источника.</p>
+      
+      <p><strong><code>BufferedReader</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html"><code>java.io.BufferedReader</code></a></p>
+      
+      <p>Объект, предоставляющий возможность помещать извлекаемые из источника данные во временное хранилище (буфер).</p>
+      
+      <p><strong><code>OutputStream</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/OutputStream.html"><code>java.io.OutputStream</code></a></p>
+      
+      <p>Объект-обёртка для различны приёмников данных.</p>
+      
+      <p><strong><code>PrintStream</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html"><code>java.io.PrintStream</code></a></p>
+      
+      <p>Объект, предоставляющий возможность передавать бинарные данные различным приёмникам.</p>
+      
+      <p><strong><code>PrintWriter</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintWriter.html"><code>java.io.PrintWriter</code></a></p>
+      
+      <p>Объект, предоставляющий возможность передавать <em>текстовые</em> данные различным преёмникам.</p>
+      
+      <p><strong><code>FileInputStream</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileInputStream.html"><code>java.io.FileInputStream</code></a></p>
+      
+      <p>Объект-обёртка для файлового источника данных.</p>
+      
+      <p><strong><code>FilOutputStream</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileOutputStream.html"><code>java.io.FileOutputStream</code></a></p>
+      
+      <p>Объект-обёртка для файлового приёмника данных.</p>
+      
+      <h2 id="Перечень_методов">Перечень методов</h2>
+      
+      <p><strong><code>read</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html#read--"><code>java.io.BufferedReader#read</code></a></p>
+      
+      <p>Возвратить байт из буфера и конвертировать его в символ на основе текущей/заданной кодировки.</p>
+      
+      <p><strong><code>read</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileInputStream.html#read--"><code>java.io.FileInputStream#read</code></a></p>
+      
+      <p>Возвратить байт из файла-источника, представив его как целое число. Возвратить -1, при достижении конца файла.</p>
+      
+      <p><strong><code>readLine</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html#readLine--"><code>java.io.BufferedReader#readLine</code></a></p>
+      
+      <p>Возвратить последовательность байтов из буфера и конвертировать каждый байт в строчный символ на основе текущей/заданной кодировки. (Символы завершения строки возвращены не будут.)</p>
+      
+      <p><strong><code>write(int)</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#write-int-"><code>java.io.PrintStream#write</code></a></p>
+      
+      <p>Передать приёмнику один байт данных не очищая буфер.</p>
+      
+      <p><strong><code>write(int)</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileOutputStream.html#write-int-"><code>java.io.FileOutputStream#write</code></a></p>
+      
+      <p>Передать файлу-приёмнику один байт данных.</p>
+      
+      <p><strong><code>write(byte[], int, int)</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#write-byte:A-int-int-"><code>java.io.PrintStream#write</code></a></p>
+      
+      <p>Передать приёмнику диапазон байтов из заданного массива и автоматически очистить буфер по окончанию передачи.</p>
+      
+      <p><strong><code>flush</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/PrintStream.html#flush--"><code>java.io.PrintStream#flush</code></a></p>
+      
+      <p>Очистить буфер от данных.</p>
+      
+      <p><strong><code>close</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileInputStream.html#read--"><code>java.io.FileInputStream#close</code></a></p>
+      
+      <p>Освободить системный ресурс, связанный с данным файлом-источником. Данный метод должен быть вызван по завершению работы с файлом в соответствии с теребованием производительности. При попытке чтения из закрытого файла-источника будет вызвано исключение <code>java.io.IOException: Stream Closed</code>.</p>
+      
+      <p><strong><code>close</code></strong> <a href="https://docs.oracle.com/javase/8/docs/api/java/io/FileOutputStream.html#close--"><code>java.io.FileOutputStream#close</code></a></p>
+      
+      <p>Освободить системный ресурс, связанный с данным файлом-приёмником. Данный метод должен быть вызван по завершению работы с файлом в соответствии с теребованием производительности. При попытке записи в закрытый файл-приёмник будет вызвано исключение <code>java.io.IOException: Stream Closed</code>.</p>
+      
+      <h1 id="Параметризуемые_классы">Параметризуемые классы</h1>
+      
+      <h2 id="Способы_определения">Способы определения</h2>
+      
+      <p><code>class Sample&lt;T&gt;</code></p>
+      
+      <p>определить параметризуемый класс</p>
+      
+      <p><code>class Sample&lt;T1, T2&gt;</code></p>
+      
+      <p>определить параметризуемый класс с двумя параметрами</p>
+      
+      <p><code>class Sample&lt;T extends SomeClass&gt;</code></p>
+      
+      <p>определить параметризуемый класс с параметром, тип которого ограничен множеством подклассов указанного класса</p>
+      
+      <p><code>class Sample&lt;T extends SomeClass &amp; FirstInterface &amp; SecondInterface&gt;</code></p>
+      
+      <p>определить параметризуемый класс с параметром, тип которого расширяет указанный класс и реализует оба указанных интерфейса</p>
+      
+      <h2 id="Указание_типа_для_переменной_содержащей_значение_параметризуемого_класса">Указание типа для переменной, содержащей значение параметризуемого класса</h2>
+      
+      <p><code>GenericClass&lt;ConcreteClass&gt; variable</code></p>
+      
+      <p><code>GenericClass&lt;?&gt; variable</code></p>
+      
+      <p><code>GenericClass&lt;? extends UpperBound&gt; variable // One → (UpperBound → Two → Three)</code></p>
+      
+      <p><code>GenericClass&lt;? super LowerBound&gt; variable // (One → Two → LowerBound) → Three</code></p>
+      
+      <h2 id="Указание_переменного_типа_в_декларации_метода">Указание переменного типа в декларации метода</h2>
+      
+      <p><code>&lt;T&gt; T doSomething(T arg);</code></p>
+      
+      <p>определить параметризуемый метод с одним агрументом</p>
+      
+      <p><code>&lt;T1, T2&gt; T1 doSomething(T1 arg1, T2 arg2);</code></p>
+      
+      <p>определить параметризуемый метод с двумя аргументами</p>
+      
+      <p><code>&lt;T extends SomeClass&gt; T doSomething();</code></p>
+      
+      <p>определить параметризуемый метод, тип которого расширяет указанный класс</p>
+      
+      <p><code>&lt;T extends SomeInterface&gt; T doSomething();</code></p>
+      
+      <p>определить параметризуемый метод, тип которого реализует указанный интерфейс</p>
+      
+      <p><code>someObject.&lt;First&gt;doSomething(first);</code></p>
+      
+      <p>вызвать параметризуемый метод (объявление типа не обязательно, но может быть включено для улучшения выразительности)</p>
+      
+      <h1 id="Примеры">Примеры</h1>
+      
+      <p><a href="https://gist.github.com/Shamaoke/5b033bf0833842dc0886">An Elementary Console Text Editor</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/3d10682691ddaafb4b88">Annotations</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/a8d3458b7e74d55df2a8">Cooperative Multithreading</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/5528f81e496cf98eb832">Deadlock</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/b86896092572e0ac858b">Declaring a parameterized constructor</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/f7fed27a6ce0414c4ca0">Declaring a parameterized interface</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/ab5969837b667a948e61">Declaring a parameterized method inside a non-generic class</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/176a741d29a8834d79eb">Eliminating the need to cast types by using generics</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/ca96f0ca3965e9c8622c">Exception Handling</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/912f2b48cff7370653ad">Method#invoke</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/5ab44f22692a5b3e17fc">Setting type bounds for a generic type parameter</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/120f70677ca45d6813c7">Setting type bounds for a generic type parameter as a set of interfaces</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/b9e90fe6f862651517ee">Specifying a type for a variable, which contains a value of a parameterized type</a></p>
+      
+      <p><a href="https://gist.github.com/Shamaoke/dcc671dbd8ef5ba8d339">Using a wildcard to specify any allowed type for an argument</a></p>
+      
+      <h1 id="Ссылки">Ссылки</h1>
+      
+      <p><a href="http://rosettacode.org/wiki/Race_condition">Race condition</a></p>
+      
+      <p><a href="https://ru.wikipedia.org/wiki/%D0%92%D0%B7%D0%B0%D0%B8%D0%BC%D0%BD%D0%B0%D1%8F_%D0%B1%D0%BB%D0%BE%D0%BA%D0%B8%D1%80%D0%BE%D0%B2%D0%BA%D0%B0">Взаимная блокировка</a></p>
+      
+      <p><a href="https://ru.wikipedia.org/wiki/%D0%A1%D0%BE%D1%81%D1%82%D0%BE%D1%8F%D0%BD%D0%B8%D0%B5_%D0%B3%D0%BE%D0%BD%D0%BA%D0%B8">Состояние гонки</a></p>
+    </div>
+  </body>
+</html>
