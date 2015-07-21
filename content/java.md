@@ -20,6 +20,8 @@ title: Java
 
 [Параметризуемые классы](#Параметризуемые_классы)
 
+[Анонимные функции](#Анонимные_функции)
+
 [Примеры](#Примеры)
 
 [Ссылки](#Ссылки)
@@ -112,7 +114,7 @@ title: Java
 {: id="Многопоточность"}
 
 ##Глоссарий
-{: id="Глоссарий"}
+{: id="Многопоточность_Глоссарий"}
 
 **context switch**
 
@@ -321,8 +323,22 @@ title: Java
 
 вызвать параметризуемый метод (объявление типа не обязательно, но может быть включено для улучшения выразительности)
 
+#Анонимные функции
+{: id="Анонимные_функции"}
+
+##Перечень элементов
+{: id="Анонимные_функции_Перечень_элементов"}
+
+**functional interface**
+
+**lambda expression**
+
+**method reference**
+
 #Примеры
 {: id="Примеры"}
+
+[Adding two integers by the means of a method reference](https://gist.github.com/Shamaoke/c1c2a23c1e5063263420)
 
 [An Elementary Console Text Editor](https://gist.github.com/Shamaoke/5b033bf0833842dc0886)
 
@@ -341,6 +357,10 @@ title: Java
 [Eliminating the need to cast types by using generics](https://gist.github.com/Shamaoke/176a741d29a8834d79eb)
 
 [Exception Handling](https://gist.github.com/Shamaoke/ca96f0ca3965e9c8622c)
+
+[Extracting a string from a container object by the means of an instance method reference](https://gist.github.com/Shamaoke/9899d906ab94cba7a1e7)
+
+[Finding matches in a collection of values by the means of a static and an instance method reference](https://gist.github.com/Shamaoke/f9f0ae116290daaa3ad2)
 
 [Method#invoke](https://gist.github.com/Shamaoke/912f2b48cff7370653ad)
 
