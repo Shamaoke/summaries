@@ -1,10 +1,10 @@
 ---
 layout: default
-title: Вики
+title: Summaries
 ---
 
-[HTTP](/wiki/http)
+[HTTP](/summaries/http)
 
-[Java](/wiki/java)
+[Java](/summaries/java)
 
-[Контроль доступа в Ruby on rails](/wiki/ror_access_control)
+[Контроль доступа в Ruby on rails](/summaries/ror_access_control)
