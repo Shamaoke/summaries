@@ -72,3 +72,5 @@ checks:
     # E.g.:
     #   exclude: ['^/server_status']
     exclude: []
+
+root_url: http://shamaoke.github.io
