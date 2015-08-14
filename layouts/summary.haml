@@ -1,0 +1,10 @@
+!!!5
+%html
+  %head
+    %meta{charset: 'utf-8'}
+    %link{rel: 'stylesheet', href: "#{@items['/summaries/stylesheet/'].path}"}
+    %title= @item[:title]
+  %body
+    %div
+      ~ yield
+      ~ render '_disqus'
