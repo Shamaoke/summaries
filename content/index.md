@@ -3,6 +3,8 @@ layout: default
 title: Summaries
 ---
 
+[Gradle](/summaries/gradle)
+
 [HTTP](/summaries/http)
 
 [Java](/summaries/java)
