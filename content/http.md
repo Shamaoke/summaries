@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: summary
 title: HTTP
+disqus_identifier: http
 ---
 
 #Содержание
@@ -45,6 +46,8 @@ title: HTTP
 [RFC](#RFC)
 
 [Книги](#Книги)
+
+[Комментарии](#Комментарии)
 
 #Глоссарий
 {: id="Глоссарий"}
@@ -1282,3 +1285,6 @@ URL ресурса, содержащего документ с относите�
 [HTTP: The Definitive Guide](http://shop.oreilly.com/product/9781565925090.do?green=2ddffc00-9694-ec7c0d-3097-121ff07a48e9&intcmp=af-mybuy-9781565925090.IP)
 
 [HTTP Developer's Handbook](http://my.safaribooksonline.com/book/web-development/http/0672324547)
+
+#Комментарии
+{: id="Комментарии"}

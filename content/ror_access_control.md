@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: summary
 title: Контроль доступа
+disqus_identifier: ror_access_control
 ---
 
 #Содержание
@@ -13,6 +14,8 @@ title: Контроль доступа
 [Перечень методов](#Перечень_методов)
 
 [Ссылки](#Ссылки)
+
+[Комментарии](#Комментарии)
 
 #Глоссарий
 {: id="Глоссарий"}
@@ -95,3 +98,6 @@ title: Контроль доступа
 [Devise вики](https://github.com/plataformatec/devise/wiki)
 
 [Warden Github](https://github.com/hassox/warden)
+
+#Комментарии
+{: id="Комментарии"}

@@ -1,6 +1,7 @@
 ---
-layout: default
+layout: summary
 title: Gradle
+disqus_identifier: gradle
 ---
 
 #Перечень элементов
