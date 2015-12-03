@@ -1,32 +1,29 @@
-#!/usr/bin/env ruby
+layout '/*', :haml
 
-compile '*' do
-  if item[:extension] == 'css'
-    # don't filter stylesheets
-  elsif item[:extension] == 'js'
-    # don't filter javascripts
-  elsif item[:extension] == 'md'
-    filter :kramdown
-    layout item[:layout]
-  elsif item[:extension] == 'sass'
-    filter :sass
-  elsif item.binary?
-    # don't filter binary items
-  end
+compile '/summaries/*.sass' do
+  filter :sass
 end
 
-route '*' do
-  if item[:extension] == 'css'
-    "#{item.identifier.chop}.css"
-  elsif item[:extension] == 'js'
-    "#{item.identifier.chop}.js"
-  elsif item[:extension] == 'sass'
-    "#{item.identifier.chop}.css"
-  elsif item.binary?
-    "#{item.identifier.chop}.#{item[:extension]}"
-  else
-    "#{item.identifier}index.html"
-  end
+compile '/summaries/index.md' do
+  filter :kramdown
+  layout '/default.haml'
 end
 
-layout '*', :haml
+compile '/summaries/*.md' do
+  filter :kramdown
+  layout '/summary.haml'
+end
+
+route '/summaries/*.sass' do
+  "#{item.identifier.without_ext}.css"
+end
+
+route '/summaries/index.md' do
+  '/summaries/index.html'
+end
+
+route '/summaries/*.md' do
+  "#{item.identifier.without_ext}/index.html"
+end
+
+# vim: set filetype=ruby:
