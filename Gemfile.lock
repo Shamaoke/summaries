@@ -4,15 +4,15 @@ GEM
     adsf (1.2.0)
       rack (>= 1.0.0)
     colored (1.2)
-    cri (2.6.1)
+    cri (2.7.0)
       colored (~> 1.2)
-    haml (4.0.6)
+    haml (4.0.7)
       tilt
-    kramdown (1.5.0)
-    nanoc (3.7.4)
+    kramdown (1.9.0)
+    nanoc (4.0.2)
       cri (~> 2.3)
-    rack (1.6.0)
-    sass (3.4.9)
+    rack (1.6.4)
+    sass (3.4.19)
     tilt (2.0.1)
 
 PLATFORMS
