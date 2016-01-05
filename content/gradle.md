@@ -1,7 +1,5 @@
 ---
-layout: summary
 title: Gradle
-disqus_identifier: gradle
 ---
 
 #Содержание

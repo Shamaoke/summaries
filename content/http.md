@@ -1,7 +1,5 @@
 ---
-layout: summary
 title: HTTP
-disqus_identifier: http
 ---
 
 #Содержание

@@ -1,7 +1,5 @@
 ---
-layout: summary
 title: Контроль доступа
-disqus_identifier: ror_access_control
 ---
 
 #Содержание

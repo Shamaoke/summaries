@@ -1,7 +1,5 @@
 ---
-layout: summary
 title: Java
-disqus_identifier: java
 ---
 
 #Содержание
