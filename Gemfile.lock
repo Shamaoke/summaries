@@ -9,11 +9,11 @@ GEM
     haml (4.0.7)
       tilt
     kramdown (1.9.0)
-    nanoc (4.0.2)
+    nanoc (4.1.1)
       cri (~> 2.3)
     rack (1.6.4)
-    sass (3.4.19)
-    tilt (2.0.1)
+    sass (3.4.20)
+    tilt (2.0.2)
 
 PLATFORMS
   ruby
@@ -24,3 +24,6 @@ DEPENDENCIES
   kramdown
   nanoc
   sass
+
+BUNDLED WITH
+   1.11.2
