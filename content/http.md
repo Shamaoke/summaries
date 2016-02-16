@@ -1251,6 +1251,8 @@ URL ресурса, содержащего документ с относите�
 #RFC
 {: id="RFC"}
 
+[Перечень RFC](http://www.rfc-editor.org/rfc-index.html)
+
 [RFC 822. STANDARD FOR THE FORMAT OF ARPA INTERNET TEXT MESSAGES](http://www.ietf.org/rfc/rfc822.txt)
 
 [RFC 1123. Requirements for Internet Hosts -- Application and Support](http://www.ietf.org/rfc/rfc1123.txt)
