@@ -550,13 +550,9 @@ Find all documents in the “inventory” collection of the current database whe
 
 Повысить числовое значение поля на указанную величину (включая отрицательную).
 
-~~~
-{ $inc: { field: <value>, field2: <value>, ... } }
-~~~
-
-~~~
-db.products.update({'name': 'name'}, {'$inc': {'reviews': 1}})
-~~~
+    { $inc: { field: <value>, field2: <value>, ... } }
+^
+    db.products.update({'name': 'name'}, {'$inc': {'reviews': 1}})
 
 Find the first document in the products collection of the current database with the given name, increment by 1 the “reviews” field.
 
