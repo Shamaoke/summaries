@@ -1,23 +1,74 @@
-body {
-  font-family: sans-serif; }
+@font-face {
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTF55F_W.woff"); }
+@font-face {
+  font-family: "PT Serif";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTF75F_W.woff"); }
+@font-face {
+  font-family: "PT Serif";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTF56F_W.woff"); }
+@font-face {
+  font-family: "PT Serif";
+  font-style: italic;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTF76F_W.woff"); }
+@font-face {
+  font-family: "PT Serif Caption";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTZ55F_W.woff"); }
+@font-face {
+  font-family: "PT Serif Caption";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTZ56F_W.woff"); }
+@font-face {
+  font-family: "PT Mono";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTM55F_W.woff"); }
+@font-face {
+  font-family: "PT Mono";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTM75F_W.woff"); }
+h1, h2 {
+  font-family: PT Serif Caption;
+  font-weight: normal;
+  text-align: left; }
 
 h1 {
-  font-size: 18pt; }
+  font-size: 40px; }
 
 h2 {
-  font-size: 14pt; }
+  font-size: 30px; }
+
+p {
+  font-family: PT Serif;
+  font-size: 22px;
+  line-height: 30px; }
+
+code {
+  font-family: PT Mono;
+  font-size: 18px; }
 
 a:link, a:visited {
   color: #0055d4;
   text-decoration: none;
-  border-bottom: 0.0625rem solid #d5e5ff; }
+  border-bottom: 1px solid #d5e5ff; }
 a:hover, a:focus {
   color: #d40000;
   border-bottom-color: #ffd5d5;
   background-color: #ffffff; }
 
 div[id='content'] {
-  width: 800px;
+  width: 900px;
   margin-left: 200px;
   hyphens: auto;
   text-align: justify; }
