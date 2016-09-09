@@ -739,7 +739,7 @@ db.products.find({ producer: { $regex: 'acme.*corp', $options: 'i' } })
 
 *Find all documents in the “products” collection of the current database where the “producer” field contains the string which matches the regular expression “acme.\*corp” regardless of the case.*
 
-*Найти все документы в коллекции „products“ текущей базы данных, в которых поле „producer“ содержит строку, соответствующую регулярному выражению „acme.\*corp“, независимо от регистра.
+*Найти все документы в коллекции „products“ текущей базы данных, в которых поле „producer“ содержит строку, соответствующую регулярному выражению „acme.\*corp“, независимо от регистра.*
 
 **$set** \[update\]
 
