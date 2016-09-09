@@ -16,6 +16,7 @@ a:hover, a:focus {
   border-bottom-color: #ffd5d5;
   background-color: #ffffff; }
 
-pre {
-  border: 0.0625rem solid #000000;
-  padding: 0.625rem; }
+div[id='content'] {
+  width: 800px;
+  margin-left: 200px;
+  hyphens: auto; }
