@@ -14,6 +14,10 @@ compile '/summaries/*.md' do
   layout '/summary.haml'
 end
 
+compile '/summaries/assets/fonts/*.woff' do
+  # no actions should be made
+end
+
 route '/summaries/*.sass' do
   "#{item.identifier.without_ext}.css"
 end
@@ -24,6 +28,10 @@ end
 
 route '/summaries/*.md' do
   "#{item.identifier.without_ext}/index.html"
+end
+
+route '/summaries/assets/fonts/*.woff' do
+  "/summaries/fonts/#{File.basename item.identifier}"
 end
 
 # vim: set filetype=ruby:
