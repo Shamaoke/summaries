@@ -1,5 +1,5 @@
 ---
-title: uml | statecharts
+title: UML | Statecharts
 ---
 
 #Содержание
