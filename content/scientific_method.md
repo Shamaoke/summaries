@@ -1,5 +1,5 @@
 ---
-title: scientific method
+title: Научный метод
 ---
 
 #Содержание
