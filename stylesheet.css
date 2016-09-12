@@ -38,37 +38,87 @@
   font-style: normal;
   font-weight: bold;
   src: url("/summaries/fonts/PTM75F_W.woff"); }
-h1, h2 {
-  font-family: PT Serif Caption;
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
   font-weight: normal;
-  text-align: left; }
+  src: url("/summaries/fonts/PTS55F_W.woff"); }
+@font-face {
+  font-family: "PT Sans";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTS75F_W.woff"); }
+@font-face {
+  font-family: "PT Sans";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTS56F_W.woff"); }
+@font-face {
+  font-family: "PT Sans";
+  font-style: italic;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTS56F_W.woff"); }
+@font-face {
+  font-family: "PT Sans Caption";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTC55F_W.woff"); }
+@font-face {
+  font-family: "PT Sans Caption";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTC75F_W.woff"); }
+@font-face {
+  font-family: "PT Sans Narrow";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/summaries/fonts/PTN57F_W.woff"); }
+@font-face {
+  font-family: "PT Sans Narrow";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/summaries/fonts/PTN77F_W.woff"); }
+body {
+  margin: 0;
+  padding: 0; }
 
-h1 {
-  font-size: 40px; }
+header {
+  background-color: #236ecf;
+  padding: 11px 0 11px 0; }
+  header h1 {
+    font-family: PT Sans Caption;
+    font-size: 60px;
+    font-weight: bold;
+    padding-left: 200px;
+    margin: 0;
+    color: white; }
 
-h2 {
-  font-size: 30px; }
-
-p {
-  font-family: PT Serif;
-  font-size: 22px;
-  line-height: 30px; }
-
-code {
-  font-family: PT Mono;
-  font-size: 18px; }
-
-a:link, a:visited {
-  color: #0055d4;
-  text-decoration: none;
-  border-bottom: 1px solid #d5e5ff; }
-a:hover, a:focus {
-  color: #d40000;
-  border-bottom-color: #ffd5d5;
-  background-color: #ffffff; }
-
-div[id='content'] {
+main {
   width: 900px;
-  margin-left: 200px;
-  hyphens: auto;
-  text-align: justify; }
+  margin-left: 200px; }
+  main h1, main h2 {
+    font-family: PT Serif Caption;
+    font-weight: normal; }
+  main h1 {
+    font-size: 40px; }
+  main h1:not(:first-child) {
+    margin-top: 100px; }
+  main h2 {
+    font-size: 30px; }
+  main p {
+    font-family: PT Serif;
+    font-size: 22px;
+    line-height: 30px;
+    hyphens: auto;
+    text-align: justify; }
+  main code {
+    font-family: PT Mono;
+    font-size: 18px; }
+  main a:link, main a:visited {
+    color: #0055d4;
+    text-decoration: none;
+    border-bottom: 1px solid #d5e5ff; }
+  main a:hover, main a:focus {
+    color: #d40000;
+    border-bottom-color: #ffd5d5;
+    background-color: #ffffff; }
