@@ -1,5 +1,5 @@
 ---
-title: uml | interactions
+title: UML | Interactions
 ---
 
 #Содержание
