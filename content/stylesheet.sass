@@ -46,43 +46,105 @@
   font-weight: bold
   src: url('/summaries/fonts/PTM75F_W.woff')
 
-h1, h2
-  font-family: PT Serif Caption
+@font-face
+  font-family: 'PT Sans'
+  font-style:  normal
   font-weight: normal
-  text-align: left
+  src: url('/summaries/fonts/PTS55F_W.woff')
 
-h1
-  font-size: 40px
+@font-face
+  font-family: 'PT Sans'
+  font-style:  normal
+  font-weight: bold
+  src: url('/summaries/fonts/PTS75F_W.woff')
 
-h2
-  font-size: 30px
+@font-face
+  font-family: 'PT Sans'
+  font-style:  italic
+  font-weight: normal
+  src: url('/summaries/fonts/PTS56F_W.woff')
 
-p
-  font-family: PT Serif
-  font-size: 22px
-  line-height: 30px
+@font-face
+  font-family: 'PT Sans'
+  font-style:  italic
+  font-weight: bold
+  src: url('/summaries/fonts/PTS56F_W.woff')
 
-code
-  font-family: PT Mono
-  font-size: 18px
+@font-face
+  font-family: 'PT Sans Caption'
+  font-style:  normal
+  font-weight: normal
+  src: url('/summaries/fonts/PTC55F_W.woff')
 
-a
-  &:link, &:visited
-    color: #0055d4
-    text-decoration: none
-    border-bottom: 1px solid #d5e5ff
+@font-face
+  font-family: 'PT Sans Caption'
+  font-style:  normal
+  font-weight: bold
+  src: url('/summaries/fonts/PTC75F_W.woff')
 
-  &:hover, &:focus
-    color: #d40000
-    border-bottom-color: #ffd5d5
-    background-color: #ffffff
+@font-face
+  font-family: 'PT Sans Narrow'
+  font-style:  normal
+  font-weight: normal
+  src: url('/summaries/fonts/PTN57F_W.woff')
 
-div[id='content']
+@font-face
+  font-family: 'PT Sans Narrow'
+  font-style:  normal
+  font-weight: bold
+  src: url('/summaries/fonts/PTN77F_W.woff')
+
+body
+  margin: 0
+  padding: 0
+
+header
+  background-color: #236ecf
+  padding: 11px 0 11px 0
+
+  h1
+    font-family: PT Sans Caption
+    font-size: 60px
+    font-weight: bold
+    padding-left: 200px
+    margin: 0
+    color: white
+
+main
   width: 900px
   margin-left: 200px
-  hyphens: auto
-  text-align: justify
 
-// pre
-//   border: 0.0625rem solid #000000
-//   padding: 0.625rem
+  h1, h2
+    font-family: PT Serif Caption
+    font-weight: normal
+
+  h1
+    font-size: 40px
+
+  h1:not(:first-child)
+    margin-top: 100px
+
+  h2
+    font-size: 30px
+
+  p
+    font-family: PT Serif
+    font-size: 22px
+    line-height: 30px
+    hyphens: auto
+    text-align: justify
+
+  code
+    font-family: PT Mono
+    font-size: 18px
+
+  a
+    &:link, &:visited
+      color: #0055d4
+      text-decoration: none
+      border-bottom: 1px solid #d5e5ff
+
+    &:hover, &:focus
+      color: #d40000
+      border-bottom-color: #ffd5d5
+      background-color: #ffffff
