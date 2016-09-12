@@ -19,3 +19,5 @@ title: Summaries
 [UML](/summaries/uml)
 
 [Контроль доступа в Ruby on rails](/summaries/ror_access_control)
+
+[Научный метод](/summaries/scientific_method)
