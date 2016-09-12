@@ -1,5 +1,5 @@
 ---
-title: uml | classes
+title: UML | Classes
 ---
 
 #Содержание
