@@ -16,4 +16,6 @@ title: Summaries
 
 [Software Engineering](/summaries/software_engineering)
 
+[UML](/summaries/uml)
+
 [Контроль доступа в Ruby on rails](/summaries/ror_access_control)
