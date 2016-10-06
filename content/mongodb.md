@@ -307,6 +307,8 @@ title: MongoDB
 
 **64-х битное целое число** (64-bit integer) "\x12"
 
+**десятичное число с плавающей запятой** (decimal floating point number) "\x13"
+
 **минимальное значение** (Minimum value) "\xFF"
 
 **максимальное значение** (Maximum value) "\x7F"
