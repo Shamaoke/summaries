@@ -1174,9 +1174,9 @@ db.products.find({ category: 'gardening', $where: 'this.price > 100' })
 
 [MongoDB. Глоссарий на официальном сайте](http://docs.mongodb.org/manual/reference/glossary)
 
-[MongoDB. Справочник по интерфейсу командной оболочки JavaScript'а](http://docs.mongodb.org/manual/reference/javascript/)
+[MongoDB. Перечень вспомогательных методов](http://docs.mongodb.org/manual/reference/javascript/)
 
-[MongoDB. Справочник по командам, доступным для вызова из метода db.runCommand](http://docs.mongodb.org/manual/reference/commands/)
+[MongoDB. Перечень команд](http://docs.mongodb.org/manual/reference/commands/)
 
 [MongoDB. Справочник по работе в командной оболочке](http://docs.mongodb.org/manual/reference/mongo-shell/)
 
