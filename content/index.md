@@ -21,3 +21,5 @@ title: Summaries
 [Контроль доступа в Ruby on rails](/summaries/ror_access_control)
 
 [Научный метод](/summaries/scientific_method)
+
+[Функциональное программирование](/summaries/functional_programming)
