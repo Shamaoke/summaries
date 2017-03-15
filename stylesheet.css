@@ -116,9 +116,7 @@ main {
     font-size: 18px; }
   main a:link, main a:visited {
     color: #0055d4;
-    text-decoration: none;
-    border-bottom: 1px solid #d5e5ff; }
+    text-decoration: underline solid #d5e5ff; }
   main a:hover, main a:focus {
     color: #d40000;
-    border-bottom-color: #ffd5d5;
-    background-color: #ffffff; }
+    text-decoration: underline solid #ffd5d5; }
