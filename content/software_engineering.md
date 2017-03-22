@@ -65,6 +65,10 @@ title: Software Engineering
 
 принцип необходимой достаточности
 
+**lean**
+
+легковесный
+
 **MOSCOW** (Must, Should, Could, Won't)
 
 обязательно, необходимо, желательно, нежелательно
