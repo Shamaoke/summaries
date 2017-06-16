@@ -52,21 +52,18 @@
       <h1 id="Комментарии">Комментарии</h1>
       <div id='disqus_thread'>
         <script>
-          // Configuration variables
-          var disqus_shortname  = 'summaries-shamaoke'
-          var disqus_identifier = 'gradle'
-          var disqus_url        = 'https://shamaoke.github.io/summaries/gradle/'
+          let disqus_shortname  = 'summaries-shamaoke'
+          let disqus_identifier = 'gradle'
+          let disqus_url        = 'https://shamaoke.github.io/summaries/gradle/'
           
-          // Don't edit below this line
-          ;(function() {
-            var dsq = document.createElement('script')
           
-                dsq.type  = 'text/javascript'
-                dsq.async = true
-                dsq.src   = '//' + disqus_shortname + '.disqus.com/embed.js'
+          let dsq = document.createElement('script')
           
-            ;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-          })()
+              dsq.type  = 'text/javascript'
+              dsq.async = true
+              dsq.src   = `https://${disqus_shortname}.disqus.com/embed.js`
+          
+          document.getElementsByTagName('head')[0].appendChild(dsq)
         </script>
       </div>
     </main>
