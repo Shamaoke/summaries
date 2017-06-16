@@ -4,14 +4,9 @@ compile '/summaries/*.sass' do
   filter :sass
 end
 
-compile '/summaries/index.md' do
-  filter :kramdown
-  layout '/default.haml'
-end
-
 compile '/summaries/*.md' do
   filter :kramdown
-  layout '/summary.haml'
+  layout '/default.haml'
 end
 
 compile '/summaries/assets/fonts/*.woff' do
