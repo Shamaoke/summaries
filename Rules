@@ -1,6 +1,6 @@
 layout '/*', :haml
 
-compile '/summaries/*.sass' do
+compile '/summaries/assets/stylesheets/*.sass' do
   filter :sass
 end
 
@@ -13,8 +13,8 @@ compile '/summaries/assets/fonts/*.woff' do
   # no actions should be made
 end
 
-route '/summaries/*.sass' do
-  "#{item.identifier.without_ext}.css"
+route '/summaries/assets/stylesheets/index.sass' do
+  '/summaries/stylesheet.css'
 end
 
 route '/summaries/index.md' do
