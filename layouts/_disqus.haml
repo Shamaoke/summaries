@@ -1,17 +1,14 @@
 %div{id: 'disqus_thread'}
   :javascript
-    // Configuration variables
-    var disqus_shortname  = 'summaries-shamaoke'
-    var disqus_identifier = '#{File.basename @item.identifier.without_ext, '*.'}'
-    var disqus_url        = 'https://shamaoke.github.io#{@item.identifier.without_ext}/'
+    let disqus_shortname  = 'summaries-shamaoke'
+    let disqus_identifier = '#{File.basename @item.identifier.without_ext, '*.'}'
+    let disqus_url        = 'https://shamaoke.github.io#{@item.identifier.without_ext}/'
 
-    // Don't edit below this line
-    ;(function() {
-      var dsq = document.createElement('script')
 
-          dsq.type  = 'text/javascript'
-          dsq.async = true
-          dsq.src   = '//' + disqus_shortname + '.disqus.com/embed.js'
+    let dsq = document.createElement('script')
 
-      ;(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq)
-    })()
+        dsq.type  = 'text/javascript'
+        dsq.async = true
+        dsq.src   = `https://${disqus_shortname}.disqus.com/embed.js`
+
+    document.getElementsByTagName('head')[0].appendChild(dsq)
