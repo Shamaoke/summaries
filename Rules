@@ -5,7 +5,7 @@ compile '/summaries/assets/stylesheets/*.sass' do
 end
 
 compile '/summaries/*.md' do
-  filter :kramdown
+  filter :kramdown, math_engine: 'itex2mml'
   layout '/default.haml'
 end
 
