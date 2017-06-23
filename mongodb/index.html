@@ -1,1119 +1,1129 @@
 <!DOCTYPE html>
 <html lang='ru'>
-  <head>
-    <meta charset='utf-8'>
-    <link href='/summaries/stylesheet.css' rel='stylesheet'>
-    <title>MongoDB</title>
-  </head>
-  <body>
-    <header>
-      <h1>MongoDB</h1>
-    </header>
-    <main>
-      
-      <h1 id="Содержание">Содержание</h1>
-      
-      <p><a href="#Глоссарий">Глоссарий</a></p>
-      
-      <p><a href="#Перечень_элементов">Перечень элементов</a></p>
-      
-      <p><a href="#Типы_данных">Типы данных</a></p>
-      
-      <p><a href="#Перечень_вспомогательных_методов">Перечень вспомогательных методов</a></p>
-      
-      <p><a href="#Агрегирование">Агрегирование</a></p>
-      
-      <p><a href="#Перечень_операторов">Перечень операторов</a></p>
-      
-      <p><a href="#Проекция">Проекция</a></p>
-      
-      <p><a href="#Перечень_административных_команд">Перечень административных команд</a></p>
-      
-      <p><a href="#Перечень_внутренних_команд_командной_оболочки">Перечень внутренних команд командной оболочки</a></p>
-      
-      <p><a href="#Функции_драйверов">Функции драйверов</a></p>
-      
-      <p><a href="#Статистика_базы_данных">Статистика базы данных</a></p>
-      
-      <p><a href="#Статистика_коллекции">Статистика коллекции</a></p>
-      
-      <p><a href="#Статистика_запроса">Статистика запроса</a></p>
-      
-      <p><a href="#Системные_коллекции">Системные коллекции</a></p>
-      
-      <p><a href="#Гайды">Гайды</a></p>
-      
-      <p><a href="#Инструменты">Инструменты</a></p>
-      
-      <p><a href="#Файлы">Файлы</a></p>
-      
-      <p><a href="#Ссылки">Ссылки</a></p>
-      
-      <p><a href="#Комментарии">Комментарии</a></p>
-      
-      <h1 id="Глоссарий">Глоссарий</h1>
-      
-      <p><strong>age out</strong></p>
-      
-      <p>удаление на основе «возраста»</p>
-      
-      <p><strong>ad hoc query</strong></p>
-      
-      <p>динамический запрос</p>
-      
-      <p><strong>domain</strong></p>
-      
-      <p>предметная область</p>
-      
-      <p><strong>durability</strong></p>
-      
-      <p>надежность</p>
-      
-      <p><strong>capped collection</strong></p>
-      
-      <p>фиксированная коллекция</p>
-      
-      <p><strong>database management system</strong></p>
-      
-      <p>система хранения</p>
-      
-      <p><strong>eventual consistency</strong></p>
-      
-      <p>вероятностная конзистентность; вероятностная связность; вероятностная согласованность</p>
-      
-      <p><strong>extent</strong></p>
-      
-      <p>экстент (непрерывная область памяти)</p>
-      
-      <p><strong>failover</strong></p>
-      
-      <p>обход отказа</p>
-      
-      <p><strong>implementation specific directive</strong></p>
-      
-      <p>указание, специфичное для конкретной реализации протокола (HTTP)</p>
-      
-      <p><strong>journaling</strong></p>
-      
-      <p>отслеживание; регистрация; протоколирование (изменений)</p>
-      
-      <p><strong>logging</strong></p>
-      
-      <p>регистрация</p>
-      
-      <p><strong>lookup</strong></p>
-      
-      <p>выборка</p>
-      
-      <p><strong>map-reduce</strong></p>
-      
-      <p>связать-преобразовать; связать-свернуть</p>
-      
-      <p><strong>master-slave</strong></p>
-      
-      <p>ведущий-ведомый</p>
-      
-      <p><strong>non-terminal</strong></p>
-      
-      <p>непростой объект (составной, делимый, изменяемый, состоящий из нескольких простых объектов; молекула)</p>
-      
-      <p><strong>production rule</strong></p>
-      
-      <p>порождающее правило</p>
-      
-      <p><strong>reduce</strong></p>
-      
-      <p>свёртка</p>
-      
-      <p><strong>redundancy</strong></p>
-      
-      <p>резервирование</p>
-      
-      <p><strong>slug</strong></p>
-      
-      <p>именованный идентификатор ресурса</p>
-      
-      <p><strong>sniffer</strong></p>
-      
-      <p>анализатор трафика</p>
-      
-      <p><strong>strong consistency</strong></p>
-      
-      <p>устойчивая конзистентность</p>
-      
-      <p><strong>terminal</strong></p>
-      
-      <p>простой объект (неделимый, неизменяемый; атом)</p>
-      
-      <p><strong>throughput</strong></p>
-      
-      <p>пропускная способность</p>
-      
-      <h1 id="Перечень_элементов">Перечень элементов</h1>
-      
-      <p><strong>атрибут</strong></p>
-      
-      <p>Элемент предметной области, отраженный в поле документа. Бывает статическим и динамическим.</p>
-      
-      <p><strong>база данных</strong></p>
-      
-      <p>Логическая и физическая группа коллекций.</p>
-      
-      <p><strong>денормализация</strong></p>
-      
-      <p>Дублирование одного и того же поля объекта предметной области в нескольких объектах базы данных.</p>
-      
-      <p><strong>динамический атрибут</strong></p>
-      
-      <p>Атрибут, изменяющийся от документа к документу в отдельно взятой коллекции.</p>
-      
-      <p><strong>динамический запрос</strong></p>
-      
-      <p><strong>добавочный коэффициент</strong></p>
-      
-      <p>Число, определяющее количество места, которое будет выделено для хранения некоторого документа. В момент сохранения документа, при добавочном коэффициенте равном единице, будет выделено ровно столько места, сколько необходимо для хранения данного документа.</p>
-      
-      <p><strong>документ</strong></p>
-      
-      <p><a href="#структура_данных">Структура данных</a>, состоящая из полей, которые представляют из себя пары имя-значение. В системе MongoDB используется как формат хранения. Кроме того, документами являются <a href="#команда">команды</a> и <a href="#селектор_запроса">селекторы запроса</a>.</p>
-      
-      <p><strong>документ встроенный</strong></p>
-      
-      <p>Документ, являющийся значением поля документа.</p>
-      
-      <p><strong>драйвер</strong></p>
-      
-      <p><strong>индекс</strong></p>
-      
-      <p>Объект базы данных, создаваемый с целью повышения производительности поиска данных.</p>
-      
-      <p><strong>коллекция</strong></p>
-      
-      <p>Контейнер для структурно, либо концептуально схожих документов. Бывают пользовательскими и системными, а так же нормальными и фиксированными.</p>
-      
-      <p id="команда"><strong>команда</strong></p>
-      
-      <p>Запрос на осуществление действия, определённого в интерфейсе системы хранения.</p>
-      
-      <p><strong>командная оболочка</strong></p>
-      
-      <p><strong>комплект реплик</strong></p>
-      
-      <p><strong>контейнер</strong></p>
-      
-      <p>Поле документа, содержащее документ, предназначенный для хранения динамических атрибутов.</p>
-      
-      <p><strong>критерий селектора запроса</strong></p>
-      
-      <p>Поле документа, являющегося селектором запроса.</p>
-      
-      <p><strong>модель базы данных</strong></p>
-      
-      <p>Способ организации любых данных в рамках отдельно взятой СУБД.</p>
-      
-      <p><strong>модель данных</strong></p>
-      
-      <p>Способ организации данных некоторой предметной области вне каких-либо рамок.</p>
-      
-      <p><strong>нормализация</strong></p>
-      
-      <p>Представление объекта предметной области с помощью нескольких объектов базы данных.</p>
-      
-      <p><strong>обновление</strong></p>
-      
-      <p>Документ, используемый при обновлении документов.</p>
-      
-      <p><strong>объект базы данных</strong></p>
-      
-      <p><strong>объект предметной области</strong></p>
-      
-      <p><strong>объектно-реляционный меппер</strong></p>
-      
-      <p>Программный компонент, преобразующий инструкции объектно-ориентированного языка реализации в комманды языка запросов.</p>
-      
-      <p><strong>оператор запроса</strong></p>
-      
-      <p>Ключевое слово, используемое в специальном селекторе запроса.</p>
-      
-      <p><strong>проектирование схемы базы данных</strong></p>
-      
-      <p>Процесс выбора наилучшей репрезентации данных, учитывая функционал используемой системы (модель БД), природу данных (модель данных) и требования программируемого приложения.</p>
-      
-      <p><strong>проекция</strong></p>
-      
-      <p>Операция нахождения подмножества из множества, на основе заданного набора атрибутов.</p>
-      
-      <p><strong>репликация</strong></p>
-      
-      <p><strong>реплика</strong></p>
-      
-      <p id="селектор_запроса"><strong>селектор запроса</strong></p>
-      
-      <p>Документ, используемый при поиске документов. Бывает <a href="#селектор_запроса_общий">общим</a> и <a href="#селектор_запроса_специальный">специальным</a>.</p>
-      
-      <p id="селектор_запроса_общий"><strong>селектор запроса общий</strong></p>
-      
-      <p>Документ, содержащий имя поля искомого документа и либо значение, либо специальный селектор.</p>
-      
-      <p id="селектор_запроса_специальный"><strong>селектор запроса специальный</strong></p>
-      
-      <p>Документ, содержащий операторы запроса.</p>
-      
-      <p><strong>статический атрибут</strong></p>
-      
-      <p>Атрибут, присутствующий во всех документах коллекции.</p>
-      
-      <p id="структура_данных"><strong>структура данных</strong></p>
-      
-      <p>Способ организации однотипных данных.</p>
-      
-      <p><strong>схема базы данных</strong></p>
-      
-      <ul>
-        <li>
-          <p>Формальное описание того, как будут организованы данные конкретной предметной области в рамках отдельно взятой СУБД.</p>
-        </li>
-        <li>
-          <p>Способ организации данных конкретной предметной области в рамках отдельно взятой системы.</p>
-        </li>
-      </ul>
-      
-      <p><strong>тип данных</strong></p>
-      
-      <p>Форма, в которой представлены данные в хранилище, либо в драйвере.</p>
-      
-      <p><strong>указатель</strong></p>
-      
-      <p><strong>шардирование</strong></p>
-      
-      <p>Разделение хранимых объектов на части (на основе некоторого единого критерия) и разнесение этих частей по разным физическим хранилищам.</p>
-      
-      <h1 id="Типы_данных">Типы данных</h1>
-      
-      <p><strong>число с плавающей запятой</strong> (floating point number) “\x01”</p>
-      
-      <p><strong>cтрока</strong> (string) “\x02”</p>
-      
-      <p><strong>документ</strong> (document) “\x03”</p>
-      
-      <p><strong>массив</strong> (array) “\x04”</p>
-      
-      <p><strong>двоичный тип</strong> (binary) “\x05”</p>
-      
-      <p><strong>объектный идентификатор</strong> (object id) “\x07”</p>
-      
-      <p><strong>логический тип</strong> (boolean) “\x08”</p>
-      
-      <p><strong>дата-время</strong> (datetime) “\x09”</p>
-      
-      <p><strong>пустой тип</strong> (null) “\x0A”</p>
-      
-      <p><strong>регулярное выражение</strong> (reqular expression) “\x0B”</p>
-      
-      <p><strong>код JavaScript’а</strong> (JavaScript code) “\x0D”</p>
-      
-      <p><strong>код JavaScripta’a с контекстом</strong> (JavaScript code with context) “\x0F”</p>
-      
-      <p><strong>32-х битное целое число</strong> (32-bit integer) “\x10”</p>
-      
-      <p><strong>временна́я отметка</strong> (timestamp) “\x11”</p>
-      
-      <p><strong>64-х битное целое число</strong> (64-bit integer) “\x12”</p>
-      
-      <p><strong>десятичное число с плавающей запятой</strong> (decimal floating point number) “\x13”</p>
-      
-      <p><strong>минимальное значение</strong> (Minimum value) “\xFF”</p>
-      
-      <p><strong>максимальное значение</strong> (Maximum value) “\x7F”</p>
-      
-      <h1 id="Перечень_вспомогательных_методов">Перечень вспомогательных методов</h1>
-      
-      <p><strong>count</strong> [collection] [cursor]</p>
-      
-      <p><strong>createCollection</strong> [db]</p>
-      
-      <p><strong>drop</strong> [collection]</p>
-      
-      <p><strong>dropDatabase</strong> [db]</p>
-      
-      <p><strong>dropIndex</strong> [collection]</p>
-      
-      <p><strong>ensureIndex</strong> [collection]</p>
-      
-      <p><strong>explain</strong> [cursor]</p>
-      
-      <p><strong>find</strong> [collection]</p>
-      
-      <p><strong>findOne</strong> [collection]</p>
-      
-      <p><strong>getCollection</strong> [db]</p>
-      
-      <p><strong>getCollectionNames</strong> [db]</p>
-      
-      <p><strong>getIndexes</strong> [collection]</p>
-      
-      <p><strong>getName</strong> [db]</p>
-      
-      <p><strong>getSiblingDB</strong> [db]</p>
-      
-      <p><strong>help</strong> [db] [collection]</p>
-      
-      <p><strong>insert</strong> [collection]</p>
-      
-      <p><strong>limit</strong> [cursor]</p>
-      
-      <p><strong>printjson</strong> [global]</p>
-      
-      <p><strong>remove</strong> [collection]</p>
-      
-      <p><strong>renameCollection</strong> [collection]</p>
-      
-      <p><strong>runCommand</strong> [db]</p>
-      
-      <p><strong>runCommand</strong> [collection]</p>
-      
-      <p><strong>save</strong> [collection]</p>
-      
-      <p><strong>size</strong> [cursor]</p>
-      
-      <p><strong>skip</strong> [cursor]</p>
-      
-      <p><strong>sort</strong> [cursor]</p>
-      
-      <p><strong>stats</strong> [db] [collection]</p>
-      
-      <p><strong>toArray</strong> [cursor]</p>
-      
-      <p><strong>update</strong> [collection]</p>
-      
-      <h1 id="Агрегирование">Агрегирование</h1>
-      
-      <p><strong>минимум</strong></p>
-      
-      <pre><code>sort(-1).limit(1)&#x000A;</code></pre>
-      
-      <p><strong>максимум</strong></p>
-      
-      <pre><code>sort(1).limit(1)&#x000A;</code></pre>
-      
-      <p><strong>список уникальных значений</strong></p>
-      
-      <pre><code>distinct(поле, селектор)&#x000A;</code></pre>
-      
-      <p><strong>группировка</strong></p>
-      
-      <pre><code>group(ключ, изначальный документ, функция преобразования)&#x000A;</code></pre>
-      
-      <pre><code>mapReduce(map, reduce)&#x000A;</code></pre>
-      
-      <p><em>map</em> := функция связования ключа с коллекцией значений</p>
-      
-      <pre><code>[{key1: [1, 1, 1]}, {key2: [1]}, {key3: [1, 1]}]&#x000A;</code></pre>
-      
-      <p><em>reduce</em> := функция преобразования коллекции значений для ключа</p>
-      
-      <pre><code>[{_id: 'key1', value: 3}, {_id: 'key2', value: 1}, {_id: 'key3', value: 2}]&#x000A;</code></pre>
-      
-      <h1 id="Перечень_операторов">Перечень операторов</h1>
-      
-      <h2 id="Тэги">Тэги</h2>
-      
-      <p>[query]</p>
-      
-      <p>Запрос. Операторы помеченные данным тэгом используются только при выборки документов.</p>
-      
-      <p>[update]</p>
-      
-      <p>Обновление. Операторы помеченные данным тэгом используются только при обновлении документов.</p>
-      
-      <p><strong>$</strong> [update]</p>
-      
-      <ul>
-        <li>
-          <p>Заменить элемент массива.</p>
-        </li>
-        <li>
-          <p>Заменить поле документа, являющегося элементом массива.</p>
-        </li>
-      </ul>
-      
-      <pre><code>{'array.$': value}&#x000A;</code></pre>
-      
-      <pre><code>{'array.$.field': value}&#x000A;</code></pre>
-      
-      <pre><code>db.example.update({'data': 'Jack'}, {'$set': {'data.$': 'Jack The Ripper'}})&#x000A;</code></pre>
-      
-      <p><em>Find the first document with the given data, replace the given data with the provided value.</em></p>
-      
-      <p><em>Найти первый документ с заданными данными, заменить заданные данные предоставленным значением.</em></p>
-      
-      <pre><code>db.categories.update({'ancestors.name': 'two'},&#x000A;                     {'$set': {'ancestors.$.name': 'the great two'}},&#x000A;                     false, true)&#x000A;</code></pre>
-      
-      <p><em>Find documents with an ancestor with the given name, replace the given ancestor name with the provided value.</em></p>
-      
-      <p><em>Найти документы, содержащие предка с заданным именем, заменить заданное имя предка предоставленным значением.</em></p>
-      
-      <p><strong>$all</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле с составным значением, в котором содержаться все указанные значения.</p>
-      
-      <pre><code>{ field: { $all: [value1, value2, ..., valueN] } }&#x000A;</code></pre>
-      
-      <p><strong>$and</strong> [query] [logical]</p>
-      
-      <p>Документ, содержащий все поля с указанными значениями.</p>
-      
-      <pre><code>{ $and: [{ field1: value1 }, { field2: value2 }, ..., { fieldN: valueN }] }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.products.find({ $and: [{ tags: { $in: ['gift', 'holiday'] } }, { tags: { $in: ['gardening', 'landscaping'] } }] })&#x000A;</code></pre>
-      
-      <p><em>Find all documents where the “tags” field is “gift” or “holiday” and “gardening” or “landscaping”.</em></p>
-      
-      <p><em>Найти все документы, где поле „tags“ содержит значения „gift“ или „holiday“ и „gardening“ или „landscaping“.</em></p>
-      
-      <p><strong>$elemMatch</strong> [array]</p>
-      
-      <p>Выбрать все документы, содержащие массив документов в качестве значения одного из полей, где искомый документ содержит все поля указанного.</p>
-      
-      <pre><code>{ field: { $elemMatch: { field1: value1, field2: value2, ..., fieldN: valueN } } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.users.find({ addresses: { $elemMatch: { name: 'home', state: 'NY' } } })&#x000A;</code></pre>
-      
-      <p><em>Find all documents of the users collection in the current database with the “addresses” array containing a document having both the “name” and the “state” fields where “name” equals “home” and “state” equals “NY”.</em></p>
-      
-      <p><em>Найти все документы в коллекции „users“ текущей базы данных, с массивом „addresses“, содержащим документ, имеющий и поле „name“, и поле „state“ со значениями „home“ и „NY“ соответственно.</em></p>
-      
-      <p><strong>$exists</strong> [query] [field]</p>
-      
-      <p>Документ, содержащий указанное поле.</p>
-      
-      <pre><code>{ field: { $exists: logical_value } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.inventory.find({ qty: { $exists: true } })&#x000A;</code></pre>
-      
-      <p><em>Find all documents in the “inventory” collection where the field “qty” exists.</em></p>
-      
-      <p><em>Найти все документы в коллекции „inventory“, в которых есть поле „qty“.</em></p>
-      
-      <p><strong>$gt</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле со значением, большим указанного.</p>
-      
-      <pre><code>{ field: { $gt: value } }&#x000A;</code></pre>
-      
-      <p><strong>$gte</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле со значением, большим либо равным указанному.</p>
-      
-      <pre><code>{ field: { $gte: value } }&#x000A;</code></pre>
-      
-      <p><strong>$in</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле со значением, равным одному из указанных.</p>
-      
-      <pre><code>{ field: { $in: [value1, value2, ..., valueN] } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.inventory.find({qty: {$in: [5, 15]}})&#x000A;</code></pre>
-      
-      <p>Find all inventories with a quantity of 5 or 15.</p>
-      
-      <p>Find all documents in the “inventory” collection of the current database where the “qty” field has a value of 5 or 15.</p>
-      
-      <p>Найти все товары количеством равным 5 или 15.</p>
-      
-      <p>Найти все документы в коллекции „inventory“ текущей базы данных, в которых поле „qty“ содержит значение равное 5 или 15.</p>
-      
-      <p><strong>$inc</strong> [update]</p>
-      
-      <p>Повысить числовое значение поля на указанную величину (включая отрицательную).</p>
-      
-      <pre><code>{ $inc: { field: &lt;value&gt;, field2: &lt;value&gt;, ... } }&#x000A;</code></pre>
-      <pre><code>db.products.update({'name': 'name'}, {'$inc': {'reviews': 1}})&#x000A;</code></pre>
-      
-      <p>Find the first document in the products collection of the current database with the given name, increment by 1 the “reviews” field.</p>
-      
-      <p>Найти первый документ в коллекции продуктов текущей базы данных с заданным именем, повысить на единицу значение поля „reviews“.</p>
-      
-      <p><strong>$lt</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле со значением, меньшим указанного.</p>
-      
-      <pre><code>{ field: { $lt: value } }&#x000A;</code></pre>
-      
-      <p><strong>$lte</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле со значением, меньшим либо равным указанному.</p>
-      
-      <pre><code>{ field: { $lte: value } }&#x000A;</code></pre>
-      
-      <p><strong>$mod</strong> [element]</p>
-      
-      <p>Возвратить все документы, содержащие целое число в указанном поле, которое при делении на первый элемент массива, переданного данному оператору, даст остаток равный второму элементу данного массива.</p>
-      
-      <pre><code>{ field: { $mod: [divisor, remainder] } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.numbers.find({ value: { $mod: [3, 0] } })&#x000A;</code></pre>
-      
-      <p><em>Find all documents in the “numbers” collection of the current database where the “value” field contains an integer which when divided by 3 leaves a remainder of 0.</em></p>
-      
-      <p><em>Найти все документы в коллекции „numbers“ текущей базы данных, где поле „value“ содержит целое число, которое при делении на 3 дает остаток 0.</em></p>
-      
-      <p><strong>$natural</strong> [sort]</p>
-      
-      <p>Возвратить документы в восходящем или нисходящем порядке их занесения в коллекцию.</p>
-      
-      <pre><code>{ $natural: 1 }&#x000A;</code></pre>
-      
-      <pre><code>{ $natural: -1 }&#x000A;</code></pre>
-      
-      <p><strong>$ne</strong> [query] [comparison]</p>
-      
-      <p>Документ, содержащий поле со значением не равным указанному.</p>
-      
-      <pre><code>{ field: { $ne: value } }&#x000A;</code></pre>
-      
-      <p><strong>$nin</strong> [query] [comparison]</p>
-      
-      <p>Документ, в котором указанное поле либо отсутствует, либо его значение не равно одному из указанных.</p>
-      
-      <pre><code>{ field: { $nin: [value1, value2, ..., valueN] }&#x000A;</code></pre>
-      
-      <p><strong>$nor</strong> [query] [logical]</p>
-      
-      <p>Документ, который не содержит ни одного из указанных полей, либо ни одно из указанных полей не имеет переданный значений.</p>
-      
-      <pre><code>{ $nor: [{ field1: value1 }, { field2: value2 }, ..., { fieldN: valueN }] }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.docs.find({'$nor': [{a: 'one'}, {b: 'two'}]})  // a != 'one' and b != 'two'&#x000A;</code></pre>
-      
-      <p><em>Find all documents wich doesn’t contain the field “a” with the value “one” and the field “b” with the value “two” or any of the specified fields don’t exist.</em></p>
-      
-      <p><em>Найти все документы, которые не содержат поля „a“ со значением „one“ и поля „b“ со значением „two“ либо, не содержат одного или всех указанных полей.</em></p>
-      
-      <p><strong>$not</strong> [query] [logical]</p>
-      
-      <p>Документ, в которых указанное поле либо отсутствует, либо его значение противоположно определяемому отрицаемым селектором запроса.</p>
-      
-      <pre><code>{ field: { $not: { $operator: value } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.inventory.find({ price: { $not: { $gt: 1.99 } } })&#x000A;</code></pre>
-      
-      <p><em>Find all documents where the “price” field is not set or for which it is not true that the value of the field is greater than 1.99.</em></p>
-      
-      <p><em>Найти все документы, где поле „price“ отсутствует, или для которых неверно, что значение данного поля больше чем 1.99.</em></p>
-      
-      <p><strong>$or</strong> [query] [logical]</p>
-      
-      <p>Документ, содержащий хотя бы одно из полей с указанным значением.</p>
-      
-      <pre><code>{ $or: [{ field1: value1 }, { field2: value2 }, ..., { fieldN: valueN }] }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.inventory.find({ $or: [{ qty: 20 }, { sale: true }] })&#x000A;</code></pre>
-      
-      <p><em>Select all documents where the quantity field equals 20 or the sale field equals true.</em></p>
-      
-      <p><em>Выбрать все документы, где поле „количество“ равно 20 или поле „продано“ равно true.</em></p>
-      
-      <p><strong>$push</strong> [update]</p>
-      
-      <p><strong>действие</strong>: найти и добавить</p>
-      
-      <p><strong>данные</strong>: запрос, замена</p>
-      
-      <p>Добавить элемент в массив.</p>
-      
-      <pre><code>{ $push: { field: value } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.users.update({name: 'name'}, {$push: {addresses: {city: 'city'}}})&#x000A;</code></pre>
-      
-      <p><em style="text-decoration: underline; font-style: normal">опциональные данные</em></p>
-      
-      <p><em style="color: blue; font-style: normal">заменители</em></p>
-      
-      <ul>
-        <li>
-          <p>неименованные (<em>current db, given data, provided document</em>)</p>
-        </li>
-        <li>
-          <p>именованные (<em>addresses list, given name</em>)</p>
-        </li>
-      </ul>
-      
-      <p><em>Find the first document in the <strong>“users” collection</strong> of the <strong style="color: blue; font-style: normal">current database</strong> with the <strong>given name</strong>, add the <strong>provided document</strong> to the <strong>addresses list</strong>.</em></p>
-      
-      <p><em>Найти первый документ в <strong>коллекции „users“</strong> <strong>текущей бызы данных</strong> с <strong>заданным именем</strong>, добавить <strong>предоставленный документ</strong> в <strong>перечень адресов</strong>.</em></p>
-      
-      <p><strong>$regex</strong> [javascript]</p>
-      
-      <p>Выбрать все документы, содержащие текстовое поле, значение которого соответствует переданному регулярному выражению.</p>
-      
-      <pre><code>{ field: { $regex: 'regular expression', $options: 'options for the regular expression' } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.products.find({ producer: { $regex: 'acme.*corp', $options: 'i' } })&#x000A;</code></pre>
-      
-      <p><em>Find all documents in the “products” collection of the current database where the “producer” field contains the string which matches the regular expression “acme.*corp” regardless of the case.</em></p>
-      
-      <p><em>Найти все документы в коллекции „products“ текущей базы данных, в которых поле „producer“ содержит строку, соответствующую регулярному выражению „acme.*corp“, независимо от регистра.</em></p>
-      
-      <p><strong>$set</strong> [update]</p>
-      
-      <p>Заменить значение поля.</p>
-      
-      <pre><code>{ $set: { field: value } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.users.update({name: 'name'}, {$set: {address: 'address'}})&#x000A;</code></pre>
-      
-      <p><em>Find the first document in the users collection of the current database with the given name, replace the address field with the provided data.</em></p>
-      
-      <p><em>Найти первый документ в коллекции пользователей текущей базы данных с заданным именем, заменить значение адресного поля предоставленными данными.</em></p>
-      
-      <p><strong>$size</strong> [array]</p>
-      
-      <p>Выбрать все документы, содержащие массив в качестве значения одного из полей, где размер данного массива равен указанному.</p>
-      
-      <pre><code>{ field: { $size: value } }&#x000A;</code></pre>
-      
-      <p><strong>$slice</strong> [projection]</p>
-      
-      <p>Сократить массив, содержащийся в указанном поле выбранных документов.</p>
-      
-      <pre><code>{ name: { $slice: count } }&#x000A;</code></pre>
-      
-      <pre><code>{ name: { $slice: [skip, limit] } }&#x000A;</code></pre>
-      
-      <pre><code>db.posts.find({ }, { comments: { $slice: 5 } })&#x000A;</code></pre>
-      
-      <p><em>Find all posts, select the first 5 comments.</em></p>
-      
-      <p><em>Find all documents in the “posts” collection of the current database, select the first 5 elements from the “comments” array.</em></p>
-      
-      <p><em>Найти все статьи, выбрать первые 5 комментариев.</em></p>
-      
-      <p><em>Найти все документы в коллекции „posts“ текущей базы данных, выбрать первые пять элементов из массива „comments“.</em></p>
-      
-      <pre><code>db.posts.find({ }, { comments: { $slice: -5 } })&#x000A;</code></pre>
-      
-      <p><em>Find all posts, select the last 5 comments.</em></p>
-      
-      <p><em>Find all documents in the “posts” collection of the current database, select the last 5 elements from the “comments” array.</em></p>
-      
-      <p><em>Найти все статьи, выбрать последние 5 комментариев.</em></p>
-      
-      <p><em>Найти все документы в коллекции „posts“ текущей базы данных, выбрать последние пять элементов из массива „comments“.</em></p>
-      
-      <pre><code>db.posts.find({ }, { comments: { $slice: [2, 5] } })&#x000A;</code></pre>
-      
-      <p><em>Find all posts, skip 2 and select 5 comments.</em></p>
-      
-      <p><em>Find all documents in the “posts” collection of the current database, skip 2 and select 5 elements from the “comments” array.</em></p>
-      
-      <p><em>Найти все статьи, пропустить 2 и выбрать 5 комменариев.</em></p>
-      
-      <p><em>Найти все документы в коллекции „posts“ текущей базы данных, пропустить 2 и выбрать 5 элементов из массива „comments“.</em></p>
-      
-      <pre><code>db.posts.find({ }, { comments: { $slice: [-10, 5] } })&#x000A;</code></pre>
-      
-      <p><em>Find all posts, select 5 comments beginning with the 10th comment from the last one.</em></p>
-      
-      <p><em>Find all documents in the “posts” collection of the current database, select 5 elements from the “comments” array beginning with the 10th element from the end.</em></p>
-      
-      <p><em>Найти все статьи, выбрать 5 комментариев, начиная с 10-го комментария, считая от последнего.</em></p>
-      
-      <p><em>Найти все документы в коллекции „posts“ текущей базы данных, выбрать 5 элементов из массива „comments“, начиная с 10-го элемента, считая с конца данного массива.</em></p>
-      
-      <p><strong>$type</strong> [element]</p>
-      
-      <p>Выбрать все документы, в которых заданное поле содержит значение указанного типа.</p>
-      
-      <pre><code>{ field: { $type: type } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.users.find({ _id: { $type: 2 } })&#x000A;</code></pre>
-      
-      <p><em>Find all users with an id that has a type of 2.</em></p>
-      
-      <p><em>Find all documents in the “users” collection of the current database where the “_id” field has a value of a type 2.</em></p>
-      
-      <p><em>Найти все документы в коллекции „users“ текущей базы данных, в которых поле „_id“ имеет тип 2.</em></p>
-      
-      <p><strong>$unset</strong> [update]</p>
-      
-      <p>Удалить поле.</p>
-      
-      <pre><code>{ $unset: { field: '' } }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.users.update({ name: 'name' }, { $unset: { address: '' } })&#x000A;</code></pre>
-      
-      <p><em>Find the first document with the given name, unset the address field.</em></p>
-      
-      <p><em>Найти первый документ с заданным именем, снять поле „address“.</em></p>
-      
-      <p><strong>$where</strong> [javascript]</p>
-      
-      <p>Выбрать все документы для которых справедливо утверждение, переданное данному оператору в качестве аргумента.</p>
-      
-      <pre><code>{ $where: 'javascript statement or expression' }&#x000A;</code></pre>
-      
-      <p>Пример:</p>
-      
-      <pre><code>db.products.find({ $where: 'this.price &gt; 100' })&#x000A;</code></pre>
-      
-      <p><em>Find all documents of the “products” collection in the current database for which the javascript expression “this.price &gt; 10” is true.</em></p>
-      
-      <p><em>Найти все документы в коллекции „products“ текущей базы данных, для которых справедливо выражение javascript’а „this.price &gt; 10“.</em></p>
-      
-      <h1 id="Проекция">Проекция</h1>
-      
-      <pre><code>db.users.find({}, {name: 1})&#x000A;</code></pre>
-      
-      <p><em>Find all users including only their names in the documents of the result set.</em></p>
-      
-      <p><em>Найти всех пользователей, включая в документы полученной коллекции только их имена.</em></p>
-      
-      <pre><code>db.users.find({}, {surname: 0})&#x000A;</code></pre>
-      
-      <p><em>Find all users excluding their surnames from the documents of the result set.</em></p>
-      
-      <p><em>Найти всех пользователей, исключая из документов полученной коллекции их фамилии.</em></p>
-      
-      <h1 id="Перечень_административных_команд">Перечень административных команд</h1>
-      
-      <p><strong>listDatabases</strong></p>
-      
-      <h1 id="Перечень_внутренних_команд_командной_оболочки">Перечень внутренних команд командной оболочки</h1>
-      
-      <p><strong>exit</strong></p>
-      
-      <p>Выйти из командной оболочки</p>
-      
-      <p><strong>help</strong></p>
-      
-      <p><strong>it</strong></p>
-      
-      <p><strong>show collections</strong></p>
-      
-      <p>Отобразить перечень коллекций в текущей базе данных</p>
-      
-      <p><strong>show dbs</strong></p>
-      
-      <p>Отобразить перечень баз данных на текущем сервере</p>
-      
-      <p><strong>use</strong></p>
-      
-      <h1 id="Функции_драйверов">Функции драйверов</h1>
-      
-      <p><strong>Создавать идентификаторы</strong></p>
-      
-      <p><strong>Осуществлять сериализацию-десереализацию</strong></p>
-      
-      <p><strong>Выступать в роли клиента коммуникации</strong></p>
-      
-      <h1 id="Статистика_базы_данных">Статистика базы данных</h1>
-      
-      <p><strong>avgObjSize</strong> [scale]</p>
-      
-      <p>средний размер каждого объекта в коллекциях текущей базы данных (dataSize / objects)</p>
-      
-      <p><strong>collections</strong></p>
-      
-      <p>количество коллекций в текущей базе данных</p>
-      
-      <p><strong>dataSize</strong> [scale]</p>
-      
-      <p>общий размер данных, содержащихся в текущей базе данных; изменяется при удалении документов</p>
-      
-      <p><strong>db</strong></p>
-      
-      <p>имя текущей базы данных</p>
-      
-      <p><strong>fileSize</strong> [scale]</p>
-      
-      <p>общий размер файлов, содержащих текущую базу данных</p>
-      
-      <p><strong>indexes</strong></p>
-      
-      <p>количество индексов в коллекциях текущей базы данных</p>
-      
-      <p><strong>indexSize</strong> [scale]</p>
-      
-      <p>общий размер индексов, созданных в текущей базе данных</p>
-      
-      <p><strong>nsSizeMB</strong></p>
-      
-      <p>общий размер файлов, содержащих сведения о пространстве имен текущей базы данных</p>
-      
-      <p><strong>numExtents</strong></p>
-      
-      <p>количество экстентов в коллекциях текущей базы данных</p>
-      
-      <p><strong>objects</strong></p>
-      
-      <p>общее количество объектов (документов) во всех коллекциях текущей базы данных</p>
-      
-      <p><strong>storageSize</strong> [scale]</p>
-      
-      <p>общий размер, выделенный коллекциям на хранение документов в текущей базе данных; не изменяется при удалении документов, либо их полей</p>
-      
-      <h1 id="Статистика_коллекции">Статистика коллекции</h1>
-      
-      <p><strong>avgObjSize</strong> [scale]</p>
-      
-      <p>средний размер каждого объекта в текущей коллекции</p>
-      
-      <p><strong>count</strong></p>
-      
-      <p>количество документов в текущей коллекции</p>
-      
-      <p><strong>indexSizes</strong> [scale]</p>
-      
-      <p>имена и размеры всех индексов, содержащихся в текущей коллекции</p>
-      
-      <p><strong>lastExtentSize</strong> [scale]</p>
-      
-      <p>размер последнего выделенного экстента</p>
-      
-      <p><strong>nindexes</strong></p>
-      
-      <p>количество индексов в текущей коллекции</p>
-      
-      <p><strong>ns</strong></p>
-      
-      <p>имя пространства имен для текущей коллекции</p>
-      
-      <p><strong>numExtents</strong></p>
-      
-      <p>количество экстентов в текущей коллекции</p>
-      
-      <p><strong>paddingFactor</strong></p>
-      
-      <p>добавочный коэффициент</p>
-      
-      <p><strong>size</strong> [scale]</p>
-      
-      <p>общий размер данных, содержащихся в текущей коллекции</p>
-      
-      <p><strong>storageSize</strong> [scale]</p>
-      
-      <p>общий размер, выделенный текущей коллекции на хранение документов; не изменяется при удалении документов, либо их полей</p>
-      
-      <p><strong>systemFlags</strong></p>
-      
-      <p>системные метки</p>
-      
-      <p><strong>totalIndexSize</strong> [scale]</p>
-      
-      <p>общий размер индексов в текущей коллекции</p>
-      
-      <p><strong>userFlags</strong></p>
-      
-      <p>пользовательские метки</p>
-      
-      <h1 id="Статистика_запроса">Статистика запроса</h1>
-      
-      <p><strong>cursor</strong></p>
-      
-      <p><strong>n</strong></p>
-      
-      <p><strong>nscanned</strong></p>
-      
-      <h1 id="Системные_коллекции">Системные коллекции</h1>
-      
-      <p><strong>system.namespaces</strong></p>
-      
-      <p><strong>system.indexes</strong></p>
-      
-      <h1 id="Гайды">Гайды</h1>
-      
-      <p><strong>Д</strong>инамические атрибуты стоит размещать в зависимых документах.</p>
-      
-      <p><strong>М</strong>ассив документов, хранящийся в поле некоторого документа, фактически представляет из себя коллекцию документов зависимых от текущего.</p>
-      
-      <p><strong>П</strong>ри проектировании схемы базы данных важно учитывать количество запросов, которое потребуется совершить при извлечении тех или иных комплектов данных.</p>
-      
-      <p><strong>О</strong>ператоры отрицания (<em>$nin</em>, <em>$ne</em>) не эффективны при поиске, так как они неиндексируемы. Следует добавлять индексируемый критерий при использовании подобных операторов.</p>
-      
-      <p><strong>Д</strong>ля увеличения производительности высоконагруженных систем имеет смысл сокращать имена полей хранимых документов.</p>
-      
-      <p><strong>Д</strong>ля повышения эффективности запросов к документам с полями, содержащими массивы в качестве значений, следует кэшировать размеры этих массивов в отдельном атрибуте текущего документа.</p>
-      
-      <p>Например, запрос</p>
-      
-      <pre><code>db.collection.find({ field: { size: { $lt: value } } })&#x000A;</code></pre>
-      
-      <p>будет эффективен при следующей структуре документа</p>
-      
-      <pre><code>{ field: [value1, value2, ... vlaueN], size: N }&#x000A;</code></pre>
-      
-      <p>Запрос</p>
-      
-      <pre><code>db.collection.find({ field: { $size: { $lt: value } } })&#x000A;</code></pre>
-      
-      <p>при следующей структуре</p>
-      
-      <pre><code>{ field: [value1, value2, ... valueN] }&#x000A;</code></pre>
-      
-      <p>будет не эффективен.</p>
-      
-      <p><strong>Д</strong>ля повышения эффективности запросов, использующих оператор <em>$where</em>, следует включать в селектор запроса индексированный критерий.</p>
-      
-      <p>Т. е. вместо</p>
-      
-      <pre><code>db.products.find({ $where: 'this.price &gt; 100' })&#x000A;</code></pre>
-      
-      <p>использовать</p>
-      
-      <pre><code>db.products.find({ category: 'gardening', $where: 'this.price &gt; 100' })&#x000A;</code></pre>
-      
-      <p>где поле <em>category</em> является проиндексированным полем.</p>
-      
-      <p><strong>Ч</strong>тобы научиться создавать эффективные схемы баз данных, нужно хорошо знать все приемущества и недостатки используемой вами системы.</p>
-      
-      <p><strong>С</strong>ледует создавать индексы для всех полей документа, являющихся ссылками на другие документы.</p>
-      
-      <p><strong>К</strong>оллекция и индекс — сущности одного порядка. Если для некоторого поля документа коллекции создан индекс, то при обращении к этому полю, запрос перенаправляется от коллекции к созданному индексу.</p>
-      
-      <p><strong>И</strong>ндекс — коллекция со структурой, более эффективной для поиска.</p>
-      
-      <h1 id="Инструменты">Инструменты</h1>
-      
-      <p><strong>mongod</strong></p>
-      
-      <p><strong>mongos</strong></p>
-      
-      <p><strong>mongo</strong></p>
-      
-      <h1 id="Файлы">Файлы</h1>
-      
-      <p><em>/etc/mongodb.conf</em></p>
-      
-      <p>файл конфигурации</p>
-      
-      <p><em>/var/log/mongodb</em></p>
-      
-      <p>файл журнала</p>
-      
-      <p><em>/var/lib/mongodb/</em></p>
-      
-      <p>директория с файлами баз данных</p>
-      
-      <p><em>prefix/database_name.n</em></p>
-      
-      <p>файл базы данных</p>
-      
-      <p><em>prefix/database_name.ns</em></p>
-      
-      <p>файл пространства имен базы данных</p>
-      
-      <p><em>prefix/mongod.lock</em></p>
-      
-      <p>файл процессного идентификатора</p>
-      
-      <h1 id="Ссылки">Ссылки</h1>
-      
-      <p><a href="http://www.mongodb.org/">MongoDB. Официальный сайт</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/glossary">MongoDB. Глоссарий на официальном сайте</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/javascript/">MongoDB. Перечень вспомогательных методов</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/commands/">MongoDB. Перечень команд</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/mongo-shell/">MongoDB. Справочник по работе в командной оболочке</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/operators">MongoDB. Справочник по операторам</a></p>
-      
-      <p><a href="http://rdoc.info/gems/mongo/frames">MongoDB. Справочник по интерфейсу Ruby</a></p>
-      
-      <p><a href="http://mongodb.github.io/node-mongodb-native/">MongoDB. Node.js драйвер. Руководство пользователя</a></p>
-      
-      <p><a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">MongoDB. Протокол связи</a></p>
-      
-      <p><a href="http://www.mongodb.org/display/DOCS/Object+IDs#ObjectIDs-DocumentTimestamps">MongoDB. Объектные идентификаторы</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/database-statistics/">MongoDB. Статистика базы данных</a></p>
-      
-      <p><a href="http://docs.mongodb.org/manual/reference/collection-statistics/">MongoDB. Статистика коллекции</a></p>
-      
-      <p><a href="http://www.mongodb.org/display/DOCS/Explain">MongoDB. Статистика запроса</a></p>
-      
-      <p><a href="http://www.mongodb.org/display/DOCS/Capped+Collections">MongoDB. Фиксированные коллекции</a></p>
-      
-      <hr />
-      
-      <p><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/">MongoDB. Установка в Debian</a></p>
-      
-      <p><a href="http://www.mongodb.org/display/DOCS/Rails+3+-+Getting+Started">MongoDB. Настройка для использования в Ruby on Rails</a></p>
-      
-      <hr />
-      
-      <p><a href="http://mongoid.org">Mongoid. Официальный сайт</a></p>
-      
-      <p><a href="http://mongomapper.com">MongoMapper. Официальный сайт</a></p>
-      
-      <p><a href="http://bsonspec.org">BSON. Официальный сайт</a></p>
-      
-      <hr />
-      
-      <p><a href="http://ru.wikipedia.org/wiki/ORM">ORM</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Индекс_(базы_данных)">Индекс</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Модель_данных">Модель данных</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Нормальная_форма">Нормальная форма</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Отображение_файла_в_память">Отображение файла в память</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Формальный_язык">Формальный язык</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Формальная_грамматика">Формальная грамматика</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Шардирование">Шардирование</a></p>
-      
-      <p><a href="http://ru.wikipedia.org/wiki/Экстент">Экстент</a></p>
-      
-      <h1 id="Комментарии">Комментарии</h1>
-      <div id='disqus_thread'>
-        <script>
-          let disqus_shortname  = 'summaries-shamaoke'
-          let disqus_identifier = 'mongodb'
-          let disqus_url        = 'https://shamaoke.github.io/summaries/mongodb/'
-          
-          
-          let dsq = document.createElement('script')
-          
-              dsq.type  = 'text/javascript'
-              dsq.async = true
-              dsq.src   = `https://${disqus_shortname}.disqus.com/embed.js`
-          
-          document.getElementsByTagName('head')[0].appendChild(dsq)
-        </script>
-      </div>
-    </main>
-  </body>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<title>MongoDB</title>
+</head>
+<body>
+<header>
+<h1>MongoDB</h1>
+</header>
+<main>
+
+<h1 id="Содержание">Содержание</h1>
+
+<p><a href="#Глоссарий">Глоссарий</a></p>
+
+<p><a href="#Перечень_элементов">Перечень элементов</a></p>
+
+<p><a href="#Типы_данных">Типы данных</a></p>
+
+<p><a href="#Перечень_вспомогательных_методов">Перечень вспомогательных методов</a></p>
+
+<p><a href="#Агрегирование">Агрегирование</a></p>
+
+<p><a href="#Перечень_операторов">Перечень операторов</a></p>
+
+<p><a href="#Проекция">Проекция</a></p>
+
+<p><a href="#Перечень_административных_команд">Перечень административных команд</a></p>
+
+<p><a href="#Перечень_внутренних_команд_командной_оболочки">Перечень внутренних команд командной оболочки</a></p>
+
+<p><a href="#Функции_драйверов">Функции драйверов</a></p>
+
+<p><a href="#Статистика_базы_данных">Статистика базы данных</a></p>
+
+<p><a href="#Статистика_коллекции">Статистика коллекции</a></p>
+
+<p><a href="#Статистика_запроса">Статистика запроса</a></p>
+
+<p><a href="#Системные_коллекции">Системные коллекции</a></p>
+
+<p><a href="#Гайды">Гайды</a></p>
+
+<p><a href="#Инструменты">Инструменты</a></p>
+
+<p><a href="#Файлы">Файлы</a></p>
+
+<p><a href="#Ссылки">Ссылки</a></p>
+
+<p><a href="#Комментарии">Комментарии</a></p>
+
+<h1 id="Глоссарий">Глоссарий</h1>
+
+<p><strong>age out</strong></p>
+
+<p>удаление на основе «возраста»</p>
+
+<p><strong>ad hoc query</strong></p>
+
+<p>динамический запрос</p>
+
+<p><strong>domain</strong></p>
+
+<p>предметная область</p>
+
+<p><strong>durability</strong></p>
+
+<p>надежность</p>
+
+<p><strong>capped collection</strong></p>
+
+<p>фиксированная коллекция</p>
+
+<p><strong>database management system</strong></p>
+
+<p>система хранения</p>
+
+<p><strong>eventual consistency</strong></p>
+
+<p>вероятностная конзистентность; вероятностная связность; вероятностная согласованность</p>
+
+<p><strong>extent</strong></p>
+
+<p>экстент (непрерывная область памяти)</p>
+
+<p><strong>failover</strong></p>
+
+<p>обход отказа</p>
+
+<p><strong>implementation specific directive</strong></p>
+
+<p>указание, специфичное для конкретной реализации протокола (HTTP)</p>
+
+<p><strong>journaling</strong></p>
+
+<p>отслеживание; регистрация; протоколирование (изменений)</p>
+
+<p><strong>logging</strong></p>
+
+<p>регистрация</p>
+
+<p><strong>lookup</strong></p>
+
+<p>выборка</p>
+
+<p><strong>map-reduce</strong></p>
+
+<p>связать-преобразовать; связать-свернуть</p>
+
+<p><strong>master-slave</strong></p>
+
+<p>ведущий-ведомый</p>
+
+<p><strong>non-terminal</strong></p>
+
+<p>непростой объект (составной, делимый, изменяемый, состоящий из нескольких простых объектов; молекула)</p>
+
+<p><strong>production rule</strong></p>
+
+<p>порождающее правило</p>
+
+<p><strong>reduce</strong></p>
+
+<p>свёртка</p>
+
+<p><strong>redundancy</strong></p>
+
+<p>резервирование</p>
+
+<p><strong>slug</strong></p>
+
+<p>именованный идентификатор ресурса</p>
+
+<p><strong>sniffer</strong></p>
+
+<p>анализатор трафика</p>
+
+<p><strong>strong consistency</strong></p>
+
+<p>устойчивая конзистентность</p>
+
+<p><strong>terminal</strong></p>
+
+<p>простой объект (неделимый, неизменяемый; атом)</p>
+
+<p><strong>throughput</strong></p>
+
+<p>пропускная способность</p>
+
+<h1 id="Перечень_элементов">Перечень элементов</h1>
+
+<p><strong>атрибут</strong></p>
+
+<p>Элемент предметной области, отраженный в поле документа. Бывает статическим и динамическим.</p>
+
+<p><strong>база данных</strong></p>
+
+<p>Логическая и физическая группа коллекций.</p>
+
+<p><strong>денормализация</strong></p>
+
+<p>Дублирование одного и того же поля объекта предметной области в нескольких объектах базы данных.</p>
+
+<p><strong>динамический атрибут</strong></p>
+
+<p>Атрибут, изменяющийся от документа к документу в отдельно взятой коллекции.</p>
+
+<p><strong>динамический запрос</strong></p>
+
+<p><strong>добавочный коэффициент</strong></p>
+
+<p>Число, определяющее количество места, которое будет выделено для хранения некоторого документа. В момент сохранения документа, при добавочном коэффициенте равном единице, будет выделено ровно столько места, сколько необходимо для хранения данного документа.</p>
+
+<p><strong>документ</strong></p>
+
+<p><a href="#структура_данных">Структура данных</a>, состоящая из полей, которые представляют из себя пары имя-значение. В системе MongoDB используется как формат хранения. Кроме того, документами являются <a href="#команда">команды</a> и <a href="#селектор_запроса">селекторы запроса</a>.</p>
+
+<p><strong>документ встроенный</strong></p>
+
+<p>Документ, являющийся значением поля документа.</p>
+
+<p><strong>драйвер</strong></p>
+
+<p><strong>индекс</strong></p>
+
+<p>Объект базы данных, создаваемый с целью повышения производительности поиска данных.</p>
+
+<p><strong>коллекция</strong></p>
+
+<p>Контейнер для структурно, либо концептуально схожих документов. Бывают пользовательскими и системными, а так же нормальными и фиксированными.</p>
+
+<p id="команда"><strong>команда</strong></p>
+
+<p>Запрос на осуществление действия, определённого в интерфейсе системы хранения.</p>
+
+<p><strong>командная оболочка</strong></p>
+
+<p><strong>комплект реплик</strong></p>
+
+<p><strong>контейнер</strong></p>
+
+<p>Поле документа, содержащее документ, предназначенный для хранения динамических атрибутов.</p>
+
+<p><strong>критерий селектора запроса</strong></p>
+
+<p>Поле документа, являющегося селектором запроса.</p>
+
+<p><strong>модель базы данных</strong></p>
+
+<p>Способ организации любых данных в рамках отдельно взятой СУБД.</p>
+
+<p><strong>модель данных</strong></p>
+
+<p>Способ организации данных некоторой предметной области вне каких-либо рамок.</p>
+
+<p id="нетерминал"><strong>нетерминал</strong></p>
+
+<p>Объект языка, не имеющий конкретного символьного выражения и состоящий из объектов имеющих таковое; „слово“ (см. также <a href="#терминал">терминал</a>).</p>
+
+<p><strong>нормализация</strong></p>
+
+<p>Представление объекта предметной области с помощью нескольких объектов базы данных.</p>
+
+<p><strong>обновление</strong></p>
+
+<p>Документ, используемый при обновлении документов.</p>
+
+<p><strong>объект базы данных</strong></p>
+
+<p><strong>объект предметной области</strong></p>
+
+<p><strong>объектно-реляционный меппер</strong></p>
+
+<p>Программный компонент, преобразующий инструкции объектно-ориентированного языка реализации в команды языка запросов.</p>
+
+<p><strong>оператор запроса</strong></p>
+
+<p>Ключевое слово, используемое в специальном селекторе запроса.</p>
+
+<p><strong>проектирование схемы базы данных</strong></p>
+
+<p>Процесс выбора наилучшей репрезентации данных, учитывая функционал используемой системы (модель БД), природу данных (модель данных) и требования программируемого приложения.</p>
+
+<p><strong>проекция</strong></p>
+
+<p>Операция нахождения подмножества из множества, на основе заданного набора атрибутов.</p>
+
+<p><strong>репликация</strong></p>
+
+<p><strong>реплика</strong></p>
+
+<p id="селектор_запроса"><strong>селектор запроса</strong></p>
+
+<p>Документ, используемый при поиске документов. Бывает <a href="#селектор_запроса_общий">общим</a> и <a href="#селектор_запроса_специальный">специальным</a>.</p>
+
+<p id="селектор_запроса_общий"><strong>селектор запроса общий</strong></p>
+
+<p>Документ, содержащий имя поля искомого документа и либо значение, либо специальный селектор.</p>
+
+<p id="селектор_запроса_специальный"><strong>селектор запроса специальный</strong></p>
+
+<p>Документ, содержащий операторы запроса.</p>
+
+<p><strong>статический атрибут</strong></p>
+
+<p>Атрибут, присутствующий во всех документах коллекции.</p>
+
+<p id="структура_данных"><strong>структура данных</strong></p>
+
+<p>Способ организации однотипных данных.</p>
+
+<p><strong>схема базы данных</strong></p>
+
+<ul>
+  <li>
+    <p>Формальное описание того, как будут организованы данные конкретной предметной области в рамках отдельно взятой СУБД.</p>
+  </li>
+  <li>
+    <p>Способ организации данных конкретной предметной области в рамках отдельно взятой системы.</p>
+  </li>
+</ul>
+
+<p id="терминал"><strong>терминал</strong></p>
+
+<p>Объект языка, имеющий конкретное символьное выражение; „буква“ (см. также <a href="#нетерминал">нетерминал</a>).</p>
+
+<p><strong>тип данных</strong></p>
+
+<p>Форма, в которой представлены данные в хранилище, либо в драйвере.</p>
+
+<p><strong>указатель</strong></p>
+
+<p><strong>шардирование</strong></p>
+
+<p>Разделение хранимых объектов на части (на основе некоторого единого критерия) и разнесение этих частей по разным физическим хранилищам.</p>
+
+<h1 id="Типы_данных">Типы данных</h1>
+
+<p><strong>число с плавающей запятой</strong> (floating point number) “\x01”</p>
+
+<p><strong>строка</strong> (string) “\x02”</p>
+
+<p><strong>документ</strong> (document) “\x03”</p>
+
+<p><strong>массив</strong> (array) “\x04”</p>
+
+<p><strong>двоичный тип</strong> (binary) “\x05”</p>
+
+<p><strong>объектный идентификатор</strong> (object id) “\x07”</p>
+
+<p><strong>логический тип</strong> (boolean) “\x08”</p>
+
+<p><strong>дата-время</strong> (datetime) “\x09”</p>
+
+<p><strong>пустой тип</strong> (null) “\x0A”</p>
+
+<p><strong>регулярное выражение</strong> (regular expression) “\x0B”</p>
+
+<p><strong>код JavaScript’а</strong> (JavaScript code) “\x0D”</p>
+
+<p><strong>код JavaScripta’a с контекстом</strong> (JavaScript code with context) “\x0F”</p>
+
+<p><strong>32-х битное целое число</strong> (32-bit integer) “\x10”</p>
+
+<p><strong>временна́я отметка</strong> (timestamp) “\x11”</p>
+
+<p><strong>64-х битное целое число</strong> (64-bit integer) “\x12”</p>
+
+<p><strong>десятичное число с плавающей запятой</strong> (decimal floating point number) “\x13”</p>
+
+<p><strong>минимальное значение</strong> (Minimum value) “\xFF”</p>
+
+<p><strong>максимальное значение</strong> (Maximum value) “\x7F”</p>
+
+<h1 id="Перечень_вспомогательных_методов">Перечень вспомогательных методов</h1>
+
+<p><strong>count</strong> [collection] [cursor]</p>
+
+<p><strong>createCollection</strong> [db]</p>
+
+<p><strong>drop</strong> [collection]</p>
+
+<p><strong>dropDatabase</strong> [db]</p>
+
+<p><strong>dropIndex</strong> [collection]</p>
+
+<p><strong>ensureIndex</strong> [collection]</p>
+
+<p><strong>explain</strong> [cursor]</p>
+
+<p><strong>find</strong> [collection]</p>
+
+<p><strong>findOne</strong> [collection]</p>
+
+<p><strong>getCollection</strong> [db]</p>
+
+<p><strong>getCollectionNames</strong> [db]</p>
+
+<p><strong>getIndexes</strong> [collection]</p>
+
+<p><strong>getName</strong> [db]</p>
+
+<p><strong>getSiblingDB</strong> [db]</p>
+
+<p><strong>help</strong> [db] [collection]</p>
+
+<p><strong>insert</strong> [collection]</p>
+
+<p><strong>limit</strong> [cursor]</p>
+
+<p><strong>printjson</strong> [global]</p>
+
+<p><strong>remove</strong> [collection]</p>
+
+<p><strong>renameCollection</strong> [collection]</p>
+
+<p><strong>runCommand</strong> [db]</p>
+
+<p><strong>runCommand</strong> [collection]</p>
+
+<p><strong>save</strong> [collection]</p>
+
+<p><strong>size</strong> [cursor]</p>
+
+<p><strong>skip</strong> [cursor]</p>
+
+<p><strong>sort</strong> [cursor]</p>
+
+<p><strong>stats</strong> [db] [collection]</p>
+
+<p><strong>toArray</strong> [cursor]</p>
+
+<p><strong>update</strong> [collection]</p>
+
+<h1 id="Агрегирование">Агрегирование</h1>
+
+<p><strong>минимум</strong></p>
+
+<pre><code>sort(-1).limit(1)&#x000A;</code></pre>
+
+<p><strong>максимум</strong></p>
+
+<pre><code>sort(1).limit(1)&#x000A;</code></pre>
+
+<p><strong>список уникальных значений</strong></p>
+
+<pre><code>distinct(поле, селектор)&#x000A;</code></pre>
+
+<p><strong>группировка</strong></p>
+
+<pre><code>group(ключ, изначальный документ, функция преобразования)&#x000A;</code></pre>
+
+<pre><code>mapReduce(map, reduce)&#x000A;</code></pre>
+
+<p><em>map</em> := функция связывания ключа с коллекцией значений</p>
+
+<pre><code>[{key1: [1, 1, 1]}, {key2: [1]}, {key3: [1, 1]}]&#x000A;</code></pre>
+
+<p><em>reduce</em> := функция преобразования коллекции значений для ключа</p>
+
+<pre><code>[{_id: 'key1', value: 3}, {_id: 'key2', value: 1}, {_id: 'key3', value: 2}]&#x000A;</code></pre>
+
+<h1 id="Перечень_операторов">Перечень операторов</h1>
+
+<h2 id="Тэги">Тэги</h2>
+
+<p>[query]</p>
+
+<p>Запрос. Операторы помеченные данным тэгом используются только при выборки документов.</p>
+
+<p>[update]</p>
+
+<p>Обновление. Операторы помеченные данным тэгом используются только при обновлении документов.</p>
+
+<p><strong>$</strong> [update]</p>
+
+<ul>
+  <li>
+    <p>Заменить элемент массива.</p>
+  </li>
+  <li>
+    <p>Заменить поле документа, являющегося элементом массива.</p>
+  </li>
+</ul>
+
+<pre><code>{'array.$': value}&#x000A;</code></pre>
+
+<pre><code>{'array.$.field': value}&#x000A;</code></pre>
+
+<pre><code>db.example.update({'data': 'Jack'}, {'$set': {'data.$': 'Jack The Ripper'}})&#x000A;</code></pre>
+
+<p><em>Find the first document with the given data, replace the given data with the provided value.</em></p>
+
+<p><em>Найти первый документ с заданными данными, заменить заданные данные предоставленным значением.</em></p>
+
+<pre><code>db.categories.update({'ancestors.name': 'two'},&#x000A;                     {'$set': {'ancestors.$.name': 'the great two'}},&#x000A;                     false, true)&#x000A;</code></pre>
+
+<p><em>Find documents with an ancestor with the given name, replace the given ancestor name with the provided value.</em></p>
+
+<p><em>Найти документы, содержащие предка с заданным именем, заменить заданное имя предка предоставленным значением.</em></p>
+
+<p><strong>$all</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле с составным значением, в котором содержаться все указанные значения.</p>
+
+<pre><code>{ field: { $all: [value1, value2, ..., valueN] } }&#x000A;</code></pre>
+
+<p><strong>$and</strong> [query] [logical]</p>
+
+<p>Документ, содержащий все поля с указанными значениями.</p>
+
+<pre><code>{ $and: [{ field1: value1 }, { field2: value2 }, ..., { fieldN: valueN }] }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.products.find({ $and: [{ tags: { $in: ['gift', 'holiday'] } }, { tags: { $in: ['gardening', 'landscaping'] } }] })&#x000A;</code></pre>
+
+<p><em>Find all documents where the “tags” field is “gift” or “holiday” and “gardening” or “landscaping”.</em></p>
+
+<p><em>Найти все документы, где поле „tags“ содержит значения „gift“ или „holiday“ и „gardening“ или „landscaping“.</em></p>
+
+<p><strong>$elemMatch</strong> [array]</p>
+
+<p>Выбрать все документы, содержащие массив документов в качестве значения одного из полей, где искомый документ содержит все поля указанного.</p>
+
+<pre><code>{ field: { $elemMatch: { field1: value1, field2: value2, ..., fieldN: valueN } } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.users.find({ addresses: { $elemMatch: { name: 'home', state: 'NY' } } })&#x000A;</code></pre>
+
+<p><em>Find all documents of the users collection in the current database with the “addresses” array containing a document having both the “name” and the “state” fields where “name” equals “home” and “state” equals “NY”.</em></p>
+
+<p><em>Найти все документы в коллекции „users“ текущей базы данных, с массивом „addresses“, содержащим документ, имеющий и поле „name“, и поле „state“ со значениями „home“ и „NY“ соответственно.</em></p>
+
+<p><strong>$exists</strong> [query] [field]</p>
+
+<p>Документ, содержащий указанное поле.</p>
+
+<pre><code>{ field: { $exists: logical_value } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.inventory.find({ qty: { $exists: true } })&#x000A;</code></pre>
+
+<p><em>Find all documents in the “inventory” collection where the field “qty” exists.</em></p>
+
+<p><em>Найти все документы в коллекции „inventory“, в которых есть поле „qty“.</em></p>
+
+<p><strong>$gt</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле со значением, большим указанного.</p>
+
+<pre><code>{ field: { $gt: value } }&#x000A;</code></pre>
+
+<p><strong>$gte</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле со значением, большим либо равным указанному.</p>
+
+<pre><code>{ field: { $gte: value } }&#x000A;</code></pre>
+
+<p><strong>$in</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле со значением, равным одному из указанных.</p>
+
+<pre><code>{ field: { $in: [value1, value2, ..., valueN] } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.inventory.find({qty: {$in: [5, 15]}})&#x000A;</code></pre>
+
+<p>Find all inventories with a quantity of 5 or 15.</p>
+
+<p>Find all documents in the “inventory” collection of the current database where the “qty” field has a value of 5 or 15.</p>
+
+<p>Найти все товары количеством равным 5 или 15.</p>
+
+<p>Найти все документы в коллекции „inventory“ текущей базы данных, в которых поле „qty“ содержит значение равное 5 или 15.</p>
+
+<p><strong>$inc</strong> [update]</p>
+
+<p>Повысить числовое значение поля на указанную величину (включая отрицательную).</p>
+
+<pre><code>{ $inc: { field: &lt;value&gt;, field2: &lt;value&gt;, ... } }&#x000A;</code></pre>
+<pre><code>db.products.update({'name': 'name'}, {'$inc': {'reviews': 1}})&#x000A;</code></pre>
+
+<p>Find the first document in the products collection of the current database with the given name, increment by 1 the “reviews” field.</p>
+
+<p>Найти первый документ в коллекции продуктов текущей базы данных с заданным именем, повысить на единицу значение поля „reviews“.</p>
+
+<p><strong>$lt</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле со значением, меньшим указанного.</p>
+
+<pre><code>{ field: { $lt: value } }&#x000A;</code></pre>
+
+<p><strong>$lte</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле со значением, меньшим либо равным указанному.</p>
+
+<pre><code>{ field: { $lte: value } }&#x000A;</code></pre>
+
+<p><strong>$mod</strong> [element]</p>
+
+<p>Возвратить все документы, содержащие целое число в указанном поле, которое при делении на первый элемент массива, переданного данному оператору, даст остаток равный второму элементу данного массива.</p>
+
+<pre><code>{ field: { $mod: [divisor, remainder] } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.numbers.find({ value: { $mod: [3, 0] } })&#x000A;</code></pre>
+
+<p><em>Find all documents in the “numbers” collection of the current database where the “value” field contains an integer which when divided by 3 leaves a remainder of 0.</em></p>
+
+<p><em>Найти все документы в коллекции „numbers“ текущей базы данных, где поле „value“ содержит целое число, которое при делении на 3 дает остаток 0.</em></p>
+
+<p><strong>$natural</strong> [sort]</p>
+
+<p>Возвратить документы в восходящем или нисходящем порядке их занесения в коллекцию.</p>
+
+<pre><code>{ $natural: 1 }&#x000A;</code></pre>
+
+<pre><code>{ $natural: -1 }&#x000A;</code></pre>
+
+<p><strong>$ne</strong> [query] [comparison]</p>
+
+<p>Документ, содержащий поле со значением не равным указанному.</p>
+
+<pre><code>{ field: { $ne: value } }&#x000A;</code></pre>
+
+<p><strong>$nin</strong> [query] [comparison]</p>
+
+<p>Документ, в котором указанное поле либо отсутствует, либо его значение не равно одному из указанных.</p>
+
+<pre><code>{ field: { $nin: [value1, value2, ..., valueN] }&#x000A;</code></pre>
+
+<p><strong>$nor</strong> [query] [logical]</p>
+
+<p>Документ, который не содержит ни одного из указанных полей, либо ни одно из указанных полей не имеет переданный значений.</p>
+
+<pre><code>{ $nor: [{ field1: value1 }, { field2: value2 }, ..., { fieldN: valueN }] }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.docs.find({'$nor': [{a: 'one'}, {b: 'two'}]})  // a != 'one' and b != 'two'&#x000A;</code></pre>
+
+<p><em>Find all documents which doesn’t contain the field “a” with the value “one” and the field “b” with the value “two” or any of the specified fields don’t exist.</em></p>
+
+<p><em>Найти все документы, которые не содержат поля „a“ со значением „one“ и поля „b“ со значением „two“ либо, не содержат одного или всех указанных полей.</em></p>
+
+<p><strong>$not</strong> [query] [logical]</p>
+
+<p>Документ, в которых указанное поле либо отсутствует, либо его значение противоположно определяемому отрицаемым селектором запроса.</p>
+
+<pre><code>{ field: { $not: { $operator: value } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.inventory.find({ price: { $not: { $gt: 1.99 } } })&#x000A;</code></pre>
+
+<p><em>Find all documents where the “price” field is not set or for which it is not true that the value of the field is greater than 1.99.</em></p>
+
+<p><em>Найти все документы, где поле „price“ отсутствует, или для которых неверно, что значение данного поля больше чем 1.99.</em></p>
+
+<p><strong>$or</strong> [query] [logical]</p>
+
+<p>Документ, содержащий хотя бы одно из полей с указанным значением.</p>
+
+<pre><code>{ $or: [{ field1: value1 }, { field2: value2 }, ..., { fieldN: valueN }] }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.inventory.find({ $or: [{ qty: 20 }, { sale: true }] })&#x000A;</code></pre>
+
+<p><em>Select all documents where the quantity field equals 20 or the sale field equals true.</em></p>
+
+<p><em>Выбрать все документы, где поле „количество“ равно 20 или поле „продано“ равно true.</em></p>
+
+<p><strong>$push</strong> [update]</p>
+
+<p><strong>действие</strong>: найти и добавить</p>
+
+<p><strong>данные</strong>: запрос, замена</p>
+
+<p>Добавить элемент в массив.</p>
+
+<pre><code>{ $push: { field: value } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.users.update({name: 'name'}, {$push: {addresses: {city: 'city'}}})&#x000A;</code></pre>
+
+<p><em style="text-decoration: underline; font-style: normal">опциональные данные</em></p>
+
+<p><em style="color: blue; font-style: normal">заменители</em></p>
+
+<ul>
+  <li>
+    <p>неименованные (<em>current db, given data, provided document</em>)</p>
+  </li>
+  <li>
+    <p>именованные (<em>addresses list, given name</em>)</p>
+  </li>
+</ul>
+
+<p><em>Find the first document in the <strong>“users” collection</strong> of the <strong style="color: blue; font-style: normal">current database</strong> with the <strong>given name</strong>, add the <strong>provided document</strong> to the <strong>addresses list</strong>.</em></p>
+
+<p><em>Найти первый документ в <strong>коллекции „users“</strong> <strong>текущей базы данных</strong> с <strong>заданным именем</strong>, добавить <strong>предоставленный документ</strong> в <strong>перечень адресов</strong>.</em></p>
+
+<p><strong>$regex</strong> [javascript]</p>
+
+<p>Выбрать все документы, содержащие текстовое поле, значение которого соответствует переданному регулярному выражению.</p>
+
+<pre><code>{ field: { $regex: 'regular expression', $options: 'options for the regular expression' } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.products.find({ producer: { $regex: 'acme.*corp', $options: 'i' } })&#x000A;</code></pre>
+
+<p><em>Find all documents in the “products” collection of the current database where the “producer” field contains the string which matches the regular expression “acme.*corp” regardless of the case.</em></p>
+
+<p><em>Найти все документы в коллекции „products“ текущей базы данных, в которых поле „producer“ содержит строку, соответствующую регулярному выражению „acme.*corp“, независимо от регистра.</em></p>
+
+<p><strong>$set</strong> [update]</p>
+
+<p>Заменить значение поля.</p>
+
+<pre><code>{ $set: { field: value } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.users.update({name: 'name'}, {$set: {address: 'address'}})&#x000A;</code></pre>
+
+<p><em>Find the first document in the users collection of the current database with the given name, replace the address field with the provided data.</em></p>
+
+<p><em>Найти первый документ в коллекции пользователей текущей базы данных с заданным именем, заменить значение адресного поля предоставленными данными.</em></p>
+
+<p><strong>$size</strong> [array]</p>
+
+<p>Выбрать все документы, содержащие массив в качестве значения одного из полей, где размер данного массива равен указанному.</p>
+
+<pre><code>{ field: { $size: value } }&#x000A;</code></pre>
+
+<p><strong>$slice</strong> [projection]</p>
+
+<p>Сократить массив, содержащийся в указанном поле выбранных документов.</p>
+
+<pre><code>{ name: { $slice: count } }&#x000A;</code></pre>
+
+<pre><code>{ name: { $slice: [skip, limit] } }&#x000A;</code></pre>
+
+<pre><code>db.posts.find({ }, { comments: { $slice: 5 } })&#x000A;</code></pre>
+
+<p><em>Find all posts, select the first 5 comments.</em></p>
+
+<p><em>Find all documents in the “posts” collection of the current database, select the first 5 elements from the “comments” array.</em></p>
+
+<p><em>Найти все статьи, выбрать первые 5 комментариев.</em></p>
+
+<p><em>Найти все документы в коллекции „posts“ текущей базы данных, выбрать первые пять элементов из массива „comments“.</em></p>
+
+<pre><code>db.posts.find({ }, { comments: { $slice: -5 } })&#x000A;</code></pre>
+
+<p><em>Find all posts, select the last 5 comments.</em></p>
+
+<p><em>Find all documents in the “posts” collection of the current database, select the last 5 elements from the “comments” array.</em></p>
+
+<p><em>Найти все статьи, выбрать последние 5 комментариев.</em></p>
+
+<p><em>Найти все документы в коллекции „posts“ текущей базы данных, выбрать последние пять элементов из массива „comments“.</em></p>
+
+<pre><code>db.posts.find({ }, { comments: { $slice: [2, 5] } })&#x000A;</code></pre>
+
+<p><em>Find all posts, skip 2 and select 5 comments.</em></p>
+
+<p><em>Find all documents in the “posts” collection of the current database, skip 2 and select 5 elements from the “comments” array.</em></p>
+
+<p><em>Найти все статьи, пропустить 2 и выбрать 5 комментариев.</em></p>
+
+<p><em>Найти все документы в коллекции „posts“ текущей базы данных, пропустить 2 и выбрать 5 элементов из массива „comments“.</em></p>
+
+<pre><code>db.posts.find({ }, { comments: { $slice: [-10, 5] } })&#x000A;</code></pre>
+
+<p><em>Find all posts, select 5 comments beginning with the 10th comment from the last one.</em></p>
+
+<p><em>Find all documents in the “posts” collection of the current database, select 5 elements from the “comments” array beginning with the 10th element from the end.</em></p>
+
+<p><em>Найти все статьи, выбрать 5 комментариев, начиная с 10-го комментария, считая от последнего.</em></p>
+
+<p><em>Найти все документы в коллекции „posts“ текущей базы данных, выбрать 5 элементов из массива „comments“, начиная с 10-го элемента, считая с конца данного массива.</em></p>
+
+<p><strong>$type</strong> [element]</p>
+
+<p>Выбрать все документы, в которых заданное поле содержит значение указанного типа.</p>
+
+<pre><code>{ field: { $type: type } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.users.find({ _id: { $type: 2 } })&#x000A;</code></pre>
+
+<p><em>Find all users with an id that has a type of 2.</em></p>
+
+<p><em>Find all documents in the “users” collection of the current database where the “_id” field has a value of a type 2.</em></p>
+
+<p><em>Найти все документы в коллекции „users“ текущей базы данных, в которых поле „_id“ имеет тип 2.</em></p>
+
+<p><strong>$unset</strong> [update]</p>
+
+<p>Удалить поле.</p>
+
+<pre><code>{ $unset: { field: '' } }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.users.update({ name: 'name' }, { $unset: { address: '' } })&#x000A;</code></pre>
+
+<p><em>Find the first document with the given name, unset the address field.</em></p>
+
+<p><em>Найти первый документ с заданным именем, снять поле „address“.</em></p>
+
+<p><strong>$where</strong> [javascript]</p>
+
+<p>Выбрать все документы для которых справедливо утверждение, переданное данному оператору в качестве аргумента.</p>
+
+<pre><code>{ $where: 'javascript statement or expression' }&#x000A;</code></pre>
+
+<p>Пример:</p>
+
+<pre><code>db.products.find({ $where: 'this.price &gt; 100' })&#x000A;</code></pre>
+
+<p><em>Find all documents of the “products” collection in the current database for which the javascript expression “this.price &gt; 10” is true.</em></p>
+
+<p><em>Найти все документы в коллекции „products“ текущей базы данных, для которых справедливо выражение javascript’а „this.price &gt; 10“.</em></p>
+
+<h1 id="Проекция">Проекция</h1>
+
+<pre><code>db.users.find({}, {name: 1})&#x000A;</code></pre>
+
+<p><em>Find all users including only their names in the documents of the result set.</em></p>
+
+<p><em>Найти всех пользователей, включая в документы полученной коллекции только их имена.</em></p>
+
+<pre><code>db.users.find({}, {surname: 0})&#x000A;</code></pre>
+
+<p><em>Find all users excluding their surnames from the documents of the result set.</em></p>
+
+<p><em>Найти всех пользователей, исключая из документов полученной коллекции их фамилии.</em></p>
+
+<h1 id="Перечень_административных_команд">Перечень административных команд</h1>
+
+<p><strong>listDatabases</strong></p>
+
+<h1 id="Перечень_внутренних_команд_командной_оболочки">Перечень внутренних команд командной оболочки</h1>
+
+<p><strong>exit</strong></p>
+
+<p>Выйти из командной оболочки</p>
+
+<p><strong>help</strong></p>
+
+<p><strong>it</strong></p>
+
+<p><strong>show collections</strong></p>
+
+<p>Отобразить перечень коллекций в текущей базе данных</p>
+
+<p><strong>show dbs</strong></p>
+
+<p>Отобразить перечень баз данных на текущем сервере</p>
+
+<p><strong>use</strong></p>
+
+<h1 id="Функции_драйверов">Функции драйверов</h1>
+
+<p><strong>Создавать идентификаторы</strong></p>
+
+<p><strong>Осуществлять сериализацию-десериализацию</strong></p>
+
+<p><strong>Выступать в роли клиента коммуникации</strong></p>
+
+<h1 id="Статистика_базы_данных">Статистика базы данных</h1>
+
+<p><strong>avgObjSize</strong> [scale]</p>
+
+<p>средний размер каждого объекта в коллекциях текущей базы данных (dataSize / objects)</p>
+
+<p><strong>collections</strong></p>
+
+<p>количество коллекций в текущей базе данных</p>
+
+<p><strong>dataSize</strong> [scale]</p>
+
+<p>общий размер данных, содержащихся в текущей базе данных; изменяется при удалении документов</p>
+
+<p><strong>db</strong></p>
+
+<p>имя текущей базы данных</p>
+
+<p><strong>fileSize</strong> [scale]</p>
+
+<p>общий размер файлов, содержащих текущую базу данных</p>
+
+<p><strong>indexes</strong></p>
+
+<p>количество индексов в коллекциях текущей базы данных</p>
+
+<p><strong>indexSize</strong> [scale]</p>
+
+<p>общий размер индексов, созданных в текущей базе данных</p>
+
+<p><strong>nsSizeMB</strong></p>
+
+<p>общий размер файлов, содержащих сведения о пространстве имен текущей базы данных</p>
+
+<p><strong>numExtents</strong></p>
+
+<p>количество экстентов в коллекциях текущей базы данных</p>
+
+<p><strong>objects</strong></p>
+
+<p>общее количество объектов (документов) во всех коллекциях текущей базы данных</p>
+
+<p><strong>storageSize</strong> [scale]</p>
+
+<p>общий размер, выделенный коллекциям на хранение документов в текущей базе данных; не изменяется при удалении документов, либо их полей</p>
+
+<h1 id="Статистика_коллекции">Статистика коллекции</h1>
+
+<p><strong>avgObjSize</strong> [scale]</p>
+
+<p>средний размер каждого объекта в текущей коллекции</p>
+
+<p><strong>count</strong></p>
+
+<p>количество документов в текущей коллекции</p>
+
+<p><strong>indexSizes</strong> [scale]</p>
+
+<p>имена и размеры всех индексов, содержащихся в текущей коллекции</p>
+
+<p><strong>lastExtentSize</strong> [scale]</p>
+
+<p>размер последнего выделенного экстента</p>
+
+<p><strong>nindexes</strong></p>
+
+<p>количество индексов в текущей коллекции</p>
+
+<p><strong>ns</strong></p>
+
+<p>имя пространства имен для текущей коллекции</p>
+
+<p><strong>numExtents</strong></p>
+
+<p>количество экстентов в текущей коллекции</p>
+
+<p><strong>paddingFactor</strong></p>
+
+<p>добавочный коэффициент</p>
+
+<p><strong>size</strong> [scale]</p>
+
+<p>общий размер данных, содержащихся в текущей коллекции</p>
+
+<p><strong>storageSize</strong> [scale]</p>
+
+<p>общий размер, выделенный текущей коллекции на хранение документов; не изменяется при удалении документов, либо их полей</p>
+
+<p><strong>systemFlags</strong></p>
+
+<p>системные метки</p>
+
+<p><strong>totalIndexSize</strong> [scale]</p>
+
+<p>общий размер индексов в текущей коллекции</p>
+
+<p><strong>userFlags</strong></p>
+
+<p>пользовательские метки</p>
+
+<h1 id="Статистика_запроса">Статистика запроса</h1>
+
+<p><strong>cursor</strong></p>
+
+<p><strong>n</strong></p>
+
+<p><strong>nscanned</strong></p>
+
+<h1 id="Системные_коллекции">Системные коллекции</h1>
+
+<p><strong>system.namespaces</strong></p>
+
+<p><strong>system.indexes</strong></p>
+
+<h1 id="Гайды">Гайды</h1>
+
+<p><strong>Д</strong>инамические атрибуты стоит размещать в зависимых документах.</p>
+
+<p><strong>М</strong>ассив документов, хранящийся в поле некоторого документа, фактически представляет из себя коллекцию документов зависимых от текущего.</p>
+
+<p><strong>П</strong>ри проектировании схемы базы данных важно учитывать количество запросов, которое потребуется совершить при извлечении тех или иных комплектов данных.</p>
+
+<p><strong>О</strong>ператоры отрицания (<em>$nin</em>, <em>$ne</em>) не эффективны при поиске, так как они неиндексируемы. Следует добавлять индексируемый критерий при использовании подобных операторов.</p>
+
+<p><strong>Д</strong>ля увеличения производительности высоконагруженных систем имеет смысл сокращать имена полей хранимых документов.</p>
+
+<p><strong>Д</strong>ля повышения эффективности запросов к документам с полями, содержащими массивы в качестве значений, следует кэшировать размеры этих массивов в отдельном атрибуте текущего документа.</p>
+
+<p>Например, запрос</p>
+
+<pre><code>db.collection.find({ field: { size: { $lt: value } } })&#x000A;</code></pre>
+
+<p>будет эффективен при следующей структуре документа</p>
+
+<pre><code>{ field: [value1, value2, ... vlaueN], size: N }&#x000A;</code></pre>
+
+<p>Запрос</p>
+
+<pre><code>db.collection.find({ field: { $size: { $lt: value } } })&#x000A;</code></pre>
+
+<p>при следующей структуре</p>
+
+<pre><code>{ field: [value1, value2, ... valueN] }&#x000A;</code></pre>
+
+<p>будет не эффективен.</p>
+
+<p><strong>Д</strong>ля повышения эффективности запросов, использующих оператор <em>$where</em>, следует включать в селектор запроса индексированный критерий.</p>
+
+<p>Т. е. вместо</p>
+
+<pre><code>db.products.find({ $where: 'this.price &gt; 100' })&#x000A;</code></pre>
+
+<p>использовать</p>
+
+<pre><code>db.products.find({ category: 'gardening', $where: 'this.price &gt; 100' })&#x000A;</code></pre>
+
+<p>где поле <em>category</em> является проиндексированным полем.</p>
+
+<p><strong>Ч</strong>тобы научиться создавать эффективные схемы баз данных, нужно хорошо знать все преимущества и недостатки используемой вами системы.</p>
+
+<p><strong>С</strong>ледует создавать индексы для всех полей документа, являющихся ссылками на другие документы.</p>
+
+<p><strong>К</strong>оллекция и индекс — сущности одного порядка. Если для некоторого поля документа коллекции создан индекс, то при обращении к этому полю, запрос перенаправляется от коллекции к созданному индексу.</p>
+
+<p><strong>И</strong>ндекс — коллекция со структурой, более эффективной для поиска.</p>
+
+<h1 id="Инструменты">Инструменты</h1>
+
+<p><strong>mongod</strong></p>
+
+<p><strong>mongos</strong></p>
+
+<p><strong>mongo</strong></p>
+
+<h1 id="Файлы">Файлы</h1>
+
+<p><em>/etc/mongodb.conf</em></p>
+
+<p>файл конфигурации</p>
+
+<p><em>/var/log/mongodb</em></p>
+
+<p>файл журнала</p>
+
+<p><em>/var/lib/mongodb/</em></p>
+
+<p>директория с файлами баз данных</p>
+
+<p><em>prefix/database_name.n</em></p>
+
+<p>файл базы данных</p>
+
+<p><em>prefix/database_name.ns</em></p>
+
+<p>файл пространства имен базы данных</p>
+
+<p><em>prefix/mongod.lock</em></p>
+
+<p>файл процессного идентификатора</p>
+
+<h1 id="Ссылки">Ссылки</h1>
+
+<p><a href="http://www.mongodb.org/">MongoDB. Официальный сайт</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/glossary">MongoDB. Глоссарий на официальном сайте</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/javascript/">MongoDB. Перечень вспомогательных методов</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/commands/">MongoDB. Перечень команд</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/mongo-shell/">MongoDB. Справочник по работе в командной оболочке</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/operators">MongoDB. Справочник по операторам</a></p>
+
+<p><a href="http://rdoc.info/gems/mongo/frames">MongoDB. Справочник по интерфейсу Ruby</a></p>
+
+<p><a href="http://mongodb.github.io/node-mongodb-native/">MongoDB. Node.js драйвер. Руководство пользователя</a></p>
+
+<p><a href="http://www.mongodb.org/display/DOCS/Mongo+Wire+Protocol">MongoDB. Протокол связи</a></p>
+
+<p><a href="http://www.mongodb.org/display/DOCS/Object+IDs#ObjectIDs-DocumentTimestamps">MongoDB. Объектные идентификаторы</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/database-statistics/">MongoDB. Статистика базы данных</a></p>
+
+<p><a href="http://docs.mongodb.org/manual/reference/collection-statistics/">MongoDB. Статистика коллекции</a></p>
+
+<p><a href="http://www.mongodb.org/display/DOCS/Explain">MongoDB. Статистика запроса</a></p>
+
+<p><a href="http://www.mongodb.org/display/DOCS/Capped+Collections">MongoDB. Фиксированные коллекции</a></p>
+
+<hr />
+
+<p><a href="http://docs.mongodb.org/manual/tutorial/install-mongodb-on-debian/">MongoDB. Установка в Debian</a></p>
+
+<p><a href="http://www.mongodb.org/display/DOCS/Rails+3+-+Getting+Started">MongoDB. Настройка для использования в Ruby on Rails</a></p>
+
+<hr />
+
+<p><a href="http://mongoid.org">Mongoid. Официальный сайт</a></p>
+
+<p><a href="http://mongomapper.com">MongoMapper. Официальный сайт</a></p>
+
+<p><a href="http://bsonspec.org">BSON. Официальный сайт</a></p>
+
+<hr />
+
+<p><a href="http://ru.wikipedia.org/wiki/ORM">ORM</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Индекс_(базы_данных)">Индекс</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Модель_данных">Модель данных</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Нормальная_форма">Нормальная форма</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Отображение_файла_в_память">Отображение файла в память</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Формальный_язык">Формальный язык</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Формальная_грамматика">Формальная грамматика</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Шардирование">Шардирование</a></p>
+
+<p><a href="http://ru.wikipedia.org/wiki/Экстент">Экстент</a></p>
+
+<h1 id="Комментарии">Комментарии</h1>
+
+<div id='disqus_thread'>
+<script>
+  let disqus_shortname  = 'summaries-shamaoke'
+  let disqus_identifier = 'mongodb'
+  let disqus_url        = 'https://shamaoke.github.io/summaries/mongodb/'
+  
+  
+  let dsq = document.createElement('script')
+  
+      dsq.type  = 'text/javascript'
+      dsq.async = true
+      dsq.src   = `https://${disqus_shortname}.disqus.com/embed.js`
+  
+  document.getElementsByTagName('head')[0].appendChild(dsq)
+</script>
+</div>
+
+</main>
+</body>
 </html>

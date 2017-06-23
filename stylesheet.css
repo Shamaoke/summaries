@@ -105,10 +105,11 @@ main {
     margin-top: 100px; }
   main h2 {
     font-size: 30px; }
-  main p {
+  main p, main math {
     font-family: PT Serif;
     font-size: 22px;
-    line-height: 30px;
+    line-height: 30px; }
+  main p {
     hyphens: auto;
     text-align: justify; }
   main code {
