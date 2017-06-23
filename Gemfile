@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'adsf'
 gem 'haml'
+gem 'itextomml'
 gem 'nanoc'
 gem 'pry'
 gem 'pry-stack_explorer'

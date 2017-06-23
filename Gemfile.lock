@@ -7,19 +7,21 @@ GEM
       debug_inspector (>= 0.0.1)
     coderay (1.1.1)
     colored (1.2)
-    concurrent-ruby (1.0.4)
-    cri (2.7.1)
+    concurrent-ruby (1.0.5)
+    cri (2.9.1)
       colored (~> 1.2)
-    ddplugin (1.0.0)
-    debug_inspector (0.0.2)
-    haml (4.0.7)
+    ddplugin (1.0.1)
+    debug_inspector (0.0.3)
+    haml (5.0.1)
+      temple (>= 0.8.0)
       tilt
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
+    itextomml (1.5.6)
     kramdown (1.13.2)
     method_source (0.8.2)
-    nanoc (4.5.2)
-      cri (~> 2.3)
+    nanoc (4.7.11)
+      cri (~> 2.8)
       ddplugin (~> 1.0)
       hamster (~> 3.0)
       ref (~> 2.0)
@@ -30,11 +32,12 @@ GEM
     pry-stack_explorer (0.4.9.2)
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
-    rack (2.0.1)
+    rack (2.0.3)
     ref (2.0.0)
-    sass (3.4.23)
+    sass (3.4.24)
     slop (3.6.0)
-    tilt (2.0.5)
+    temple (0.8.0)
+    tilt (2.0.7)
 
 PLATFORMS
   ruby
@@ -42,6 +45,7 @@ PLATFORMS
 DEPENDENCIES
   adsf
   haml
+  itextomml
   kramdown
   nanoc
   pry
@@ -49,4 +53,4 @@ DEPENDENCIES
   sass
 
 BUNDLED WITH
-   1.13.7
+   1.15.1
