@@ -18,6 +18,14 @@ title: Функциональное программирование
 
 включение
 
+**immediate/strict/eager and delayed/lazy evaluation**
+
+безотлагательное/прямое и отложенное вычисление
+
 **last/tail call optimization**
 
 оптимизация завершающего вызова
+
+**tool**
+
+инструментальная программа
