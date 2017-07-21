@@ -41,8 +41,6 @@ title: MongoDB
 
 [Ссылки](#Ссылки)
 
-[Комментарии](#Комментарии)
-
 #Глоссарий
 {: id="Глоссарий"}
 
@@ -1241,6 +1239,3 @@ db.products.find({ category: 'gardening', $where: 'this.price > 100' })
 [Шардирование](http://ru.wikipedia.org/wiki/Шардирование)
 
 [Экстент](http://ru.wikipedia.org/wiki/Экстент)
-
-#Комментарии
-{: id="Комментарии"}

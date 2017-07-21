@@ -13,8 +13,6 @@ title: Контроль доступа в RoR
 
 [Ссылки](#Ссылки)
 
-[Комментарии](#Комментарии)
-
 #Глоссарий
 {: id="Глоссарий"}
 
@@ -96,6 +94,3 @@ title: Контроль доступа в RoR
 [Devise вики](https://github.com/plataformatec/devise/wiki)
 
 [Warden Github](https://github.com/hassox/warden)
-
-#Комментарии
-{: id="Комментарии"}
