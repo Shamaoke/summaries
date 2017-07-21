@@ -9,4 +9,4 @@
       %h1= @item[:title]
     %main
       ~ yield
-      ~ render '/_disqus.haml' unless @item[:title].eql? 'Summaries'
+      -# ~ render '/_disqus.haml' unless @item[:title].eql? 'Summaries'
