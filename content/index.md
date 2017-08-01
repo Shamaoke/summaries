@@ -2,6 +2,8 @@
 title: Summaries
 ---
 
+[Общий глоссарий и словарь-справочник](/summaries/glossary)
+
 [Ant](/summaries/ant)
 
 [Git](/summaries/git)
