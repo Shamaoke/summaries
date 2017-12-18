@@ -12,8 +12,7 @@ GEM
       colored (~> 1.2)
     ddplugin (1.0.1)
     debug_inspector (0.0.3)
-    haml (5.0.1)
-      temple (>= 0.8.0)
+    haml (4.0.7)
       tilt
     hamster (3.0.0)
       concurrent-ruby (~> 1.0)
@@ -36,15 +35,14 @@ GEM
     ref (2.0.0)
     sass (3.4.24)
     slop (3.6.0)
-    temple (0.8.0)
-    tilt (2.0.7)
+    tilt (2.0.8)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   adsf
-  haml
+  haml (= 4.0.7)
   itextomml
   kramdown
   nanoc
@@ -53,4 +51,4 @@ DEPENDENCIES
   sass
 
 BUNDLED WITH
-   1.15.1
+   1.16.0
