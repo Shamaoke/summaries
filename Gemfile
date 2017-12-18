@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'adsf'
-gem 'haml'
+gem 'haml', '4.0.7'
 gem 'itextomml'
 gem 'nanoc'
 gem 'pry'
