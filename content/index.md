@@ -10,11 +10,15 @@ title: Summaries
 
 [Gradle](/summaries/gradle)
 
+[Ecryptfs](/summaries/ecryptfs)
+
 [HTTP](/summaries/http)
 
 [Java](/summaries/java)
 
 [MongoDB](/summaries/mongodb)
+
+[Mount](/summaries/mount)
 
 [Software Engineering](/summaries/software_engineering)
 
