@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang='ru'>
+  <head>
+    <meta charset='utf-8'>
+    <link href='/summaries/stylesheet.css' rel='stylesheet'>
+    <title>Ecryptfs</title>
+  </head>
+  <body>
+    <header>
+      <h1>Ecryptfs</h1>
+    </header>
+    <main>
+      
+      <h1 id="Содержание">Содержание</h1>
+      
+      <p><a href="#Глоссарий">Глоссарий</a></p>
+      
+      <p><a href="#Инструментарий">Инструментарий</a></p>
+      
+      <p>Для создания зашифрованного тома Ecryptfs необходимо использовать пользовательские утилиты из пакета <a href="#ecryptfs-utils"><em>ecryptfs-utils</em></a>.</p>
+      
+      <p>Порядок создания зашифрованного раздела следующий:</p>
+      
+      <p>1. Загрузить модуль ядра <em>ecryptfs</em></p>
+      
+      <p><code>modprobe ecryptfs</code> или создать файл <em>ecryptfs.conf</em> в <em>/etc/modprobe.d/</em>, добавив в него имя загружаемого модуля (<em>ecryptfs</em>). Во втором случае, модуль загрузится автоматически при следующем запуске.</p>
+      
+      <p>2. Сгенерировать случайный <a href="#wrapped_passphrase">пароль монтирования</a></p>
+      
+      <p>3. Придумать <a href="#wrapping_passphrase">пароль для контейнера</a></p>
+      
+      <p>4. Упаковать пароль монтирования в криптографический контейнер задав для него пароль для контейнера</p>
+      
+      <p><code>ecryptfs-wrap-passphrase</code></p>
+      
+      <p>5. Добавить пароль монтирования в ключницу, сохранив <a href="">подпись ключа монтирования</a>. Данная подпись впоследствии будет использована вместо пароля в конфигурационных файлах</p>
+      
+      <p><code>ecryptfs-insert-wrapped-passphrase-into-keyring</code></p>
+      
+      <p>6. Создать каталог, где будут храниться зашифрованные файлы</p>
+      
+      <p><code>mkdir -m 700 .data-lower</code></p>
+      
+      <p>7. Создать каталог доступа к зашифрованным файлам, которые станут доступны после монтирования зашифрованного каталога</p>
+      
+      <p><code>mkdir -m 500 .data-upper</code></p>
+      
+      <p>8. Добавить в <em>/etc/fstab</em> следующее</p>
+      
+      <p><code>/home/user/.data-lower /home/user/.data-upper ecryptfs noauto,user,ecryptfs_sig=16242358f0079dd6,ecryptfs_fnek_sig=16242358f0079dd6,ecryptfs_cypher=blowfish,ecryptfs_key_bytes=32,ecryptfs_unlink_sigs 0 0</code></p>
+      
+      <p><em>noauto</em>: не монтировать том автоматически; без этой опции systemd попытается смонтировать том при загрузке и вернет ошибку, т. к. зашифрованные тома монтируются вручную</p>
+      
+      <p><em>user</em>: разрешить пользователю монтировать том</p>
+      
+      <p><em>ecryptfs_sig</em>: подпись ключа монтирования</p>
+      
+      <p><em>ecrypts_fnek_sig</em>: „filename encryption key signature“, подпись ключа для шифрования файловых имен</p>
+      
+      <p><em>ecryptfs_cypher</em>: алгоритм шифрования</p>
+      
+      <p><em>ecryptfs_key_bytes</em>: размер ключа шифрования</p>
+      
+      <p><em>ecryptfs_unlink_sigs</em>: удалять пароль монтирования из ключницы при размонтировании тома</p>
+      
+      <p>9. Смонтировать том командой <code>mount -i ~/.data-upper</code> (пароль монтирования должен находиться в ключнице)</p>
+      
+      <p>Добавляемые файлы в каталог <em>~/.data-upper</em> будут зашифрованы и добавлены в каталог <em>~/.data-lower</em>. При размонтировании <em>~/.data-upper</em>, все файлы из него исчезнут, но их зашифрованные дубликаты останутся в <em>~/.data-lower</em>.</p>
+      
+      <p>10. Размонтировать том командой <code>umount ~/.data-upper</code>. Пароль монтирования будет удален из ключницы и потребует повторного добавления при последующем монтировании тома.</p>
+      
+      <h1 id="Глоссарий">Глоссарий</h1>
+      
+      <p><strong>stacked cryptographic file system</strong></p>
+      
+      <p>файловая система, устанавливаемая поверх уже существующей</p>
+      
+      <p id="wrapped_passphrase"><strong>wrapped passphrase</strong></p>
+      
+      <p>упакованный пароль</p>
+      
+      <p id="wrapping_passphrase"><strong>wrapping passphrase</strong></p>
+      
+      <p>пароль упаковщика</p>
+      
+      <h1 id="Инструментарий">Инструментарий</h1>
+      
+      <p id="ecryptfs-utils"><strong>ecryptfs-utils</strong></p>
+      
+      <p>Набор утилит для работы с ФС Ecryptfs.</p>
+      
+      <p><strong>ecryptfs-wrap-passphrase</strong></p>
+      
+      <p><code>printf "%s\n%s" "mount_passphrase" "wrapping_passphrase" | ecryptfs-wrap-passphrase $HOME/.ecryptfs/wrpapped-passphrase -</code></p>
+      
+      <p>Упаковать пароль монтирования.</p>
+      
+      <p><strong>keyctl</strong></p>
+      
+      <p><code>keyctl list @u</code></p>
+      
+      <p>Показать хранимые в ключнице пароли для текущего пользователя</p>
+      
+      <p><strong>keyutils</strong></p>
+      
+      <p><strong>modprobe</strong></p>
+      
+      <p>Утилита загрузки модулей ядра. Используется для загрузки модуля <em>ecryptfs</em>.</p>
+    </main>
+    <footer></footer>
+  </body>
+</html>
