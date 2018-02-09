@@ -115,6 +115,8 @@ main {
   main p {
     hyphens: auto;
     text-align: justify; }
+  main pre {
+    overflow: scroll; }
   main code {
     font-family: PT Mono;
     font-size: 18px; }
