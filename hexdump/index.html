@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang='ru'>
+  <head>
+    <meta charset='utf-8'>
+    <link href='/summaries/stylesheet.css' rel='stylesheet'>
+    <title>Hexdump</title>
+  </head>
+  <body>
+    <header>
+      <h1>Hexdump</h1>
+    </header>
+    <main>
+      
+      <pre><code>hexdump --no-squeezing \&#x000A;        --length=128 \&#x000A;        --format='"%-4.02_ad"' \&#x000A;        --format='" |"' \&#x000A;        --format='8/1 " %02x_L[red:0xa@0-32]"' \&#x000A;        --format='" |"' \&#x000A;        --format='8/1 " %_p"' \&#x000A;        --format='"\n"' \&#x000A;        data.hexdump&#x000A;</code></pre>
+      
+      <pre><code>The hexdump utility is a filter&#x000A;which displays the specified files,&#x000A;or standard input if no files are specified,&#x000A;in a user-specified format.&#x000A;</code></pre>
+      
+      <pre><code>00   | 54 68 65 20 68 65 78 64 | T h e   h e x d&#x000A;08   | 75 6d 70 20 75 74 69 6c | u m p   u t i l&#x000A;16   | 69 74 79 20 69 73 20 61 | i t y   i s   a&#x000A;24   | 20 66 69 6c 74 65 72 0a |   f i l t e r .&#x000A;32   | 77 68 69 63 68 20 64 69 | w h i c h   d i&#x000A;40   | 73 70 6c 61 79 73 20 74 | s p l a y s   t&#x000A;48   | 68 65 20 73 70 65 63 69 | h e   s p e c i&#x000A;56   | 66 69 65 64 20 66 69 6c | f i e d   f i l&#x000A;64   | 65 73 2c 0a 6f 72 20 73 | e s , . o r   s&#x000A;72   | 74 61 6e 64 61 72 64 20 | t a n d a r d  &#x000A;80   | 69 6e 70 75 74 20 69 66 | i n p u t   i f&#x000A;88   | 20 6e 6f 20 66 69 6c 65 |   n o   f i l e&#x000A;96   | 73 20 61 72 65 20 73 70 | s   a r e   s p&#x000A;104  | 65 63 69 66 69 65 64 2c | e c i f i e d ,&#x000A;112  | 0a 69 6e 20 61 20 75 73 | . i n   a   u s&#x000A;120  | 65 72 2d 73 70 65 63 69 | e r - s p e c i&#x000A;</code></pre>
+      
+      <p><strong><code>--no-squeezing</code></strong> (<strong><code>-v</code></strong>) <em>отключить сжатие</em></p>
+      
+      <p>По умолчанию, строка, содержащая ту же самую последовательность байт, что и предыдущая, заменяется символом „звёздочка“ (*). Таким образом, любое количество одинаковых строк как бы сжимается в одну.</p>
+      
+      <p>Например, следующая последовательность</p>
+      
+      <pre><code>00 00 00 00&#x000A;00 00 00 00&#x000A;00 00 00 00&#x000A;00 00 00 00&#x000A;00 00 00 00&#x000A;</code></pre>
+      
+      <p>будет сокращена до двух строк</p>
+      
+      <pre><code>00 00 00 00&#x000A;*&#x000A;</code></pre>
+      
+      <p>Эта функция удобна для нахождения иррегулярностей в преимущественно однородных данных.</p>
+      
+      <p>Опция <code>--no-squeezing</code> же служит для предотвращения подобного поведения.</p>
+      
+      <p><strong><code>--length=128</code></strong> (<strong><code>-n</code></strong>)</p>
+      
+      <p>Взять только 128 байт из исходного файла.</p>
+      
+      <p><strong><code>--format='&lt;строка_форматирования&gt;'</code></strong> (<strong><code>-e</code></strong>) <em>задать строку форматирования</em></p>
+      
+      <p>Строка задается в одинарных кавычках т. к. правила форматирования внутри строки задаются в двойных кавычках. Данную опцию можно использовать несколько раз и таким образом комбинировать несколько представлений одной и той же последовательности байтов.</p>
+      
+      <p><strong><code>"%-4.02_ad"</code></strong></p>
+      
+      <ul>
+        <li>
+          <p>Отобразить сдвиг от начала файла („_a“);</p>
+        </li>
+        <li>
+          <p>Использовать десятичный формат для чисел („d“);</p>
+        </li>
+        <li>
+          <p>Задать размер строки, равной четырём ячейкам („4.“);</p>
+        </li>
+        <li>
+          <p>Выровнить вывод по левому краю („-“);</p>
+        </li>
+        <li>
+          <p>Использовать как минимум двухзначные числа („2“);</p>
+        </li>
+        <li>
+          <p>Заменить нулем разряд десятков для однозначных чисел („0“).</p>
+        </li>
+      </ul>
+    </main>
+    <footer></footer>
+  </body>
+</html>
