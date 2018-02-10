@@ -14,6 +14,8 @@ title: Summaries
 
 [HTTP](/summaries/http)
 
+[Hexdump](/summaries/hexdump)
+
 [Java](/summaries/java)
 
 [MongoDB](/summaries/mongodb)
