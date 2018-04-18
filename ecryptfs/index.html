@@ -55,7 +55,7 @@
       
       <p><strong>8.</strong> Добавить в <em>/etc/fstab</em> следующее</p>
       
-      <pre><code>/home/user/.data-lower /home/user/.data-upper ecryptfs noauto,user,ecryptfs_sig=16242358f0079dd6,ecryptfs_fnek_sig=16242358f0079dd6,ecryptfs_cypher=blowfish,ecryptfs_key_bytes=32,ecryptfs_unlink_sigs 0 0&#x000A;</code></pre>
+      <pre><code>/home/user/.data-lower /home/user/.data-upper ecryptfs noauto,user,ecryptfs_sig=16242358f0079dd6,ecryptfs_fnek_sig=16242358f0079dd6,ecryptfs_cipher=blowfish,ecryptfs_key_bytes=32,ecryptfs_unlink_sigs 0 0&#x000A;</code></pre>
       
       <p><em><strong>noauto</strong></em>: не монтировать том автоматически; без этой опции systemd попытается смонтировать том при загрузке и вернет ошибку, т. к. зашифрованные тома монтируются вручную;</p>
       
@@ -65,7 +65,7 @@
       
       <p><em><strong>ecrypts_fnek_sig</strong></em>: „filename encryption key signature“, подпись ключа для шифрования файловых имен;</p>
       
-      <p><em><strong>ecryptfs_cypher</strong></em>: алгоритм шифрования;</p>
+      <p><em><strong>ecryptfs_cipher</strong></em>: алгоритм шифрования;</p>
       
       <p><em><strong>ecryptfs_key_bytes</strong></em>: размер ключа шифрования;</p>
       
