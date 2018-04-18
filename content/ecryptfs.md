@@ -57,7 +57,7 @@ mkdir -m 500 .data-upper
 **8\.** Добавить в _/etc/fstab_ следующее
 
 ~~~
-/home/user/.data-lower /home/user/.data-upper ecryptfs noauto,user,ecryptfs_sig=16242358f0079dd6,ecryptfs_fnek_sig=16242358f0079dd6,ecryptfs_cypher=blowfish,ecryptfs_key_bytes=32,ecryptfs_unlink_sigs 0 0
+/home/user/.data-lower /home/user/.data-upper ecryptfs noauto,user,ecryptfs_sig=16242358f0079dd6,ecryptfs_fnek_sig=16242358f0079dd6,ecryptfs_cipher=blowfish,ecryptfs_key_bytes=32,ecryptfs_unlink_sigs 0 0
 ~~~
 
 _**noauto**_: не монтировать том автоматически; без этой опции systemd попытается смонтировать том при загрузке и вернет ошибку, т. к. зашифрованные тома монтируются вручную;
@@ -68,7 +68,7 @@ _**ecryptfs_sig**_: подпись ключа монтирования;
 
 _**ecrypts_fnek_sig**_: „filename encryption key signature“, подпись ключа для шифрования файловых имен;
 
-_**ecryptfs_cypher**_: алгоритм шифрования;
+_**ecryptfs_cipher**_: алгоритм шифрования;
 
 _**ecryptfs_key_bytes**_: размер ключа шифрования;
 
