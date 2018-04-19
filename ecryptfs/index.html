@@ -119,13 +119,27 @@
       
       <p id="keyutils"><strong>keyutils</strong> <em>набор утилит для работы с ключницей</em></p>
       
+      <p><strong>lsmod</strong> <em>средство отображения информации о загруженных модулях ядра</em></p>
+      
+      <pre><code># перечислить загруженные модули; отфильтровать по маске; отсортировать по алфавиту&#x000A;lsmod | grep ecryptfs | sort&#x000A;</code></pre>
+      
+      <p><strong>modinfo</strong> <em>средство отображения информации о модуле ядра</em></p>
+      
+      <pre><code># показать информацию о модуле ecryptfs&#x000A;modinfo ecryptfs&#x000A;</code></pre>
+      
       <p id="modprobe"><strong>modprobe</strong> <em>средство загрузки модулей ядра</em></p>
+      
+      <pre><code># загрузить модуль ecryptfs&#x000A;modprobe ecryptfs&#x000A;</code></pre>
       
       <h1 id="Файлы">Файлы</h1>
       
       <p><strong>/usr/share/doc/ecryptfs-utils/README</strong></p>
       
       <p>файл с инструкцией по работе с системой шифрования</p>
+      
+      <p><strong>/etc/fstab</strong></p>
+      
+      <p>файл с перечнем информации о файловых системах, которые могут быть смонтированы, и их настройках</p>
       
       <p><strong>/etc/mtab</strong> <em>mounted file systems table</em></p>
       
