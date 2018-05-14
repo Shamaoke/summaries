@@ -22,6 +22,8 @@ title: Summaries
 
 [Mount](/summaries/mount)
 
+[RXVT-UNICODE](/summaries/urxvt)
+
 [Software Engineering](/summaries/software_engineering)
 
 [UML](/summaries/uml)
