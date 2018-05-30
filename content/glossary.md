@@ -20,6 +20,10 @@ title: Общий глоссарий и словарь-справочник
 
 правка
 
+**exception handling**
+
+перехват исключений
+
 **interactive environment, REPL**
 
 интерактивное окружение
