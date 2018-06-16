@@ -33,5 +33,3 @@ title: Summaries
 [Научный метод](/summaries/scientific_method)
 
 [Функциональное программирование](/summaries/functional_programming)
-
-[Чтение математических выражений](/summaries/math_expressions)
