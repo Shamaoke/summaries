@@ -78,6 +78,9 @@
   font-style: normal;
   font-weight: bold;
   src: url("/summaries/fonts/PTN77F_W.woff"); }
+html {
+  font-size: 1em; }
+
 body {
   margin: 0;
   padding: 0; }
@@ -103,23 +106,24 @@ main {
     font-family: PT Serif Caption;
     font-weight: normal; }
   main h1 {
-    font-size: 40px; }
+    font-size: 1.3rem; }
   main h1:not(:first-child) {
     margin-top: 100px; }
   main h2 {
-    font-size: 30px; }
+    font-size: 1.1rem; }
   main p, main math {
-    font-family: PT Serif;
-    font-size: 22px;
-    line-height: 30px; }
+    font-family: PT Serif; }
+  main p, main math {
+    font-size: 1rem; }
   main p {
     hyphens: auto;
     text-align: justify; }
   main pre {
     overflow: scroll; }
   main code {
-    font-family: PT Mono;
-    font-size: 18px; }
+    font-family: PT Mono; }
+  main code {
+    font-size: 1rem; }
   main a:link, main a:visited {
     color: #0055d4;
     text-decoration: underline solid #d5e5ff; }

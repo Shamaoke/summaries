@@ -10,7 +10,6 @@
       <h1>Git</h1>
     </header>
     <main>
-      
       <h1 id="Содержание">Содержание</h1>
       
       <p><a href="#Конфигурация">Конфигурация</a></p>
@@ -63,19 +62,73 @@
       
       <h2 id="Команды_конфигурации">Команды конфигурации</h2>
       
-      <pre><code>git config --system &lt;опция&gt; &lt;значение&gt; - системная (/etc/gitconfig)&#x000A;git config --global &lt;опция&gt; &lt;значение&gt; - глобальная (~/.gitconfig)&#x000A;git config &lt;опция&gt; &lt;значение&gt;          - локальная (.git/config)&#x000A;</code></pre>
+      <p><strong><code>git config --system</code></strong> <em><code>option</code></em> <em><code>value</code></em></p>
+      
+      <p><em>системная (/etc/gitconfig)</em></p>
+      
+      <p><strong><code>git config --global</code></strong> <em><code>option</code></em> <em><code>value</code></em></p>
+      
+      <p><em>глобальная (~/.gitconfig)</em></p>
+      
+      <p><strong><code>git config</code></strong> <em><code>option</code></em> <em><code>value</code></em></p>
+      
+      <p><em>локальная (.git/config)</em></p>
       
       <h2 id="Опции">Опции</h2>
       
-      <pre><code>alias.&lt;команда_замена&gt; &lt;заменяемая_команда&gt; - добавить замену для стандартной команды. При замене глобальной команды следует поставить "!" перед заменяемой командой. (git config --global alias.visual '!gitk' #=&gt; visual)&#x000A;&#x000A;core.editor &lt;текстовый_редактор&gt; - добавить текстовый редактор.&#x000A;&#x000A;core.pager &lt;пэйджер&gt; - установить пэйджер. Можно отключить использование пэйджера, передав пустую строку ('') в качестве значения.&#x000A;&#x000A;core.quotepath false - запретить вывод имен файлов в формате Unicode в виде числовых кодов при выполнении git status.&#x000A;&#x000A;merge.tool &lt;программа_сравнения_файлов&gt; - добавить инструмент сравнения файлов.&#x000A;&#x000A;commit.template &lt;файл_с_шаблоном&gt; - установить шаблон для записи передачи.&#x000A;&#x000A;core.excludesfile &lt;путь&gt; - установить внешний файл с исключениями.&#x000A;&#x000A;help.autocorrect 1 - установить автоматическое исправление опечаток.&#x000A;&#x000A;color.ui {true | false | always} - настроить цветной вывод. При установке опции always, цветной вывод будет присутствовать даже при перенаправлении данных в файл или другой команде.&#x000A;</code></pre>
+      <p><strong><code>alias.</code></strong><em><code>old_command</code></em> <em><code>new_command</code></em></p>
+      
+      <p><em>добавить замену для стандартной команды</em></p>
+      
+      <p><em>При замене глобальной команды следует поставить „!“ перед заменяемой командой:</em></p>
+      
+      <p><em><code>git config --global alias.visual'!gitk'</code></em></p>
+      
+      <p><strong><code>core.editor</code></strong> <em><code>editor</code></em></p>
+      
+      <p><em>добавить текстовый редактор</em></p>
+      
+      <p><strong><code>core.pager</code></strong> <em><code>pager</code></em></p>
+      
+      <p><em>установить пэйджер. Можно отключить использование пэйджера, передав пустую строку (<code>''</code>) в качестве значения</em></p>
+      
+      <p><strong><code>core.quotepath false</code></strong></p>
+      
+      <p><em>запретить вывод имен файлов в формате Unicode в виде числовых кодов при выполнении <code>git status</code></em></p>
+      
+      <p><strong><code>merge.tool</code></strong> <em><code>merge_tool</code></em></p>
+      
+      <p><em>добавить инструмент сравнения файлов</em></p>
+      
+      <p><strong><code>commit.template</code></strong> <em><code>template</code></em></p>
+      
+      <p><em>установить шаблон для записи передачи</em></p>
+      
+      <p><strong><code>core.excludesfile</code></strong> <em><code>path</code></em></p>
+      
+      <p><em>установить внешний файл с исключениями</em></p>
+      
+      <p><strong><code>help.autocorrect 1</code></strong></p>
+      
+      <p><em>установить автоматическое исправление опечаток</em></p>
+      
+      <p><strong><code>color.ui</code></strong> <em><code>{true | false | always}</code></em></p>
+      
+      <p><em>настроить цветной вывод. При установке опции always, цветной вывод будет присутствовать даже при перенаправлении данных в файл или другой команде</em></p>
       
       <h1 id="Создание_нового_репозитория">Создание нового репозитория</h1>
       
-      <p><strong><code>git init</code></strong> <em>ининциализировать репозиторий</em></p>
+      <p><strong><code>git init</code></strong></p>
       
-      <p><strong><code>git status</code></strong> <em>вывести текущий статус</em></p>
+      <p><em>ининциализировать репозиторий</em></p>
       
-      <p><strong><code>git checkout -- &lt;имя_файла&gt;</code></strong> <em>откатить изменения, сделанные в файле</em></p>
+      <p><strong><code>git status</code></strong></p>
+      
+      <p><em>вывести текущий статус</em></p>
+      
+      <p><strong><code>git checkout --</code></strong> <em><code>filename</code></em></p>
+      
+      <p><em>откатить сделанные в файле правки</em></p>
       
       <h1 id="Атрибуты">Атрибуты</h1>
       
