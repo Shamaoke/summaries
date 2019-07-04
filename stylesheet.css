@@ -111,9 +111,10 @@ main {
     margin-top: 100px; }
   main h2 {
     font-size: 1.1rem; }
+  main h2 {
+    margin-top: 50px; }
   main p, main math {
-    font-family: PT Serif; }
-  main p, main math {
+    font-family: PT Serif;
     font-size: 1rem; }
   main p {
     hyphens: auto;
