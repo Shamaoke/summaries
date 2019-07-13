@@ -462,15 +462,15 @@
       
       <p><strong><code>git diff</code></strong> <em><code>hash</code></em></p>
       
-      <p><em>просмотреть изменения во всех файлах относительно указанной передачи</em></p>
+      <p><em>просмотреть изменения во всех файлах относительно указанной правки</em></p>
       
       <p><strong><code>git diff</code></strong> <em><code>hash</code></em> <em><code>file</code></em></p>
       
-      <p><em>просмотреть изменения в конкретном файле относительно указанной передачи</em></p>
+      <p><em>просмотреть изменения в конкретном файле относительно указанной правки</em></p>
       
       <p><strong><code>git diff</code></strong> <em><code>tag..tag</code></em></p>
       
-      <p><em>просмотреть изменения в указанном интервале передач</em></p>
+      <p><em>просмотреть изменения в указанном интервале правок</em></p>
       
       <p><strong><code>git diff</code></strong> <em><code>base_branch..target_branch</code></em></p>
       
@@ -488,21 +488,24 @@
       
       <p><em>просмотреть изменения в файле с включением в вывод хэша, автора, даты и прочей информации</em></p>
       
-      <p><strong><code>git blame -L</code></strong> <em><code>starting_line</code></em><strong><code>,</code></strong><em><code>{ending_line | </code></em> <strong><code>-</code></strong><em><code>offset</code></em> <em><code>|</code></em> <strong><code>+</code></strong><em><code>offset</code></em> <em><code>}</code></em> <em><code>file</code></em></p>
+      <p><strong><code>git blame -L</code></strong> <em><code>starting_line</code></em><strong><code>,</code></strong><em><code>{ ending_line | </code></em> <strong><code>-</code></strong><em><code>offset</code></em> <em><code>|</code></em> <strong><code>+</code></strong><em><code>offset</code></em> <em><code>}</code></em> <em><code>file</code></em></p>
       
       <p><em>отобразить только указанные строки в просматриваемом файле</em></p>
       
-      <p><em>Интервал задается указанием номера начальной строки и (опционально) номером конечной строки или количеством строк до или после начальной.</em></p>
+      <p>Интервал задается указанием номера начальной строки и (опционально) номером
+      конечной строки или количеством строк до или после начальной.</p>
       
-      <p><strong><code>git blame</code></strong> <em><code>hash{ </code></em> <strong><code>^</code></strong> <em><code>|</code></em> <strong><code>~</code></strong><em><code>offset }</code></em> <strong><code>--</code></strong> <em><code>file</code></em></p>
+      <p><strong><code>git blame</code></strong> <em><code>hash{</code></em> <strong><code>^</code></strong><em><code>[offset] |</code></em> <strong><code>~</code></strong><em><code>[offset] }</code></em> <strong><code>--</code></strong> <em><code>file</code></em></p>
       
-      <p><em>просмотреть изменения в файле до указанной передачи и не включать все последующие</em></p>
+      <p><em>просмотреть изменения в файле до указанной правки и не включать все последующие</em></p>
       
-      <p><em>Передача идентифицируется хэшем или отклонением от передачи с указанным хэшем (<code>^</code> — „указанная, минус один“, <code>~n</code> — „указанная, минус n“)</em></p>
+      <p>Правка идентифицируется хэшем или отклонением от правки с указанным хэшем (<code>^</code> —
+      „первый прямой предок указанной“ (если прямых предков несколько), <code>^n</code> — „n-й
+      прямой предок указанной“, <code>~n</code> — „указанная, минус n“).</p>
       
       <p><strong><code>git blame</code></strong> <em><code>hash</code></em><strong><code>..</code></strong><em><code>hash</code></em> <strong><code>--</code></strong> <em><code>file</code></em></p>
       
-      <p><em>просмотреть изменения в указанном интервале передач</em></p>
+      <p><em>просмотреть изменения в указанном интервале правок</em></p>
       
       <h1 id="Ветвление">Ветвление</h1>
       
