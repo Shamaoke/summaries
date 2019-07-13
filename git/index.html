@@ -70,11 +70,11 @@
       
       <p><em>зафиксировать правки в файле</em></p>
       
-      <p><strong>staged area</strong></p>
+      <p id="staged_area"><strong>staged area</strong></p>
       
       <p><em>область выставления</em>, тж. <em>индекс</em></p>
       
-      <p><strong>unstaged area</strong></p>
+      <p id="unstaged_area"><strong>unstaged area</strong></p>
       
       <p><em>невыставленная область</em>; <em>рабочая область</em></p>
       
@@ -86,6 +86,18 @@
       
       <p><em>отменить выставление</em>; <em>вернуть файл в рабочую область</em>; <em>удалить файл из
       индекса</em></p>
+      
+      <p id="tracked_file"><strong>tracked file</strong></p>
+      
+      <p><em>отслеживаемый файл</em>; <em>включенный файл</em> (в репозиторий)</p>
+      
+      <p id="untracked_file"><strong>untracked file</strong></p>
+      
+      <p><em>неотслеживаемый файл</em>; <em>невключенный файл</em></p>
+      
+      <p><strong>to track</strong></p>
+      
+      <p><em>включить файл</em> (в репозиторий) для отслеживания изменений в нём</p>
       
       <h1 id="Конфигурация">Конфигурация</h1>
       
@@ -339,19 +351,20 @@
       
       <p><em>снять выставленный файл</em></p>
       
-      <p>Файл должен находиться в индексе.</p>
+      <p>Файл должен находиться в <a href="#staged_area">индексе</a>.</p>
       
       <p><strong><code>git checkout --</code></strong> <em><code>file</code></em></p>
       
       <p><em>отменить правки в указанном файле</em></p>
       
-      <p>Файл должен находиться в рабочей области.</p>
+      <p>Файл должен находиться в <a href="#unstaged_area">рабочей области</a>.</p>
       
       <p><strong><code>git rm</code></strong> <em><code>file</code></em></p>
       
       <p><em>выставить файл для удаления</em></p>
       
-      <p>Файл должен содержаться в текущей ветви.</p>
+      <p>Файл должен быть <a href="#tracked_file">включен</a> в репозиторий. В <a href="#untracked_file">противном случае</a>, следует использовать
+      средства операционной системы для удаления файла (e. g. <code>rm file</code>).</p>
       
       <p><strong><code>git rm --cached</code></strong> <em><code>file</code></em></p>
       
