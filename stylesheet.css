@@ -90,18 +90,14 @@ header {
   padding: 8px 0 8px 0; }
   header h1 {
     font-family: PT Sans Caption;
-    font-size: 1.8em;
+    font-size: 1.8rem;
     font-weight: normal;
-    padding-left: 200px;
+    padding-left: 2rem;
     margin: 0;
     color: white; }
 
-footer {
-  height: 200px; }
-
 main {
-  width: 900px;
-  margin-left: 200px; }
+  margin: 1rem 2rem 2rem; }
   main h1, main h2 {
     font-family: PT Serif Caption;
     font-weight: normal; }
