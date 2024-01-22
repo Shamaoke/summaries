@@ -8,7 +8,7 @@ GEM
       rackup (~> 2.1)
     base64 (0.2.0)
     colored (1.2)
-    concurrent-ruby (1.2.2)
+    concurrent-ruby (1.2.3)
     cri (2.15.11)
     ddmetrics (1.1.0)
     ddplugin (1.0.3)
