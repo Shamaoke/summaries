@@ -6,6 +6,8 @@ title: Summaries
 
 [Ant](/summaries/ant)
 
+[C++](/summaries/cpp)
+
 [GDB](/summaries/gdb)
 
 [Git](/summaries/git)
