@@ -9,6 +9,6 @@ end
 
 desc 'commit changes to VCS'
 task :commit do
-  system("git commit -am '#{Time.now.getutc.strftime '%Y-%m-%d %H:%M:%S'}'")
+  system("git commit -am 'build #{Time.now.getutc.strftime '%Y-%m-%d %H:%M:%S'}'")
 end
 
