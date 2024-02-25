@@ -12,7 +12,7 @@ GEM
     cri (2.15.11)
     ddmetrics (1.1.0)
     ddplugin (1.0.3)
-    diff-lcs (1.5.0)
+    diff-lcs (1.5.1)
     ffi (1.16.3)
     haml (6.3.0)
       temple (>= 0.8.2)
@@ -65,7 +65,7 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
-    rack (3.0.8)
+    rack (3.0.9.1)
     rackup (2.1.0)
       rack (>= 3)
       webrick (~> 1.8)
@@ -95,10 +95,9 @@ GEM
     tty-platform (0.3.0)
     tty-which (0.5.0)
     webrick (1.8.1)
-    zeitwerk (2.6.12)
+    zeitwerk (2.6.13)
 
 PLATFORMS
-  ruby
   x86_64-linux
 
 DEPENDENCIES
@@ -112,4 +111,4 @@ DEPENDENCIES
   sass
 
 BUNDLED WITH
-   2.5.3
+   2.4.22
