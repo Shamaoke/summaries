@@ -18,9 +18,17 @@ title: C++
 
 **виртуальная память** (_virtual memory_)
 
+**инициализация переменной** (_variable initialization_)
+
 **куча**, **хип**, **свободная память** (_heap_, _free store_)
 
 **локальная память тредов** (_thread local storage_)
+
+**приведение** (casting)
+
+**принужденное приведение** (coercing)
+
+**присваивание (значения переменной)** (_variable assignment_)
 
 **фрейм аппаратной памяти** _physical memory frame_
 
