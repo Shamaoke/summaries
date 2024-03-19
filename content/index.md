@@ -22,6 +22,8 @@ title: Summaries
 
 [Java](/summaries/java)
 
+[LLDB](/summaries/lldb)
+
 [LLVM](/summaries/llvm)
 
 [MongoDB](/summaries/mongodb)
