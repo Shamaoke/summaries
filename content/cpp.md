@@ -28,13 +28,13 @@ title: C++
 
   `<<`
 
-  [Buontempo: C++ by example; 1.4.2]
+  \[Buontempo: C++ by example; 1.4.2\]
 
 **оператор разрешения области видимости** (_scope resolution operator_)
 
   `::`
 
-  [Buontempo: C++ by example; 1.4.2]
+  \[Buontempo: C++ by example; 1.4.2\]
 
 **приведение** (casting)
 
