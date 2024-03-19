@@ -28,6 +28,8 @@ title: C++
 
   `<<`
 
+  [Buontempo: C++ by example; 1.4.2]
+
 **приведение** (casting)
 
 **принужденное приведение** (coercing)
