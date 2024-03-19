@@ -39,6 +39,16 @@
   font-weight: bold;
   src: url("/summaries/fonts/PTM75F_W.woff"); }
 @font-face {
+  font-family: "Iosevka Slab";
+  font-style: normal;
+  font-weight: normal;
+  src: url("/summaries/fonts/iosevka-slab-regular.ttf"); }
+@font-face {
+  font-family: "Iosevka Slab";
+  font-style: normal;
+  font-weight: bold;
+  src: url("/summaries/fonts/iosevka-slab-bold.ttf"); }
+@font-face {
   font-family: "PT Sans";
   font-style: normal;
   font-weight: normal;
@@ -118,7 +128,7 @@ main {
   main pre {
     overflow: scroll; }
   main code {
-    font-family: PT Mono; }
+    font-family: Iosevka Slab; }
   main code {
     font-size: 1rem; }
   main a:link, main a:visited {
