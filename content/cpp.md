@@ -24,6 +24,10 @@ title: C++
 
 **локальная память тредов** (_thread local storage_)
 
+**оператор вставки в поток** (_stream insertion operator_)
+
+  `<<`
+
 **приведение** (casting)
 
 **принужденное приведение** (coercing)
