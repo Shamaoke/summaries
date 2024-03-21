@@ -22,6 +22,8 @@ title: Summaries
 
 [Java](/summaries/java)
 
+[Qt](/summaries/qt)
+
 [LLDB](/summaries/lldb)
 
 [LLVM](/summaries/llvm)
