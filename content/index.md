@@ -8,6 +8,8 @@ title: Summaries
 
 [C++](/summaries/cpp)
 
+[CMake](/summaries/cmake)
+
 [GDB](/summaries/gdb)
 
 [Git](/summaries/git)
@@ -31,6 +33,8 @@ title: Summaries
 [MongoDB](/summaries/mongodb)
 
 [Mount](/summaries/mount)
+
+[Ninja](/summaries/ninja)
 
 [RXVT-UNICODE](/summaries/urxvt)
 
