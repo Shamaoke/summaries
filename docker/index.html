@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<title>Docker</title>
+</head>
+<body>
+<header>
+<h1>Docker</h1>
+</header>
+<main>
+<h1 id="Содержание">Содержание</h1>
+
+<p><a href="#Терминология">Терминология</a></p>
+
+<p><a href="#Перечень_пакетов">Перечень пакетов</a></p>
+
+<p><a href="#Перечень_файлов">Перечень файлов</a></p>
+
+<p><a href="#Перечень_команд">Перечень команд</a></p>
+
+<p><a href="#Контейнеры">Контейнеры</a></p>
+
+<p><a href="#Образы">Образы</a></p>
+
+<p><a href="#Dockerfile">Dockerfile</a></p>
+
+<p><a href="#Примеры">Примеры</a></p>
+
+<p><a href="#Ссылки">Ссылки</a></p>
+
+<h1 id="Терминология">Терминология</h1>
+
+<dl>
+  <dt><strong>Docker</strong></dt>
+  <dd>
+    <p>Система управления контейнерами</p>
+  </dd>
+  <dd>
+    <p>Программная платформа для запуска приложений в контейнерах</p>
+  </dd>
+  <dt><strong>контейнер</strong> (<em>container</em>)</dt>
+  <dd>
+    <p>Изолированное окружение для запуска приложений из образов</p>
+  </dd>
+  <dt><strong>образ</strong> (<em>image</em>)</dt>
+  <dd>
+    <p>Пакет с программой и всеми необходимыми зависимостями</p>
+  </dd>
+  <dd>
+    <p>Операционное окружение плюс программное приложение</p>
+  </dd>
+  <dt><strong>реестр</strong> (<em>registry</em>)</dt>
+  <dd>
+    <p>Хранилище репозиториев образов</p>
+  </dd>
+  <dt><strong>репозиторий</strong> (<em>repository</em>)</dt>
+  <dd>
+    <p>Хранилище образов приложения в реестре</p>
+  </dd>
+  <dt><strong>ссылка</strong> (<em>image reference</em>)</dt>
+  <dd>
+    <p>Уникальный идентификатор образа</p>
+  </dd>
+</dl>
+
+<h1 id="Перечень_пакетов">Перечень пакетов</h1>
+
+<dl>
+  <dt><strong>docker</strong></dt>
+  <dd>
+    <p>Pack, ship and run any application as a lightweight container</p>
+
+    <p>https://www.docker.com</p>
+  </dd>
+  <dt><strong>docker-compose</strong></dt>
+  <dd>
+    <p>Fast, isolated development environments using Docker</p>
+
+    <p>https://www.docker.com</p>
+  </dd>
+</dl>
+
+<h1 id="Перечень_файлов">Перечень файлов</h1>
+
+<dl>
+  <dt><code>~/.docker/config.json</code></dt>
+  <dd>
+    <p>Файл с настройками Docker’а</p>
+  </dd>
+  <dt><code>/usr/lib/systemd/system/docker.service</code></dt>
+  <dd>
+    <p>Юнит-файл SystemD</p>
+  </dd>
+</dl>
+
+<h1 id="Перечень_команд">Перечень команд</h1>
+
+<dl>
+  <dt><code>docker version</code></dt>
+  <dd>
+    <p>Вывести сводку по Docker’у</p>
+  </dd>
+  <dt><code>docker-compose version</code></dt>
+  <dd>
+    <p>Вывести сводку по Docker Compose</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Образы">Образы</h2>
+
+<dl>
+  <dt><code>docker image ls</code></dt>
+  <dt><code>docker images</code></dt>
+  <dd>
+    <p>Вывести список всех локальных образов</p>
+  </dd>
+  <dt><code>docker image ls -a|--all</code></dt>
+  <dd>
+    <p>Вывести список всех локальных образов, включая промежуточные (intermediate)</p>
+  </dd>
+  <dt><code>docker image ls -q|--quiet</code></dt>
+  <dd>
+    <p>Вывести список идентификаторов локальных образов</p>
+  </dd>
+  <dt><code>docker image ls --filter repository='rabbit' --filter repository='*/rabbit'</code></dt>
+  <dd>
+    <p>Вывести список локальных образов, отфильтровав его по указанным критериям</p>
+  </dd>
+  <dt><code>docker image rm IMAGE_ID...</code></dt>
+  <dd>
+    <p>Удалить один или несколько локальных образов</p>
+  </dd>
+  <dt><code>docker image rm $(docker image ls -aq)</code></dt>
+  <dd>
+    <p>Удалить все локальные образы</p>
+  </dd>
+  <dt><code>docker image save -o|--output image.tar.gz IMAGE</code></dt>
+  <dd>
+    <p>Сохранить образ в архив</p>
+  </dd>
+  <dt><code>docker image load -i|--input image.tar.gz</code></dt>
+  <dd>
+    <p>Внести образ из архива в локальный реестр</p>
+  </dd>
+</dl>
+
+<p><code>docker image build -t|--tag IMAGE_NAME:TAG DOCKERFILE_LOCATION</code></p>
+
+<ul>
+  <li>
+    <p>Собрать образ Docker’а</p>
+  </li>
+  <li>
+    <p>Задать произвольное имя для нового образа и опционально тэг</p>
+  </li>
+  <li>
+    <p>Указать каталог с файлом Dockerfile, на основе которого будет собран данный образ</p>
+  </li>
+</ul>
+
+<p><code>docker image history --no-trunc IMAGE</code></p>
+
+<ul>
+  <li>
+    <p>Отобразить сборочный профиль для указанного образа в табличном формате</p>
+  </li>
+  <li>
+    <p>Не обрезать длинные строки (<code>--no-trunc</code>)</p>
+  </li>
+</ul>
+
+<dl>
+  <dt><code>docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</code></dt>
+  <dd>
+    <p>Создать ссылку на образ</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Контейнеры">Контейнеры</h2>
+
+<p><code>docker container run IMAGE COMMAND</code></p>
+
+<ul>
+  <li>
+    <p>Скачать образ из удаленного репозитория (<code>hub.docker.com</code> по умолчанию), если
+он отсутствует в локальном репозитории</p>
+  </li>
+  <li>
+    <p>Создать контейнер с заданными настройками из образа в локальном репозитории</p>
+  </li>
+  <li>
+    <p>Запустить контейнер</p>
+  </li>
+  <li>
+    <p>Выполнить заданную команду</p>
+  </li>
+</ul>
+
+<p><code>docker container run -i|--interactive -t|--tty 387f84126dbc 'sh'</code></p>
+
+<ul>
+  <li>
+    <p>Запустить контейнер с указанным образом (<code>387f84126dbc</code>)</p>
+  </li>
+  <li>
+    <p>Не закрывать поток стандартного ввода (STDIN) по выходу из программы,
+запущенной в контейнере (<code>--interactive</code>)</p>
+  </li>
+  <li>
+    <p>Выделить отдельный псевдотерминал (pseudo-TTY) для контейнера (<code>--tty</code>)</p>
+  </li>
+  <li>
+    <p>Выполнить указанную команду в контейнере (<code>sh</code>)</p>
+  </li>
+</ul>
+
+<dl>
+  <dt><code>docker container run --rm IMAGE</code></dt>
+  <dd>
+    <p>Удалить контейнер по завершению его работы</p>
+  </dd>
+</dl>
+
+<p><code>docker container run -i|--interactive -t|--tty --entrypoint sh 387f84126dbc</code></p>
+
+<ul>
+  <li>
+    <p>Запустить контейнер с указанным образом (<code>387f84126dbc</code>)</p>
+  </li>
+  <li>
+    <p>Не закрывать поток стандартного ввода (STDIN) по выходу из программы,
+запущенной в контейнере (<code>--interactive</code>)</p>
+  </li>
+  <li>
+    <p>Выделить отдельный псевдотерминал (pseudo-TTY) для контейнера (<code>--tty</code>)</p>
+  </li>
+  <li>
+    <p>Установить команду, выполняемую при запуске контейнера (<code>--entrypoint sh</code>)</p>
+  </li>
+</ul>
+
+<dl>
+  <dt><code>docker container run --rm alpine watch -tn 1 'ping google.com'</code></dt>
+  <dd>
+    <p>Цикличиски выполнять команду <code>ping</code> в созданном контейнере</p>
+  </dd>
+</dl>
+
+<p><code>docker container run -d|--detach -p|--publish 8088:80 3a29d4fe4767</code></p>
+
+<ul>
+  <li>
+    <p>Запустить контейнер с указанным образом (<code>3a29d4fe4767</code>)</p>
+  </li>
+  <li>
+    <p>Использовать фоновый режим запуска (<code>--detach</code>)</p>
+  </li>
+  <li>
+    <p>Связать порт хоста с портом контейнера (<code>--publish 8088:80</code>)</p>
+
+    <p>Трафик, идущий на порт 8088 на локальной машине, будет передан порту 80 контейнера.</p>
+  </li>
+</ul>
+
+<dl>
+  <dt><code>docker container create IMAGE_ID</code></dt>
+  <dd>
+    <p>Создать контейнер</p>
+  </dd>
+</dl>
+
+<p><code>docker container create -p|--publish 8088:80 3a29d4fe4767</code></p>
+
+<ul>
+  <li>
+    <p>Создать контейнер</p>
+  </li>
+  <li>
+    <p>Связать порт хоста с портом контейнера</p>
+
+    <p>Трафик, идущий на порт 8088 на локальной машине, будет передан порту 80 контейнера.</p>
+  </li>
+</ul>
+
+<p><code>docker container create -e|--env 'METHOD=HEAD' -e|--env 'HOST=linux.org.ru' 7a6ec9807bdd</code></p>
+
+<ul>
+  <li>
+    <p>Создать контейнер</p>
+  </li>
+  <li>
+    <p>Установить произвольные переменные окружения</p>
+
+    <p>Программа, запущенная в контейнере будет иметь досту к заданным переменным.</p>
+  </li>
+</ul>
+
+<p><code>docker container create --network rabbit 7a6ec9807bdd</code></p>
+
+<ul>
+  <li>
+    <p>Создать контейнер</p>
+  </li>
+  <li>
+    <p>Подключиться к указанной сети Docker’а</p>
+  </li>
+</ul>
+
+<dl>
+  <dt><code>docker container ls</code></dt>
+  <dd>
+    <p>Вывести список запущенных контейнеров</p>
+  </dd>
+  <dt><code>docker container ls -a|--all</code></dt>
+  <dd>
+    <p>Вывести список всех локальных контейнеров как запущенных, так и незапущенных</p>
+  </dd>
+  <dt><code>docker container ls -q|--quiet</code></dt>
+  <dd>
+    <p>Вывести список идентификаторов запущенных контейнеров</p>
+  </dd>
+  <dt><code>docker container rm CONTAINER_ID...</code></dt>
+  <dd>
+    <p>Удалить один или несколько локальных контейнеров</p>
+  </dd>
+  <dt><code>docker container rm $(docker container ls -aq)</code></dt>
+  <dd>
+    <p>Удалить все локальные контейнеры</p>
+  </dd>
+  <dt><code>docker container rm -f|--force $(docker container ls -aq)</code></dt>
+  <dd>
+    <p>Удалить все локальные контейнеры, включая запущенные</p>
+  </dd>
+  <dt><code>docker container start CONTAINER_ID...</code></dt>
+  <dd>
+    <p>Запустить один или несколько контейнеров</p>
+  </dd>
+  <dt><code>docker container stop CONTAINER_ID...</code></dt>
+  <dd>
+    <p>Остановить один или несколько контейнеров</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Сети">Сети</h2>
+
+<dl>
+  <dt><code>docker network ls</code></dt>
+  <dd>
+    <p>Вывести перечень сетей</p>
+  </dd>
+  <dt><code>docker network create NETWORK</code></dt>
+  <dd>
+    <p>Создать сеть</p>
+  </dd>
+  <dt><code>docker network rm NETWORK...</code></dt>
+  <dd>
+    <p>Удалить одну или несколько сетей</p>
+  </dd>
+  <dt><code>docker network inspect NETWORK...</code></dt>
+  <dd>
+    <p>Отобразить детализированную информацию (в формате JSON) по одной или нескольким сетям</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Журналирование">Журналирование</h2>
+
+<dl>
+  <dt><code>docker container logs CONTAINER_ID</code></dt>
+  <dd>
+    <p>Вывести журнал контейнера</p>
+  </dd>
+  <dt><code>docker container logs -f|--follow CONTAINER_ID</code></dt>
+  <dd>
+    <p>Вывести журнал контейнера и остаться в режиме отслеживания</p>
+
+    <p>Нажать <code>&lt;Ctrl&gt;+C</code> для выхода из режима отслеживания.</p>
+  </dd>
+  <dt><code>docker container stats CONTAINER_ID</code></dt>
+  <dd>
+    <p>Вывести живую информацию о ресурсах, потребляемых контейнером</p>
+  </dd>
+  <dt><code>docker container inspect CONTAINER_ID...</code></dt>
+  <dd>
+    <p>Отобразить детализированную информацию (в формате JSON) по одному или нескольким контейнерам</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Взаимодействие_с_контейнером">Взаимодействие с контейнером</h2>
+
+<dl>
+  <dt><code>docker container exec CONTAINER_ID COMMAND</code></dt>
+  <dd>
+    <p>Выполнить команду в запущенном контейнере</p>
+
+    <p><a href="https://docs.docker.com/engine/reference/commandline/exec/">docker exec | Docker Documentation</a></p>
+  </dd>
+  <dt><code>docker container exec -i|--interactive -t|--tty 2d83314c9a66 sh</code></dt>
+  <dd>
+    <p>Создать интерактивную (-i) сессию командной оболочки (sh) в выделенном терминале (-t) в заданном контейнере (2d83314c9a66)</p>
+  </dd>
+  <dt><code>docker container cp SOURCE DESTINATION</code></dt>
+  <dd>
+    <p>Скопировать файл из <code>SOURCE</code> в <code>DESTINATION</code></p>
+  </dd>
+  <dt><code>docker container cp src/index.html 2d83314c9a66:/usr/local/apache2/htdocs</code></dt>
+  <dd>
+    <p>Скопировать файл из локальной файловой системы в файловую систему контейнера</p>
+  </dd>
+  <dt><code>docker container cp 2d83314c9a66:/usr/local/apache2/htdocs/index.html src</code></dt>
+  <dd>
+    <p>Скопировать файл из файловой системы контейнера в локальную файловую систему</p>
+
+    <p><a href="https://docs.docker.com/engine/reference/commandline/container_cp/">docker container cp | Docker Documentation</a></p>
+  </dd>
+  <dt><code>docker container commit CONTAINER [NAME:TAG]</code></dt>
+  <dd>
+    <p>Создать образ из контейнера</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Реестры">Реестры</h2>
+
+<dl>
+  <dt><code>docker login -u|--username -p|password [REGISTRY]</code></dt>
+  <dd>
+    <p>Внести регистрационные данные для указанного реестра (по умолчанию — <em>docker.io</em>)</p>
+  </dd>
+  <dt><code>docker logout [REGISTRY]</code></dt>
+  <dd>
+    <p>Удалить регистрационные данные для указанного реестра (по умолчанию — <em>docker.io</em>)</p>
+  </dd>
+  <dt><code>docker image pull IMAGE</code></dt>
+  <dd>
+    <p>Скачать образ из удаленного репозитория и сохранить в локальном</p>
+  </dd>
+  <dt><code>docker image push IMAGE</code></dt>
+  <dd>
+    <p>Загрузить образ в удаленный репозиторий</p>
+  </dd>
+</dl>
+
+<h2 id="Перечень_команд-Системные_команды">Системные команды</h2>
+
+<dl>
+  <dt><code>docker system df</code></dt>
+  <dd>
+    <p>Вывести информацию по использованию Docker’ом ресурсов файловой системы</p>
+  </dd>
+</dl>
+
+<h1 id="Контейнеры">Контейнеры</h1>
+
+<p>Контейнер — это изолированное окружение для запуска образов. Контейнер
+обеспечивает выделение виртуальных вычислительных ресурсов таких как имя хоста,
+сетевой интерфейс, файловая система. Эти ресурсы уникальны для каждого
+контейнера. Однако, каждый контейнер использует вычислительный ресурс ЦПУ,
+память хоста и ядро ОС в разделяемом режиме. То есть, часть ресурсов выделенная
+и часть ресурсов разделяемая. Подобное разделение обеспечивает максимальную
+утилизацию ресурсов — если процессу в контейнере требуется некоторый ресурс
+(например, память), он выдляется, если же некоторый ресурс не требуется, он не
+выделяется или высвобождается после использования и никоим образом не
+резервируется за контейнером, и таким образом данный ресурс может быть
+использован где-то ещё, например в процессе, запущенном в другом контейнере.</p>
+
+<p>Контейнеры используют операционную систему хоста. Отсутствие своей собственной
+операционной системы в контейнере позволяет высвобождать значительное количество
+ресурсов, требуемых для обеспечения работы операционной системы (процессерное
+время и память).</p>
+
+<p>Контейнеры обеспечивают плотность и изолированность.</p>
+
+<p>[Stoneman: Learn Docker in a month of lunches; 2.2]</p>
+
+<h2 id="Контейнеры-Свойства_контейнеров">Свойства контейнеров</h2>
+
+<dl>
+  <dt><strong>Модуляризация</strong></dt>
+  <dd>
+    <p>Разбиение функциональных компонетов комплексного приложения на независимые
+модули со своим собственным технологическим стеком, комадной разработчиков,
+циклом разработки и развертывания, точкой (местом) развертывания.</p>
+  </dd>
+  <dt><strong>Унификация</strong></dt>
+  <dd>
+    <p>Единый инструмент как для окружения разработки, так и для производственного окружения.</p>
+  </dd>
+  <dt><strong>Портируемость</strong></dt>
+  <dd>
+    <p>Единая основа для запуска в различных окружениях.</p>
+  </dd>
+  <dt><strong>Изолированность</strong></dt>
+  <dd>
+    <p>Возможность иметь изолированные друг от друга окружения.</p>
+  </dd>
+  <dt><strong>Легковесность</strong></dt>
+  <dd>
+    <p>Потребление минимального количества ресурсов.</p>
+  </dd>
+</dl>
+
+<h1 id="Образы">Образы</h1>
+
+<p>Что есть образ и что есть контейнер? Как они друг с другом соотносятся?</p>
+
+<p>Образ — это пакет с программой и всеми зависимостями.</p>
+
+<p>Контейнер ­ это пакет с образом.</p>
+
+<p>Образ содержит метаинформацию и полезную нагрузку. Метаинформация, в числе
+прочего, содержит профиль сборки образа.</p>
+
+<p><code>docker image history IMAGE</code> вывести информацию по профилю сборки образа</p>
+
+<p>Образ состоит из слоев. Каждая строка вывода <code>docker image history</code> содержит
+информацию о том, как создавался конкретный слой указанного образа.</p>
+
+<p>Каждый слой — это компонент конечного образа, являющийся для него зависимостью.</p>
+
+<p>Физически, слой это отдельный файл, хранящийся в файловой системе.</p>
+
+<p>Разбиение образа на слои позволяет повторно использовать один и тот же слой в
+нескольких образах (потенциально в достаточно большом их количестве), тем самым
+экономя ресурсы файловой системы.</p>
+
+<p>Docker не позволяет вносить изменения в слои-зависимости. Данное поведение
+обусловлено тем, что изменение, внесенное в такой слой отразится на всех
+включающих его образах.</p>
+
+<p>При изменении слоя с приложением и пересборки образа будет создан новый слой.</p>
+
+<p>При изменении инструкции в сборочном файле Dockerfile будет создан новый слой
+для результата данной инструкции.</p>
+
+<p>При сборке образа, на каждом шаге либо создается новый слой, либо создается
+новый слой взамен устаревшего и последний удаляется, либо используется
+уже имеющийся слой.</p>
+
+<p>Рассмотрим пример.</p>
+
+<pre><code>Sending build context to Docker daemon  4.096kB&#x000A;Step 1/7 : FROM node&#x000A; ---&gt; 1d88d89c7230&#x000A;Step 2/7 : ENV TARGET="linux.org.ru"&#x000A; ---&gt; Using cache&#x000A; ---&gt; eebac6754c54&#x000A;Step 3/7 : ENV METHOD="HEAD"&#x000A; ---&gt; Using cache&#x000A; ---&gt; 8b723b3a219e&#x000A;Step 4/7 : ENV INTERVAL="2000"&#x000A; ---&gt; Using cache&#x000A; ---&gt; 98d9640d707a&#x000A;Step 5/7 : WORKDIR /web-ping&#x000A; ---&gt; Using cache&#x000A; ---&gt; 715c587a041b&#x000A;Step 6/7 : COPY app.mjs .&#x000A; ---&gt; f6ef9cf8f3dd&#x000A;Step 7/7 : CMD ["node", "/web-ping/app.mjs"]&#x000A; ---&gt; Running in 0b5d885988bd&#x000A;Removing intermediate container 0b5d885988bd&#x000A; ---&gt; 28b468469edd&#x000A;Successfully built 28b468469edd&#x000A;Successfully tagged web-ping:v9&#x000A;</code></pre>
+
+<p>В примере, шаги 2—5 используют уже имеющиеся слои, а шаги 6 и 7 создают новые.</p>
+
+<p>Имеющиеся слои используются в том случае, если имеет место прямой порядок
+сборок. Если происходит пересборка образа из середины последовательности,
+повтороное использование слоя выше по истории сборок не предполагается.</p>
+
+<p>Существуют промежуточные сборочные слои. Эти слои содержат результаты выполнения
+инструкций из Dockerfile’а. При сборке, в определенных обстоятельствах эти слои
+будут повторно использованы. Тем самым экономятся ресурсы при проведении сборки.
+(В особенности это значимо при многократных пересборках.)</p>
+
+<p>Какие слои используются повторно, какие слои удаляются, какие слои воссоздаются
+заново — всё это отображается в отладочном выводе в процессе проведения сборки.</p>
+
+<p>Docker определяет следует ли создать новый образ-слой или использовать уже
+имеющийся на основе хэша слоя. Хэш слоя формируется из хэша инструкции файла
+Dockerfile и хэша содержимого файла, переданного данной инструкции в качестве
+аргумента (если инструкция предполагает передачу файла).</p>
+
+<p>Если инструкция изменилась, то изменяется и её хэш. Например, инструкции
+<code>ENV HOST="google.com"</code> и <code>ENV HOST="yandex.ru"</code> будут иметь разные хэши.
+Соответственно, слой с данной инструкцией будет воссоздан заново.</p>
+
+<p>Если изменилось содержимое файла в инструкции <code>COPY app.js .</code>, то слой также
+будет воссоздан заново.</p>
+
+<p>Каждый раз в момент воссоздания слоя-образа будет нарушена целостность кэша
+слоев-образов. В этом случае слои-образы всех последующих инструкций также будут
+воссозданы заново вне зависимости от того изменилась ли инструкция (её хэш) или
+нет. Таким образом, кэш слоев-образов будет обновлен.</p>
+
+<p>Если некоторая инструкция в файле Dockerfile изменяется достаточно часто и после
+неё следуют другие иструкции практически не подвергаемые изменениям, мы будим
+сталкиватся с нерациональным использованием ресурсов при сборке, в силу того, что
+слои-образы всех последующих инструкция каждый раз будут воссоздаваться заново.
+В данном случае можно прибегнуть к оптимизации, заключающейся в перенесении
+данной часто изменяющийся инструкции в самый конец файла Dockerfile.</p>
+
+<p>[Stoneman: Learn Docker in a month of lunches; 3.4, 3.5]</p>
+
+<h2 id="Образ-Ссылка_на_образ">Ссылка на образ</h2>
+
+<p><code>docker.io¹/shamaoke²/murasaki³:latest⁴</code></p>
+
+<ol>
+  <li>
+    <p>Домен реестра образов (по умолчанию — <em>docker.io</em>)</p>
+  </li>
+  <li>
+    <p>Имя учетной записи владельца образа (человек, либо организация)</p>
+  </li>
+  <li>
+    <p>Название репозитория для хранения образов приложения</p>
+  </li>
+  <li>
+    <p>Тэг, маркирующий версию образа приложения (по умолчанию ­ <em>latest</em>)</p>
+  </li>
+</ol>
+
+<h2 id="Образы-Мультиэтапная_сборка">Мультиэтапная сборка</h2>
+
+<p>Docker позволяет осуществлять мультиэтапную сборку образов. Такой вид сборки
+осуществляется посредством использования нескольких инструкций <code>FROM</code>.</p>
+
+<p>Инструкция <code>FROM</code> в файле Dockerfile задает образ, который будет являться
+базовым и подвергаться различным манипуляциям в процессе сборки, чтобы в
+конечном итоге принять требуемый вид.</p>
+
+<p>Файл сборки может содержать несколько инструкций <code>FROM</code>. Каждой такой инструкции
+может быть передано имя. В дальнейшем данное имя может быть использовано как
+ссылка.</p>
+
+<p>Посредством ссылки, любые изменения в образах на ранних этапах сборки могут быть
+использованы в новых образах на более поздних.</p>
+
+<p>Мультиэтапная сборка позволяет использовать один и тот же артефакт, созданный на
+начальном этапе сразу на нескольких последующих этапах. Подобная возможность
+может быть использована например для того, чтобы на релизном этапе с одной
+стороны не перегружать финальный образ артефактами из промежуточных этапов
+(например тестовым или сборочным инструментарием), а с другой стороны получать
+гарантированно рабоспособный код.</p>
+
+<pre><code>FROM java AS build&#x000A;# A set of instructions for building a Java application&#x000A;# Create the `rabbit` Java executable at the end&#x000A;&#x000A;FROM java AS test # this name isn't actually used as a reference; it's here just for clearance&#x000A;COPY --from=build /app/rabbit /app/rabbit&#x000A;# A set of instructions for creating a testing environment and testing the Java application&#x000A;# If tests fail the build process will fail as well&#x000A;&#x000A;FROM java AS release&#x000A;COPY --from=build /app/rabbit /app/rabbit&#x000A;# The final image won't contain testing tools and we will have an executable&#x000A;# which successfully passed tests&#x000A;&#x000A;CMD /usr/bin/java /app/rabbit&#x000A;</code></pre>
+
+<p>[Stoneman: Learn Docker in a month of lunches; 4.1]</p>
+
+<p>Для каждого этапа мультиэтапной сборки создается свой собственный кэш. При
+нарушении целостности кэша (в связи с изменением в командах Dockerfile’а)
+пересборка образов для последующих команд происходит только для данного этапа,
+поскольку целостность кэшей других этапов не нарушается.</p>
+
+<p>Мультиэтапная сборка позволяет изолировать финальный образ от вспомогательного
+инструментария, используемого для его создания (загрузочные утилиты, утилиты
+сборки, тестирования и т. п.). Этим во-первых экономятся вычислительные ресурсы
+(как при сборке образа, так и в продакшене) и во-вторых — обеспечивается более
+высокий уровень безопасности, поскольку вспомогательный инструментарий может
+иметь соответствующие изъяны.</p>
+
+<p>Сборочный процесс приложения и загрузку зависимостей необходимо выносить на
+отдельные ранние этапы сборки образа.</p>
+
+<p>[Stoneman: Learn Docker in a month of lunches, 4.5]</p>
+
+<h1 id="Dockerfile">Dockerfile</h1>
+
+<h2 id="Dockerfile-Основные_идеи">Основные идеи</h2>
+
+<ul>
+  <li>
+    <p>Это сценарий</p>
+  </li>
+  <li>
+    <p>Он содержит набор специфичных инструкций</p>
+  </li>
+  <li>
+    <p>Инструкции по соглашение набираются капсом, но это не обязательно</p>
+  </li>
+  <li>
+    <p>Можно также использовать обычные команды командной оболочки</p>
+  </li>
+  <li>
+    <p>Выполнив инструкции, мы получим образ Docker’а</p>
+  </li>
+  <li>
+    <p>Полученный образ будет размещен в локальном реестре Docker’а</p>
+  </li>
+</ul>
+
+<p>[Stoneman: Learn docker in a month of lunches; 3.2]</p>
+
+<h2 id="Dockerfile-Разбиение_команд">Разбиение команд</h2>
+
+<p>При создании файла Dockerfile имеет смысл разбивать одну команду на несколько в
+случае, если какая-либо из составляющих команд ресурснозатратна. Результат такой
+команды будет сохранен в кэше и при последующих пересборках будет использован повторно.</p>
+
+<p>Рассмотрим пример.</p>
+
+<pre><code>RUN mvn dependency&#x000A;&#x000A;RUN mvn package&#x000A;</code></pre>
+
+<p>В примере ресурснозатратная команда <code>mvn dependency</code> была извлечена из команды
+сборки <code>mvn package</code>. При следующем запуске <code>docker build</code> она не будет
+выполняться заново, вместо этого её результат будет извлечен из кэша.</p>
+
+<p>[Stoneman: Learn Docker in a month of lunches, 4.2]</p>
+
+<h2 id="Dockerfile-Перечень_инструкций">Перечень Инструкций</h2>
+
+<p><code>FROM</code></p>
+
+<ul>
+  <li>
+    <p>Инициализировать новый сборочный этап</p>
+
+    <p>Для каждого сборочного этапа будет создан свой собственный кэш образов.</p>
+  </li>
+  <li>
+    <p>Установить базовый образ для текущего сборочного этапа</p>
+
+    <p>В качестве базового будет использован либо локальный образ, либо, при его
+отсутствии, образ из реестра по умолчанию (Docker Hub).</p>
+  </li>
+</ul>
+
+<dl>
+  <dt><code>ENTRYPOINT</code></dt>
+  <dd>
+    <p>Установить команду, выполняемую при запуске контейнера</p>
+
+    <p>К установленной команде будут добавлены аргументы <code>-a -b -c</code> при запуске
+<code>docker container run NAME -a -b -c</code>.</p>
+
+    <p>К установленной команде будут добавлены аргументы <code>-a -b -c</code> если в файле
+Dockerfile для сборки текущего образа будет дополнительно присутствовать
+запись <code>CMD ["-a", "-b", "-c"]</code>.</p>
+
+    <p>К установленной команде будут добавлены аргумены <code>-d -e</code> при запуске <code>docker container run NAME -d -e</code>,
+несмотря на наличие в файле Dockerfile записи <code>CMD ["-a", "-b", "-c"]</code>.
+То есть аргументы, указанные в данной записи будут перезаписаны.</p>
+
+    <p>К установленной команде будут добавлены аргументы <code>-a -b -c</code> если в файле
+Dockerfile для сборки образа <em>основанного</em> на текущем образе будет
+присутствовать запись `CMD [“-a”, “-b”, “-c”].</p>
+  </dd>
+  <dt><code>CMD</code></dt>
+  <dd>
+    <p>Установить команду, выполняемую при запуске контейнера</p>
+
+    <p>Установленная команда будет полностью перезаписана как <code>command -a -b -c</code> при
+запуске <code>docker container run NAME command -a -b -c</code>.</p>
+  </dd>
+</dl>
+
+<h1 id="Примеры">Примеры</h1>
+
+<p>Продолжение и разветвление сборки образа, начатой на раннем этапе, на более
+поздних этапах посредством использования ссылки на этап в инструкции <code>FROM</code>.</p>
+
+<pre><code># base stage&#x000A;FROM alpine AS builder&#x000A;&#x000A;RUN apk --update-cache add openjdk11-jdk&#x000A;RUN apk --update-cache add maven&#x000A;&#x000A;WORKDIR /build&#x000A;COPY pom.xml .&#x000A;&#x000A;# first reference to the base stage&#x000A;FROM builder AS build1&#x000A;COPY . /build&#x000A;RUN mvn package service1&#x000A;&#x000A;# second reference to the base stage&#x000A;FROM builder AS build2&#x000A;COPY . /build&#x000A;RUN mvn package service2&#x000A;&#x000A;# final stage&#x000A;FROM alpine&#x000A;&#x000A;RUN apk --update-cache add openjdk11-jre&#x000A;&#x000A;WORKDIR /app&#x000A;&#x000A;ENTRYPOINT ["/usr/bin/java", "-jar", "..."]&#x000A;&#x000A;# using the artifact from the first build stage&#x000A;COPY --from=build1 /build/service1.jar .&#x000A;&#x000A;# using the artifact from the second build stage&#x000A;COPY --from=build2 /build/service2.jar .&#x000A;</code></pre>
+
+<p>Использование индекса для ссылки на неименованный этап в инструкции <code>COPY</code>.</p>
+
+<pre><code>FROM alpine&#x000A;...&#x000A;&#x000A;FROM alpine&#x000A;COPY --from=0 ...&#x000A;</code></pre>
+
+<p>Прерывание процесса сборки на определенном этапе посредством опции <code>--target</code>
+команды <code>build</code>.</p>
+
+<pre><code># :::base:::&#x000A;FROM alpine AS base&#x000A;&#x000A;RUN apk --update-cache add zsh&#x000A;&#x000A;WORKDIR /app&#x000A;ENTRYPOINT ["/app/greeting"]&#x000A;&#x000A;# :::rabbit:::&#x000A;FROM base AS rabbit&#x000A;COPY rabbit/rabbit greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;# :::fox:::&#x000A;FROM base AS fox&#x000A;COPY fox/fox greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;# :::wolf:::&#x000A;FROM base AS wolf&#x000A;COPY wolf/wolf greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;docker image build --target fox .&#x000A;</code></pre>
+
+<ul>
+  <li>
+    <p>Процесс сборки завершиться на этапе <code>fox</code></p>
+  </li>
+  <li>
+    <p>Этап <code>wolf</code> выполнен не будет</p>
+  </li>
+  <li>
+    <p>Все этапы до этапа <code>fox</code> будут выполнены</p>
+  </li>
+</ul>
+
+<h1 id="Ссылки">Сылки</h1>
+
+<ul>
+  <li>
+    <p><a href="https://www.manning.com/books/learn-docker-in-a-month-of-lunches">Manning | Learn Docker in a Month of Lunches</a></p>
+  </li>
+  <li>
+    <p><a href="https://blog.sixeyed.com">Elton’s Blog</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/sixeyed/diamol">sixeyed/diamol: Code samples for the book “Learn Docker in a Month of Lunches”</a></p>
+  </li>
+  <li>
+    <p><a href="https://stackoverflow.com/questions/20813486/exploring-docker-containers-file-system">linux - Exploring Docker container’s file system - Stack Overflow</a></p>
+  </li>
+</ul>
+
+<h2 id="Ссылки-Документация">Документация</h2>
+
+<ul>
+  <li>
+    <p><a href="https://docs.docker.com">Docker Documentation | Docker Documentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/engine/reference/builder">Dockerfile reference | Docker Documentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/develop/develop-images/multistage-build">Use multi-stage builds | Docker Documentation</a></p>
+  </li>
+</ul>
+
+<!-- vim: set textwidth=80 colorcolumn=80: -->
+
+</main>
+<footer></footer>
+</body>
+</html>
