@@ -5,9 +5,13 @@ title: CMake
 # Содержание #
 {: id="Содержание" }
 
+[Файлы](#Файлы)
+
 [Переменные окружения](#Переменные_окружения)
 
-[Команды](#Команды)
+[Перечень команд CMakeLists.txt](#Перечень_команд_CMakeLists.txt)
+
+[Перечень команд командной строки](#Перечень_команд_командной_строки)
 
 [Ссылки](#Ссылки)
 
@@ -82,14 +86,96 @@ CMake — это набор инструментов для осуществле
     cmake -G Ninja ../source
     cmake --build .
 
+# Файлы #
+{: id="Файлы" }
+
+    /usr/bin/ccmake
+    /usr/bin/cmake
+    /usr/bin/cmake-gui
+    /usr/bin/cpack
+    /usr/bin/ctest
+    
+    /usr/share/man/man1/ccmake.1.gz
+    /usr/share/man/man1/cmake-gui.1.gz
+    /usr/share/man/man1/cmake.1.gz
+    /usr/share/man/man1/cpack.1.gz
+    /usr/share/man/man1/ctest.1.gz
+    
+    /usr/share/man/man7/cmake-buildsystem.7.gz
+    /usr/share/man/man7/cmake-commands.7.gz
+    /usr/share/man/man7/cmake-compile-features.7.gz
+    /usr/share/man/man7/cmake-configure-log.7.gz
+    /usr/share/man/man7/cmake-cxxmodules.7.gz
+    /usr/share/man/man7/cmake-developer.7.gz
+    /usr/share/man/man7/cmake-env-variables.7.gz
+    /usr/share/man/man7/cmake-file-api.7.gz
+    /usr/share/man/man7/cmake-generator-expressions.7.gz
+    /usr/share/man/man7/cmake-generators.7.gz
+    /usr/share/man/man7/cmake-language.7.gz
+    /usr/share/man/man7/cmake-modules.7.gz
+    /usr/share/man/man7/cmake-packages.7.gz
+    /usr/share/man/man7/cmake-policies.7.gz
+    /usr/share/man/man7/cmake-presets.7.gz
+    /usr/share/man/man7/cmake-properties.7.gz
+    /usr/share/man/man7/cmake-qt.7.gz
+    /usr/share/man/man7/cmake-server.7.gz
+    /usr/share/man/man7/cmake-toolchains.7.gz
+    /usr/share/man/man7/cmake-variables.7.gz
+    /usr/share/man/man7/cpack-generators.7.gz
+
 # Переменные окружения #
+{: id="Переменные_окружения" }
 
 [`CMAKE_GENERATOR`](https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR.html)
 
 : Установить генератор, используемый системой по умолчанию
 
-# Команды #
-{: id="Команды" }
+# Перечень команд CMakeLists.txt#
+{: id="Перечень_команд_CMakeLists.txt" }
+
+[`add_executable(main first.cpp second.cpp)`](https://cmake.org/cmake/help/latest/command/add_executable.html)
+
+: Создать исполняемый файл (`main`) из набора указанных исходных файлов (`first.cpp`, `second.cpp`)
+
+[`cmake_minimum_required(VERSION 3.29)`](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html)
+
+* Установить минимально допустимую версию системы CMake, используемую для
+  управления сборкой текущего проекта
+
+* Установить поведение текущей версии CMake в соответствие с поведением
+  указанной версии системы
+
+  В случае попытки сборки проекта системой CMake более ранней версии, возникнет
+  исключительная ситуация, которая приведет к останову процесса генерирования
+  файлов сборки.
+
+  В случае, если текущая используемая версия системы CMake выше указанной,
+  функциональность текущей версии будет урезана до той, которая существует в
+  указанной.
+
+  Следует выполнять данную команду в самом верху файла `CMakeLists.txt`.
+
+  Устанавливает переменную [`CMAKE_MINIMUM_REQUIRED_VERSION`](https://cmake.org/cmake/help/latest/variable/CMAKE_MINIMUM_REQUIRED_VERSION.html).
+
+[`message("ok!")`](https://cmake.org/cmake/help/latest/command/message.html)
+
+: Вывести указанное сообщение
+
+[`project(sample LANGUAGES CXX)`](https://cmake.org/cmake/help/latest/command/project.html)
+
+* Установить имя проекта (`sample`)
+
+* Установить используемые языки программирования (`CXX` — С++)
+
+  В случае отсутствия компилятора для указанных языков, возникнет исключительная
+  ситуация, которая приведет к останову процесса генерирования файлов сборки.
+
+  Следует выполнять данную команду сразу же после команды `cmake_minimum_required`.
+
+  Устанавливает переменную [`PROJECT_NAME`](https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html).
+
+# Перечень команд командной строки #
+{: id="Перечень_команд_командной_строки" }
 
 `cmake -G Ninja ..`
 
@@ -113,5 +199,7 @@ CMake — это набор инструментов для осуществле
 * [CMake Reference Documentation — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest)
 
 * [CMake Discourse](https://discourse.cmake.org)
+
+* [cmake-commands(7) — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html)
 
 <!-- vim: set textwidth=80 colorcolumn=80: -->
