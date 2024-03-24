@@ -86,6 +86,11 @@ CMake — это набор инструментов для осуществле
     cmake -G Ninja ../source
     cmake --build .
 
+Второй вариант базовой формы работы с системой CMake.
+
+    cmake -G Ninja -S source -B build
+    cmake --build build
+
 # Файлы #
 {: id="Файлы" }
 
