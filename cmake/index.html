@@ -12,175 +12,11 @@
 <main>
 <h1 id="Содержание">Содержание</h1>
 
-<p><a href="#Файлы">Файлы</a></p>
-
-<p><a href="#Переменные_окружения">Переменные окружения</a></p>
-
-<p><a href="#Перечень_команд_CMakeLists.txt">Перечень команд CMakeLists.txt</a></p>
-
-<p><a href="#Перечень_команд_командной_строки">Перечень команд командной строки</a></p>
+<p><a href="#Команды">Команды</a></p>
 
 <p><a href="#Ссылки">Ссылки</a></p>
 
-<p>В процессе разработки программного обеспечения наступает момент, когда
-приходится переводить исходный код во что-то, что может быть использовано
-конечным пользователем.</p>
-
-<p>Этот процесс называется <em>сборкой программного обеспечения</em>.</p>
-
-<p>Сборка программного обеспечения — это комплексный процесс.</p>
-
-<p>Для управления комплексностью при сборки программного обеспечения требуется подходящий инструмент.</p>
-
-<p>Таким иструментом является CMake.</p>
-
-<p><strong>CMake</strong> — инструмент управления сборкой программного обеспечения.</p>
-
-<p>Цель CMake — обеспечить управляемостью комплексный процесс сборки программного обеспечения.</p>
-
-<p>CMake — это набор инструментов для осуществления сборки программного обеспечения.</p>
-
-<p>Сборка программного обеспечения в системе CMake происходит поэтапно.</p>
-
-<p>Упрощенно, процесс работы CMake можно разделить на пять этапов.</p>
-
-<ul>
-  <li>
-    <p>Составление <em>файла описания проекта</em> (<em>файла управления сборкой</em>)</p>
-  </li>
-  <li>
-    <p>Генерирование <em>файла сборки</em> из файла управления сборкой</p>
-
-    <ul>
-      <li>
-        <p>Конфигурация</p>
-      </li>
-      <li>
-        <p>Собственно генерирование</p>
-      </li>
-    </ul>
-  </li>
-  <li>
-    <p>Сборка</p>
-  </li>
-  <li>
-    <p>Тестирование</p>
-  </li>
-  <li>
-    <p>Упаковка</p>
-  </li>
-</ul>
-
-<p>Основным артефактом системы CMake является файл <code>CMakeLists.txt</code>. Он определяет
-что должно быть собрано и как, какие тесты должны быть запущены и какие пакеты
-созданы.</p>
-
-<p>Данный файл является <em>файлом описания проекта</em>. Он служит для управления
-комплексным процессом сборки программного обеспечения.</p>
-
-<p>Фундаментальным понятием системы CMake является понятие <em>проекта</em>. Сборка
-проекта — это то, что находится под управлением системы CMake.</p>
-
-<p>Структура проекта состоит из двух частей: <em>исходные файлы</em> и <em>двоичные файлы</em>.</p>
-
-<p>В рамках системы CMake установлен следующий порядок размещения указанных файлов
-по каталогам: исходные файлы размещаются в <em>каталоге с исходным кодом</em>, двоичные
-файлы размещаются в <em>каталоге с двоичными файлами</em> (или в <em>каталоге сборки</em>).</p>
-
-<p>Каталог с исходным кодом находится под управлением разработчика.</p>
-
-<p>Каталог сборки находится под управлением системы CMake. В процессе работы
-системы в этом каталоге создаются различные артефакты системы сборки, а также файлы,
-являющиеся результатом сборки.</p>
-
-<p>В отношении того, где будет размещен каталог сборки существует два варианта.
-Каталог сборки размещен в каталоге с исходным кодом (<em>in-source</em>). Каталог
-сборки размещен вне каталога с исходным кодом (<em>out-source</em>).</p>
-
-<p>В процессе работы система CMake создает файлы сборки выбранной системы сборки.
-Для конкретной системы сборки должен быть использован соответствующий генератор.</p>
-
-<p>Базовая форма работы с системой CMake.</p>
-
-<pre><code>cd build&#x000A;cmake -G Ninja ../source&#x000A;cmake --build .&#x000A;</code></pre>
-
-<p>Второй вариант базовой формы работы с системой CMake.</p>
-
-<pre><code>cmake -G Ninja -S source -B build&#x000A;cmake --build build&#x000A;</code></pre>
-
-<h1 id="Файлы">Файлы</h1>
-
-<pre><code>/usr/bin/ccmake&#x000A;/usr/bin/cmake&#x000A;/usr/bin/cmake-gui&#x000A;/usr/bin/cpack&#x000A;/usr/bin/ctest&#x000A;&#x000A;/usr/share/man/man1/ccmake.1.gz&#x000A;/usr/share/man/man1/cmake-gui.1.gz&#x000A;/usr/share/man/man1/cmake.1.gz&#x000A;/usr/share/man/man1/cpack.1.gz&#x000A;/usr/share/man/man1/ctest.1.gz&#x000A;&#x000A;/usr/share/man/man7/cmake-buildsystem.7.gz&#x000A;/usr/share/man/man7/cmake-commands.7.gz&#x000A;/usr/share/man/man7/cmake-compile-features.7.gz&#x000A;/usr/share/man/man7/cmake-configure-log.7.gz&#x000A;/usr/share/man/man7/cmake-cxxmodules.7.gz&#x000A;/usr/share/man/man7/cmake-developer.7.gz&#x000A;/usr/share/man/man7/cmake-env-variables.7.gz&#x000A;/usr/share/man/man7/cmake-file-api.7.gz&#x000A;/usr/share/man/man7/cmake-generator-expressions.7.gz&#x000A;/usr/share/man/man7/cmake-generators.7.gz&#x000A;/usr/share/man/man7/cmake-language.7.gz&#x000A;/usr/share/man/man7/cmake-modules.7.gz&#x000A;/usr/share/man/man7/cmake-packages.7.gz&#x000A;/usr/share/man/man7/cmake-policies.7.gz&#x000A;/usr/share/man/man7/cmake-presets.7.gz&#x000A;/usr/share/man/man7/cmake-properties.7.gz&#x000A;/usr/share/man/man7/cmake-qt.7.gz&#x000A;/usr/share/man/man7/cmake-server.7.gz&#x000A;/usr/share/man/man7/cmake-toolchains.7.gz&#x000A;/usr/share/man/man7/cmake-variables.7.gz&#x000A;/usr/share/man/man7/cpack-generators.7.gz&#x000A;</code></pre>
-
-<h1 id="Переменные_окружения">Переменные окружения</h1>
-
-<dl>
-  <dt><a href="https://cmake.org/cmake/help/latest/envvar/CMAKE_GENERATOR.html"><code>CMAKE_GENERATOR</code></a></dt>
-  <dd>
-    <p>Установить генератор, используемый системой по умолчанию</p>
-  </dd>
-</dl>
-
-<h1 id="Перечень_команд_CMakeLists.txt">Перечень команд CMakeLists.txt</h1>
-
-<dl>
-  <dt><a href="https://cmake.org/cmake/help/latest/command/add_executable.html"><code>add_executable(main first.cpp second.cpp)</code></a></dt>
-  <dd>
-    <p>Создать исполняемый файл (<code>main</code>) из набора указанных исходных файлов (<code>first.cpp</code>, <code>second.cpp</code>)</p>
-  </dd>
-</dl>
-
-<p><a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html"><code>cmake_minimum_required(VERSION 3.29)</code></a></p>
-
-<ul>
-  <li>
-    <p>Установить минимально допустимую версию системы CMake, используемую для
-управления сборкой текущего проекта</p>
-  </li>
-  <li>
-    <p>Установить поведение текущей версии CMake в соответствие с поведением
-указанной версии системы</p>
-
-    <p>В случае попытки сборки проекта системой CMake более ранней версии, возникнет
-исключительная ситуация, которая приведет к останову процесса генерирования
-файлов сборки.</p>
-
-    <p>В случае, если текущая используемая версия системы CMake выше указанной,
-функциональность текущей версии будет урезана до той, которая существует в
-указанной.</p>
-
-    <p>Следует выполнять данную команду в самом верху файла <code>CMakeLists.txt</code>.</p>
-
-    <p>Устанавливает переменную <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_MINIMUM_REQUIRED_VERSION.html"><code>CMAKE_MINIMUM_REQUIRED_VERSION</code></a>.</p>
-  </li>
-</ul>
-
-<dl>
-  <dt><a href="https://cmake.org/cmake/help/latest/command/message.html"><code>message("ok!")</code></a></dt>
-  <dd>
-    <p>Вывести указанное сообщение</p>
-  </dd>
-</dl>
-
-<p><a href="https://cmake.org/cmake/help/latest/command/project.html"><code>project(sample LANGUAGES CXX)</code></a></p>
-
-<ul>
-  <li>
-    <p>Установить имя проекта (<code>sample</code>)</p>
-  </li>
-  <li>
-    <p>Установить используемые языки программирования (<code>CXX</code> — С++)</p>
-
-    <p>В случае отсутствия компилятора для указанных языков, возникнет исключительная
-ситуация, которая приведет к останову процесса генерирования файлов сборки.</p>
-
-    <p>Следует выполнять данную команду сразу же после команды <code>cmake_minimum_required</code>.</p>
-
-    <p>Устанавливает переменную <a href="https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html"><code>PROJECT_NAME</code></a>.</p>
-  </li>
-</ul>
-
-<h1 id="Перечень_команд_командной_строки">Перечень команд командной строки</h1>
+<h1 id="Команды">Команды</h1>
 
 <dl>
   <dt><code>cmake -G Ninja ..</code></dt>
@@ -204,20 +40,7 @@
 
 <h1 id="Ссылки">Ссылки</h1>
 
-<ul>
-  <li>
-    <p><a href="https://gitlab.kitware.com/cmake/community/-/wikis/FAQ">FAQ · Wiki · CMake / Community · GitLab</a></p>
-  </li>
-  <li>
-    <p><a href="https://cmake.org/cmake/help/latest">CMake Reference Documentation — CMake 3.29.0 Documentation</a></p>
-  </li>
-  <li>
-    <p><a href="https://discourse.cmake.org">CMake Discourse</a></p>
-  </li>
-  <li>
-    <p><a href="https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html">cmake-commands(7) — CMake 3.29.0 Documentation</a></p>
-  </li>
-</ul>
+<p>• <a href="https://gitlab.kitware.com/cmake/community/-/wikis/FAQ">FAQ · Wiki · CMake / Community · GitLab</a></p>
 
 <!-- vim: set textwidth=80 colorcolumn=80: -->
 
