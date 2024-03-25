@@ -9,6 +9,10 @@ title: CMake
 
 [Переменные окружения](#Переменные_окружения)
 
+[Переменные CMake](#Переменные_CMake)
+
+[Свойства CMake](#Свойства_CMake)
+
 [Перечень команд CMakeLists.txt](#Перечень_команд_CMakeLists.txt)
 
 [Перечень команд командной строки](#Перечень_команд_командной_строки)
@@ -135,12 +139,40 @@ CMake — это набор инструментов для осуществле
 
 : Установить генератор, используемый системой по умолчанию
 
+# Переменные CMake #
+{: id="Переменные_CMake" }
+
+[`CMAKE_RUNTIME_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_RUNTIME_OUTPUT_DIRECTORY.html)
+
+: Установить каталог для размещения исполняемых файлов
+
+# Свойства CMake #
+{: id="Свойства_CMake" }
+
+[`RUNTIME_OUTPUT_NAME`](https://cmake.org/cmake/help/latest/prop_tgt/RUNTIME_OUTPUT_NAME.html#prop_tgt:RUNTIME_OUTPUT_NAME)
+
+: Имя для целей, являющихся исполняемыми файлами
+
 # Перечень команд CMakeLists.txt#
 {: id="Перечень_команд_CMakeLists.txt" }
 
-[`add_executable(main first.cpp second.cpp)`](https://cmake.org/cmake/help/latest/command/add_executable.html)
+[`add_executable`](https://cmake.org/cmake/help/latest/command/add_executable.html)
 
-: Создать исполняемый файл (`main`) из набора указанных исходных файлов (`first.cpp`, `second.cpp`)
+: Определить исполняемый файл целью сборки
+
+`add_executable(main first.cpp second.cpp)`
+
+: Определить исполняемый файл целью сборки и установить исходники для неё
+
+`add_executable(two EXCLUDE_FROM_ALL two.cpp)`
+
+* Определить исполняемый файл целью сборки
+
+* Исключить данную цель из цели, выполняемой по умолчанию (`all`)
+
+  Указанный исполняемый файл будет собран только в том случае, если он будет
+  являться зависимостью для другой цели или в случае явного указания цели в
+  командной строке (`cmake --build build --target two`).
 
 [`cmake_minimum_required(VERSION 3.29)`](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html)
 
@@ -179,6 +211,19 @@ CMake — это набор инструментов для осуществле
 
   Устанавливает переменную [`PROJECT_NAME`](https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html).
 
+[`set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)`](https://cmake.org/cmake/help/latest/command/set.html)
+
+: Установить значение указанной переменной CMake
+
+[`set_property`](https://cmake.org/cmake/help/latest/command/set_property.html)
+
+: Установить указанное свойство в заданных областях
+
+`set_property(TARGET one two PROPERTY EXCLUDE_FROM_ALL true)`
+
+: Установить значение (`true`) для указанного свойства (`EXCLUDE_FROM_ALL`) для
+  заданных целей (`one`, `two`)
+
 # Перечень команд командной строки #
 {: id="Перечень_команд_командной_строки" }
 
@@ -196,6 +241,10 @@ CMake — это набор инструментов для осуществле
 
 : Сборка будет осуществлена из файлов, сгенерированных командой `cmake` в текущем каталоге.
 
+`cmake --build build --target one two`
+
+: Осуществить сборку указанных целей
+
 # Ссылки #
 {: id="Ссылки" }
 
@@ -206,5 +255,11 @@ CMake — это набор инструментов для осуществле
 * [CMake Discourse](https://discourse.cmake.org)
 
 * [cmake-commands(7) — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-commands.7.html)
+
+* [cmake-env-variables(7) — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-env-variables.7.html#manual:cmake-env-variables(7))
+
+* [cmake-variables(7) — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-variables.7.html)
+
+* [cmake-properties(7) — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest/manual/cmake-properties.7.html)
 
 <!-- vim: set textwidth=80 colorcolumn=80: -->
