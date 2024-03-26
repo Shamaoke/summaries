@@ -128,6 +128,14 @@
 <h1 id="Переменные_CMake">Переменные CMake</h1>
 
 <dl>
+  <dt><a href="https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html"><code>BUILD_SHARED_LIBS</code></a></dt>
+  <dd>
+    <p>Установить тип библиотек, собираемых по умолчанию</p>
+  </dd>
+  <dt><a href="https://cmake.org/cmake/help/latest/variable/CMAKE_LIBRARY_OUTPUT_DIRECTORY.html"><code>CMAKE_LIBRARY_OUTPUT_DIRECTORY</code></a></dt>
+  <dd>
+    <p>Установить каталог для для размещения файлов библиотек</p>
+  </dd>
   <dt><a href="https://cmake.org/cmake/help/latest/variable/CMAKE_RUNTIME_OUTPUT_DIRECTORY.html"><code>CMAKE_RUNTIME_OUTPUT_DIRECTORY</code></a></dt>
   <dd>
     <p>Установить каталог для размещения исполняемых файлов</p>
@@ -170,6 +178,13 @@
 командной строке (<code>cmake --build build --target two</code>).</p>
   </li>
 </ul>
+
+<dl>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/add_library.html"><code>add_library(targetName [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 [source2 ...])</code></a></dt>
+  <dd>
+    <p>Определить библиотеку целью сборки</p>
+  </dd>
+</dl>
 
 <p><a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html"><code>cmake_minimum_required(VERSION 3.29)</code></a></p>
 
@@ -235,6 +250,10 @@
     <p>Установить значение (<code>true</code>) для указанного свойства (<code>EXCLUDE_FROM_ALL</code>) для
 заданных целей (<code>one</code>, <code>two</code>)</p>
   </dd>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html"><code>target_link_libraries(targetName &lt;PRIVATE | PUBLIC | INTERFACE &gt; item1 [item2 ...] [&lt;PRIVATE | PUBLIC | INTERFACE &gt; item1 [item2 ...]])</code></a></dt>
+  <dd>
+    <p>Установить библиотеки, используемые в качестве зависимостей для указанной цели</p>
+  </dd>
 </dl>
 
 <h1 id="Перечень_команд_командной_строки">Перечень команд командной строки</h1>
@@ -260,6 +279,10 @@
   <dt><code>cmake --build build --target one two</code></dt>
   <dd>
     <p>Осуществить сборку указанных целей</p>
+  </dd>
+  <dt><code>cmake -DBUILD_SHARED_LIBS=YES source</code></dt>
+  <dd>
+    <p>Установить значение указанной переменной CMake</p>
   </dd>
 </dl>
 
