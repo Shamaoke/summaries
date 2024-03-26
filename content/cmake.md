@@ -142,6 +142,14 @@ CMake — это набор инструментов для осуществле
 # Переменные CMake #
 {: id="Переменные_CMake" }
 
+[`BUILD_SHARED_LIBS`](https://cmake.org/cmake/help/latest/variable/BUILD_SHARED_LIBS.html)
+
+: Установить тип библиотек, собираемых по умолчанию
+
+[`CMAKE_LIBRARY_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_LIBRARY_OUTPUT_DIRECTORY.html)
+
+: Установить каталог для для размещения файлов библиотек
+
 [`CMAKE_RUNTIME_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_RUNTIME_OUTPUT_DIRECTORY.html)
 
 : Установить каталог для размещения исполняемых файлов
@@ -173,6 +181,10 @@ CMake — это набор инструментов для осуществле
   Указанный исполняемый файл будет собран только в том случае, если он будет
   являться зависимостью для другой цели или в случае явного указания цели в
   командной строке (`cmake --build build --target two`).
+
+[`add_library(targetName [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 [source2 ...])`](https://cmake.org/cmake/help/latest/command/add_library.html)
+
+: Определить библиотеку целью сборки
 
 [`cmake_minimum_required(VERSION 3.29)`](https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html)
 
@@ -224,6 +236,10 @@ CMake — это набор инструментов для осуществле
 : Установить значение (`true`) для указанного свойства (`EXCLUDE_FROM_ALL`) для
   заданных целей (`one`, `two`)
 
+[`target_link_libraries(targetName <PRIVATE | PUBLIC | INTERFACE > item1 [item2 ...] [<PRIVATE | PUBLIC | INTERFACE > item1 [item2 ...]])`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html)
+
+: Установить библиотеки, используемые в качестве зависимостей для указанной цели
+
 # Перечень команд командной строки #
 {: id="Перечень_команд_командной_строки" }
 
@@ -244,6 +260,10 @@ CMake — это набор инструментов для осуществле
 `cmake --build build --target one two`
 
 : Осуществить сборку указанных целей
+
+`cmake -DBUILD_SHARED_LIBS=YES source`
+
+: Установить значение указанной переменной CMake
 
 # Ссылки #
 {: id="Ссылки" }
