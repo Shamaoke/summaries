@@ -27,7 +27,7 @@
 <p><a href="#Ссылки">Ссылки</a></p>
 
 <p>В процессе разработки программного обеспечения наступает момент, когда
-приходится переводить исходный код во что-то, что может быть использовано
+приходиться переводить исходный код во что-то, что может быть использовано
 конечным пользователем.</p>
 
 <p>Этот процесс называется <em>сборкой программного обеспечения</em>.</p>
@@ -212,6 +212,10 @@
 </ul>
 
 <dl>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/include.html#command:include"><code>include(&lt;file|module&gt; [OPTIONAL] [RESULT_VARIABLE &lt;var&gt;] [NO_POLICY_SCOPE])</code></a></dt>
+  <dd>
+    <p>Загрузить и выполнить код CMake из указанного файла</p>
+  </dd>
   <dt><a href="https://cmake.org/cmake/help/latest/command/message.html"><code>message("ok!")</code></a></dt>
   <dd>
     <p>Вывести указанное сообщение</p>
@@ -236,6 +240,23 @@
   </li>
 </ul>
 
+<p><a href="https://cmake.org/cmake/help/latest/command/set.html"><code>set(&lt;variable&gt; [&lt;value&gt;...] [PARENT_SCOPE])</code></a></p>
+
+<ul>
+  <li>
+    <p>Присвоить значение переменной, переменной кэша или переменной окружения (в
+случае, если параметр <code>&lt;value&gt;</code> передан)</p>
+  </li>
+  <li>
+    <p>Очистить значение переменной, переменной кэша или переменной окружения (в
+случае, если параметр <code>&lt;value&gt;</code> не передан)</p>
+  </li>
+  <li>
+    <p>Присвоить список значений переменной, переменной кэша или переменной окружения
+(в случае, если передано несколько параметров <code>&lt;value&gt;</code>)</p>
+  </li>
+</ul>
+
 <dl>
   <dt><a href="https://cmake.org/cmake/help/latest/command/set.html"><code>set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)</code></a></dt>
   <dd>
@@ -250,9 +271,13 @@
     <p>Установить значение (<code>true</code>) для указанного свойства (<code>EXCLUDE_FROM_ALL</code>) для
 заданных целей (<code>one</code>, <code>two</code>)</p>
   </dd>
-  <dt><a href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html"><code>target_link_libraries(targetName &lt;PRIVATE | PUBLIC | INTERFACE &gt; item1 [item2 ...] [&lt;PRIVATE | PUBLIC | INTERFACE &gt; item1 [item2 ...]])</code></a></dt>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/target_link_libraries.html"><code>target_link_libraries(targetName &lt;PRIVATE | PUBLIC | INTERFACE&gt; item1 [item2 ...] [&lt;PRIVATE | PUBLIC | INTERFACE&gt; item1 [item2 ...]])</code></a></dt>
   <dd>
     <p>Установить библиотеки, используемые в качестве зависимостей для указанной цели</p>
+  </dd>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/unset.html"><code>unset(&lt;variable&gt; [CACHE | PARENT_SCOPE])</code></a></dt>
+  <dd>
+    <p>Очистить значение переменной, переменной кэша или переменной окружения</p>
   </dd>
 </dl>
 
@@ -294,6 +319,9 @@
   </li>
   <li>
     <p><a href="https://cmake.org/cmake/help/latest">CMake Reference Documentation — CMake 3.29.0 Documentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://cmake.org/cmake/help/latest/guide/using-dependencies/index.html">Using Dependencies Guide — CMake 3.29.0 Documentation</a></p>
   </li>
   <li>
     <p><a href="https://discourse.cmake.org">CMake Discourse</a></p>
