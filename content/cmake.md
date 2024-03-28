@@ -20,7 +20,7 @@ title: CMake
 [Ссылки](#Ссылки)
 
 В процессе разработки программного обеспечения наступает момент, когда
-приходится переводить исходный код во что-то, что может быть использовано
+приходиться переводить исходный код во что-то, что может быть использовано
 конечным пользователем.
 
 Этот процесс называется _сборкой программного обеспечения_.
@@ -206,6 +206,10 @@ CMake — это набор инструментов для осуществле
 
   Устанавливает переменную [`CMAKE_MINIMUM_REQUIRED_VERSION`](https://cmake.org/cmake/help/latest/variable/CMAKE_MINIMUM_REQUIRED_VERSION.html).
 
+[`include(<file|module> [OPTIONAL] [RESULT_VARIABLE <var>] [NO_POLICY_SCOPE])`](https://cmake.org/cmake/help/latest/command/include.html#command:include)
+
+: Загрузить и выполнить код CMake из указанного файла
+
 [`message("ok!")`](https://cmake.org/cmake/help/latest/command/message.html)
 
 : Вывести указанное сообщение
@@ -223,6 +227,17 @@ CMake — это набор инструментов для осуществле
 
   Устанавливает переменную [`PROJECT_NAME`](https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html).
 
+[`set(<variable> [<value>...] [PARENT_SCOPE])`](https://cmake.org/cmake/help/latest/command/set.html)
+
+* Присвоить значение переменной, переменной кэша или переменной окружения (в
+  случае, если параметр `<value>` передан)
+
+* Очистить значение переменной, переменной кэша или переменной окружения (в
+  случае, если параметр `<value>` не передан)
+
+* Присвоить список значений переменной, переменной кэша или переменной окружения
+  (в случае, если передано несколько параметров `<value>`)
+
 [`set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)`](https://cmake.org/cmake/help/latest/command/set.html)
 
 : Установить значение указанной переменной CMake
@@ -236,9 +251,13 @@ CMake — это набор инструментов для осуществле
 : Установить значение (`true`) для указанного свойства (`EXCLUDE_FROM_ALL`) для
   заданных целей (`one`, `two`)
 
-[`target_link_libraries(targetName <PRIVATE | PUBLIC | INTERFACE > item1 [item2 ...] [<PRIVATE | PUBLIC | INTERFACE > item1 [item2 ...]])`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html)
+[`target_link_libraries(targetName <PRIVATE | PUBLIC | INTERFACE> item1 [item2 ...] [<PRIVATE | PUBLIC | INTERFACE> item1 [item2 ...]])`](https://cmake.org/cmake/help/latest/command/target_link_libraries.html)
 
 : Установить библиотеки, используемые в качестве зависимостей для указанной цели
+
+[`unset(<variable> [CACHE | PARENT_SCOPE])`](https://cmake.org/cmake/help/latest/command/unset.html)
+
+: Очистить значение переменной, переменной кэша или переменной окружения
 
 # Перечень команд командной строки #
 {: id="Перечень_команд_командной_строки" }
@@ -271,6 +290,8 @@ CMake — это набор инструментов для осуществле
 * [FAQ · Wiki · CMake / Community · GitLab](https://gitlab.kitware.com/cmake/community/-/wikis/FAQ)
 
 * [CMake Reference Documentation — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest)
+
+* [Using Dependencies Guide — CMake 3.29.0 Documentation](https://cmake.org/cmake/help/latest/guide/using-dependencies/index.html)
 
 * [CMake Discourse](https://discourse.cmake.org)
 
