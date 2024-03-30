@@ -1,43 +1,23 @@
 @font-face {
-  font-family: "PT Serif";
+  font-family: "Playfair Display";
   font-style: normal;
   font-weight: normal;
-  src: url("/summaries/fonts/PTF55F_W.woff"); }
+  src: url("/summaries/fonts/PlayfairDisplay-Regular.ttf"); }
 @font-face {
-  font-family: "PT Serif";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/summaries/fonts/PTF75F_W.woff"); }
-@font-face {
-  font-family: "PT Serif";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTF56F_W.woff"); }
-@font-face {
-  font-family: "PT Serif";
-  font-style: italic;
-  font-weight: bold;
-  src: url("/summaries/fonts/PTF76F_W.woff"); }
-@font-face {
-  font-family: "PT Serif Caption";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTZ55F_W.woff"); }
-@font-face {
-  font-family: "PT Serif Caption";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTZ56F_W.woff"); }
-@font-face {
-  font-family: "PT Mono";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTM55F_W.woff"); }
-@font-face {
-  font-family: "PT Mono";
+  font-family: "Playfair Dispay";
   font-style: normal;
   font-weight: bold;
-  src: url("/summaries/fonts/PTM75F_W.woff"); }
+  src: url("/summaries/fonts/PlayfairDisplay-SemiBold.ttf"); }
+@font-face {
+  font-family: "Playfair Dispay";
+  font-style: italic;
+  font-weight: normal;
+  src: url("/summaries/fonts/PlayfairDisplay-Italic.ttf"); }
+@font-face {
+  font-family: "Playfair Dispay";
+  font-style: italic;
+  font-weight: bold;
+  src: url("/summaries/fonts/PlayfairDisplay-SemiBoldItalic.ttf"); }
 @font-face {
   font-family: "Iosevka Slab";
   font-style: normal;
@@ -48,46 +28,6 @@
   font-style: normal;
   font-weight: bold;
   src: url("/summaries/fonts/iosevka-slab-bold.ttf"); }
-@font-face {
-  font-family: "PT Sans";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTS55F_W.woff"); }
-@font-face {
-  font-family: "PT Sans";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/summaries/fonts/PTS75F_W.woff"); }
-@font-face {
-  font-family: "PT Sans";
-  font-style: italic;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTS56F_W.woff"); }
-@font-face {
-  font-family: "PT Sans";
-  font-style: italic;
-  font-weight: bold;
-  src: url("/summaries/fonts/PTS56F_W.woff"); }
-@font-face {
-  font-family: "PT Sans Caption";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTC55F_W.woff"); }
-@font-face {
-  font-family: "PT Sans Caption";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/summaries/fonts/PTC75F_W.woff"); }
-@font-face {
-  font-family: "PT Sans Narrow";
-  font-style: normal;
-  font-weight: normal;
-  src: url("/summaries/fonts/PTN57F_W.woff"); }
-@font-face {
-  font-family: "PT Sans Narrow";
-  font-style: normal;
-  font-weight: bold;
-  src: url("/summaries/fonts/PTN77F_W.woff"); }
 html {
   font-size: 1em; }
 
@@ -99,9 +39,9 @@ header {
   background-color: #19408a;
   padding: 8px 0 8px 0; }
   header h1 {
-    font-family: PT Sans Caption;
+    font-family: Playfair Display;
     font-size: 1.8rem;
-    font-weight: normal;
+    font-weight: bold;
     padding-left: 2rem;
     margin: 0;
     color: white; }
@@ -109,8 +49,8 @@ header {
 main {
   margin: 1rem 2rem 2rem; }
   main h1, main h2 {
-    font-family: PT Serif Caption;
-    font-weight: normal; }
+    font-family: Playfair Display;
+    font-weight: bold; }
   main h1 {
     font-size: 1.3rem; }
   main h1:not(:first-child) {
@@ -120,9 +60,10 @@ main {
   main h2 {
     margin-top: 50px; }
   main p, main math {
-    font-family: PT Serif;
+    font-family: Playfair Display;
     font-size: 1rem; }
   main p {
+    max-width: 800px;
     hyphens: auto;
     text-align: justify; }
   main pre {
