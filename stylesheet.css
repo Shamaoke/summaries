@@ -47,9 +47,9 @@ header {
     color: white; }
 
 main {
-  margin: 1rem 2rem 2rem; }
+  margin: 1rem 2rem 2rem;
+  font-family: Playfair Display; }
   main h1, main h2 {
-    font-family: Playfair Display;
     font-weight: bold; }
   main h1 {
     font-size: 1.3rem; }
@@ -60,7 +60,6 @@ main {
   main h2 {
     margin-top: 50px; }
   main p, main math {
-    font-family: Playfair Display;
     font-size: 1rem; }
   main p {
     max-width: 800px;
