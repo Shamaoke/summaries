@@ -7,6 +7,7 @@ gem 'haml'
 gem 'itextomml'
 gem 'nanoc'
 gem 'kramdown'
+gem "puma"
 gem 'rake'
 gem 'sass'
 
