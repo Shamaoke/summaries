@@ -63,6 +63,7 @@ GEM
       nanoc-checking (~> 1.0)
       nanoc-cli (~> 4.11, >= 4.11.15)
       nanoc-core (~> 4.11, >= 4.11.15)
+    nio4r (2.7.1)
     parallel (1.24.0)
     pastel (0.8.0)
       tty-color (~> 0.5)
@@ -72,6 +73,8 @@ GEM
     psych (5.1.2)
       stringio
     public_suffix (5.0.4)
+    puma (6.4.2)
+      nio4r (~> 2.0)
     rack (3.0.10)
     rackup (2.1.0)
       rack (>= 3)
@@ -115,6 +118,7 @@ DEPENDENCIES
   itextomml
   kramdown
   nanoc
+  puma
   rake
   sass
 
