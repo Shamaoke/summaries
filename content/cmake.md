@@ -147,6 +147,10 @@ CMake представляет из себя набор инструментов
 
 : Установить тип библиотек, собираемых по умолчанию
 
+[`CMAKE_COLOR_DIAGNOSTICS`](https://cmake.org/cmake/help/latest/variable/CMAKE_COLOR_DIAGNOSTICS.html)
+
+: Включить цвета в диагностическом выводе
+
 [`CMAKE_LIBRARY_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_LIBRARY_OUTPUT_DIRECTORY.html)
 
 : Установить каталог для для размещения файлов библиотек
