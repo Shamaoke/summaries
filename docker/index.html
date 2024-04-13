@@ -162,6 +162,39 @@
   </li>
 </ul>
 
+<pre><code>docker image build \&#x000A;  --progress {auto|plain|tty} \&#x000A;  {-t|--tag} IMAGE_NAME[:TAG] \&#x000A;    DOCKERFILE_LOCATION&#x000A;</code></pre>
+
+<ul>
+  <li>
+    <p>Собрать образ Docker’а</p>
+  </li>
+  <li>
+    <p>Установить тип диагностического вывода (<code>--progress</code>)</p>
+
+    <ul>
+      <li>
+        <p><code>auto</code> — установить автоматическое определение типа диагностического вывода</p>
+      </li>
+      <li>
+        <p><code>plain</code> — установить обычный тип диагностического вывода</p>
+      </li>
+      <li>
+        <p><code>tty</code> — установить вывод в терминал</p>
+
+        <p>В данном случае диагностический вывод будет окрашен, на его размер будет
+установлено ограничение, при привышении которого строки, выведенные ранее
+будут усекаться.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>Задать произвольное имя для нового образа и (опционально) тэг</p>
+  </li>
+  <li>
+    <p>Указать каталог с файлом Dockerfile, на основе которого будет собран образ</p>
+  </li>
+</ul>
+
 <p><code>docker image history --no-trunc IMAGE</code></p>
 
 <ul>
@@ -737,7 +770,7 @@ Dockerfile и хэша содержимого файла, переданного
 
 <p>Рассмотрим пример.</p>
 
-<pre><code>RUN mvn dependency&#x000A;&#x000A;RUN mvn package&#x000A;</code></pre>
+<pre><code>RUN mvn dependency&#x000A;RUN mvn package&#x000A;</code></pre>
 
 <p>В примере ресурснозатратная команда <code>mvn dependency</code> была извлечена из команды
 сборки <code>mvn package</code>. При следующем запуске <code>docker build</code> она не будет
@@ -759,7 +792,9 @@ Dockerfile и хэша содержимого файла, переданного
 <p>Прерывание процесса сборки на определенном этапе посредством опции <code>--target</code>
 команды <code>build</code>.</p>
 
-<pre><code># :::base:::&#x000A;FROM alpine AS base&#x000A;&#x000A;RUN apk --update-cache add zsh&#x000A;&#x000A;WORKDIR /app&#x000A;ENTRYPOINT ["/app/greeting"]&#x000A;&#x000A;# :::rabbit:::&#x000A;FROM base AS rabbit&#x000A;COPY rabbit/rabbit greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;# :::fox:::&#x000A;FROM base AS fox&#x000A;COPY fox/fox greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;# :::wolf:::&#x000A;FROM base AS wolf&#x000A;COPY wolf/wolf greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;docker image build --target fox .&#x000A;</code></pre>
+<pre><code># :::base:::&#x000A;FROM alpine AS base&#x000A;&#x000A;RUN apk --update-cache add zsh&#x000A;&#x000A;WORKDIR /app&#x000A;ENTRYPOINT ["/app/greeting"]&#x000A;&#x000A;# :::rabbit:::&#x000A;FROM base AS rabbit&#x000A;COPY rabbit/rabbit greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;# :::fox:::&#x000A;FROM base AS fox&#x000A;COPY fox/fox greeting&#x000A;RUN chmod 744 greeting&#x000A;&#x000A;# :::wolf:::&#x000A;FROM base AS wolf&#x000A;COPY wolf/wolf greeting&#x000A;RUN chmod 744 greeting&#x000A;</code></pre>
+
+<p><code>docker image build --target fox .</code></p>
 
 <ul>
   <li>

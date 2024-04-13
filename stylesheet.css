@@ -68,9 +68,9 @@ main {
   main pre {
     overflow: scroll; }
   main code {
-    font-family: Iosevka Slab; }
-  main code {
-    font-size: 1rem; }
+    font-family: Iosevka Slab;
+    font-size: 1rem;
+    line-height: 1.8rem; }
   main a:link, main a:visited {
     color: #0055d4;
     text-decoration: underline solid #d5e5ff; }
