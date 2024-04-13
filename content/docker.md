@@ -137,6 +137,31 @@ title: Docker
 
 * Указать каталог с файлом Dockerfile, на основе которого будет собран данный образ
 
+~~~~
+docker image build \
+  --progress {auto|plain|tty} \
+  {-t|--tag} IMAGE_NAME[:TAG] \
+    DOCKERFILE_LOCATION
+~~~~
+
+* Собрать образ Docker'а
+
+* Установить тип диагностического вывода (`--progress`)
+
+  * `auto` — установить автоматическое определение типа диагностического вывода
+
+  * `plain` — установить обычный тип диагностического вывода
+
+  * `tty` — установить вывод в терминал
+
+    В данном случае диагностический вывод будет окрашен, на его размер будет
+    установлено ограничение, при привышении которого строки, выведенные ранее
+    будут усекаться.
+
+* Задать произвольное имя для нового образа и (опционально) тэг
+
+* Указать каталог с файлом Dockerfile, на основе которого будет собран образ
+
 `docker image history --no-trunc IMAGE`
 
 * Отобразить сборочный профиль для указанного образа в табличном формате
@@ -491,29 +516,31 @@ Docker не позволяет вносить изменения в слои-з�
 
 Рассмотрим пример.
 
-    Sending build context to Docker daemon  4.096kB
-    Step 1/7 : FROM node
-     ---> 1d88d89c7230
-    Step 2/7 : ENV TARGET="linux.org.ru"
-     ---> Using cache
-     ---> eebac6754c54
-    Step 3/7 : ENV METHOD="HEAD"
-     ---> Using cache
-     ---> 8b723b3a219e
-    Step 4/7 : ENV INTERVAL="2000"
-     ---> Using cache
-     ---> 98d9640d707a
-    Step 5/7 : WORKDIR /web-ping
-     ---> Using cache
-     ---> 715c587a041b
-    Step 6/7 : COPY app.mjs .
-     ---> f6ef9cf8f3dd
-    Step 7/7 : CMD ["node", "/web-ping/app.mjs"]
-     ---> Running in 0b5d885988bd
-    Removing intermediate container 0b5d885988bd
-     ---> 28b468469edd
-    Successfully built 28b468469edd
-    Successfully tagged web-ping:v9
+~~~~
+Sending build context to Docker daemon  4.096kB
+Step 1/7 : FROM node
+ ---> 1d88d89c7230
+Step 2/7 : ENV TARGET="linux.org.ru"
+ ---> Using cache
+ ---> eebac6754c54
+Step 3/7 : ENV METHOD="HEAD"
+ ---> Using cache
+ ---> 8b723b3a219e
+Step 4/7 : ENV INTERVAL="2000"
+ ---> Using cache
+ ---> 98d9640d707a
+Step 5/7 : WORKDIR /web-ping
+ ---> Using cache
+ ---> 715c587a041b
+Step 6/7 : COPY app.mjs .
+ ---> f6ef9cf8f3dd
+Step 7/7 : CMD ["node", "/web-ping/app.mjs"]
+ ---> Running in 0b5d885988bd
+Removing intermediate container 0b5d885988bd
+ ---> 28b468469edd
+Successfully built 28b468469edd
+Successfully tagged web-ping:v9
+~~~~
 
 В примере, шаги 2—5 используют уже имеющиеся слои, а шаги 6 и 7 создают новые.
 
@@ -592,21 +619,23 @@ Docker позволяет осуществлять мультиэтапную с
 (например тестовым или сборочным инструментарием), а с другой стороны получать
 гарантированно рабоспособный код.
 
-    FROM java AS build
-    # A set of instructions for building a Java application
-    # Create the `rabbit` Java executable at the end
-    
-    FROM java AS test # this name isn't actually used as a reference; it's here just for clearance
-    COPY --from=build /app/rabbit /app/rabbit
-    # A set of instructions for creating a testing environment and testing the Java application
-    # If tests fail the build process will fail as well
-    
-    FROM java AS release
-    COPY --from=build /app/rabbit /app/rabbit
-    # The final image won't contain testing tools and we will have an executable
-    # which successfully passed tests
-    
-    CMD /usr/bin/java /app/rabbit
+~~~~
+FROM java AS build
+# A set of instructions for building a Java application
+# Create the `rabbit` Java executable at the end
+
+FROM java AS test # this name isn't actually used as a reference; it's here just for clearance
+COPY --from=build /app/rabbit /app/rabbit
+# A set of instructions for creating a testing environment and testing the Java application
+# If tests fail the build process will fail as well
+
+FROM java AS release
+COPY --from=build /app/rabbit /app/rabbit
+# The final image won't contain testing tools and we will have an executable
+# which successfully passed tests
+
+CMD /usr/bin/java /app/rabbit
+~~~~
 
 \[Stoneman: Learn Docker in a month of lunches; 4.1\]
 
@@ -656,9 +685,10 @@ Docker позволяет осуществлять мультиэтапную с
 
 Рассмотрим пример.
 
-    RUN mvn dependency
-    
-    RUN mvn package
+~~~~
+RUN mvn dependency
+RUN mvn package
+~~~~
 
 В примере ресурснозатратная команда `mvn dependency` была извлечена из команды
 сборки `mvn package`. При следующем запуске `docker build` она не будет
@@ -672,75 +702,81 @@ Docker позволяет осуществлять мультиэтапную с
 Продолжение и разветвление сборки образа, начатой на раннем этапе, на более
 поздних этапах посредством использования ссылки на этап в инструкции `FROM`.
 
-    # base stage
-    FROM alpine AS builder
-    
-    RUN apk --update-cache add openjdk11-jdk
-    RUN apk --update-cache add maven
-    
-    WORKDIR /build
-    COPY pom.xml .
-    
-    # first reference to the base stage
-    FROM builder AS build1
-    COPY . /build
-    RUN mvn package service1
-    
-    # second reference to the base stage
-    FROM builder AS build2
-    COPY . /build
-    RUN mvn package service2
-    
-    # final stage
-    FROM alpine
-    
-    RUN apk --update-cache add openjdk11-jre
-    
-    WORKDIR /app
-    
-    ENTRYPOINT ["/usr/bin/java", "-jar", "..."]
-    
-    # using the artifact from the first build stage
-    COPY --from=build1 /build/service1.jar .
-    
-    # using the artifact from the second build stage
-    COPY --from=build2 /build/service2.jar .
+~~~~
+# base stage
+FROM alpine AS builder
+
+RUN apk --update-cache add openjdk11-jdk
+RUN apk --update-cache add maven
+
+WORKDIR /build
+COPY pom.xml .
+
+# first reference to the base stage
+FROM builder AS build1
+COPY . /build
+RUN mvn package service1
+
+# second reference to the base stage
+FROM builder AS build2
+COPY . /build
+RUN mvn package service2
+
+# final stage
+FROM alpine
+
+RUN apk --update-cache add openjdk11-jre
+
+WORKDIR /app
+
+ENTRYPOINT ["/usr/bin/java", "-jar", "..."]
+
+# using the artifact from the first build stage
+COPY --from=build1 /build/service1.jar .
+
+# using the artifact from the second build stage
+COPY --from=build2 /build/service2.jar .
+~~~~
 
 Использование индекса для ссылки на неименованный этап в инструкции `COPY`.
 
-    FROM alpine
-    ...
-    
-    FROM alpine
-    COPY --from=0 ...
+~~~~
+FROM alpine
+...
+
+FROM alpine
+COPY --from=0 ...
+~~~~
 
 Прерывание процесса сборки на определенном этапе посредством опции `--target`
 команды `build`.
 
-    # :::base:::
-    FROM alpine AS base
-    
-    RUN apk --update-cache add zsh
-    
-    WORKDIR /app
-    ENTRYPOINT ["/app/greeting"]
-    
-    # :::rabbit:::
-    FROM base AS rabbit
-    COPY rabbit/rabbit greeting
-    RUN chmod 744 greeting
-    
-    # :::fox:::
-    FROM base AS fox
-    COPY fox/fox greeting
-    RUN chmod 744 greeting
-    
-    # :::wolf:::
-    FROM base AS wolf
-    COPY wolf/wolf greeting
-    RUN chmod 744 greeting
+~~~~
+# :::base:::
+FROM alpine AS base
 
-    docker image build --target fox .
+RUN apk --update-cache add zsh
+
+WORKDIR /app
+ENTRYPOINT ["/app/greeting"]
+
+# :::rabbit:::
+FROM base AS rabbit
+COPY rabbit/rabbit greeting
+RUN chmod 744 greeting
+
+# :::fox:::
+FROM base AS fox
+COPY fox/fox greeting
+RUN chmod 744 greeting
+
+# :::wolf:::
+FROM base AS wolf
+COPY wolf/wolf greeting
+RUN chmod 744 greeting
+~~~~
+
+`docker image build --target fox .`
 
 * Процесс сборки завершиться на этапе `fox`
 
