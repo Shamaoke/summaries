@@ -27,7 +27,7 @@ GEM
     kramdown (2.4.0)
       rexml
     memo_wise (1.8.0)
-    method_source (1.0.0)
+    method_source (1.1.0)
     nanoc (4.12.20)
       addressable (~> 2.5)
       colored (~> 1.2)
@@ -38,7 +38,7 @@ GEM
       parallel (~> 1.12)
       tty-command (~> 0.8)
       tty-which (~> 0.4)
-    nanoc-checking (1.0.3)
+    nanoc-checking (1.0.4)
       nanoc-cli (~> 4.12, >= 4.12.5)
       nanoc-core (~> 4.12, >= 4.12.5)
     nanoc-cli (4.12.20)
@@ -123,4 +123,4 @@ DEPENDENCIES
   sass
 
 BUNDLED WITH
-   2.5.3
+   2.5.7
