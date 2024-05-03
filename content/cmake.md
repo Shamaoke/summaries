@@ -153,7 +153,7 @@ CMake представляет из себя набор инструментов
 
 [`CMAKE_LIBRARY_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_LIBRARY_OUTPUT_DIRECTORY.html)
 
-: Установить каталог для для размещения файлов библиотек
+: Установить каталог для размещения файлов библиотек
 
 [`CMAKE_RUNTIME_OUTPUT_DIRECTORY`](https://cmake.org/cmake/help/latest/variable/CMAKE_RUNTIME_OUTPUT_DIRECTORY.html)
 
