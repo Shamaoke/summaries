@@ -15,7 +15,9 @@ title: Qt
 
 [QML \| Qt QML](#QML_Qt_QML)
 
-[QML \| Статьи](#QML_Статьи)
+[CMake](#Cmake)
+
+[Руководства](#Руководства)
 
 [Списки](#Списки)
 
@@ -52,6 +54,8 @@ int QGuiApplication::exec()
 ~~~~
 
 [ссылка](https://doc.qt.io/qt-6/qguiapplication.html#exec)
+
+[**QMediaPlayer**](https://doc.qt.io/qt-6/qmediaplayer.html)
 
 [**QObject**](https://doc.qt.io/qt-6/qobject.html)
 
@@ -147,8 +151,23 @@ quit()
 
 [ссылка](https://doc.qt.io/qt-6/qml-qtqml-qt.html#quit-method)
 
-# QML | Статьи #
-{: id="QML_Статьи" }
+# CMake #
+{: id="CMake" }
+
+[**qt_add_qml_module**](https://doc.qt.io/qt-6/qt-add-qml-module.html)
+
+# Руководства #
+{: id="Руководства" }
+
+• [Singletons in QML \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qml-singleton.html)
+
+• [The Style Sheet Syntax \| Qt Widgets 6.7.1](https://doc.qt.io/qt-6/stylesheet-syntax.html)
+
+• [Overview - QML and C++ Integration \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-cppintegration-overview.html)
+
+• [Signal and Handler Event System \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-syntax-signals.html)
+
+• [Qt Test Overview \| Qt Test 6.7.1](https://doc.qt.io/qt-6/qtest-overview.html)
 
 • [Debugging QML Applications \| Qt 6.7](https://doc.qt.io/qt-6/qtquick-debugging.html)
 
@@ -160,6 +179,10 @@ quit()
 • [Qt QML QML Types \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-qmlmodule.html)
 
 • [Qt Quick QML Types \| Qt Quick 6.7.1](https://doc.qt.io/qt-6/qtquick-qmlmodule.html)
+
+• [Qt QML C++ Classes \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-module.html)
+
+• [\<QtLogging\> - Qt Logging Types \| Qt Core 6.7.1](https://doc.qt.io/qt-6/qtlogging.html)
 
 # Ссылки #
 {: id="Ссылки" }
