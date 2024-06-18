@@ -20,7 +20,11 @@
 
 <p><a href="#QML">QML</a></p>
 
+<p><a href="#QML_Qt_QML">QML | Qt QML</a></p>
+
 <p><a href="#QML_Статьи">QML | Статьи</a></p>
+
+<p><a href="#Списки">Списки</a></p>
 
 <p><a href="#Ссылки">Ссылки</a></p>
 
@@ -32,13 +36,49 @@
 
 <h1 id="C++">С++</h1>
 
+<p><a href="https://doc.qt.io/qt-6/qcoreapplication.html"><strong>QCoreApplication</strong></a></p>
+
+<pre><code>void QCoreApplication::exit(int returnCode = 0)&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qcoreapplication.html#exit">ссылка</a></p>
+
+<pre><code>void QCoreApplication::quit()&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qcoreapplication.html#quit">ссылка</a></p>
+
+<p><a href="https://doc.qt.io/qt-6/qguiapplication.html"><strong>QGuiApplication</strong></a></p>
+
+<pre><code>int QGuiApplication::exec()&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qguiapplication.html#exec">ссылка</a></p>
+
 <p><a href="https://doc.qt.io/qt-6/qobject.html"><strong>QObject</strong></a></p>
 
 <pre><code>template &lt;typename PointerToMemberFunction, typename Functor&gt;&#x000A;QMetaObject::Connection QObject::connect(const QObject *sender, PointerToMemberFunction signal, Functor functor)&#x000A;</code></pre>
 
 <p><a href="https://doc.qt.io/qt-6/qobject.html#connect-4">ссылка</a></p>
 
+<p><a href="https://doc.qt.io/qt-6/qprocessenvironment.html"><strong>QProcessEnvironment</strong></a></p>
+
+<pre><code>void QProcessEnvironment::insert(const QString &amp;name, const QString &amp;value)&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qprocessenvironment.html#insert">ссылка</a></p>
+
+<p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html"><strong>QQmlApplicationEngine</strong></a></p>
+
+<pre><code>void QQmlApplicationEngine::load(const QUrl &amp;url)&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html#load">ссылка</a></p>
+
+<pre><code>void QQmlApplicationEngine::load(const QString &amp;filePath)&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html#load-1">ссылка</a></p>
+
 <p><a href="https://doc.qt.io/qt-6/qqmlengine.html"><strong>QQmlEngine</strong></a></p>
+
+<pre><code>void QQmlEngine::addImportPath(const QString &amp;path)&#x000A;</code></pre>
+
+<p><a href="https://doc.qt.io/qt-6/qqmlengine.html#addImportPath">ссылка</a></p>
 
 <h1 id="С++_Макросы">С++ | Макросы</h1>
 
@@ -76,43 +116,41 @@
 
 <h1 id="QML">QML</h1>
 
-<p><strong>FocusScope</strong></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtquick-focusscope.html"><strong>FocusScope</strong></a></p>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-focusscope.html">FocusScope QML Type | Qt Quick 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtquick-fontloader.html"><strong>FontLoader</strong></a></p>
 
-<p><strong>FontLoader</strong></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtquick-grid.html"><strong>Grid</strong></a></p>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-fontloader.html">FontLoader QML Type | Qt Quick 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtquick-layouts-gridlayout.html"><strong>GridLayout</strong></a></p>
 
-<p><strong>Grid</strong></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtquick-loader.html"><strong>Loader</strong></a></p>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-grid.html">Grid QML Type | Qt Quick 6.6.2</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtmultimedia-mediaplayer.html"><strong>MediaPlayer</strong></a></p>
 
-<p><strong>GridLayout</strong></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qtobject.html"><strong>QtObject</strong></a></p>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-layouts-gridlayout.html">GridLayout QML Type | Qt Quick 6.6.2</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtquick-shortcut.html"><strong>Shortcut</strong></a></p>
 
-<p><strong>Loader</strong></p>
+<h1 id="QML_Qt_QML">QML | Qt QML</h1>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-loader.html">Loader QML Type | Qt Quick 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qt.html"><strong>Qt</strong></a></p>
 
-<p><strong>MediaPlayer</strong></p>
+<pre><code>quit()&#x000A;</code></pre>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtmultimedia-mediaplayer.html">MediaPlayer QML Type | Qt Multimedia 6.7.1</a></p>
-
-<p><strong>QtObject</strong></p>
-
-<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qtobject.html">QtObject QML Type | Qt QML 6.7.1</a></p>
-
-<p><strong>Shortcut</strong></p>
-
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-shortcut.html">Shortcut QML Type | Qt Quick 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qt.html#quit-method">ссылка</a></p>
 
 <h1 id="QML_Статьи">QML | Статьи</h1>
 
 <p>• <a href="https://doc.qt.io/qt-6/qtquick-debugging.html">Debugging QML Applications | Qt 6.7</a></p>
 
 <p>• <a href="https://doc.qt.io/qt-6/qtqml-syntax-imports.html">Import Statements | Qt QML 6.7.1</a></p>
+
+<h1 id="Списки">Списки</h1>
+
+<p>• <a href="https://doc.qt.io/qt-6/qtqml-qmlmodule.html">Qt QML QML Types | Qt QML 6.7.1</a></p>
+
+<p>• <a href="https://doc.qt.io/qt-6/qtquick-qmlmodule.html">Qt Quick QML Types | Qt Quick 6.7.1</a></p>
 
 <h1 id="Ссылки">Ссылки</h1>
 
