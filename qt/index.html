@@ -14,7 +14,9 @@
 
 <p><a href="#Терминология">Терминология</a></p>
 
-<p><a href="#C++">C++</a></p>
+<p><a href="#C++_Ключевые_классы_и_их_методы">C++ | Ключевые классы и их методы</a></p>
+
+<p><a href="#C++_Специализированные_классы_и_их_методы">С++ | Специализированные классы и их методы</a></p>
 
 <p><a href="#С++_Макросы">C++ | Макросы</a></p>
 
@@ -32,153 +34,170 @@
 
 <h1 id="Терминология">Терминология</h1>
 
-<p><strong>связывание</strong> (<em>binding</em>)</p>
-
-<p><strong>сигнал</strong> (<em>signal</em>)</p>
-
-<h1 id="C++">С++</h1>
-
-<p><a href="https://doc.qt.io/qt-6/qcoreapplication.html"><strong>QCoreApplication</strong></a></p>
-
-<pre><code>void QCoreApplication::exit(int returnCode = 0)&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qcoreapplication.html#exit">ссылка</a></p>
-
-<pre><code>void QCoreApplication::quit()&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qcoreapplication.html#quit">ссылка</a></p>
-
-<p><a href="https://doc.qt.io/qt-6/qguiapplication.html"><strong>QGuiApplication</strong></a></p>
-
-<pre><code>int QGuiApplication::exec()&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qguiapplication.html#exec">ссылка</a></p>
-
-<p><a href="https://doc.qt.io/qt-6/qmediaplayer.html"><strong>QMediaPlayer</strong></a></p>
-
-<p><a href="https://doc.qt.io/qt-6/qobject.html"><strong>QObject</strong></a></p>
-
-<pre><code>template &lt;typename PointerToMemberFunction, typename Functor&gt;&#x000A;QMetaObject::Connection QObject::connect(const QObject *sender, PointerToMemberFunction signal, Functor functor)&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qobject.html#connect-4">ссылка</a></p>
-
-<p><a href="https://doc.qt.io/qt-6/qprocessenvironment.html"><strong>QProcessEnvironment</strong></a></p>
-
-<pre><code>void QProcessEnvironment::insert(const QString &amp;name, const QString &amp;value)&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qprocessenvironment.html#insert">ссылка</a></p>
-
-<p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html"><strong>QQmlApplicationEngine</strong></a></p>
-
-<pre><code>void QQmlApplicationEngine::load(const QUrl &amp;url)&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html#load">ссылка</a></p>
-
-<pre><code>void QQmlApplicationEngine::load(const QString &amp;filePath)&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html#load-1">ссылка</a></p>
-
-<p><a href="https://doc.qt.io/qt-6/qqmlengine.html"><strong>QQmlEngine</strong></a></p>
-
-<pre><code>void QQmlEngine::addImportPath(const QString &amp;path)&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qqmlengine.html#addImportPath">ссылка</a></p>
-
-<h1 id="С++_Макросы">С++ | Макросы</h1>
-
 <dl>
-  <dt><a href="https://doc.qt.io/qt-6/qobject.html"><strong>QObject</strong></a></dt>
+  <dt>связывание (<em>binding</em>)</dt>
   <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_CLASSINFO"><strong>Q_CLASSINFO</strong></a></p>
+    <p>one</p>
   </dd>
+  <dt>сигнал (<em>signal</em>)</dt>
   <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_EMIT"><strong>Q_EMIT</strong></a></p>
-  </dd>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_INVOKABLE"><strong>Q_INVOKABLE</strong></a></p>
-  </dd>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_OBJECT"><strong>Q_OBJECT</strong></a></p>
-  </dd>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_PROPERTY"><strong>Q_PROPERTY</strong></a></p>
-  </dd>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_SIGNAL"><strong>Q_SIGNAL</strong></a></p>
-  </dd>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_SLOT"><strong>Q_SLOT</strong></a></p>
-  </dd>
-  <dt><a href="https://doc.qt.io/qt-6/qqmlengine.html"><strong>QQmlEngine</strong></a></dt>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qqmlengine.html#QML_ELEMENT"><strong>QML_ELEMENT</strong></a></p>
-  </dd>
-  <dd>
-    <p><a href="https://doc.qt.io/qt-6/qqmlengine.html#QML_SINGLETON"><strong>QML_SINGLETON</strong></a></p>
+    <p>two</p>
   </dd>
 </dl>
 
+<h1 id="C++_Ключевые_классы_и_их_методы">C++ | Ключевые классы и их методы</h1>
+
+<h2 id="qcoreapplicationhttpsdocqtioqt-6qcoreapplicationhtml"><a href="https://doc.qt.io/qt-6/qcoreapplication.html"><code>QCoreApplication</code></a></h2>
+
+<ul>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qcoreapplication.html#exit"><code>void QCoreApplication::exit(int returnCode = 0)</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qcoreapplication.html#quit"><code>void QCoreApplication::quit()</code></a></p>
+  </li>
+</ul>
+
+<h2 id="qguiapplicationhttpsdocqtioqt-6qguiapplicationhtml"><a href="https://doc.qt.io/qt-6/qguiapplication.html"><code>QGuiApplication</code></a></h2>
+
+<ul>
+  <li><a href="https://doc.qt.io/qt-6/qguiapplication.html#exec"><code>int QGuiApplication::exec()</code></a></li>
+</ul>
+
+<h2 id="qobjecthttpsdocqtioqt-6qobjecthtml"><a href="https://doc.qt.io/qt-6/qobject.html"><code>QObject</code></a></h2>
+
+<ul>
+  <li><a href="https://doc.qt.io/qt-6/qobject.html#connect-4"><code>template &lt;typename PointerToMemberFunction, typename Functor&gt;</code></a><br />
+<a href="https://doc.qt.io/qt-6/qobject.html#connect-4"><code>QMetaObject::Connection QObject::connect(const QObject *sender, PointerToMemberFunction signal, Functor functor)</code></a></li>
+</ul>
+
+<h2 id="qprocessenvironmenthttpsdocqtioqt-6qprocessenvironmenthtml"><a href="https://doc.qt.io/qt-6/qprocessenvironment.html"><code>QProcessEnvironment</code></a></h2>
+
+<ul>
+  <li><a href="https://doc.qt.io/qt-6/qprocessenvironment.html#insert"><code>void QProcessEnvironment::insert(const QString &amp;name, const QString &amp;value)</code></a></li>
+</ul>
+
+<h2 id="qqmlapplicationenginehttpsdocqtioqt-6qqmlapplicationenginehtml"><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html"><code>QQmlApplicationEngine</code></a></h2>
+
+<ul>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html#load"><code>void QQmlApplicationEngine::load(const QUrl &amp;url)</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qqmlapplicationengine.html#load-1"><code>void QQmlApplicationEngine::load(const QString &amp;filePath)</code></a></p>
+  </li>
+</ul>
+
+<h2 id="qqmlenginehttpsdocqtioqt-6qqmlenginehtml"><a href="https://doc.qt.io/qt-6/qqmlengine.html"><code>QQmlEngine</code></a></h2>
+
+<ul>
+  <li><a href="https://doc.qt.io/qt-6/qqmlengine.html#addImportPath"><code>void QQmlEngine::addImportPath(const QString &amp;path)</code></a></li>
+</ul>
+
+<h1 id="C++_Специализированные_классы_и_их_методы">C++ | Специализированные классы и их методы</h1>
+
+<h2 id="qmediaplayerhttpsdocqtioqt-6qmediaplayerhtml"><a href="https://doc.qt.io/qt-6/qmediaplayer.html"><code>QMediaPlayer</code></a></h2>
+
+<h1 id="С++_Макросы">С++ | Макросы</h1>
+
+<h2 id="qobjecthttpsdocqtioqt-6qobjecthtml-1"><a href="https://doc.qt.io/qt-6/qobject.html"><code>QObject</code></a></h2>
+
+<ul>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_CLASSINFO"><code>Q_CLASSINFO</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_EMIT"><code>Q_EMIT</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_INVOKABLE"><code>Q_INVOKABLE</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_OBJECT"><code>Q_OBJECT</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_PROPERTY"><code>Q_PROPERTY</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_SIGNAL"><code>Q_SIGNAL</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qobject.html#Q_SLOT"><code>Q_SLOT</code></a></p>
+  </li>
+</ul>
+
+<h2 id="qqmlenginehttpsdocqtioqt-6qqmlenginehtml-1"><a href="https://doc.qt.io/qt-6/qqmlengine.html"><code>QQmlEngine</code></a></h2>
+
+<ul>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qqmlengine.html#QML_ELEMENT"><code>QML_ELEMENT</code></a></p>
+  </li>
+  <li>
+    <p><a href="https://doc.qt.io/qt-6/qqmlengine.html#QML_SINGLETON"><code>QML_SINGLETON</code></a></p>
+  </li>
+</ul>
+
 <h1 id="QML">QML</h1>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-focusscope.html"><strong>FocusScope</strong></a></p>
+<h2 id="focusscopehttpsdocqtioqt-6qml-qtquick-focusscopehtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-focusscope.html"><code>FocusScope</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-fontloader.html"><strong>FontLoader</strong></a></p>
+<h2 id="fontloaderhttpsdocqtioqt-6qml-qtquick-fontloaderhtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-fontloader.html"><code>FontLoader</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-grid.html"><strong>Grid</strong></a></p>
+<h2 id="gridhttpsdocqtioqt-6qml-qtquick-gridhtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-grid.html"><code>Grid</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-layouts-gridlayout.html"><strong>GridLayout</strong></a></p>
+<h2 id="gridlayouthttpsdocqtioqt-6qml-qtquick-layouts-gridlayouthtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-layouts-gridlayout.html"><code>GridLayout</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-loader.html"><strong>Loader</strong></a></p>
+<h2 id="loaderhttpsdocqtioqt-6qml-qtquick-loaderhtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-loader.html"><code>Loader</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtmultimedia-mediaplayer.html"><strong>MediaPlayer</strong></a></p>
+<h2 id="mediaplayerhttpsdocqtioqt-6qml-qtmultimedia-mediaplayerhtml"><a href="https://doc.qt.io/qt-6/qml-qtmultimedia-mediaplayer.html"><code>MediaPlayer</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qtobject.html"><strong>QtObject</strong></a></p>
+<h2 id="qtobjecthttpsdocqtioqt-6qml-qtqml-qtobjecthtml"><a href="https://doc.qt.io/qt-6/qml-qtqml-qtobject.html"><code>QtObject</code></a></h2>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtquick-shortcut.html"><strong>Shortcut</strong></a></p>
+<h2 id="shortcuthttpsdocqtioqt-6qml-qtquick-shortcuthtml"><a href="https://doc.qt.io/qt-6/qml-qtquick-shortcut.html"><code>Shortcut</code></a></h2>
 
 <h1 id="QML_Qt_QML">QML | Qt QML</h1>
 
-<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qt.html"><strong>Qt</strong></a></p>
+<h2 id="qthttpsdocqtioqt-6qml-qtqml-qthtml"><a href="https://doc.qt.io/qt-6/qml-qtqml-qt.html"><code>Qt</code></a></h2>
 
-<pre><code>quit()&#x000A;</code></pre>
-
-<p><a href="https://doc.qt.io/qt-6/qml-qtqml-qt.html#quit-method">ссылка</a></p>
+<ul>
+  <li><a href="https://doc.qt.io/qt-6/qml-qtqml-qt.html#quit-method"><code>quit()</code></a></li>
+</ul>
 
 <h1 id="CMake">CMake</h1>
 
-<p><a href="https://doc.qt.io/qt-6/qt-add-qml-module.html"><strong>qt_add_qml_module</strong></a></p>
+<p><a href="https://doc.qt.io/qt-6/qt-add-qml-module.html"><code>qt_add_qml_module</code></a></p>
 
 <h1 id="Руководства">Руководства</h1>
 
-<p>• <a href="https://doc.qt.io/qt-6/qml-singleton.html">Singletons in QML | Qt QML 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qml-singleton.html">Singletons in QML | Qt QML 6.7.1</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/stylesheet-syntax.html">The Style Sheet Syntax | Qt Widgets 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/stylesheet-syntax.html">The Style Sheet Syntax | Qt Widgets 6.7.1</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtqml-cppintegration-overview.html">Overview - QML and C++ Integration | Qt QML 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtqml-cppintegration-overview.html">Overview - QML and C++ Integration | Qt QML 6.7.1</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtqml-syntax-signals.html">Signal and Handler Event System | Qt QML 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtqml-syntax-signals.html">Signal and Handler Event System | Qt QML 6.7.1</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtest-overview.html">Qt Test Overview | Qt Test 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtest-overview.html">Qt Test Overview | Qt Test 6.7.1</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtquick-debugging.html">Debugging QML Applications | Qt 6.7</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtquick-debugging.html">Debugging QML Applications | Qt 6.7</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtqml-syntax-imports.html">Import Statements | Qt QML 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtqml-syntax-imports.html">Import Statements | Qt QML 6.7.1</a></p>
 
 <h1 id="Списки">Списки</h1>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtqml-qmlmodule.html">Qt QML QML Types | Qt QML 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/classes.html">All C++ Classes | Qt 6.7</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtquick-qmlmodule.html">Qt Quick QML Types | Qt Quick 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qmltypes.html">All QML Types | Qt 6.7</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtqml-module.html">Qt QML C++ Classes | Qt QML 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtqml-qmlmodule.html">Qt QML QML Types | Qt QML 6.7.1</a></p>
 
-<p>• <a href="https://doc.qt.io/qt-6/qtlogging.html">&lt;QtLogging&gt; - Qt Logging Types | Qt Core 6.7.1</a></p>
+<p><a href="https://doc.qt.io/qt-6/qtquick-qmlmodule.html">Qt Quick QML Types | Qt Quick 6.7.1</a></p>
+
+<p><a href="https://doc.qt.io/qt-6/qtqml-module.html">Qt QML C++ Classes | Qt QML 6.7.1</a></p>
+
+<p><a href="https://doc.qt.io/qt-6/qtlogging.html">&lt;QtLogging&gt; - Qt Logging Types | Qt Core 6.7.1</a></p>
 
 <h1 id="Ссылки">Ссылки</h1>
-
-<p>• <a href="https://doc.qt.io/qt-5/classes.html">All Classes | Qt 5.15</a></p>
-
-<p>• <a href="https://doc.qt.io/qt-5/qmltypes.html">All QML Types | Qt 5.15</a></p>
 
 <!-- vim: set textwidth=80 colorcolumn=80: -->
 

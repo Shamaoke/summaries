@@ -77,3 +77,7 @@ main {
   main a:hover, main a:focus {
     color: #d40000;
     text-decoration: underline solid #ffd5d5; }
+  main ul {
+    list-style-type: none; }
+  main dt {
+    font-weight: bold; }
