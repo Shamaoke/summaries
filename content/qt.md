@@ -153,6 +153,8 @@ title: Qt
 
 [All QML Types \| Qt 6.7](https://doc.qt.io/qt-6/qmltypes.html)
 
+[All QML Value Types \| Qt 6.7](https://doc.qt.io/qt-6/qmlvaluetypes.html)
+
 [Qt QML QML Types \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-qmlmodule.html)
 
 [Qt Quick QML Types \| Qt Quick 6.7.1](https://doc.qt.io/qt-6/qtquick-qmlmodule.html)
