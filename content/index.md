@@ -40,6 +40,8 @@ title: Summaries
 
 [RXVT-UNICODE](/summaries/urxvt)
 
+[Rust](/summaries/rust)
+
 [Software Engineering](/summaries/software_engineering)
 
 [UML](/summaries/uml)
