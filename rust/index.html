@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<title>Rust</title>
+</head>
+<body>
+<header>
+<h1>Rust</h1>
+</header>
+<main>
+<h1 id="section">Содержание</h1>
+
+<p><a href="#Глоссарий">Глоссарий</a></p>
+
+<p><a href="#rustup">rustup</a></p>
+
+<p><a href="#Примитивные_типы">Примитивные типы</a></p>
+
+<p><a href="#Структуры">Структуры</a></p>
+
+<p>Существует два типа проектов, создаваемых с помощью системы Rust: <strong>библиотеки</strong>
+(libraries) и <strong>исполняемые файлы</strong> (binaries/executables).</p>
+
+<p>Библиотеки предназначены для использования как часть других программ. Библиотеки
+позволяют повторно использовать код (свой собственный или созданный другими
+разработчиками) во множестве проектов. Библиотеки могут быть опубликованы в
+публичном репозитории. Таким образом, обеспечивается возможность обмениваться
+кодом между разработчиками.</p>
+
+<p>В системе Rust пакеты с библиотеками именуются <strong>library crate</strong> (или <strong>lib crate</strong>).
+Исполнение программы в крейте с библиотекой всегда начинается с файла <code>src/lib.rs</code>.</p>
+
+<p>Исполняемый файл — это файл с программой, которую можно запустить и она выполнит
+какую-либо задачу. Исполняемые файлы могут быть собранны с включением сторонних
+библиотек в свой состав.</p>
+
+<p>В системе Rust пакеты с исполняемыми файлами именуются <strong>binary crate</strong> (или <strong>bin crate</strong>).
+Исполнение программы в крейте с исполняемым файлом начинается с функции <code>main</code>,
+которая должна присутствовать в файле <code>src/main.rs</code>.</p>
+
+<p>Непосредственно перед созданием проекта в системе Rust нужно определиться с тем,
+какой именно проект мы создаем.</p>
+
+<h1 id="Глоссарий">Глоссарий</h1>
+
+<dl>
+  <dt><code>borrow</code></dt>
+  <dd>
+    <p>заимствование</p>
+  </dd>
+  <dt><code>borrow checker</code></dt>
+  <dd>
+    <p>контролёр заимствований</p>
+  </dd>
+</dl>
+
+<h1 id="rustup">rustup</h1>
+
+<dl>
+  <dt><code>rustup doc --std</code></dt>
+  <dd>
+    <p>Открыть документацию стандартной библиотеки в браузере</p>
+  </dd>
+</dl>
+
+<h1 id="Cargo">Cargo</h1>
+
+<dl>
+  <dt><code>cargo doc</code></dt>
+  <dd>
+    <p>Сгенерировать документацию по кодовой базе текущего проекта</p>
+  </dd>
+  <dt><code>cargo doc --open</code></dt>
+  <dd>
+    <p>Сгенерировать документацию по кодовой базе текущего проекта</p>
+
+    <p>Открыть документацию по кодовой базе текущего проекта</p>
+  </dd>
+</dl>
+
+<h1 id="Примитивные_типы">Примитивные типы</h1>
+
+<p><a href="https://doc.rust-lang.org/std/primitive.str.html"><code>str</code></a></p>
+
+<h1 id="Структуры">Структуры</h1>
+
+<p><a href="https://doc.rust-lang.org/std/string/struct.String.html"><code>std::string::String</code></a></p>
+
+<p><a href="https://doc.rust-lang.org/std/result/enum.Result.html"><code>std::result::Result</code></a></p>
+
+
+</main>
+<footer></footer>
+</body>
+</html>
