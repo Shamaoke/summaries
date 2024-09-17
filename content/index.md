@@ -40,6 +40,8 @@ title: Summaries
 
 [RXVT-UNICODE](/summaries/urxvt)
 
+[Ruby on rails](/summaries/ruby_on_rails)
+
 [Rust](/summaries/rust)
 
 [Software Engineering](/summaries/software_engineering)
