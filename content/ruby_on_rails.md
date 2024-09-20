@@ -136,3 +136,15 @@ css: bundle exec rails tailwindcss:watch
 После установки указанного пакета будет доступен запуск интеграционных тестов
 командой `rails test:system`
 
+**9\.** Установить компонент CanCanCan
+
+`bundle add cancancan`
+
+**9a\.** Сгенерировать модель `Ability` компонента CanCanCan
+
+`rails generate cancan:ability`
+
+**10\.** Установить компонент Bcrypt
+
+`bundle add bcrypt`
+
