@@ -17,6 +17,10 @@ compile '/summaries/assets/fonts/*.ttf' do
   # no actions should be made
 end
 
+compile '/summaries/assets/favicon.svg' do
+  # No actions should be made
+end
+
 route '/summaries/assets/stylesheets/index.sass' do
   '/summaries/stylesheet.css'
 end
@@ -31,6 +35,10 @@ end
 
 route '/summaries/assets/fonts/*.woff' do
   "/summaries/fonts/#{File.basename item.identifier}"
+end
+
+route '/summaries/assets/favicon.svg' do
+  '/favicon.svg'
 end
 
 # vim: set filetype=ruby:
