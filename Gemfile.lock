@@ -35,6 +35,8 @@ GEM
     ffi (1.17.0-x86_64-darwin)
     ffi (1.17.0-x86_64-linux-gnu)
     ffi (1.17.0-x86_64-linux-musl)
+    fiddle (1.1.2)
+    foreman (0.88.1)
     haml (6.3.0)
       temple (>= 0.8.2)
       thor
@@ -88,6 +90,11 @@ GEM
       nanoc-checking (~> 1.0)
       nanoc-cli (~> 4.11, >= 4.11.15)
       nanoc-core (~> 4.11, >= 4.11.15)
+    nanoc-live (1.1.0)
+      adsf-live (~> 1.4)
+      listen (~> 3.0)
+      nanoc-cli (~> 4.11, >= 4.11.14)
+      nanoc-core (~> 4.11, >= 4.11.14)
     nio4r (2.7.3)
     ostruct (0.6.0)
     parallel (1.26.3)
@@ -153,11 +160,14 @@ DEPENDENCIES
   adsf
   adsf-live
   base64
+  fiddle
+  foreman
   haml
   itextomml
   kramdown
   logger
   nanoc
+  nanoc-live
   ostruct
   pstore
   puma
@@ -165,4 +175,4 @@ DEPENDENCIES
   sass
 
 BUNDLED WITH
-   2.5.11
+   2.5.16
