@@ -1,3 +1,4 @@
+
 layout '/*', :haml, escape_attrs: false, escape_html: false
 
 compile '/summaries/assets/stylesheets/*.sass' do
@@ -37,8 +38,11 @@ route '/summaries/assets/fonts/*.woff' do
   "/summaries/fonts/#{File.basename item.identifier}"
 end
 
+route '/summaries/assets/fonts/*.ttf' do
+  "/summaries/fonts/#{File.basename item.identifier}"
+end
+
 route '/summaries/assets/favicon.svg' do
   '/favicon.svg'
 end
 
-# vim: set filetype=ruby:
