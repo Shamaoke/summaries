@@ -14,12 +14,12 @@ title: Ruby on rails
 
 `rails db:migrate`
 
+Осуществить миграцию
+
 `rails generate migration CreateJoinTableGenresMovies genre movie`
 
   Сгенерировать файл миграции для реализации отношения многие со многими (has
   and belongs to many)
-
-Осуществить миграцию
 
 # Примеры #
 {: id="Примеры" }
