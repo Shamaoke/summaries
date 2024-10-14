@@ -49,12 +49,11 @@ title: Ruby on rails
 
 `rails db:migrate`
 
-Осуществить миграцию
+: Осуществить миграцию
 
 `rails generate migration CreateJoinTableGenresMovies genre movie`
 
-  Сгенерировать файл миграции для реализации отношения многие со многими (has
-  and belongs to many)
+:  Сгенерировать файл миграции для реализации отношения многие со многими (_has and belongs to many_)
 
 # Безопасность #
 {: id="Безопасность" }
