@@ -10,6 +10,8 @@ title: Summaries
 
 [CMake](/summaries/cmake)
 
+[DevOps](/summaries/devops)
+
 [Docker](/summaries/docker)
 
 [GDB](/summaries/gdb)
