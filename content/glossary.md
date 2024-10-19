@@ -100,6 +100,12 @@ _to arrange in a row — выстраивать в ряд_
 
   _range within the program — участок программы_
 
+**reverse**
+
+: оборотный
+
+  _reverse proxy-server — оборотный прокси-сервер_
+
 **runtime**
 
 : рабочий модуль
