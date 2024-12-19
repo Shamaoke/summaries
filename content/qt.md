@@ -132,36 +132,36 @@ title: Qt
 # Руководства #
 {: id="Руководства" }
 
-[Singletons in QML \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qml-singleton.html)
+[Singletons in QML](https://doc.qt.io/qt-6/qml-singleton.html)
 
-[The Style Sheet Syntax \| Qt Widgets 6.7.1](https://doc.qt.io/qt-6/stylesheet-syntax.html)
+[The Style Sheet Syntax](https://doc.qt.io/qt-6/stylesheet-syntax.html)
 
-[Overview - QML and C++ Integration \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-cppintegration-overview.html)
+[Overview - QML and C++ Integration](https://doc.qt.io/qt-6/qtqml-cppintegration-overview.html)
 
-[Signal and Handler Event System \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-syntax-signals.html)
+[Signal and Handler Event System](https://doc.qt.io/qt-6/qtqml-syntax-signals.html)
 
-[Qt Test Overview \| Qt Test 6.7.1](https://doc.qt.io/qt-6/qtest-overview.html)
+[Qt Test Overview](https://doc.qt.io/qt-6/qtest-overview.html)
 
-[Debugging QML Applications \| Qt 6.7](https://doc.qt.io/qt-6/qtquick-debugging.html)
+[Debugging QML Applications](https://doc.qt.io/qt-6/qtquick-debugging.html)
 
-[Import Statements \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-syntax-imports.html)
+[Import Statements](https://doc.qt.io/qt-6/qtqml-syntax-imports.html)
 
 # Списки #
 {: id="Списки" }
 
-[All C++ Classes \| Qt 6.7](https://doc.qt.io/qt-6/classes.html)
+[All C++ Classes](https://doc.qt.io/qt-6/classes.html)
 
-[All QML Types \| Qt 6.7](https://doc.qt.io/qt-6/qmltypes.html)
+[All QML Types](https://doc.qt.io/qt-6/qmltypes.html)
 
-[All QML Value Types \| Qt 6.7](https://doc.qt.io/qt-6/qmlvaluetypes.html)
+[All QML Value Types](https://doc.qt.io/qt-6/qmlvaluetypes.html)
 
-[Qt QML QML Types \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-qmlmodule.html)
+[Qt QML QML Types](https://doc.qt.io/qt-6/qtqml-qmlmodule.html)
 
-[Qt Quick QML Types \| Qt Quick 6.7.1](https://doc.qt.io/qt-6/qtquick-qmlmodule.html)
+[Qt Quick QML Types](https://doc.qt.io/qt-6/qtquick-qmlmodule.html)
 
-[Qt QML C++ Classes \| Qt QML 6.7.1](https://doc.qt.io/qt-6/qtqml-module.html)
+[Qt QML C++ Classes](https://doc.qt.io/qt-6/qtqml-module.html)
 
-[\<QtLogging\> - Qt Logging Types \| Qt Core 6.7.1](https://doc.qt.io/qt-6/qtlogging.html)
+[Qt Logging Types](https://doc.qt.io/qt-6/qtlogging.html)
 
 # Ссылки #
 {: id="Ссылки" }
