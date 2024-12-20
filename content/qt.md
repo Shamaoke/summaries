@@ -166,4 +166,6 @@ title: Qt
 # Ссылки #
 {: id="Ссылки" }
 
+[cmake-qt(7)](https://cmake.org/cmake/help/latest/manual/cmake-qt.7.html)
+
 <!-- vim: set textwidth=80 colorcolumn=80: -->
