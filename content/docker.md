@@ -922,4 +922,6 @@ RUN chmod 744 greeting
 
 * [Use multi-stage builds \| Docker Documentation](https://docs.docker.com/develop/develop-images/multistage-build)
 
+* [Docker Compose \| Docker Docs](https://docs.docker.com/compose/)
+
 <!-- vim: set textwidth=80 colorcolumn=80: -->
