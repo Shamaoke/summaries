@@ -33,6 +33,8 @@ title: Docker
 
 * [Образы](#Образы)
 
+* [Локальные реестры образов](#Локальные_реестры_образов)
+
 * [Dockerfile](#Dockerfile)
 
 * [Примеры](#Примеры)
@@ -184,7 +186,7 @@ title: Docker
 ## Контейнеры ##
 {: id="Перечень_команд-Контейнеры" }
 
-`docker container run IMAGE COMMAND`
+[`docker container run IMAGE COMMAND`](https://docs.docker.com/reference/cli/docker/container/run/)
 
 : 1. Скачать образ из удаленного репозитория (`hub.docker.com` по умолчанию), если
      он отсутствует в локальном репозитории
@@ -773,6 +775,80 @@ CMD /usr/bin/java /app/rabbit
 отдельные ранние этапы сборки образа.
 
 \[Stoneman: Learn Docker in a month of lunches, 4.5\]
+
+# Локальные реестры образов #
+{: id="Локальные_реестры_образов" }
+
+`docker image pull registry:2`
+
+: Скачать образ с реализацией реестра образов Docker'а
+
+`docker container run -d|--detach --restart always -p|--publish|--expose 5000:5000 --name local-registry registry:2`
+
+: 1. Запустить контейнер с реализацией реестра образов Docker'а
+
+  2. Отсоединить контейнер от терминала, в котором он был запущен (`--detach`)
+
+  3. Всегда перезапускать контейнер в случае его останова (`--restart always`)
+
+  4. Связать порт хоста с портом контейнера (`--publish 5000:5000`)
+
+  5. Задать имя для контейнера (`--name local-registry`)
+
+  6. Указать образ:тэг для запуска в контейнере (`registry:2`)
+
+  После выполнения указанной команды появится возможность загрузки образов в
+  данный реестр с удаленных узлов.
+
+`docker image push otvsp.ru:5000/otvsp/auth_103-nginx`
+
+: Загрузить образ в удаленный реестр
+
+  Для получения возможности загрузки образа в удаленный реестр, образ должен
+  быть назван по следующей схеме: `DOMAIN:PORT/[REPOSITORY/]IMAGE`.
+
+  Для того, чтобы иметь возможность загружать образ по небезопасному соединению
+  (HTTP помимо HTTPS) необходимо на клиенте внести в файл
+  `/etc/docker/daemon.json` следующее содержимое.
+
+      {
+        "insecure-registries": [
+          "otvsp.ru:5000"
+        ]
+      }
+
+`docker image pull localhost:5000/otvsp/auth_103-nginx`
+
+: Добавить образ из локального реестра в список рабочих образов
+
+`curl -X GET http://localhost:5000/v2/_catalog`
+
+: Вывести содержимое локального реестра
+
+`curl -X GET http://localhost:5000/v2/auth_103-nginx/tags/list`
+
+: Вывести перечень тэгов указанного образа из локального реестра
+
+## Ссылки ##
+{: id="Локальные_реестры_образов-Ссылки" }
+
+* [Distribution implementation for storing and distributing of container images and artifacts](https://hub.docker.com/_/registry)
+
+* [Registry \| Docker Docs](https://docs.docker.com/registry/)
+
+* [docker run \| Docker Docs](https://docs.docker.com/reference/cli/docker/container/run/)
+
+* [docker push \| Docker Docs](https://docs.docker.com/reference/cli/docker/image/push/)
+
+* [docker pull \| Docker Docs](https://docs.docker.com/reference/cli/docker/image/pull/)
+
+* [distribution-spec/spec.md at v1.0.1 · opencontainers/distribution-spec · GitHub](https://github.com/opencontainers/distribution-spec/blob/v1.0.1/spec.md)
+
+* [How to delete images from a private docker registry? - Stack Overflow](https://stackoverflow.com/questions/25436742/how-to-delete-images-from-a-private-docker-registry)
+
+* [How to get a list of images on docker registry v2 - Stack Overflow](https://stackoverflow.com/questions/31251356/how-to-get-a-list-of-images-on-docker-registry-v2)
+
+* [How can I make docker use http and not https? : r/docker](https://www.reddit.com/r/docker/comments/1d2utpn/how_can_i_make_docker_use_http_and_not_https/)
 
 # Dockerfile #
 {: id="Dockerfile" }
