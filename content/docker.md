@@ -905,8 +905,26 @@ services:
     build:
       context: .
       network: host
+    networks:
+      - main
     ports:
       - "44244:44244"
+    volumes:
+      - type: bind
+        source: "/home/user/.workspace/playground/rails/asudpp_002/storage/production.sqlite3"
+        target: "/home/asudpp_002/app/storage/production.sqlite3"
+
+networks:
+  main:
+    name: asudpp_002
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: "docker_002"
+    ipam:
+      config:
+        - subnet: "10.0.44.0/24"
+          ip_range: "10.0.44.128/25"
+          gateway: "10.0.44.1"
 ~~~~
 
 ## Команды ##
@@ -960,6 +978,8 @@ services:
 
 ## Ссылки ##
 {: id="Docker_compose-Ссылки" }
+
+* [Docker Compose Quickstart \| Docker Docs](https://docs.docker.com/compose/gettingstarted/)
 
 * [Compose Build Specification \| Docker Docs](https://docs.docker.com/reference/compose-file/build/)
 
