@@ -905,14 +905,37 @@ services:
     build:
       context: .
       network: host
+      target: main
     networks:
-      - main
-    ports:
-      - "44244:44244"
+      # - "main"
+      main:
+        ipv4_address: "10.0.44.151"
+    # ports:
+    #   - "44244:44244"
     volumes:
       - type: bind
         source: "/home/user/.workspace/playground/rails/asudpp_002/storage/production.sqlite3"
         target: "/home/asudpp_002/app/storage/production.sqlite3"
+
+  proxy:
+    image: "otvsp.ru:5000/otvsp/asudpp_002-proxy"
+    build:
+      context: .
+      network: host
+      target: proxy
+    networks:
+      # - main
+      main:
+        ipv4_address: "10.0.44.141"
+    ports:
+      - "80:80"
+    volumes:
+      - type: bind
+        source: "/home/user/.workspace/playground/rails/asudpp_002/nginx/default.conf"
+        target: "/etc/nginx/http.d/default.conf"
+      - type: bind
+        source: "/home/user/.workspace/playground/rails/asudpp_002/nginx/nginx.conf"
+        target: "/etc/nginx/nginx.conf"
 
 networks:
   main:
@@ -984,6 +1007,12 @@ networks:
 * [Compose Build Specification \| Docker Docs](https://docs.docker.com/reference/compose-file/build/)
 
 * [docker compose \| Docker Docs](https://docs.docker.com/reference/cli/docker/compose/)
+
+* [Networking \| Docker Docs](https://docs.docker.com/compose/how-tos/networking/)
+
+* [Networks top-level elements \| Docker Docs](https://docs.docker.com/reference/compose-file/networks/)
+
+* [Services top-level elements \| networks \| Docker Docs](https://docs.docker.com/reference/compose-file/services/#networks)
 
 # Примеры #
 {: id="Примеры" }
