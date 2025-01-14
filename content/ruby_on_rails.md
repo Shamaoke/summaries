@@ -53,7 +53,14 @@ title: Ruby on rails
 
 `rails generate migration CreateJoinTableGenresMovies genre movie`
 
-:  Сгенерировать файл миграции для реализации отношения многие со многими (_has and belongs to many_)
+: Сгенерировать файл миграции для реализации отношения многие со многими (_has and belongs to many_)
+
+`DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=production bundle exec rails db:drop db:migrate db:seed`
+
+: Пересоздать базу данных в производственном окружении (`production`)
+
+  Переменная окружения `DISABLE_DATABASE_ENVIRONMENT_CHECK=1` необходима для
+  удаления базы данных в производственном (`production`) окружении.
 
 # Безопасность #
 {: id="Безопасность" }
