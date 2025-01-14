@@ -898,6 +898,9 @@ RUN mvn package
 ## Файл `compose.yml` ##
 {: id="Docker_compose-Файл_сompose_yml" }
 
+### Иллюстративный пример ###
+{: id="Docker_compose-Файл_compose_yml-Иллюстративный_пример" }
+
 ~~~~
 services:
   main:
@@ -1013,6 +1016,8 @@ networks:
 * [Networks top-level elements \| Docker Docs](https://docs.docker.com/reference/compose-file/networks/)
 
 * [Services top-level elements \| networks \| Docker Docs](https://docs.docker.com/reference/compose-file/services/#networks)
+
+* [Provide static IP to docker containers via docker-compose - Stack Overflow](https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose)
 
 # Примеры #
 {: id="Примеры" }
