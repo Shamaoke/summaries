@@ -37,6 +37,8 @@ title: Docker
 
 * [Dockerfile](#Dockerfile)
 
+* [Docker compose](#Docker_compose)
+
 * [Примеры](#Примеры)
 
 * [Ссылки](#Ссылки)
@@ -889,6 +891,79 @@ RUN mvn package
 выполняться заново, вместо этого её результат будет извлечен из кэша.
 
 \[Stoneman: Learn Docker in a month of lunches, 4.2\]
+
+# Docker compose #
+{: id="Docker_compose" }
+
+## Файл `compose.yml` ##
+{: id="Docker_compose-Файл_сompose_yml" }
+
+~~~~
+services:
+  main:
+    image: "otvsp.ru:5000/otvsp/asudpp_002-main"
+    build:
+      context: .
+      network: host
+    ports:
+      - "44244:44244"
+~~~~
+
+## Команды ##
+{: id="Docker_compose-Команды" }
+
+`docker compose up`
+
+: Собрать и запустить контейнеры
+
+`docker compose build`
+
+: Собрать или пересобрать сервисы
+
+[`docker compose run SERVICE`](https://docs.docker.com/reference/cli/docker/compose/run/)
+
+: Запустить указанный сервис
+
+`docker compose run --rm SERVICE`
+
+: Запустить указанный сервис
+
+  Удалить контейнер по завершению его работы (`--rm`)
+
+`docker compose run --service-ports SERVICE`
+
+: Запустить указанный сервис
+
+  Связать порты сервиса с портами хоста в соответствии с тем, как указано в
+  файле `compose.yml`
+
+[`docker compose create [SERVICE...]`](https://docs.docker.com/reference/cli/docker/compose/create/)
+
+: Создать контейнеры для указанных сервисов (или для всех сервисов, определенных
+  в файле `compose.yml`, если конкретные сервисы не указаны)
+
+[`docker compose start [SERVICE...]`](https://docs.docker.com/reference/cli/docker/compose/start/)
+
+: Запустить существующие контейнеры для указанных сервисов (или для всех
+  сервисов, определенных в файле `compose.yml`, если конкретные сервисы не указаны)
+
+[`docker compose stop [SERVICE...]`](https://docs.docker.com/reference/cli/docker/compose/stop/)
+
+: Остановить контейнеры для указанных сервисов, не удаляя сами контейнеры (или
+  контейнеры для всех сервисов, указанных в файле `compose.yml`, если конкретные
+  сервисы не указаны)
+
+[`docker compose rm [SERVICE...]`](https://docs.docker.com/reference/cli/docker/compose/rm/)
+
+: Удалить контейнеры для указанных остановленных сервисов (или для всех
+  остановленных сервисов, если конкретные сервисы не указаны)
+
+## Ссылки ##
+{: id="Docker_compose-Ссылки" }
+
+* [Compose Build Specification \| Docker Docs](https://docs.docker.com/reference/compose-file/build/)
+
+* [docker compose \| Docker Docs](https://docs.docker.com/reference/cli/docker/compose/)
 
 # Примеры #
 {: id="Примеры" }
