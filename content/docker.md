@@ -825,7 +825,7 @@ CMD /usr/bin/java /app/rabbit
 
 : Вывести содержимое локального реестра
 
-`curl -X GET http://localhost:5000/v2/auth_103-nginx/tags/list`
+`curl -X GET http://localhost:5000/v2/otvsp/auth_103-nginx/tags/list`
 
 : Вывести перечень тэгов указанного образа из локального реестра
 
