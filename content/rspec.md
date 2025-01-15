@@ -1274,7 +1274,7 @@ end
 ### Настройка ###
 {: id="Rcov-Настройка" }
 
-*Настроить запуск спецификаций с выводом, включающим отчет Rcov.
+_Настроить запуск спецификаций с выводом, включающим отчет Rcov._
 
 ~~~
 require 'rspec/core/rake_task'
@@ -1290,6 +1290,7 @@ RSpec::Core::RakeTask.new('spec:rcov') do |t| # run all the specs and include th
                 ]
 end
 ~~~
+
 
 # V. Расширение RSpec #
 {: id="V" }
