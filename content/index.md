@@ -40,7 +40,7 @@ title: Summaries
 
 [Ninja](/summaries/ninja)
 
-[RXVT-UNICODE](/summaries/urxvt)
+<!-- [RXVT-UNICODE](/summaries/urxvt) -->
 
 [Ruby on rails](/summaries/ruby_on_rails)
 
