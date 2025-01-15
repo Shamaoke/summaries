@@ -42,6 +42,8 @@ title: Summaries
 
 <!-- [RXVT-UNICODE](/summaries/urxvt) -->
 
+[RSpec](/summaries/rspec)
+
 [Ruby on rails](/summaries/ruby_on_rails)
 
 [Rust](/summaries/rust)
