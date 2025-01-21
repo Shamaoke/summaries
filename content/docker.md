@@ -904,53 +904,50 @@ RUN mvn package
 ~~~~
 services:
   main:
-    image: "otvsp.ru:5000/otvsp/asudpp_002-main"
+    image: "ticketee.ru:5000/ticketee-main"
     build:
       context: .
       network: host
       target: main
     networks:
-      # - "main"
       main:
-        ipv4_address: "10.0.44.151"
-    # ports:
-    #   - "44244:44244"
+        ipv4_address: "10.0.45.151"
     volumes:
+      - type: volume
+        source: ticketee-db
+        target: "/home/ticketee/app/storage/"
       - type: bind
-        source: "/home/user/.workspace/playground/rails/asudpp_002/storage/production.sqlite3"
-        target: "/home/asudpp_002/app/storage/production.sqlite3"
+        source: "/home/user/.workspace/playground/rails/ticketee/log/production.log"
+        target: "/home/ticketee/app/log/production.log"
 
   proxy:
-    image: "otvsp.ru:5000/otvsp/asudpp_002-proxy"
+    image: "ticketee.ru:5000/ticketee-proxy"
     build:
       context: .
       network: host
       target: proxy
     networks:
-      # - main
       main:
-        ipv4_address: "10.0.44.141"
+        ipv4_address: "10.0.45.141"
     ports:
       - "80:80"
-    volumes:
-      - type: bind
-        source: "/home/user/.workspace/playground/rails/asudpp_002/nginx/default.conf"
-        target: "/etc/nginx/http.d/default.conf"
-      - type: bind
-        source: "/home/user/.workspace/playground/rails/asudpp_002/nginx/nginx.conf"
-        target: "/etc/nginx/nginx.conf"
+
+volumes:
+  ticketee-db:
+    name: ticketee.db
+    external: true
 
 networks:
   main:
-    name: asudpp_002
+    name: ticketee.net
     driver: bridge
     driver_opts:
-      com.docker.network.bridge.name: "docker_002"
+      com.docker.network.bridge.name: "docker-ticketee"
     ipam:
       config:
-        - subnet: "10.0.44.0/24"
-          ip_range: "10.0.44.128/25"
-          gateway: "10.0.44.1"
+        - subnet: "10.0.45.0/24"
+          ip_range: "10.0.45.128/25"
+          gateway: "10.0.45.1"
 ~~~~
 
 ## Команды ##
@@ -980,6 +977,14 @@ networks:
 
   Связать порты сервиса с портами хоста в соответствии с тем, как указано в
   файле `compose.yml`
+
+`docker compose run --rm -i|--interactive SERVICE`
+
+: Запустить указанный сервис
+
+  Удалить контейнер по завершению работы (`--rm`)
+
+  Использовать интерактивный режим (`--interactive`)
 
 [`docker compose create [SERVICE...]`](https://docs.docker.com/reference/cli/docker/compose/create/)
 
@@ -1016,6 +1021,8 @@ networks:
 * [Networks top-level elements \| Docker Docs](https://docs.docker.com/reference/compose-file/networks/)
 
 * [Services top-level elements \| networks \| Docker Docs](https://docs.docker.com/reference/compose-file/services/#networks)
+
+* [Volumes top-level element \| Docker Docs](https://docs.docker.com/reference/compose-file/volumes/)
 
 * [Provide static IP to docker containers via docker-compose - Stack Overflow](https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose)
 
