@@ -6,6 +6,8 @@ title: Summaries
 
 [Ant](/summaries/ant)
 
+[BDD в Rails](/summaries/bdd-rails)
+
 [C++](/summaries/cpp)
 
 [CMake](/summaries/cmake)
