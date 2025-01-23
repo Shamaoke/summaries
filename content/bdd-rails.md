@@ -7,6 +7,8 @@ title: BDD в Rails
 
 * [Примеры](#Примеры)
 
+* [Ссылки](#Ссылки)
+
 # Примеры #
 {: id="Примеры" }
 
@@ -1289,4 +1291,34 @@ end
 class User < ActiveRecord::Base
 end
 ~~~~
+
+# Ссылки #
+{: id="Ссылки" }
+
+[Cucumber](https://cucumber.io/docs/)
+
+[RSpec Rails \| View specs](https://rspec.info/features/7-1/rspec-rails/view-specs/view-spec/)
+
+[RSpec Rails \| Controller specs](https://rspec.info/features/7-1/rspec-rails/controller-specs/)
+
+[RSpec Rails \| Model specs](https://rspec.info/features/7-1/rspec-rails/model-specs/)
+
+## Документация ##
+{: id="Документация" }
+
+[Rubydoc \| RSpec core](https://rubydoc.info/gems/rspec-core)
+
+[Rubydoc \| RSpec expectations](https://rubydoc.info/gems/rspec-expectations)
+
+[Rubydoc \| RSpec mocks](https://rubydoc.info/gems/rspec-mocks)
+
+[Rubydoc \| RSpec Rails](https://rubydoc.info/gems/rspec-rails)
+
+[Rubydoc \| Rails::Controller::Testing](https://rubydoc.info/gems/rails-controller-testing)
+
+[Rubydoc \| RSpec::ActiveModel::Mocks](https://rubydoc.info/gems/rspec-activemodel-mocks)
+
+[Rubydoc \| Capybara](https://rubydoc.info/gems/capybara)
+
+[Rubydoc \| Cuprite](https://rubydoc.info/gems/cuprite)
 
