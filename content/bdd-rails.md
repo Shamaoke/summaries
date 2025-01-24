@@ -12,11 +12,74 @@ title: BDD в Rails
 # Примеры #
 {: id="Примеры" }
 
+* [Описание rails-маршрутов](#Описание_rails_маршрутов)
+
 * [Описание rails-представлений](#Описание_rails_представлений)
 
 * [Описание rails-контроллеров](#Описание_rails_контроллеров)
 
 * [Описание rails-моделей](#Описание_rails_моделей)
+
+## Описание rails-маршрутов ##
+{: id="Описание_rails_маршрутов" }
+
+Описание процесса маршрутизации полезно только в случае использования
+нестандартных маршрутов.
+
+~~~~
+# features/logged_in_as_an_admin.feature
+
+Feature: Logged in as an admin
+  Being a site user
+  I want to be logged in as an admin
+  In order to see the admin part of the site
+
+  Scenario: Successful login
+    <...>
+    Given I am on the login page
+    <...>
+~~~~
+
+~~~~
+# features/step_definitions/example_steps.rb
+
+Given /^I am on the login page$/ do
+  visit login_path
+end
+~~~~
+
+~~~~
+# spec/routing/sessions_routing_spec.rb
+
+require 'spec_helper'
+
+describe 'router for Sessions' do
+  context 'GET request' do
+    it 'maps /login onto the new action' do
+      get('/login').should route_to('sessions#new')
+    end
+  end
+end
+~~~~
+
+~~~~
+# config/routes.rb
+
+ExampleApplication::Application.routes.draw do
+  controller :sessions do
+    get 'login' => :new
+  end
+end
+~~~~
+
+~~~~
+# app/controllers/sessions_controller.rb
+
+class SessionsController < ApplicationController
+  def new
+  end
+end
+~~~~
 
 ## Описание rails-представлений ##
 {: id="Описание_rails_представлений" }
