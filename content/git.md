@@ -876,8 +876,8 @@ git add <файл>
       git submodule init <имя> - инициализировать (добавить запись о субмодуле в .git/config) указанный субмодуль.
       git submodule update <имя> - обновить субмодуль.
 
-#Архивирование
-{: id="Архивирование"}
+# Архивирование #
+{: id="Архивирование" }
 
 `git archive --format=tar.gz --prefix=usb-automount/ HEAD ":^samples/" > ../usb-automount.tar.gz`
 
