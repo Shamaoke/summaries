@@ -29,6 +29,8 @@ title: Git
 
 [Исправление и откат сделанных передач](#Исправление_и_откат_сделанных_передач)
 
+[Удаление файлов из истории](#Удаление_файлов_из_истории)
+
 [Журналирование](#Журналирование)
 
 [Просмотр изменений](#Просмотр_изменений)
@@ -535,6 +537,15 @@ _добавить файлы из рабочей области в уже заф
 
       git filtrer-branch --tree-filter 'rm -f <файл>' -- --all - удалить указанный файл во всех передачах всех ветвей.
 
+# Удаление файлов из истории #
+{: id="Удаление_файлов_из_истории" }
+
+`git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch FILE'`
+
+: Удалить указанный файл `FILE` из истории
+
+  [git rm - How do I delete a file from a Git repository? - Stack Overflow](https://stackoverflow.com/questions/2047465/how-do-i-delete-a-file-from-a-git-repository)
+
 #Журналирование
 {: id="Журналирование"}
 
@@ -867,6 +878,22 @@ git add <файл>
 
 #Архивирование
 {: id="Архивирование"}
+
+`git archive --format=tar.gz --prefix=usb-automount/ HEAD ":^samples/" > ../usb-automount.tar.gz`
+
+: * Создать архив указанного формата (`tar.gz`)
+
+  * Создать указанный корневой каталог в архиве (`--prefix=usb-automount/`)
+
+  * Поместить в корневой каталог архива файлы проекта из указанной правки (`HEAD`)
+
+  * Не включать указанный каталог в архив (`":^samples/"`)
+
+  [How do I exclude files from git archive? - Stack Overflow](https://stackoverflow.com/questions/38737765/how-do-i-exclude-files-from-git-archive)
+
+  [Making 'git log' ignore changes for certain paths - Stack Overflow](https://stackoverflow.com/questions/5685007/making-git-log-ignore-changes-for-certain-paths/21079437#21079437)
+
+  [Git - gitglossary Documentation](https://git-scm.com/docs/gitglossary#Documentation/gitglossary.txt-aiddefpathspecapathspec)
 
     git archive --format=<tar | zip> --prefix=<имя>/ <ветвь> - поместить все файлы проекта в директорию с указанным именем и создать архив указанного формата.
 
