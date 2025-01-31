@@ -52,6 +52,8 @@ title: Summaries
 
 [Rust](/summaries/rust)
 
+[Shell](/summaries/shell)
+
 [Software Engineering](/summaries/software_engineering)
 
 [UML](/summaries/uml)
