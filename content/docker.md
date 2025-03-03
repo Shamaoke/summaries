@@ -823,11 +823,11 @@ CMD /usr/bin/java /app/rabbit
 
 : Добавить образ из локального реестра в список рабочих образов
 
-`curl -X GET http://localhost:5000/v2/_catalog`
+`curl -X|--request GET http://localhost:5000/v2/_catalog`
 
 : Вывести содержимое локального реестра
 
-`curl -X GET http://localhost:5000/v2/otvsp/auth_103-nginx/tags/list`
+`curl -X|--request GET http://localhost:5000/v2/otvsp/auth_103-nginx/tags/list`
 
 : Вывести перечень тэгов указанного образа из локального реестра
 
