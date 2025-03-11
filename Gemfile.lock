@@ -44,6 +44,7 @@ GEM
     immutable-ruby (0.2.0)
       concurrent-ruby (~> 1.1)
       sorted_set (~> 1.0)
+    io-console (0.8.0)
     itextomml (1.6.1)
     json_schema (0.21.0)
     kramdown (2.5.1)
@@ -113,6 +114,8 @@ GEM
     rb-inotify (0.11.1)
       ffi (~> 1.0)
     rbtree (0.4.6)
+    reline (0.6.0)
+      io-console (~> 0.5)
     rexml (3.4.1)
     sass (3.7.4)
       sass-listen (~> 4.0.0)
@@ -163,6 +166,7 @@ DEPENDENCIES
   pstore
   puma
   rake
+  reline
   sass
 
 BUNDLED WITH

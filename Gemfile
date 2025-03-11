@@ -14,7 +14,8 @@ gem 'kramdown'
 gem 'logger'
 gem 'ostruct'
 gem 'pstore'
-gem "puma"
+gem 'puma'
 gem 'rake'
+gem 'reline'
 gem 'sass'
 
