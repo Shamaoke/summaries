@@ -18,6 +18,8 @@ title: Summaries
 
 [Docker](/summaries/docker)
 
+[GCC](/summaries/gcc)
+
 [GDB](/summaries/gdb)
 
 [Git](/summaries/git)
