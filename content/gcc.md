@@ -12,21 +12,15 @@ title: GCC | The GNU Compiler Collection
 # Опции командной строки #
 {: id="Опции командной строки" }
 
-`-O`
-`-O1`
+[`-O`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-W) `-O1`
 
 : Осуществить оптимизацию скомпилированного кода и времени его исполнения первого уровня
 
-  [Options That Control Optimization \| `-O, -O1`](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-O)
-
-`-Wpedantic`
-`-pedantic`
+[`-Wpedantic`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-W)
 
 : Выводить предупреждения в случае, если компилируемый код не соотвествует заданному стандарту языка
 
   Стандарт языка задается опцией `-std`.
-
-  [Options to Request or Suppress Warnings \| `-Wpedantic`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-pedantic-1)
 
 `-Werror=pedantic`
 
@@ -34,13 +28,33 @@ title: GCC | The GNU Compiler Collection
 
   Стандарт языка задается опцией `-std`.
 
-`-pedantic-errors`
+[`-pedantic-errors`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-pedantic-errors-1)
 
 : Выводить ошибки в случае, если компилируемый код не соотвествует заданному стандарту языка и _в некоторых других случаях_
 
   Стандарт языка задается опцией `-std`.
 
-  [Options to Request or Suppress Warnings \| `-pedantic-errors`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-pedantic-errors-1)
+[`-Wall`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wall)
+
+: Включить флаги предупреждений из группы `all`
+
+[`-Wextra`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-W)
+
+: Включить флаги предупреждений из группы `extra`
+
+[`-Wconversion`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wconversion)
+
+: Выводить предупреждения о некоторых видах неявных преобразований типов
+
+[`-Wsign-conversion`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Wsign-conversion)
+
+: Выводить предупреждения о неявных преобразованиях типов, изменяющих знак
+  целочисленного значения
+
+[`-Weffc++`](https://gcc.gnu.org/onlinedocs/gcc/C_002b_002b-Dialect-Options.html#index-Weffc_002b_002b)
+
+: Выводить предупреждения в случае, если исходный код не соотвествует некоторым
+  известным рекомендациям по стилю программирования
 
 # Ссылки #
 {: id="Ссылки" }
