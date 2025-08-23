@@ -170,6 +170,8 @@ _Свободная память_ — это область памяти, пол
 # Ссылки #
 {: id="Ссылки" }
 
+* [C++ - Standards](https://www.open-std.org/jtc1/sc22/wg21/docs/standards)
+
 * [C++11 Language Extensions — General Features, C++ FAQ](https://isocpp.org/wiki/faq/cpp11-language)
 
 <!-- vim: set textwidth=80 colorcolumn=80: -->
