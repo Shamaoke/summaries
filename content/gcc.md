@@ -56,6 +56,14 @@ title: GCC | The GNU Compiler Collection
 : Выводить предупреждения в случае, если исходный код не соотвествует некоторым
   известным рекомендациям по стилю программирования
 
+[`-Werror`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-Werror_003d)
+
+: Считать предупреждения ошибками
+
+[`-std=STANDARD`](https://gcc.gnu.org/onlinedocs/gcc/C-Dialect-Options.html#index-std-1)
+
+: Определить стандарт языка
+
 # Ссылки #
 {: id="Ссылки" }
 
