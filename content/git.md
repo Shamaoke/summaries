@@ -551,9 +551,11 @@ _добавить файлы из рабочей области в уже заф
 # Удаление файлов из истории #
 {: id="Удаление_файлов_из_истории" }
 
-`git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch FILE'`
+`FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --force --index-filter 'git rm --cached --ignore-unmatch FILE`
 
-: Удалить указанный файл `FILE` из истории
+: • Удалить указанный файл `FILE` из истории
+
+  • Не выводить предупреждение перед началом операции удаления (`FILTER_BRANCH_SQUELCH_WARNING=1`)
 
   [git rm - How do I delete a file from a Git repository? - Stack Overflow](https://stackoverflow.com/questions/2047465/how-do-i-delete-a-file-from-a-git-repository)
 
