@@ -841,17 +841,17 @@ _просмотреть изменения в указанном интерва�
 
 : Найти общего предка между двумя ветвями
 
-~~~~
-git checkout --ours|--theirs <файл>
+`git checkout --ours|--theirs <файл>`
 
-git add <файл>
-~~~~
+: 
 
-* Выписать заданную версию файла (локальную — `ours`, либо удаленную — `theirs`) при возникновении конфликтов во время слияния
+`git add <файл>`
 
-* Выставить выбранную версию файла
+: * Выписать заданную версию файла (локальную — `ours`, либо удаленную — `theirs`) при возникновении конфликтов во время слияния
 
-  [git - How to select the entire REMOTE file during mergetool? - Stack Overflow](https://stackoverflow.com/questions/55429485/how-to-select-the-entire-remote-file-during-mergetool)
+  * Выставить выбранную версию файла
+
+    [git - How to select the entire REMOTE file during mergetool? - Stack Overflow](https://stackoverflow.com/questions/55429485/how-to-select-the-entire-remote-file-during-mergetool)
 
 #Перебазирование
 {: id="Перебазирование"}
