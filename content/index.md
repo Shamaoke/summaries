@@ -36,6 +36,8 @@ title: Summaries
 
 [Qt](/summaries/qt)
 
+[QtCreator](/summaries/qtcreator)
+
 [LLDB](/summaries/lldb)
 
 [LLVM](/summaries/llvm)
