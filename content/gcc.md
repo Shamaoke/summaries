@@ -12,7 +12,7 @@ title: GCC | The GNU Compiler Collection
 # Опции командной строки #
 {: id="Опции командной строки" }
 
-[`-O`](https://gcc.gnu.org/onlinedocs/gcc/Warning-Options.html#index-W) `-O1`
+[`-O`](https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html#index-O) `-O1`
 
 : Осуществить оптимизацию скомпилированного кода и времени его исполнения первого уровня
 
