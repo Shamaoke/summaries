@@ -29,7 +29,7 @@ most vexing parse
   Неожидаемое разрешение синтаксической неоднозначности при инициализации
   объекта, которая интерпритируется как объявление функции.
 
-  [Grimm: C++ core guidelines explaned, ES.23; с. 179]
+  \[Grimm: C++ core guidelines explaned, ES.23; с. 179\]
 
 narrowing conversion
 
