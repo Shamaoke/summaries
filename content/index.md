@@ -56,6 +56,8 @@ title: Summaries
 
 [Rust](/summaries/rust)
 
+[Scilab](/summaries/scilab)
+
 [Shell](/summaries/shell)
 
 [Software Engineering](/summaries/software_engineering)
