@@ -60,6 +60,8 @@ title: Summaries
 
 [Shell](/summaries/shell)
 
+[Slint](/summaries/slint)
+
 [Software Engineering](/summaries/software_engineering)
 
 [UML](/summaries/uml)
