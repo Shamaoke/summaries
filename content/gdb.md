@@ -14,9 +14,9 @@ title: GDB
 # Командная строка #
 {: id="Командная_строка" }
 
-`gdb --args PROGRAM ARG1 ARG2 ARG3`
+`gdb --args PROGRAM ARG1 ARG2 ... ARGN`
 
-: Запустить отладочную сессию, передав отлаживаемой программе `PROGRAM` указанные аргументы `ARG1`, `ARG2` и `ARG3`
+: Запустить отладочную сессию, передав отлаживаемой программе `PROGRAM` указанные аргументы `ARG1`, `ARG2`, ..., `ARGN`
 
 `gdb {-p|--pid} $(pidof NAME)`
 
@@ -56,18 +56,17 @@ title: GDB
 
 `set confirm off`
 
-: Отключить запрос на подтверждение выполнения команды для команд с
-  подтверждением выполнения
+: Отключить запрос на подтверждение выполнения команды для всех команд с подтверждением выполнения
 
 `set debuginfod enabled off`
 
 : Отключить запросы на загрузку ресурсов для отладки с серверов `debuginfod`
 
-  * [Print Settings (Debugging with GDB)](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Print-Settings.html)
+* [Print Settings (Debugging with GDB)](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Print-Settings.html)
 
-  * [List (Debugging with GDB)](https://sourceware.org/gdb/current/onlinedocs/gdb.html/List.html)
+* [List (Debugging with GDB)](https://sourceware.org/gdb/current/onlinedocs/gdb.html/List.html)
 
-  * [Messages/Warnings (Debugging with GDB)](https://www.sourceware.org/gdb/current/onlinedocs/gdb.html/Messages_002fWarnings.html)
+* [Messages/Warnings (Debugging with GDB)](https://www.sourceware.org/gdb/current/onlinedocs/gdb.html/Messages_002fWarnings.html)
 
 # Сылки #
 {: id="Ссылки" }
