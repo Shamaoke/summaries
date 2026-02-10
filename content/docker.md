@@ -953,11 +953,83 @@ networks:
 ## Команды ##
 {: id="Docker_compose-Команды" }
 
-`docker compose up`
+[`docker compose up`](https://docs.docker.com/reference/cli/docker/compose/up/)
 
-: Собрать и запустить контейнеры
+: * Собрать контейнеры
 
-`docker compose build`
+  * Создать контейнеры
+
+  * Создать сети
+
+  * Запустить контейнеры
+
+  * Подключиться ко всем запущенным контейнерам
+
+`docker compose up {-d|--detach}`
+
+: * Собрать контейнеры
+
+  * Создать контейнеры
+
+  * Создать сети
+
+  * Запустить контейнеры
+
+  * Не подключаться к запущенным контейнерам
+
+`docker compose up --pull never`
+
+: * Не скачивать образы из репозитория
+
+  * Собрать контейнеры
+
+  * Создать контейнеры
+
+  * Создать сети
+
+  * Запустить контейнеры
+
+`docker compose up --attach CONTAINER`
+
+: * Собрать контейнеры
+
+  * Создать контейнеры
+
+  * Создать сети
+
+  * Запустить контейнеры
+
+  * Не подключаться к запущенным контейнерам
+
+[`docker compose logs [SERVICE]`](https://docs.docker.com/reference/cli/docker/compose/logs/)
+
+: Вывести журнал для указанного сервиса (`SERVICE`)/всех сервисов
+
+`docker compose logs {-f|--follow} [SERVICE]`
+
+: * Вывсти журнал для указанного сервиса (`SERVICE`)/всех сервисов
+
+  * Выводить новые сообщения по мере их поступления (`--follow`)
+
+[`docker compose down`](https://docs.docker.com/reference/cli/docker/compose/logs/)
+
+: * Остановить запущенные контейнеры
+
+  * Удалить созданные контейнеры
+
+  * Удалить созданные сети
+
+`docker compose down --rmi all`
+
+: * Остановить запущенные контейнеры
+
+  * Удалить созданные контейнеры
+
+  * Удалить созданные сети
+
+  * Удалить созданные образы
+
+[`docker compose build`](https://docs.docker.com/reference/cli/docker/compose/build/)
 
 : Собрать или пересобрать сервисы
 
