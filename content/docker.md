@@ -1140,6 +1140,10 @@ networks:
 
 * [Provide static IP to docker containers via docker-compose - Stack Overflow](https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose)
 
+* [Docker Docs \| Compose file reference](https://docs.docker.com/reference/compose-file/)
+
+* [Docker Docs \| Compose file reference → Services](https://docs.docker.com/reference/compose-file/services/)
+
 # Примеры #
 {: id="Примеры" }
 
