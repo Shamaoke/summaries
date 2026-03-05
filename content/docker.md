@@ -1232,7 +1232,7 @@ RUN chmod 744 greeting
 
 * Все этапы до этапа `fox` будут выполнены
 
-# Сылки #
+# Ссылки #
 {: id="Ссылки" }
 
 * [Manning \| Learn Docker in a Month of Lunches](https://www.manning.com/books/learn-docker-in-a-month-of-lunches)
