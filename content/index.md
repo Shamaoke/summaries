@@ -68,6 +68,8 @@ title: Summaries
 
 [UML](/summaries/uml)
 
+[vcpkg](/summaries/vcpkg)
+
 [Контроль доступа в Ruby on rails](/summaries/ror_access_control)
 
 [Математика](/summaries/math)
