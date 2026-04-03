@@ -1,0 +1,19 @@
+#! /usr/bin/env zsh
+
+function create {
+
+  local -A storage=(
+    [source]="$HOME/.workspace/summaries/output"
+    [destination]="/var/www/html"
+  )
+
+  docker container create \
+    --name summaries \
+    --network host \
+    --mount "type=bind,source=${storage[source]},destination=${storage[destination]}" \
+    --restart always \
+      summaries
+}
+
+function main TRAPEXIT; create
+

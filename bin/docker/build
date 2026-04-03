@@ -1,0 +1,13 @@
+#! /usr/bin/env zsh
+
+function build {
+  docker image build \
+    --network host \
+    --progress plain \
+    --tag summaries:latest \
+    --file Dockerfile \
+      .
+}
+
+function main TRAPEXIT; build
+
