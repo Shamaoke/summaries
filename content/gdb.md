@@ -40,6 +40,10 @@ title: GDB
 
 : Подключить отладчик к процессу с указанным идентификатором (`PID`).
 
+`bt | backtrace`
+
+: Вывести стек вызовов.
+
 `detach`
 
 : Отключить отладчик от процесса, к которому он был ранее подключен.
@@ -51,6 +55,16 @@ title: GDB
 `file FILE`
 
 : Установить отлаживаемую программу, указав её исполняемый файл (`FILE`).
+
+`frame NUMBER`
+
+: Выбрать указанный (`NUMBER`) стековый фрейм.
+
+`info frame NUMBER`
+
+: Вывести описание выбранного фрейма (`NUMBER`) на стеке.
+
+  [Frame Info (Debugging with GDB)](https://sourceware.org/gdb/current/onlinedocs/gdb.html/Frame-Info.html)
 
 `! COMMAND | shell COMMAND`
 
