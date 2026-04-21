@@ -171,7 +171,7 @@ title: GDB
 
 : Активировать режим TUI.
 
-`tui disable` `<ctrlx, a>`
+`tui disable` `<ctrl-x, a>`
 
 : Деактивировать режим TUI.
 
