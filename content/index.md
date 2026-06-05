@@ -70,6 +70,8 @@ title: Summaries
 
 [vcpkg](/summaries/vcpkg)
 
+[ИИ-ассистенты](/summaries/ai-assistants)
+
 [Контроль доступа в Ruby on rails](/summaries/ror_access_control)
 
 [Математика](/summaries/math)
