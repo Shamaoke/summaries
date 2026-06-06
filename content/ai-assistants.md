@@ -18,3 +18,7 @@ _How the subject works? — Как работает суъект?_
 
 _How should I use the subject? — Как мне следует использовать субъект?_
 
+_What causes the subject to happen? — Почему это возникает?_
+
+_How to fix the subject? — Как это исправить?_
+
