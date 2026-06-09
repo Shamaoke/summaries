@@ -12,6 +12,8 @@ title: ИИ-ассистенты
 
 _Provide a concise but comprehensive overview of the subject — Предоставьте краткий, но исчерпывающий обзор темы._
 
+_Provide practical guidance on — Предоставьте практическое руководство по._
+
 _What the subject is? — Чем является субъект?_
 
 _How the subject works? — Как работает суъект?_
