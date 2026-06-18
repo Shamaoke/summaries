@@ -14,6 +14,8 @@ _Provide a concise but comprehensive overview of the subject — Предост�
 
 _Provide practical guidance on — Предоставьте практическое руководство по._
 
+_I need practical guidance on — Мне требуется практическое руководство по._
+
 _What the subject is? — Чем является субъект?_
 
 _How the subject works? — Как работает суъект?_
