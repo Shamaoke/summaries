@@ -27,7 +27,7 @@ _What causes the subject to happen? — Почему это возникает?_
 _How do I fix the subject? — Как это исправить?_
 
 _How can these tools be used for the said purposes? — Как эти инструменты могут
-быть использованы для перечисленных мной задач?
+быть использованы для перечисленных мной задач?_
 
 _Is the subject needed (in the said circumstanses)? — Нужно ли использовать субъект в указанных обстоятельствах?_
 
