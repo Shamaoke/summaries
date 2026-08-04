@@ -11,6 +11,8 @@ title: GDB
 
 * [Настройка](#Настройка)
 
+* [Примеры](#Примеры)
+
 * [Ссылки](#Ссылки)
 
 # Командная строка #
@@ -223,6 +225,27 @@ title: GDB
 * [List (Debugging with GDB)](https://sourceware.org/gdb/current/onlinedocs/gdb.html/List.html)
 
 * [Messages/Warnings (Debugging with GDB)](https://www.sourceware.org/gdb/current/onlinedocs/gdb.html/Messages_002fWarnings.html)
+
+# Примеры #
+{: id="Примеры" }
+
+`pipe print /d *buf.constData()@1350 | tee data.txt | bat --color=never --plain`
+
+: * Вывести значение указанного выражения (`print`);
+
+    Вместо `print` можно использовать `p`.
+
+  * Вывести указанное количество байт массива (`ARRAY@LENGTH`);
+
+  * Использовать десятичный формат для выводимого значения (`/d`);
+
+  * Направить текстовый вывод команды GDB на ввод указанной внешней команды (`pipe GDB_COMMAND | LINUX_COMMAND`);
+
+    Вместо слова `pipe` можно использовать `|` (вертикальную черту).
+
+  * Записать вывод GDB в файл и одновременно передать выведенные данные на ввод указанной команде (`tee FILE | COMMAND`);
+
+  * Отобразить вывод GDB (`bat`), отключив окраску текста (`--color=never`) и дополнительные декоративные элементы (`--plain`).
 
 # Сылки #
 {: id="Ссылки" }
