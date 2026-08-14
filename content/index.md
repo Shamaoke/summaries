@@ -50,6 +50,8 @@ title: Summaries
 
 <!-- [RXVT-UNICODE](/summaries/urxvt) -->
 
+[Restic](/summaries/restic)
+
 [RSpec](/summaries/rspec)
 
 [Ruby on rails](/summaries/ruby_on_rails)
