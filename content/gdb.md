@@ -353,7 +353,7 @@ title: GDB
 
 `print /d buf`
 
-# Сылки #
+# Ссылки #
 {: id="Ссылки" }
 
 [How do I run a program with commandline arguments using GDB within a Bash script? - Stack Overflow][0]

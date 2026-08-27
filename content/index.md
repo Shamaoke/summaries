@@ -66,6 +66,8 @@ title: Summaries
 
 [Software Engineering](/summaries/software_engineering)
 
+[Taskwarrior](/summaries/taskwarrior)
+
 [UDP](/summaries/udp)
 
 [UML](/summaries/uml)
