@@ -12,7 +12,7 @@ task :commit do
 end
 
 desc "Show diff for the last N commits — `rake 'last[n]'`"
-task :last, [:n] do |task, args|
+task :last, [:n] do |_, args|
   system("git diff HEAD~#{args[:n] or 1}..HEAD")
 end
 
