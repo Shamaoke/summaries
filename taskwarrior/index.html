@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
+<title>Taskwarrior</title>
+</head>
+<body>
+<header>
+<h1>Taskwarrior</h1>
+</header>
+<main>
+<h1 id="Содержание">Содержание</h1>
+
+<ul>
+  <li>
+    <p><a href="#Перечень_команд">Перечень команд</a></p>
+
+    <ul>
+      <li><a href="#Прочие">Прочие</a></li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#Настройка">Настройка</a></p>
+  </li>
+  <li>
+    <p><a href="#Ссылки">Ссылки</a></p>
+  </li>
+</ul>
+
+<h1 id="Перечень_команд">Перечень команд</h1>
+
+<h2 id="Прочие">Прочие</h2>
+
+<dl>
+  <dt><code>task color</code></dt>
+  <dd>
+    <p>Вывести используемую цветовую палитру в текущем эмуляторе терминала</p>
+  </dd>
+</dl>
+
+<h2 id="section">Настройка</h2>
+
+<dl>
+  <dt><code>_forcecolor={on|off}</code></dt>
+  <dd>
+    <p>Активировать (<code>on</code>) или деактивировать (<code>off</code>) цветной вывод</p>
+  </dd>
+  <dt><code>include FILE</code></dt>
+  <dd>
+    <p>Импортировать внешний файл настроек или тем оформления (<code>FILE</code>)</p>
+  </dd>
+  <dt><code>verbose={PRESET|TOKEN_LIST}</code></dt>
+  <dd>
+    <p>Установить уровень детализации и информативности вывода</p>
+
+    <p>Определяет, какие служебные сообщения, предупреждения, заголовки и сноски
+утилита выводит вместе с выводом основных данных задач. Позволяет полностью
+отключить текстовый «спам» или, наоборот, включить подробные подсказки.
+Принимает готовые пресеты (<code>PRESET</code>) или список отдельных токенов через
+запятую (<code>TOKEN_LIST</code>).</p>
+
+    <p><strong>Пресеты</strong></p>
+
+    <dl>
+      <dt><code>nothing</code></dt>
+      <dd>
+        <p>Выводить только данные</p>
+      </dd>
+      <dt><code>default</code></dt>
+      <dd>
+        <p>Выводить стандартный набор данных</p>
+      </dd>
+      <dt><code>all</code></dt>
+      <dd>
+        <p>Выводить все данные</p>
+      </dd>
+    </dl>
+
+    <p><strong>Токены</strong></p>
+
+    <dl>
+      <dt><code>affected</code></dt>
+      <dd>
+        <p>Уведомлять о количестве измененных задач и типе изменения</p>
+      </dd>
+      <dt><code>new-id</code></dt>
+      <dd>
+        <p>Выводить идентификатор только что созданной задачи</p>
+      </dd>
+      <dt><code>label</code></dt>
+      <dd>
+        <p>Показывать заголовки столбцов таблиц</p>
+      </dd>
+      <dt><code>footnote</code></dt>
+      <dd>
+        <p>Выводить итоговые сноски под таблицами и графиками</p>
+      </dd>
+      <dt><code>override</code></dt>
+      <dd>
+        <p>Предупреждать о том, что заданные через конфигурационный файл настройки
+были изменены в текущей команде через аргумент командной строки</p>
+      </dd>
+      <dt><code>project</code></dt>
+      <dd>
+        <p>Предупреждать о том, что только что созданная задача была отнесена к новому
+ещё не созданному проекту</p>
+      </dd>
+      <dt><code>blank</code></dt>
+      <dd>
+        <p>Добавлять пустые строки-отступы до и после таблиц для улучшения читабельности</p>
+      </dd>
+    </dl>
+  </dd>
+  <dt><code>defaultwidth=NUMBER</code> <code>defaultheight=NUMBER</code></dt>
+  <dd>
+    <p>Установить количество символов по горизонтали (<code>defaultwidth</code>) и количество
+строк по вертикали (<code>defaultheight</code>) для вывода в конвейер или файл</p>
+
+    <p><strong>Возможные значения</strong></p>
+
+    <dl>
+      <dt><code>NUMBER &gt; 0</code></dt>
+      <dd>
+        <p>Задать жесткий размер</p>
+      </dd>
+      <dt><code>NUMBER == 0</code></dt>
+      <dd>
+        <p>Отключить жесткий размер</p>
+      </dd>
+    </dl>
+  </dd>
+</dl>
+
+<p><strong>Taskwarrior</strong> — консольный менеджер задач</p>
+
+<hr />
+
+<h2 id="section-1">💻 1. Основные команды</h2>
+
+<p>Вся работа строится по принципу: <code>task &lt;фильтр/ID&gt; &lt;команда&gt; &lt;модификаторы&gt;</code>.</p>
+
+<h3 id="section-2">Управление жизненным циклом (Модель: Резерв -&gt; Текущие -&gt; Архив)</h3>
+<ul>
+  <li><code>task add &lt;текст&gt;</code> — Добавить новую задачу (автоматически попадает в <strong>Резерв</strong>).</li>
+  <li><code>task &lt;ID&gt; start</code> — Начать выполнение задачи (перенос в <strong>Текущие</strong>, добавляет тег <code>+ACTIVE</code>).</li>
+  <li><code>task &lt;ID&gt; done</code> — Отметить задачу как выполненную (перенос в <strong>Архив</strong>, статус <code>completed</code>).</li>
+  <li><code>task &lt;UUID&gt; modify status:pending</code> — Извлечь задачу из Архива обратно в Резерв.</li>
+  <li><code>task &lt;ID&gt; delete</code> — Логически удалить задачу из списка (статус <code>deleted</code>).</li>
+  <li><code>task purge</code> — Физически стереть все удаленные задачи из базы SQLite навсегда.</li>
+  <li><code>task undo</code> — Отменить последнее совершенное действие.</li>
+</ul>
+
+<h3 id="section-3">Работа с тегами и аннотациями</h3>
+<ul>
+  <li><code>task &lt;ID&gt; modify +тег1 +тег2</code> — Добавить сразу несколько тегов к задаче.</li>
+  <li><code>task &lt;ID&gt; modify -тег1</code> — Удалить тег с задачи.</li>
+  <li><code>task &lt;ID&gt; annotate "&lt;текст&gt;"</code> — Добавить многострочное описание/заметку (в стиле тела коммита Git).</li>
+  <li><code>task &lt;ID&gt; edit</code> — Открыть задачу в текстовом редакторе для детального изменения аннотаций.</li>
+</ul>
+
+<hr />
+
+<h2 id="section-4">📊 2. Команды вывода и визуализации</h2>
+
+<p>Для мониторинга в реальном времени команды запускаются внутри утилиты <code>hwatch</code>.</p>
+
+<ul>
+  <li><code>task list</code> — Стандартная таблица всех активных задач.</li>
+  <li><code>task all</code> — Вывод абсолютно всех задач (Pending, Completed, Deleted).</li>
+  <li><code>task completed</code> — Вывод только выполненных задач (Архив).</li>
+  <li><code>task ready</code> — Список задач, готовых к выполнению (без отложенных и заблокированных).</li>
+  <li><code>task active</code> — Список задач, запущенных в данный момент (<code>+ACTIVE</code>).</li>
+  <li><code>task burndown</code> — График сгорания задач по дням (<code>.weekly</code> — по неделям, <code>.monthly</code> — по месяцам).</li>
+  <li><code>task ghistory</code> — Цветная гистограмма соотношения созданных и выполненных задач по месяцам.</li>
+  <li><code>task info &lt;ID/UUID&gt;</code> — Полная системная информация о задаче (включая историю и аннотации).</li>
+</ul>
+
+<hr />
+
+<h2 id="configtasktaskrc">⚙️ 3. Конфигурация (~/.config/task/taskrc)</h2>
+
+<p>Оптимизированные настройки для бесшовной интеграции с конвейерами (<code>pipe</code>), <code>less</code> и <code>hwatch</code>.</p>
+
+<p>```text
+# Пути к базе данных (оптимизировано под бэкап и Unison)
+data.location=/mnt/data/local/task</p>
+
+<h1 id="section-5">Включение встроенной темной темы оформления</h1>
+<p>include /usr/share/doc/task/rc/dark-256.theme</p>
+
+<h1 id="hwatch">Отключение ограничения ширины (каждая задача строго в одну строку для скроллинга в hwatch)</h1>
+<p>defaultwidth=0</p>
+
+<h1 id="pipeless">Принудительный цвет при передаче в pipe/less</h1>
+<p>_forcecolor=on</p>
+
+<h1 id="tty------less">Отключение детекции TTY терминала (предотвращает появление звездочек/крестиков в less)</h1>
+<p>detection=off</p>
+
+<h1 id="cli----tmux">Отключение предупреждений о переопределении конфигурации в CLI (чистый вывод в tmux)</h1>
+<p>verbose=nothing
+```</p>
+
+<hr />
+
+<h2 id="tmux--hwatch">🚀 4. Примеры интеграции (tmux + hwatch)</h2>
+
+<h3 id="burndown---tmux">Вывод цветного графика Burndown в панель tmux</h3>
+<p>Команда автоматически адаптирует сетку под геометрию панели без служебного спама:
+<code>bash&#x000A;hwatch "task rc.defaultwidth:\$COLUMNS rc.defaultheight:((LINES + 2)) burndown"</code></p>
+
+<h3 id="section-6">Настройка панелей для трех категорий задач</h3>
+<p>```bash
+# Панель “Текущие”
+hwatch “task rc.verbose:label,footnote,affected +ACTIVE list”</p>
+
+<h1 id="section-7">Панель “Резерв”</h1>
+<p>hwatch “task rc.verbose:label,footnote,affected -ACTIVE list”</p>
+
+<h1 id="section-8">Панель “Архив”</h1>
+<p>hwatch “task rc.verbose:label,footnote,affected completed”
+```</p>
+
+</main>
+<footer></footer>
+</body>
+</html>

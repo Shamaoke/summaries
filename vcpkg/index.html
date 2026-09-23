@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
+<title>vcpkg</title>
+</head>
+<body>
+<header>
+<h1>vcpkg</h1>
+</header>
+<main>
+<h1 id="Содержание">Содержание</h1>
+
+<ul>
+  <li>
+    <p><a href="#Команды">Команды</a></p>
+
+    <ul>
+      <li>
+        <p><a href="#Режим_манифеста">Режим манифеста</a></p>
+      </li>
+      <li>
+        <p><a href="#Список_пакетов">Список пакетов</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#Ссылки">Ссылки</a></p>
+  </li>
+</ul>
+
+<h1 id="Команды">Команды</h1>
+
+<h2 id="Режим_манифеста">Режим манифеста</h2>
+
+<dl>
+  <dt><code>vcpkg new --application</code></dt>
+  <dd>
+    <p>Создать файл манифеста в текущем проекте.</p>
+
+    <p>Команда <code>vcpkg new</code> не может быть вызвана без опций командной строки.
+Существует два варианта: <code>--application</code> — для проектов, не предназначенных для
+распространения через систему <strong>vcpkg</strong>, и <code>--name NAME --version VERSION</code> — для
+проектов, предназначенных для распространения через систему <strong>vcpkg</strong>.</p>
+  </dd>
+  <dt><code>vcpkg new --name NAME --version VERSION</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Создать файл манифеста в текущем проекте;</p>
+      </li>
+      <li>
+        <p>Внести имя <code>NAME</code> и <code>VERSION</code> в сгенерированный данной командой файл <code>vcpkg.json</code>.</p>
+      </li>
+    </ul>
+  </dd>
+</dl>
+
+<h2 id="Список_пакетов">Список пакетов</h2>
+
+<dl>
+  <dt><code>vcpkg list</code></dt>
+  <dd>
+    <p>Вывести перечень установленных пакетов.</p>
+
+    <p>Указанная команда выведет пакеты, установленные локально для текущего
+пользователя в так называемом классическом режиме (<em>classic mode</em>), то есть, с
+помощью непосредственного вызова команды <code>vcpkg install PACKAGE</code>.</p>
+
+    <p>Для корректной работы команды глобальная переменная <code>VCPKG_ROOT</code> должна
+содержать путь к каталогу установки системы <strong>vcpkg</strong>, например:
+<code>VCPKG_ROOT=$HOME/.local/share/vcpkg</code>.</p>
+  </dd>
+  <dt><code>vcpkg list --x-full-desc</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Вывести перечень установленных пакетов;</p>
+      </li>
+      <li>
+        <p>Не обрезать длинные строки.</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>vcpkg list --x-install-root DIRECTORY</code></dt>
+  <dd>
+    <p>Вывести перечень установленных пакетов;</p>
+
+    <p>Указанная команда выведет пакеты, установленные для текущего проекта в так
+называетмом режиме манифеста (<em>manifest mode</em>), то есть, в режиме объявления и
+управления зависимостями для некоторого проекта.</p>
+
+    <p>Параметр <code>DIRECTORY</code> должен указывать на каталог <code>vcpkg_installed</code>, который
+будет создаваться системой <strong>vcpkg</strong> в проектах, управляемых системой сборки
+CMake.</p>
+  </dd>
+</dl>
+
+<h1 id="Ссылки">Ссылки</h1>
+
+<ul>
+  <li>
+    <p><a href="https://learn.microsoft.com/en-us/vcpkg/">Microsoft Learn | vcpkg documentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://learn.microsoft.com/en-us/vcpkg/users/buildsystems/cmake-integration">Microsoft Learn | vcpkg in CMake projects</a></p>
+  </li>
+  <li>
+    <p><a href="https://vcpkg.io/en/packages">Browse public vcpkg packages</a></p>
+  </li>
+</ul>
+
+
+</main>
+<footer></footer>
+</body>
+</html>

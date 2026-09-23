@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
+<title>Ruby on rails</title>
+</head>
+<body>
+<header>
+<h1>Ruby on rails</h1>
+</header>
+<main>
+<h1 id="Содержание">Содержание</h1>
+
+<p><a href="#Перечень_команд">Перечень команд</a></p>
+
+<p><a href="#Авторизация">Авторизация</a></p>
+
+<p><a href="#Миграции">Миграции</a></p>
+
+<p><a href="#Безопасность">Безопасность</a></p>
+
+<p><a href="#Примеры">Примеры</a></p>
+
+<h1 id="Перечень_команд">Перечень команд</h1>
+
+<dl>
+  <dt><code>rails about</code></dt>
+  <dd>
+    <p>Вывести сводку по Rails и окружению для текущего проекта</p>
+  </dd>
+  <dt><code>rails server</code></dt>
+  <dd>
+    <p>Запустить веб-сервер</p>
+  </dd>
+</dl>
+
+<h1 id="Авторизация">Авторизация</h1>
+
+<dl>
+  <dt>авторизация</dt>
+  <dd>
+    <p>предоставление права на доступ к ресурсу</p>
+  </dd>
+  <dt>аутентификация</dt>
+  <dd>
+    <p>подтверждение/проверка права на доступ к ресурсу</p>
+  </dd>
+  <dt>верификация</dt>
+  <dd>
+    <p>проверка подлинности идентификатора</p>
+  </dd>
+  <dt>идентификатор</dt>
+  <dd>
+    <p>имя учетной записи</p>
+  </dd>
+  <dt>идентификация</dt>
+  <dd>
+    <p>опознавание</p>
+  </dd>
+  <dt>пароль</dt>
+  <dd>
+    <p>секретное слово для доступа к учетной записи</p>
+  </dd>
+  <dt>учётная запись</dt>
+  <dd>
+    <p>запись в постоянном хранилище данных, содержащая сведения о пользователе</p>
+  </dd>
+</dl>
+
+<h1 id="Миграции">Миграции</h1>
+
+<dl>
+  <dt><code>rails db:migrate</code></dt>
+  <dd>
+    <p>Осуществить миграцию</p>
+  </dd>
+  <dt><code>rails generate migration CreateJoinTableGenresMovies genre movie</code></dt>
+  <dd>
+    <p>Сгенерировать файл миграции для реализации отношения многие со многими (<em>has and belongs to many</em>)</p>
+  </dd>
+  <dt><code>DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=production bundle exec rails db:drop db:migrate db:seed</code></dt>
+  <dd>
+    <p>Пересоздать базу данных в производственном окружении (<code>production</code>)</p>
+
+    <p>Переменная окружения <code>DISABLE_DATABASE_ENVIRONMENT_CHECK=1</code> необходима для
+удаления базы данных в производственном (<code>production</code>) окружении.</p>
+  </dd>
+</dl>
+
+<h1 id="Безопасность">Безопасность</h1>
+
+<dl>
+  <dt><code>rails credentials --help</code></dt>
+  <dd>
+    <p>Вывести справку по командам безопасности</p>
+  </dd>
+</dl>
+
+<h1 id="Примеры">Примеры</h1>
+
+<h2 id="section">Создание нового приложения</h2>
+
+<p><strong>1.</strong> Сгенерировать каркас нового приложения</p>
+
+<pre><code>rails new demo \&#x000A;  --skip-bundle \&#x000A;  --skip-test \&#x000A;  --skip-docker \&#x000A;  --skip-git \&#x000A;  --css tailwind&#x000A;</code></pre>
+
+<p>• Создать новое приложение Rails</p>
+
+<p>• Не запускать <code>bundle install</code> (<code>--skip-bundle</code>)</p>
+
+<p>• Не создавать файлы тестов (<code>--skip-test</code>)</p>
+
+<p>• Не создавать файлы системы Docker (<code>--skip-docker</code>)</p>
+
+<p>• Не создавать файлы системы Git и не запускать <code>git init</code> (<code>--skip-git</code>)</p>
+
+<p>• Использовать инструмент CSS Tailwind (<code>--css tailwind</code>)</p>
+
+<p><strong>2.</strong> Произвести настройку инструмента Bundler</p>
+
+<p><code>bundle config path 'vendor/bundle</code></p>
+
+<p><strong>3.</strong> Добавить сторонние инструменты</p>
+
+<p><code>bundle add -g|--group=test cucumber-rails</code></p>
+
+<p><code>bundle add -g|--group=test database_cleaner</code></p>
+
+<p><code>bundle add -g|--group=development,test rspec-rails</code></p>
+
+<p><code>bundle add haml-rails</code></p>
+
+<p><code>bundle add dartsass-sprockets</code></p>
+
+<p>или</p>
+
+<pre><code># Gemfile&#x000A;&#x000A;gem 'cucmber-rails'&#x000A;gem 'database_cleaner'&#x000A;gem 'rspec-rails'&#x000A;gem 'haml-rails'&#x000A;gem 'dartsass-sprockets'&#x000A;</code></pre>
+
+<p><code>bundle install</code></p>
+
+<p><strong>4.</strong> Осуществить установку инструментария BDD</p>
+
+<p><code>bundle exec rails generate cucumber:install</code></p>
+
+<p><code>bundle exec rails generate rspec:install</code></p>
+
+<p><strong>4a.</strong> Осуществить установку инструмента Tailwind</p>
+
+<p><code>bundle exec rails tailwindcss:install</code></p>
+
+<p><strong>5.</strong> Осуществить проверку работоспособности инструментов BDD</p>
+
+<p><code>bundle exec cucumber</code></p>
+
+<p><code>bundle exec rspec</code></p>
+
+<p><strong>6.</strong> Настроить подсистему интернализации</p>
+
+<pre><code># config/initializer/locales.rb&#x000A;&#x000A;&#x000A;I18n.available_locales = [:en, :ru]&#x000A;I18n.default_locale = :ru&#x000A;</code></pre>
+
+<pre><code># config/locales/ru.yml&#x000A;&#x000A;ru:&#x000A;  products: "Продукты"&#x000A;  new_product: "Новый продукт"&#x000A;</code></pre>
+
+<p><strong>7.</strong> Установить систему Foreman</p>
+
+<p><code>bundle add -g|--group development foreman</code></p>
+
+<p><strong>7a.</strong> Создать файл <code>Procfile.dev</code></p>
+
+<pre><code># ./Procfile.dev&#x000A;&#x000A;web: bundle exec rails server --port 4444&#x000A;css: bundle exec rails tailwindcss:watch&#x000A;</code></pre>
+
+<p><strong>7b.</strong> Проверить действительность файла <code>Procfile.dev</code></p>
+
+<p><code>foreman check -f|--procfile Procfile.dev</code></p>
+
+<p><strong>7c.</strong> Запустить систему Foreman</p>
+
+<p><code>foreman start -f|--procfile Procfile.dev</code></p>
+
+<p><strong>8.</strong> Установить пакет <code>geckodriver</code></p>
+
+<p><code>pacman -S geckodriver</code></p>
+
+<p>После установки указанного пакета будет доступен запуск интеграционных тестов
+командой <code>rails test:system</code></p>
+
+<p><strong>9.</strong> Установить компонент CanCanCan</p>
+
+<p><code>bundle add cancancan</code></p>
+
+<p><strong>9a.</strong> Сгенерировать модель <code>Ability</code> компонента CanCanCan</p>
+
+<p><code>rails generate cancan:ability</code></p>
+
+<p><strong>10.</strong> Установить компонент Bcrypt</p>
+
+<p><code>bundle add bcrypt</code></p>
+
+
+</main>
+<footer></footer>
+</body>
+</html>

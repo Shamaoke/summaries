@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
+<title>Shell</title>
+</head>
+<body>
+<header>
+<h1>Shell</h1>
+</header>
+<main>
+<dl>
+  <dt><code>file FILE</code></dt>
+  <dd>
+    <p>Определить тип указанного файла <code>FILE</code></p>
+  </dd>
+  <dt><code>file -i|--mime FILE</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Определить тип указанного файла <code>FILE</code></p>
+      </li>
+      <li>
+        <p>Вывести медиатип файла (mime-type)</p>
+      </li>
+      <li>
+        <p>Вывести кодировку файла</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>install -m|--mode MODE /dev/null FILE</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Создать новый файл <code>FILE</code></p>
+      </li>
+      <li>
+        <p>Установить указанные права доступа <code>MODE</code> для созданного файла (например, <code>755</code>)</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>pstree -U -p</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Отобразить дерево процессов;</p>
+      </li>
+      <li>
+        <p>Использовать символы Юникода для отрисовки дерева (<code>-U</code>);</p>
+      </li>
+      <li>
+        <p>Отображать идентификаторы процессов — PID (<code>-p</code>).</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>pstree -T</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Отобразить дерево процессов;</p>
+      </li>
+      <li>
+        <p>Скрывать треды. Отображать только процессы.</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>pstree -t</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Отобразить дерево процессов;</p>
+      </li>
+      <li>
+        <p>Отображать имена для тредов.</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>pstree -a</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Отобразить дерево процессов;</p>
+      </li>
+      <li>
+        <p>Отображать аргументы командной строки для процессов.</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>zip -r|--recurse-paths ../zipped_dir.zip * -x|--exclude "./exclude/*"</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Создать zip-архив;</p>
+      </li>
+      <li>
+        <p>Включить в архив файлы в подкаталогах (<code>-r</code>);</p>
+      </li>
+      <li>
+        <p>Исключить из архива все файлы из указанного каталога (<code>-x</code>);</p>
+
+        <p><em>Ключ должен находиться после перечня файлов</em>.</p>
+      </li>
+    </ul>
+  </dd>
+</dl>
+
+
+</main>
+<footer></footer>
+</body>
+</html>

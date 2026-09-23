@@ -3,6 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
 <title>CMake</title>
 </head>
 <body>
@@ -167,56 +168,46 @@
   <dd>
     <p>Определить исполняемый файл целью сборки и установить исходники для неё</p>
   </dd>
-</dl>
-
-<p><code>add_executable(two EXCLUDE_FROM_ALL two.cpp)</code></p>
-
-<ul>
-  <li>
+  <dt><code>add_executable(two EXCLUDE_FROM_ALL two.cpp)</code></dt>
+  <dd>
     <p>Определить исполняемый файл целью сборки</p>
-  </li>
-  <li>
+  </dd>
+  <dd>
     <p>Исключить данную цель из цели, выполняемой по умолчанию (<code>all</code>)</p>
 
     <p>Указанный исполняемый файл будет собран только в том случае, если он будет
 являться зависимостью для другой цели или в случае явного указания цели в
 командной строке (<code>cmake --build build --target two</code>).</p>
-  </li>
-</ul>
-
-<dl>
+  </dd>
   <dt><a href="https://cmake.org/cmake/help/latest/command/add_library.html"><code>add_library(targetName [STATIC | SHARED | MODULE] [EXCLUDE_FROM_ALL] source1 [source2 ...])</code></a></dt>
   <dd>
     <p>Определить библиотеку целью сборки</p>
   </dd>
-</dl>
-
-<p><a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html"><code>cmake_minimum_required(VERSION 3.29)</code></a></p>
-
-<ul>
-  <li>
-    <p>Установить минимально допустимую версию системы CMake, используемую для
+  <dt><a href="https://cmake.org/cmake/help/latest/command/cmake_minimum_required.html"><code>cmake_minimum_required(VERSION 3.29)</code></a></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Установить минимально допустимую версию системы CMake, используемую для
 управления сборкой текущего проекта</p>
-  </li>
-  <li>
-    <p>Установить поведение текущей версии CMake в соответствие с поведением
+      </li>
+      <li>
+        <p>Установить поведение текущей версии CMake в соответствие с поведением
 указанной версии системы</p>
 
-    <p>В случае попытки сборки проекта системой CMake более ранней версии, возникнет
-исключительная ситуация, которая приведет к останову процесса генерирования
-файлов сборки.</p>
+        <p>В случае попытки сборки проекта системой CMake более ранней версии,
+возникнет исключительная ситуация, которая приведет к завершению процесса
+генерирования файлов сборки.</p>
 
-    <p>В случае, если текущая используемая версия системы CMake выше указанной,
+        <p>В случае, если текущая используемая версия системы CMake выше указанной,
 функциональность текущей версии будет урезана до той, которая существует в
 указанной.</p>
 
-    <p>Следует выполнять данную команду в самом верху файла <code>CMakeLists.txt</code>.</p>
+        <p>Следует выполнять данную команду в самом верху файла <code>CMakeLists.txt</code>.</p>
 
-    <p>Устанавливает переменную <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_MINIMUM_REQUIRED_VERSION.html"><code>CMAKE_MINIMUM_REQUIRED_VERSION</code></a>.</p>
-  </li>
-</ul>
-
-<dl>
+        <p>Устанавливает переменную <a href="https://cmake.org/cmake/help/latest/variable/CMAKE_MINIMUM_REQUIRED_VERSION.html"><code>CMAKE_MINIMUM_REQUIRED_VERSION</code></a>.</p>
+      </li>
+    </ul>
+  </dd>
   <dt><a href="https://cmake.org/cmake/help/latest/command/include.html#command:include"><code>include(&lt;file|module&gt; [OPTIONAL] [RESULT_VARIABLE &lt;var&gt;] [NO_POLICY_SCOPE])</code></a></dt>
   <dd>
     <p>Загрузить и выполнить код CMake из указанного файла</p>
@@ -225,44 +216,41 @@
   <dd>
     <p>Вывести указанное сообщение</p>
   </dd>
-</dl>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/project.html"><code>project(sample LANGUAGES CXX)</code></a></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Установить имя проекта (<code>sample</code>)</p>
+      </li>
+      <li>
+        <p>Установить используемые языки программирования (<code>CXX</code> — С++)</p>
 
-<p><a href="https://cmake.org/cmake/help/latest/command/project.html"><code>project(sample LANGUAGES CXX)</code></a></p>
+        <p>В случае отсутствия компилятора для указанных языков, возникнет исключительная
+ситуация, которая приведет к завершению процесса генерирования файлов сборки.</p>
 
-<ul>
-  <li>
-    <p>Установить имя проекта (<code>sample</code>)</p>
-  </li>
-  <li>
-    <p>Установить используемые языки программирования (<code>CXX</code> — С++)</p>
+        <p>Следует выполнять данную команду сразу же после команды <code>cmake_minimum_required</code>.</p>
 
-    <p>В случае отсутствия компилятора для указанных языков, возникнет исключительная
-ситуация, которая приведет к останову процесса генерирования файлов сборки.</p>
-
-    <p>Следует выполнять данную команду сразу же после команды <code>cmake_minimum_required</code>.</p>
-
-    <p>Устанавливает переменную <a href="https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html"><code>PROJECT_NAME</code></a>.</p>
-  </li>
-</ul>
-
-<p><a href="https://cmake.org/cmake/help/latest/command/set.html"><code>set(&lt;variable&gt; [&lt;value&gt;...] [PARENT_SCOPE])</code></a></p>
-
-<ul>
-  <li>
-    <p>Присвоить значение переменной, переменной кэша или переменной окружения в
+        <p>Устанавливает переменную <a href="https://cmake.org/cmake/help/latest/variable/PROJECT_NAME.html"><code>PROJECT_NAME</code></a>.</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><a href="https://cmake.org/cmake/help/latest/command/set.html"><code>set(&lt;variable&gt; [&lt;value&gt;...] [PARENT_SCOPE])</code></a></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Присвоить значение переменной, переменной кэша или переменной окружения в
 случае, если параметр <code>&lt;value&gt;</code> передан</p>
-  </li>
-  <li>
-    <p>Очистить значение переменной, переменной кэша или переменной окружения в
+      </li>
+      <li>
+        <p>Очистить значение переменной, переменной кэша или переменной окружения в
 случае, если параметр <code>&lt;value&gt;</code> не передан</p>
-  </li>
-  <li>
-    <p>Присвоить список значений переменной, переменной кэша или переменной окружения
+      </li>
+      <li>
+        <p>Присвоить список значений переменной, переменной кэша или переменной окружения
 в случае, если передано несколько параметров <code>&lt;value&gt;</code></p>
-  </li>
-</ul>
-
-<dl>
+      </li>
+    </ul>
+  </dd>
   <dt><a href="https://cmake.org/cmake/help/latest/command/set.html"><code>set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin)</code></a></dt>
   <dd>
     <p>Установить значение указанной переменной CMake</p>

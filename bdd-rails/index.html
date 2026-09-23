@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
+<title>BDD в Rails</title>
+</head>
+<body>
+<header>
+<h1>BDD в Rails</h1>
+</header>
+<main>
+<h1 id="Содержание">Содержание</h1>
+
+<ul>
+  <li>
+    <p><a href="#Примеры">Примеры</a></p>
+  </li>
+  <li>
+    <p><a href="#Ссылки">Ссылки</a></p>
+  </li>
+</ul>
+
+<h1 id="Примеры">Примеры</h1>
+
+<ul>
+  <li>
+    <p><a href="#Описание_rails_маршрутов">Описание rails-маршрутов</a></p>
+  </li>
+  <li>
+    <p><a href="#Описание_rails_представлений">Описание rails-представлений</a></p>
+  </li>
+  <li>
+    <p><a href="#Описание_rails_контроллеров">Описание rails-контроллеров</a></p>
+  </li>
+  <li>
+    <p><a href="#Описание_rails_моделей">Описание rails-моделей</a></p>
+  </li>
+</ul>
+
+<h2 id="Описание_rails_маршрутов">Описание rails-маршрутов</h2>
+
+<p>Описание процесса маршрутизации полезно только в случае использования
+нестандартных маршрутов.</p>
+
+<pre><code># features/logged_in_as_an_admin.feature&#x000A;&#x000A;Feature: Logged in as an admin&#x000A;  Being a site user&#x000A;  I want to be logged in as an admin&#x000A;  In order to see the admin part of the site&#x000A;&#x000A;  Scenario: Successful login&#x000A;    &lt;...&gt;&#x000A;    Given I am on the login page&#x000A;    &lt;...&gt;&#x000A;</code></pre>
+
+<pre><code># features/step_definitions/example_steps.rb&#x000A;&#x000A;Given /^I am on the login page$/ do&#x000A;  visit login_path&#x000A;end&#x000A;</code></pre>
+
+<pre><code># spec/routing/sessions_routing_spec.rb&#x000A;&#x000A;require 'spec_helper'&#x000A;&#x000A;describe 'router for Sessions' do&#x000A;  context 'GET request' do&#x000A;    it 'maps /login onto the new action' do&#x000A;      get('/login').should route_to('sessions#new')&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<pre><code># config/routes.rb&#x000A;&#x000A;ExampleApplication::Application.routes.draw do&#x000A;  controller :sessions do&#x000A;    get 'login' =&gt; :new&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<pre><code># app/controllers/sessions_controller.rb&#x000A;&#x000A;class SessionsController &lt; ApplicationController&#x000A;  def new&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h2 id="Описание_rails_представлений">Описание rails-представлений</h2>
+
+<h3 id="Типы_описываемых_поведений">Типы описываемых поведений</h3>
+
+<p><strong>Отображение</strong> (displaying)</p>
+
+<pre><code>it 'displays an attribute of a model'&#x000A;</code></pre>
+
+<p><strong>Обработка</strong> (rendering)</p>
+
+<pre><code>it 'renders a form to create a model'&#x000A;</code></pre>
+
+<pre><code>it 'renders a field for model attribute'&#x000A;</code></pre>
+
+<h3 id="Структура_файла_с_описанием">Структура файла с описанием</h3>
+
+<pre><code># spec/views/&lt;имя_контроллера&gt;/&lt;имя_действия&gt;.html.haml_spec.rb&#x000A;&#x000A;describe '&lt;имя_контроллера&gt;/&lt;имя_дейстия&gt;.html.haml' do&#x000A;  it 'displays the &lt;имя_атрибута&gt; of the &lt;имя_модели&gt;' do&#x000A;    assign(:&lt;имя_переменной_экземпляра&gt;, double('&lt;имя_модели&gt;', &lt;имя_атрибута&gt;: &lt;возвращаемое_значение&gt;)&#x000A;    render # будет обработан шаблон, указанный в аргументе группы примеров наивысшего уровня&#x000A;    rendered.should have_content('&lt;возвращаемое_значение&gt;')&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<pre><code># spec/views/&lt;имя_контроллера&gt;/&lt;имя_действия&gt;.html.haml_spec.rb&#x000A;&#x000A;describe '&lt;имя_контроллера&gt;/&lt;имя_действия&gt;.html.haml' do&#x000A;  it 'renders a form to &lt;действие&gt; the &lt;имя_модели&gt;' do&#x000A;    assign(:&lt;имя_переменной_экземпляра&gt;, mock_model('&lt;имя_модели&gt;').as_new_record.as_null_object)&#x000A;    render # будет обработан шаблон, указанный в аргументе группы примеров наивысшего уровня&#x000A;    rendered.should have_selector(&#x000A;      "form[method=\"post\"][action=\"#{&lt;маршрут&gt;}\"] input[type=\"submit\"]"&#x000A;    )&#x000A;  end&#x000A;&#x000A;  it 'renders a &lt;тип_поля&gt; for the &lt;имя_модели&gt; &lt;имя_атрибута&gt;' do&#x000A;    assign(:&lt;имя_переменной_экземпляра&gt;, mock_model('&lt;имя_модели&gt;', &lt;имя_атрибута&gt;: &lt;значение_атрибута&gt;).as_new_record)&#x000A;    render&#x000A;    rendered.should have_selector(&#x000A;      "form input[type=\"&lt;тип_поля&gt;\"][name=\"&lt;имя_модели&gt;[&lt;имя_атрибута&gt;]\"][value=&lt;значение_атрибута&gt;]"&#x000A;    )&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_для_представления_new">Пример описания для представления new</h3>
+
+<pre><code>describe 'messages/new' do&#x000A;  let :message do (mock_model 'Message').as_new_record end&#x000A;  let :page    do Capybara.string rendered end&#x000A;  let :form    do page.find "form[method='post'][action='#{messages_path}']" end&#x000A;&#x000A;  before :each do&#x000A;    (allow message) .to receive :title&#x000A;    (allow message) .to receive :text&#x000A;&#x000A;    assign :message, message&#x000A;&#x000A;    render&#x000A;  end&#x000A;&#x000A;  subject { form }&#x000A;&#x000A;  it { should have_field 'message[title]', type: 'text' }&#x000A;&#x000A;  it { should have_selector 'textarea[name="message[text]"]' }&#x000A;&#x000A;  it { should have_selector 'input[type="submit"][value="save"]' }&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_для_представления_edit">Пример описания для представления edit</h3>
+
+<pre><code># spec/views/projects/edit.html.haml_spec.rb&#x000A;&#x000A;require 'spec_helper'&#x000A;&#x000A;describe 'projects/edit.html.haml' do&#x000A;  subject { rendered }&#x000A;&#x000A;  let!(:project) do&#x000A;    project = assign(:project, stub_model(Project, name: 'Textmate 2'))&#x000A;    render&#x000A;    project&#x000A;  end&#x000A;&#x000A;  it { should have_selector("form[method=\"post\"][action=\"#{project_path(project)}\"]&#x000A;→ input[type=\"hidden\"][name=\"_method\"][value=\"put\"], input[type=\"submit\"]") }&#x000A;end&#x000A;</code></pre>
+
+<h2 id="Описание_rails_контроллеров">Описание rails-контроллеров</h2>
+
+<h3 id="Структура_файла_с_описанием_без_контекста">Структура файла с описанием без контекста</h3>
+
+<pre><code># spec/controllers/some_controller_spec.rb&#x000A;&#x000A;describe SomeController do&#x000A;  describe 'create' do&#x000A;    it 'creates' do&#x000A;      SomeModel.should_receive(:new)&#x000A;      post :create&#x000A;    end&#x000A;&#x000A;    it 'saves' do&#x000A;      some_model.should_receive(:save)&#x000A;      post :create&#x000A;    end&#x000A;&#x000A;    it 'redirects' do&#x000A;      post :create&#x000A;      response.should redirect_to(some_path)&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_контроллера_без_контекста">Пример описания контроллера без контекста</h3>
+
+<pre><code># spec/controllers/messages_controller.rb&#x000A;&#x000A;describe MessagesController do&#x000A;  describe 'create' do&#x000A;    it 'creates a new message' do&#x000A;      message = stub_model(Message)&#x000A;      Message.should_receive(:new).and_return(message)&#x000A;      post :create&#x000A;    end&#x000A;&#x000A;    it 'saves the message' do&#x000A;      message = mock_model(Message)&#x000A;      Message.stub(:new).and_return(message)&#x000A;      message.should_receive(:save)&#x000A;      post :create&#x000A;    end&#x000A;&#x000A;    it 'redirects to the Messages index' do&#x000A;      post :create&#x000A;      response.should redirect_to(messages_path)&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Структура_файла_с_описанием_с_использованием_контекста">Структура файла с описанием с использованием контекста</h3>
+
+<pre><code># spec/controllers/some_controller_spec.rb&#x000A;&#x000A;describe SomeController do&#x000A;  describe 'create' do&#x000A;    let(:some_model) { mock_model(SomeModel) }&#x000A;&#x000A;    context 'general' do&#x000A;      it 'creates' do&#x000A;        SomeModel.should_receive(:new)&#x000A;        post :create # or post :create, id: 1&#x000A;                     # or post :create, id: 1, user_id: 99&#x000A;                     #&#x000A;                     # method (delete, head, get, post, put, xhr)&#x000A;                     # action (create, update, delete, ...)&#x000A;                     # params (format, id, name, ...)&#x000A;                     # session data (user_id, ...)&#x000A;      end&#x000A;&#x000A;      it 'assigns' do&#x000A;        post :create&#x000A;        assigns[:some_at_variable].should eq(some_model)&#x000A;      end&#x000A;    end&#x000A;&#x000A;    context 'save success' do&#x000A;      before(:each) do&#x000A;        some_model.stub(:save).and_return(true)&#x000A;      end&#x000A;&#x000A;      it 'sets a flash message' do&#x000A;        post :create&#x000A;        flash[:notice].should eq('some message')&#x000A;      end&#x000A;&#x000A;      it 'redirects' do&#x000A;        post :create&#x000A;        response.should redirect_to(some_controller_path) # or redirect_to(@some_resource)&#x000A;                                                          # or redirect_to(controller: 'some_controller',&#x000A;                                                          #                action:     'some_action')&#x000A;      end&#x000A;    end&#x000A;&#x000A;    context 'save fail' do&#x000A;      before(:each) do&#x000A;        some_model.stub(:save).and_return(false)&#x000A;      end&#x000A;&#x000A;      it 'renders' do&#x000A;        post :create&#x000A;        response.should render_template('new') # or render_template('some_controller/new')&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_контроллера_с_использованием_контекста">Пример описания контроллера с использованием контекста</h3>
+
+<pre><code># spec/controllers/messages_controller_spec.rb&#x000A;&#x000A;require 'spec_helper'&#x000A;&#x000A;describe MessagesController do&#x000A;  describe 'create' do&#x000A;    let!(:message) do&#x000A;      message = mock_model(Message).as_null_object&#x000A;      Message.stub(:new).and_return(message)&#x000A;      message&#x000A;    end&#x000A;&#x000A;    it 'creates a new message' do&#x000A;      Message.should_receive(:new)&#x000A;        .with('text' =&gt; 'a quick brown fox')&#x000A;        .and_return(message)&#x000A;      post :create, message: { 'text' =&gt; 'a quick brown fox' }&#x000A;    end&#x000A;&#x000A;    it 'assigns @message' do&#x000A;      post :create&#x000A;      assigns[:message].should eq(message)&#x000A;    end&#x000A;&#x000A;    context 'when the message saves successfully' do&#x000A;      before(:each) do&#x000A;        message.stub(:save).and_return(true)&#x000A;      end&#x000A;&#x000A;      it 'sets a flash message' do&#x000A;        post :create&#x000A;        flash[:notice].should eq('The message was saved successfully.')&#x000A;      end&#x000A;&#x000A;      it 'redirects to the Messages index' do&#x000A;        post :create&#x000A;        response.should redirect_to(messages_path)&#x000A;      end&#x000A;    end&#x000A;&#x000A;    context 'when the message fails to save' do&#x000A;      it 'renders the new template' do&#x000A;        message.stub(:save).and_return(false)&#x000A;        post :create&#x000A;        response.should render_template('new')&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_контроллера_с_использованием_контекста_обновленная_версия">Пример описания контроллера с использованием контекста (обновленная версия)</h3>
+
+<pre><code>require 'rails_helper'&#x000A;&#x000A;describe MessagesController do&#x000A;  describe 'create' do&#x000A;    let! :message do |example|&#x000A;      (double Message) .tap do |message|&#x000A;        (allow Message) .to (receive :new) .and_return message&#x000A;&#x000A;        case example.example_group.description&#x000A;        when 'the message saves successully'&#x000A;          (allow message) .to (receive :save) .and_return true&#x000A;        when 'the message fails to save'&#x000A;          (allow message) .to (receive :save) .and_return false&#x000A;        else&#x000A;          (allow message) .to (receive :save)&#x000A;        end&#x000A;&#x000A;        post :create, message: { text: 'ok!' }&#x000A;      end&#x000A;    end&#x000A;&#x000A;    it 'creates a new message' do&#x000A;      (expect Message) .to (have_received :new) .with text: 'ok!'&#x000A;    end&#x000A;&#x000A;    it 'saves the message' do&#x000A;      (expect message) .to have_received :save&#x000A;    end&#x000A;&#x000A;    context 'the message saves successully' do&#x000A;      it 'sets a notification message' do&#x000A;        (expect flash.notice) .to eq 'The message was saved successfully.'&#x000A;      end&#x000A;&#x000A;      it 'redirects to the messages index' do&#x000A;        (expect response) .to redirect_to messages_path&#x000A;      end&#x000A;    end&#x000A;&#x000A;    context 'the message fails to save' do&#x000A;      it 'assigns @message' do&#x000A;        (expect assigns :message) .to eq message&#x000A;      end&#x000A;&#x000A;      it 'renders the new template' do&#x000A;        (expect response) .to render_template :new&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Последовательность_описания_действия_update">Последовательность описания действия update</h3>
+
+<p><strong>1.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;end&#x000A;</code></pre>
+
+<p><strong>2.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  it 'finds a project' do&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>3.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>4.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>5.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>6.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    Project.find&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>7.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>8.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    Project.find.update_attributes&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>9.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    Project.find.update_attributes(params[:project])&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>10.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    put :update, id: project.id&#x000A;    flash[:notice].should eq('Project has been updated')&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>11.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    Project.find.update_attributes(params[:project])&#x000A;    flash[:notice] = 'Project has been updated'&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>12.</strong></p>
+
+<pre><code># spec/controllers/projects_controller_spec.rb&#x000A;&#x000A;descirbe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    put :update, id: project.id&#x000A;    flash[:notice].should eq('Project has been updated')&#x000A;  end&#x000A;&#x000A;  it 'redirects to the project\'s path' do&#x000A;    put :update, id: project.id&#x000A;    response.should redirect_to(project)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>13.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    project = Project.find&#x000A;    project.update_attributes(params[:project])&#x000A;    flash[:notice] = 'Project has been updated'&#x000A;    redirect_to project_path(project)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>14.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    project = Project.find(params[:id])&#x000A;    project.update_attributes(params[:project])&#x000A;    flash[:notice] = 'Project has been updated'&#x000A;    redirect_to project_path(project)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>15.</strong></p>
+
+<pre><code># spec/controllers/projects_controller.rb&#x000A;&#x000A;describe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  context 'update is successful' do&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:notice].should eq('Project has been updated')&#x000A;    end&#x000A;&#x000A;    it 'redirects to the project\'s path' do&#x000A;      put :update, id: project.id&#x000A;      response.should redirect_to(project)&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>16.</strong></p>
+
+<pre><code># spec/controllers/projects_controller.rb&#x000A;&#x000A;describe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  context 'update is successful' do&#x000A;    before { project.stub(:update_attributes) { true } }&#x000A;&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:notice].should eq('Project has been updated')&#x000A;    end&#x000A;&#x000A;    it 'redirects to the project\'s path' do&#x000A;      put :update, id: project.id&#x000A;      response.should redirect_to(project)&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>17.</strong></p>
+
+<pre><code># spec/controllers/projects_controller.rb&#x000A;&#x000A;describe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  context 'update is successful' do&#x000A;    before { project.stub(:update_attributes) { true } }&#x000A;&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:notice].should eq('Project has been updated')&#x000A;    end&#x000A;&#x000A;    it 'redirects to the project\'s path' do&#x000A;      put :update, id: project.id&#x000A;      response.should redirect_to(project)&#x000A;    end&#x000A;  end&#x000A;&#x000A;  context 'update is failed' do&#x000A;    before { project.stub(:update_attributes) { false } }&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>18.</strong></p>
+
+<pre><code># spec/controllers/projects_controller.rb&#x000A;&#x000A;describe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  context 'update is successful' do&#x000A;    before { project.stub(:update_attributes) { true } }&#x000A;&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:notice].should eq('Project has been updated')&#x000A;    end&#x000A;&#x000A;    it 'redirects to the project\'s path' do&#x000A;      put :update, id: project.id&#x000A;      response.should redirect_to(project)&#x000A;    end&#x000A;  end&#x000A;&#x000A;  context 'update is failed' do&#x000A;    before { project.stub(:update_attributes) { false } }&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:alert].should eq('Project has not been updated')&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>19.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    project = Project.find(params[:id])&#x000A;    if project.update_attributes(params[:project])&#x000A;      flash[:notice] = 'Project has been updated'&#x000A;      redirect_to project_path(project)&#x000A;    else&#x000A;      flash[:alert] = 'Project has not been updated'&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>20.</strong></p>
+
+<pre><code># spec/controllers/projects_controller.rb&#x000A;&#x000A;describe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  it 'finds a project' do&#x000A;    Project.should_receive(:find) { project }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  it 'updates the project attributes' do&#x000A;    project.should_receive(:update_attributes) { true }&#x000A;    put :update, id: project.id&#x000A;  end&#x000A;&#x000A;  context 'update is successful' do&#x000A;    before { project.stub(:update_attributes) { true } }&#x000A;&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:notice].should eq('Project has been updated')&#x000A;    end&#x000A;&#x000A;    it 'redirects to the project\'s path' do&#x000A;      put :update, id: project.id&#x000A;      response.should redirect_to(project)&#x000A;    end&#x000A;  end&#x000A;&#x000A;  context 'update is failed' do&#x000A;    before { project.stub(:update_attributes) { false } }&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:alert].should eq('Project has not been updated')&#x000A;    end&#x000A;&#x000A;    it 'renders an edit template' do&#x000A;      put :update, id: project.id&#x000A;      response.should render_template('edit')&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>21.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    project = Project.find(params[:id])&#x000A;    if project.update_attributes(params[:project])&#x000A;      flash[:notice] = 'Project has been updated'&#x000A;      redirect_to project_path(project)&#x000A;    else&#x000A;      flash[:alert] = 'Project has not been updated'&#x000A;      render action: :edit&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>22.</strong></p>
+
+<pre><code>describe 'update' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  before { Project.stub(:find) { project } }&#x000A;&#x000A;  context 'before update' do&#x000A;    it 'finds a project' do&#x000A;      Project.should_receive(:find) { project }&#x000A;      put :update, id: project.id&#x000A;    end&#x000A;  end&#x000A;&#x000A;  context 'update is successful' do&#x000A;    before { project.stub(:update_attributes) { true } }&#x000A;&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:notice].should eq('Project has been updated')&#x000A;    end&#x000A;&#x000A;    it 'redirects to the project\'s path' do&#x000A;      put :update, id: project.id&#x000A;      response.should redirect_to(project)&#x000A;    end&#x000A;  end&#x000A;&#x000A;  context 'update is failed' do&#x000A;    before { project.stub(:update_attributes) { false } }&#x000A;&#x000A;    it 'sets a flash message' do&#x000A;      put :update, id: project.id&#x000A;      flash[:alert].should eq('Project has not been updated')&#x000A;    end&#x000A;&#x000A;    it 'renders an edit template' do&#x000A;      put :update, id: project.id&#x000A;      response.should render_template('edit')&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>23.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def update&#x000A;    @project = Project.find(params[:id])&#x000A;    if @project.update_attributes(params[:project])&#x000A;      flash[:notice] = 'Project has been updated'&#x000A;      redirect_to project_path(@project)&#x000A;    else&#x000A;      flash[:alert] = 'Project has not been updated'&#x000A;      render action: :edit&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Последовательность_описания_действия_delete">Последовательность описания действия delete</h3>
+
+<p><strong>1.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe ProjectsController&#x000A;  describe 'destroy' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>2.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe 'destroy' do&#x000A;  it 'sets a flash message' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>3.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe 'destroy' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    delete :destroy, id: project.id&#x000A;    flash[:notice].should eq('Project has been deleted')&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>4.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def destroy&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>5.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def destroy&#x000A;    flash[:notice] = 'Project has been deleted'&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>6.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe 'destroy' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    delete :destroy, id: project.id&#x000A;    flash[:notice].should eq('Project has been deleted')&#x000A;  end&#x000A;&#x000A;  it 'redirects to projects path' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>7.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe 'destroy' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    delete :destroy, id: project.id&#x000A;    flash[:notice].should eq('Project has been deleted')&#x000A;  end&#x000A;&#x000A;  it 'redirects to projects path' do&#x000A;    delete :destroy, id: project.id&#x000A;    response.should redirect_to(projects_path)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>8.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def destroy&#x000A;    flash[:notice] = 'Project has been deleted'&#x000A;    redirect_to projects_path&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>9.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe 'destroy' do&#x000A;  let(:project) { stub_model(Project) }&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    delete :destroy, id: project.id&#x000A;    flash[:notice].should eq('Project has been deleted')&#x000A;  end&#x000A;&#x000A;  it 'redirects to projects path' do&#x000A;    delete :destroy, id: project.id&#x000A;    response.should redirect_to(projects_path)&#x000A;  end&#x000A;&#x000A;  it 'deletes the project' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>10.</strong></p>
+
+<pre><code># spec/controllers/projects/controller_spec.rb&#x000A;&#x000A;describe 'destroy' do&#x000A;  let(:project) { mock_model(Project) }&#x000A;&#x000A;  it 'sets a flash message' do&#x000A;    delete :destroy, id: project.id&#x000A;    flash[:notice].should eq('Project has been deleted')&#x000A;  end&#x000A;&#x000A;  it 'redirects to projects path' do&#x000A;    delete :destroy, id: project.id&#x000A;    response.should redirect_to(projects_path)&#x000A;  end&#x000A;&#x000A;  it 'deletes the project' do&#x000A;    project.should_receive(:destroy)&#x000A;    delete :destroy, id: project.id&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>11.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def destroy&#x000A;    Project.find.destroy&#x000A;    flash[:notice] = 'Project has been deleted'&#x000A;    redirect_to projects_path&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>12.</strong></p>
+
+<pre><code># app/controllers/projects_controller.rb&#x000A;&#x000A;class ProjectsController &lt; ApplicationController&#x000A;  def destroy&#x000A;    Project.find(project[:id]).destroy&#x000A;    flash[:notice] = 'Project has been deleted'&#x000A;    redirect_to projects_path&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_для_контроллера_приложения">Пример описания для контроллера приложения</h3>
+
+<pre><code># spec/controllers/application_controller.rb&#x000A;&#x000A;require 'spec_helper'&#x000A;&#x000A;describe ApplicationController do&#x000A;  controller do&#x000A;    def index&#x000A;      raise AccessDenied&#x000A;    end&#x000A;  end&#x000A;&#x000A;  describe 'handling AccessDenied exceptions' do&#x000A;    it 'redirects to the /401.html (access denied) page' do&#x000A;      get :index&#x000A;      response.should redirect_to('/401.html')&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p>В примере посредством метода <code>controller</code> создается некоторый контроллер,
+представляющий любого потомка контроллера приложения. В созданном контроллере
+определяется некоторое действие, вызывающее исключение. Далее в примере группы,
+описывающего действие по обработке исключения, вызывается метод <code>get</code> с
+действием созданного абстрактного контроллера и ожидается переход на страницу с
+ошибкой.</p>
+
+<pre><code># spec/controllers/application_controller.rb&#x000A;&#x000A;class ApplicationController &lt; ActionController::Base&#x000A;  protect_from_forgery&#x000A;&#x000A;  rescue_from AccessDenied, with: :access_denied&#x000A;&#x000A;  private&#x000A;    def access_denied&#x000A;      redirect_to '/401.html'&#x000A;    end&#x000A;end&#x000A;</code></pre>
+
+<pre><code># lib/access_denied.rb&#x000A;&#x000A;class AccessDenied &lt; StandardError&#x000A;end&#x000A;</code></pre>
+
+<h2 id="Описание_rails_моделей">Описание rails-моделей</h2>
+
+<h3 id="Описываемые_элементы_моделей">Описываемые элементы моделей</h3>
+
+<p><strong>Валидация</strong></p>
+
+<pre><code># spec/models/some_model_spec.rb&#x000A;&#x000A;describe SomeModel do&#x000A;  it 'is valid if all attributes are specified' do&#x000A;    some_model.should be_valid&#x000A;  end&#x000A;&#x000A;  it 'is invalid if some_attribute aren\'t specified' do&#x000A;    some_model.some_attribute = nil&#x000A;    some_model.should have(1).error_on(:some_attribute)&#x000A;    # or some_model.should_not be_valid&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>Логика</strong></p>
+
+<pre><code># spec/models/some_model_spec.rb&#x000A;&#x000A;describe SomeModel do&#x000A;  describe 'some_method' do&#x000A;    context 'happy path' do&#x000A;      before(:each) { some_model.stub(:some_flag) { true } }&#x000A;&#x000A;      it 'does all as it is expected to be'&#x000A;    end&#x000A;&#x000A;    context 'corner case' do&#x000A;      before(:each) { some_model.stub(:some_flag) { false } }&#x000A;&#x000A;      it 'doesn\'t do what it should do'&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_c_использованием_метода_be_valid">Пример описания c использованием метода <code>be_valid</code></h3>
+
+<pre><code># spec/models/message_spec.rb&#x000A;&#x000A;require 'spec_helper'&#x000A;&#x000A;describe Message do&#x000A;  let(:message) do&#x000A;    Message.new(title: 'one',&#x000A;                text: 'ok!',&#x000A;                recipient: stub_model(User)&#x000A;               )&#x000A;  end&#x000A;&#x000A;  it 'is valid with valid attributes' do&#x000A;    message.should be_valid&#x000A;  end&#x000A;&#x000A;  it 'is not valid without a title' do&#x000A;    message.title = nil&#x000A;    message.should_not be_valid&#x000A;  end&#x000A;&#x000A;  it 'is not valid without text' do&#x000A;    message.text = nil&#x000A;    message.should_not be_valid&#x000A;  end&#x000A;&#x000A;  it 'is not valid without a recipient' do&#x000A;    message.recipient = nil&#x000A;    message.should_not be_valid&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<pre><code># spec/models/message.rb&#x000A;&#x000A;class Message &lt; ActiveRecord::Base&#x000A;  belongs_to :recipient,&#x000A;             class_name: 'User'&#x000A;&#x000A;  validates_presence_of :title,&#x000A;                        :text,&#x000A;                        :recipient&#x000A;end&#x000A;</code></pre>
+
+<pre><code># spec/models/user.rb&#x000A;&#x000A;class User &lt; ActiveRecord::Base&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Пример_описания_c_использованием_метода_error_on">Пример описания c использованием метода <code>error_on</code></h3>
+
+<pre><code># spec/models/message_spec.rb&#x000A;&#x000A;describe Message do&#x000A;  let(:message) do&#x000A;    Message.new(title: 'one',&#x000A;                text:  'ok!',&#x000A;                recipient: stub_model(User)&#x000A;               )&#x000A;  end&#x000A;&#x000A;  it 'is valid with valid attributes' do&#x000A;    message.should be_valid&#x000A;  end&#x000A;&#x000A;  it 'is not valid without a title' do&#x000A;    message.title = nil&#x000A;    message.should have(1).error_on(:title)&#x000A;  end&#x000A;&#x000A;  it 'is not valid without text' do&#x000A;    message.text = nil&#x000A;    message.should have(1).error_on(:text)&#x000A;  end&#x000A;&#x000A;  it 'it not valid without a recipient' do&#x000A;    message.recipient = nil&#x000A;    message.should have(1).error_on(:recipient)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<pre><code># app/models/message.rb&#x000A;&#x000A;class Message &lt; ActiveRecord::Base&#x000A;  belongs_to :recipient,&#x000A;             class_name: 'User'&#x000A;&#x000A;  validates_presence_of :title,&#x000A;                        :text,&#x000A;                        :recipient&#x000A;end&#x000A;</code></pre>
+
+<pre><code># app/models/user.rb&#x000A;&#x000A;class User &lt; ActiveRecord::Base&#x000A;end&#x000A;</code></pre>
+
+<h1 id="Ссылки">Ссылки</h1>
+
+<p><a href="https://cucumber.io/docs/">Cucumber</a></p>
+
+<p><a href="https://rspec.info/features/7-1/rspec-rails/view-specs/view-spec/">RSpec Rails | View specs</a></p>
+
+<p><a href="https://rspec.info/features/7-1/rspec-rails/controller-specs/">RSpec Rails | Controller specs</a></p>
+
+<p><a href="https://rspec.info/features/7-1/rspec-rails/model-specs/">RSpec Rails | Model specs</a></p>
+
+<h2 id="Документация">Документация</h2>
+
+<p><a href="https://rubydoc.info/gems/rspec-core">Rubydoc | RSpec core</a></p>
+
+<p><a href="https://rubydoc.info/gems/rspec-expectations">Rubydoc | RSpec expectations</a></p>
+
+<p><a href="https://rubydoc.info/gems/rspec-mocks">Rubydoc | RSpec mocks</a></p>
+
+<p><a href="https://rubydoc.info/gems/rspec-rails">Rubydoc | RSpec Rails</a></p>
+
+<p><a href="https://rubydoc.info/gems/rails-controller-testing">Rubydoc | Rails::Controller::Testing</a></p>
+
+<p><a href="https://rubydoc.info/gems/rspec-activemodel-mocks">Rubydoc | RSpec::ActiveModel::Mocks</a></p>
+
+<p><a href="https://rubydoc.info/gems/capybara">Rubydoc | Capybara</a></p>
+
+<p><a href="https://rubydoc.info/gems/cuprite">Rubydoc | Cuprite</a></p>
+
+
+</main>
+<footer></footer>
+</body>
+</html>

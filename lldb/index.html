@@ -3,6 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
 <title>LLDB</title>
 </head>
 <body>
@@ -18,33 +19,144 @@
 
 <h1 id="Команды">Команды</h1>
 
-<p><code>target create main</code></p>
-
 <dl>
-  <dt><code>file</code></dt>
+  <dt><code>target create TARGET [--core DUMP]</code> / <code>file ...</code></dt>
   <dd>
-    <p>Создать указанную цель</p>
+    <ul>
+      <li>
+        <p>Создать цель отладки, загрузив указанный исполняемый файл (<code>TARGET</code>)</p>
+      </li>
+      <li>
+        <p>Загрузить отладочные символы из отдельного файла (<code>DUMP</code>)</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>target list</code></dt>
+  <dd>
+    <p>Вывести упорядоченный список всех загруженных в текущей сессии целей отладки</p>
+  </dd>
+  <dt><code>target select INDEX</code></dt>
+  <dd>
+    <p>Переключить контекст отладчика на другую цель (<code>INDEX</code>) из списка ранее
+загруженных целей</p>
+  </dd>
+  <dt><code>target delete {INDEX|--all}</code></dt>
+  <dd>
+    <p>Удалить заданную цель (<code>INDEX</code>) или все цели (<code>--all</code>) из текущей отладочной
+сессии, освобождая связанную с ними память и отладочные символы</p>
+  </dd>
+  <dt><code>breakpoint set -f|--file FILE -l|--line LINE</code> / <code>b ...</code></dt>
+  <dd>
+    <p>Установить точку останова в указанном файле (<code>FILE</code>) на заданной строке (<code>LINE</code>)</p>
+  </dd>
+  <dt><code>breakpoint set -n|--name FUNCTION</code></dt>
+  <dd>
+    <p>Установить точку останова на указанной функции (<code>FUNCTION</code>)</p>
   </dd>
 </dl>
 
-<p><code>process launch</code></p>
+<p><code>breakpoint set -r|--func-regex FUNCTION</code></p>
+
+<p><code>breakpoint set -M|--method METHOD</code></p>
+
+<p><code>breakpoint set -F|--fullname FUNCTION</code></p>
 
 <dl>
-  <dt><code>run</code></dt>
+  <dt><code>breakpoint list</code> / <code>br ...</code></dt>
   <dd>
-    <p>Запустить исполняемый файл</p>
+    <p>Вывести список точек останова, созданных в текцщей цели отлдаки</p>
+  </dd>
+  <dt><code>breakpoint delete [--force]</code> / <code>br ...</code></dt>
+  <dd>
+    <p>Удалить все точки останова из текущей цели отладки (без подтверждения <code>--force</code>)</p>
+  </dd>
+  <dt><code>breakpoint delete ID</code> / <code>br ...</code></dt>
+  <dd>
+    <p>Удалить указанную точку останова (<code>ID</code>)</p>
+  </dd>
+  <dt><code>platform settings -w|--working-dir DIRECTORY</code></dt>
+  <dd>
+    <p>Установить текущий рабочий каталог (<code>DIRECTORY</code>)</p>
+  </dd>
+  <dt><code>settings set target.env-vars NAME1=VALUE1 NAME2=VALUE2 ...</code></dt>
+  <dd>
+    <p>Задать переменные окружения (<code>NAME1=VALUE1</code>, <code>NAME2=VALUE2</code>) для отлаживаемой
+программы до её старта</p>
+  </dd>
+  <dt><code>settings show target.env-vars</code></dt>
+  <dd>
+    <p>Вывести список установленных переменных окружения</p>
+  </dd>
+  <dt><code>settings clear target.env-vars</code></dt>
+  <dd>
+    <p>Удалить все установленные переменные окружения</p>
+  </dd>
+  <dt><code>patform shell SHELL_COMMAND</code> / <code>shell ...</code></dt>
+  <dd>
+    <p>Выполнить команду системной командной оболочки (<code>SHELL_COMMAND</code>) внутри
+изолированного подпроцесса и вывести результат в консоль</p>
+  </dd>
+  <dt><code>image lookup -r|--regex -n|--name NAME</code></dt>
+  <dd>
+    <p>Выполнить поиск символов в загруженных исполняемых файлах и динамических
+библиотеках (то, что называется <code>image</code>) по регулярному выражению</p>
+  </dd>
+  <dt><code>type lookup NAME</code></dt>
+  <dd>
+    <p>Вывести внутреннюю структуру типа (класса, структуры или перечисления),
+заданного именем (<code>NAME</code>) , на основе отладочной информации приложения</p>
+  </dd>
+  <dt><code>expression [-T|--show-types] -- EXPRESSION</code> / <code>expr ...</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Вычислить заданное выражение (<code>EXPRESSION</code>) в текущем контексте</p>
+
+        <p>Выражение будет вычислено путем запуска реального кода внутри процесса
+отлаживаемого приложения. Если вычисляемое выражение изменит состояние
+программы, это изменение останется в силе для текущей сессии отладки.</p>
+      </li>
+      <li>
+        <p>Указать типы данных для всех полученных значений</p>
+
+        <p>Разделитель (<code>--</code>) обязателен в случае использования опций командной строки.</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>frame variable --show-types</code> / <code>fr v -T</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Вывести список всех локальных переменных и аргументов в текущем выбранном
+стековом фрейме</p>
+      </li>
+      <li>
+        <p>Указать типы данных для переменных и аргументов (<code>--show-types</code>)</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>process launch</code> / <code>run</code> / <code>r</code></dt>
+  <dd>
+    <p>Запустить исполняемый файл текущей цели отладки</p>
+  </dd>
+  <dt><code>process launch --stop-at-user-entry</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Запустить исполняемый файл текущей цели отладки</p>
+      </li>
+      <li>
+        <p>Остановиться на точке входа в программу (функция <code>main</code> для C++)</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>process kill</code> / <code>kill</code></dt>
+  <dd>
+    <p>Принудительно завершить текущий запущенный процесс отлаживаемого приложения</p>
   </dd>
   <dt><code>platform list</code></dt>
   <dd>
     <p>Перечислить все доступные платформы</p>
-  </dd>
-  <dt><code>platform shell pwd</code></dt>
-  <dd>
-    <p>Запустить указанную команду для текущей платформы</p>
-  </dd>
-  <dt><code>platform settings -w|--working-dir ..</code></dt>
-  <dd>
-    <p>Установить текущий рабочий каталог для текущей платформы</p>
   </dd>
 </dl>
 

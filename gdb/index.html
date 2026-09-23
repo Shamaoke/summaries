@@ -3,6 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
 <title>GDB</title>
 </head>
 <body>
@@ -10,15 +11,453 @@
 <h1>GDB</h1>
 </header>
 <main>
-<p><code>&#x000A;gdb --args sample one two three</code></p>
+<h1 id="Содержания">Содержание</h1>
 
-<p>Запустить отладочную сессию, передав отлаживаемой программе (<code>sample</code>) аргументы (<code>one</code>, <code>two</code>, <code>three</code>).</p>
+<ul>
+  <li>
+    <p><a href="#Командная_строка">Командная строка</a></p>
+  </li>
+  <li>
+    <p><a href="#Инструментарий">Инструментарий</a></p>
+  </li>
+  <li>
+    <p><a href="#Настройка">Настройка</a></p>
+  </li>
+  <li>
+    <p><a href="#Debuginfod">Debuginfod</a></p>
+  </li>
+  <li>
+    <p><a href="#Примеры">Примеры</a></p>
+  </li>
+  <li>
+    <p><a href="#Ссылки">Ссылки</a></p>
+  </li>
+</ul>
 
-<h1 id="section">Сылки</h1>
+<h1 id="Командная_строка">Командная строка</h1>
+
+<dl>
+  <dt><code>gdb --args PROGRAM ARG1 ARG2 ... ARGN</code></dt>
+  <dd>
+    <p>Запустить отладочную сессию, передав отлаживаемой программе <code>PROGRAM</code> указанные аргументы <code>ARG1</code>, <code>ARG2</code>, …, <code>ARGN</code></p>
+  </dd>
+  <dt><code>gdb {-p|--pid} $(pidof NAME)</code></dt>
+  <dd>
+    <p>• Найти идентификатор процесса по имени (<code>pidof NAME</code>);</p>
+
+    <p>• Запустить отладчик и подключиться к процессу с найденным идентификаторм</p>
+
+    <p>Для отладки путем подключения к запущенному процессу от обычного пользователя
+создать файл <code>/etc/sysctl.d/10-ptrace.conf</code> со следующим содержимым: <code>kernel.yama.ptrace_scope = 0</code>.</p>
+  </dd>
+  <dt><code>gdb {-s|--symbols} FILE</code></dt>
+  <dd>
+    <p>Запустить отладчик и загрузить таблицу отладочных символов из указанного файла (<code>FILE</code>).</p>
+  </dd>
+</dl>
+
+<h1 id="Инструментарий">Инструментарий</h1>
+
+<dl>
+  <dt><code>attach PID</code></dt>
+  <dd>
+    <p>Подключить отладчик к процессу с указанным идентификатором (<code>PID</code>).</p>
+  </dd>
+  <dt><code>bt | backtrace</code></dt>
+  <dd>
+    <p>Вывести стек вызовов.</p>
+  </dd>
+  <dt><code>detach</code></dt>
+  <dd>
+    <p>Отключить отладчик от процесса, к которому он был ранее подключен.</p>
+  </dd>
+  <dt><code>symbol-file FILE</code></dt>
+  <dd>
+    <p>Загрузить таблицу отладочных символов из указанного файла (<code>FILE</code>).</p>
+  </dd>
+  <dt><code>file FILE</code></dt>
+  <dd>
+    <p>Установить отлаживаемую программу, указав её исполняемый файл (<code>FILE</code>).</p>
+  </dd>
+  <dt><code>frame NUMBER</code></dt>
+  <dd>
+    <p>Выбрать указанный (<code>NUMBER</code>) стековый фрейм.</p>
+  </dd>
+  <dt><code>info frame NUMBER</code></dt>
+  <dd>
+    <p>Вывести описание выбранного фрейма (<code>NUMBER</code>) на стеке.</p>
+
+    <p><a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Frame-Info.html">Frame Info (Debugging with GDB)</a></p>
+  </dd>
+  <dt><code>! COMMAND | shell COMMAND</code></dt>
+  <dd>
+    <p>Выполнить указанную команду командной оболочки (<code>COMMAND</code>).</p>
+  </dd>
+  <dt><code>b | break FILE:LINE</code></dt>
+  <dd>
+    <p>Установить точку оснанова на указанной строке (<code>LINE</code>) указанного файла (<code>FILE</code>) исходного кода.</p>
+  </dd>
+  <dt><code>watch EXPRESSION</code></dt>
+  <dd>
+    <p>Установить точку наблюдения для заданного выражения (<code>EXPRESSION</code>).</p>
+
+    <p>Отлаживаемая программа будет остановлена сразу же после изменения заданного
+выражения.</p>
+  </dd>
+  <dt><code>list</code></dt>
+  <dd>
+    <p>Отобразить строки исходного кода до и после текущей исполняемой точки.</p>
+
+    <p>Общий размер выведенных строк настраиваится командой <code>set listsize NUM</code>.</p>
+
+    <p>Текущий размер списка выводится командой <code>show listsize</code>.</p>
+  </dd>
+  <dt><code>list .</code></dt>
+  <dd>
+    <p>Отобразить строки исходного кода до и после текущей исполняемой точки.</p>
+  </dd>
+  <dt><code>list LINE</code></dt>
+  <dd>
+    <p>Отобразить строки исходного кода до и после заданной строки <code>LINE</code>.</p>
+  </dd>
+  <dt><code>list START,END</code></dt>
+  <dd>
+    <p>Отобразить строки исходного кода между начальной <code>START</code> и конечной <code>END</code> строками.</p>
+  </dd>
+  <dt><code>info {b|breakpoints}</code></dt>
+  <dd>
+    <p>Вывести список заданных точек останова.</p>
+  </dd>
+  <dt><code>delete BNUMBER</code></dt>
+  <dd>
+    <p>Удалить точку останова, заданную номером <code>BNUMBER</code>.</p>
+  </dd>
+  <dt><code>run</code></dt>
+  <dd>
+    <p>Запустить отлаживаемую программу.</p>
+  </dd>
+  <dt><code>[c]ontinue</code></dt>
+  <dd>
+    <p>Продолжить отладку программы после её останова на точке останова или по сигналу.</p>
+  </dd>
+  <dt><code>next [N]</code></dt>
+  <dd>
+    <p>Продолжить выполнение отладочной программы после её останова со следующей строки
+и остановиться на данной строке.</p>
+
+    <p>Не заходить в функцию если таковая имеется на текущей строке.</p>
+
+    <p>Выполнять команду заданное количество раз (<code>N</code>).</p>
+  </dd>
+  <dt><code>step [N]</code></dt>
+  <dd>
+    <p>Продолжить выполнение отладочной программы после её останова со следующей строки
+и остановиться на данной строке.</p>
+
+    <p>Заходить в функцию если таковая имеется на текущей строке.</p>
+
+    <p>Выполнять команду заданное количество раз (<code>N</code>).</p>
+  </dd>
+  <dt><code>bt | backtrace [-full]</code></dt>
+  <dd>
+    <p>Вывести последовательность фреймов стека до данной точки вызова.</p>
+
+    <p>Выводить значения локальных переменных (<code>-full</code>).</p>
+  </dd>
+  <dt><code>info args</code></dt>
+  <dd>
+    <p>Вывести все аргументы и их значения на текущем фрейме стека.</p>
+  </dd>
+  <dt><code>info locals</code></dt>
+  <dd>
+    <p>Вывести все локальные переменные и из значения на текущем фрейме стека.</p>
+  </dd>
+  <dt><code>{p|print|inspect} EXPRESSION</code></dt>
+  <dd>
+    <p>Вывести значение заданного выражения (<code>EXPRESSION</code>).</p>
+  </dd>
+  <dt><code>print -pretty -- *this</code></dt>
+  <dd>
+    <p>Вывести текущий объект.</p>
+  </dd>
+  <dt><code>whatis EXPRESSION</code></dt>
+  <dd>
+    <p>Вывести тип заданного выражения (<code>EXPRESSION</code>) в том виде, в каком он объявлен,
+не разворачивая последовательность определений типа (псевдонимы, заданные через
+<code>typedef</code> или <code>using</code>).</p>
+
+    <p>В отличие от <code>ptype</code>, не разворачивает тип до базового представления структуры —
+удобно для быстрой проверки типа без лишних деталей.</p>
+  </dd>
+  <dt><code>ptype EXPRESSION</code></dt>
+  <dd>
+    <p>Вывести полное определение типа заданного выражения (<code>EXPRESSION</code>): раскрутить
+последовательность определений типа до конечного типа, а если это <code>struct</code>/<code>class</code>/
+<code>union</code> — дополнительно показать список его полей и методов.</p>
+
+    <p>В отличие от <code>whatis</code>, показывает тип „как он устроен“, а не „как он объявлен“.</p>
+  </dd>
+  <dt><code>edit</code></dt>
+  <dd>
+    <p>Открыть текстовый редактор в текущей исполняемой точке.</p>
+
+    <p>Текстовый редактор задается переменной окржения <code>EDITOR</code>.</p>
+  </dd>
+  <dt><code>q | quit | exit</code></dt>
+  <dd>
+    <p>Завершить работу отладчика.</p>
+  </dd>
+  <dt><code>tui enable</code> <code>&lt;ctrl-x, a&gt;</code></dt>
+  <dd>
+    <p>Активировать режим TUI.</p>
+  </dd>
+  <dt><code>tui disable</code> <code>&lt;ctrl-x, a&gt;</code></dt>
+  <dd>
+    <p>Деактивировать режим TUI.</p>
+  </dd>
+  <dt><code>focus src</code> <code>&lt;ctrl-x, o&gt;</code></dt>
+  <dd>
+    <p>Сфокусировать окно с исходным кодом.</p>
+  </dd>
+  <dt><code>focus cmd</code> <code>&lt;ctrl-x, o&gt;</code></dt>
+  <dd>
+    <p>Сфокусировать окно команд.</p>
+  </dd>
+  <dt><code>x /[COUNT][FORMAT][SIZE][ADDRESS]</code></dt>
+  <dd>
+    <p>Вывести содержимое памяти</p>
+
+    <p><strong>СOUNT</strong></p>
+
+    <p>Количество элементов для вывода</p>
+
+    <ul>
+      <li>
+        <p>По умолчанию равен <code>1</code></p>
+      </li>
+      <li>
+        <p>Задается целым числом — <code>/4</code></p>
+      </li>
+    </ul>
+
+    <p><strong>FORMAT</strong></p>
+
+    <p>Формат вывода данных</p>
+
+    <ul>
+      <li>
+        <p><code>s</code> — строка (набор байтов от заданного до нулевого)</p>
+      </li>
+      <li>
+        <p><code>c</code> — одиночный символ</p>
+      </li>
+      <li>
+        <p><code>x</code> — шестнадцатиричное число</p>
+      </li>
+      <li>
+        <p><code>d</code> — десятичное число со знаком</p>
+      </li>
+      <li>
+        <p><code>u</code> — десятичное число без знака</p>
+      </li>
+      <li>
+        <p><code>o</code> — восьмеричное число</p>
+      </li>
+      <li>
+        <p><code>t</code> — двоичное число</p>
+      </li>
+      <li>
+        <p><code>f</code> — число с плавающей запятой</p>
+      </li>
+      <li>
+        <p><code>i</code> — машинная инструкция</p>
+      </li>
+      <li>
+        <p><code>a</code> — адрес</p>
+      </li>
+    </ul>
+
+    <p><strong>SIZE</strong></p>
+
+    <p>Размер данных</p>
+
+    <ul>
+      <li>
+        <p><code>b</code> — байт</p>
+      </li>
+      <li>
+        <p><code>h</code> — полуслово</p>
+      </li>
+      <li>
+        <p><code>w</code> — слово (по умолчанию)</p>
+      </li>
+      <li>
+        <p><code>g</code> — гигантское слово</p>
+      </li>
+    </ul>
+
+    <p><strong>ADDRESS</strong></p>
+
+    <p>Адрес в памяти</p>
+  </dd>
+</dl>
+
+<h1 id="Настройка">Настройка</h1>
+
+<dl>
+  <dt><code>set print elements 0</code></dt>
+  <dd>
+    <p>Выводить всё содержимое массива. Не обрезать массив.</p>
+  </dd>
+  <dt><code>set print repeats 0</code></dt>
+  <dd>
+    <p>Не опускать повторяющиеся элементы массива</p>
+  </dd>
+  <dt><code>set print array on</code></dt>
+  <dd>
+    <p>Выводить массив в наглядной форме</p>
+  </dd>
+  <dt><code>set print array-indexes on</code></dt>
+  <dd>
+    <p>Выводить индекс для каждого элемента в массиве</p>
+  </dd>
+  <dt><code>set print pretty on</code></dt>
+  <dd>
+    <p>Выводить структуры в наглядной форме</p>
+  </dd>
+  <dt><code>set listsize N</code></dt>
+  <dd>
+    <p>Выводить N-е количество строк командой <code>list</code></p>
+  </dd>
+  <dt><code>set confirm off</code></dt>
+  <dd>
+    <p>Отключить запрос на подтверждение выполнения команды для всех команд с подтверждением выполнения</p>
+  </dd>
+</dl>
+
+<ul>
+  <li>
+    <p><a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Print-Settings.html">Print Settings (Debugging with GDB)</a></p>
+  </li>
+  <li>
+    <p><a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/List.html">List (Debugging with GDB)</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.sourceware.org/gdb/current/onlinedocs/gdb.html/Messages_002fWarnings.html">Messages/Warnings (Debugging with GDB)</a></p>
+  </li>
+</ul>
+
+<h1 id="Debuginfod">Debuginfod</h1>
+
+<h2 id="section">Что это такое?</h2>
+
+<p><strong>Debuginfod</strong> — это клиент-серверная служба (встроенная в современные версии GDB),
+предназначенная для динамической загрузки отладочных символов (.debug/DWARF)
+и исходного кода прямо из официальных репозиториев дистрибутива Linux.</p>
+
+<h2 id="section-1">Зачем это нужно?</h2>
+
+<ol>
+  <li>
+    <p>Избавляет от необходимости вручную искать и устанавливать огромные пакеты
+с отладочными символами (например, <code>qt5-base-debug</code>, <code>glibc-debug</code>) в ОС.</p>
+  </li>
+  <li>
+    <p>Экономит место в файловой системе: символы скачиваются только для тех библиотек,
+которые реально используются в текущей сессии отладки.</p>
+  </li>
+  <li>
+    <p>Решает проблему ошибок вроде <code>&lt;incomplete type&gt;</code> и <code>No symbol... in current context</code>.</p>
+  </li>
+</ol>
+
+<h2 id="section-2">Как это работает?</h2>
+
+<ol>
+  <li>
+    <p>При сборке системных библиотек дистрибутив вычисляет их уникальный Build ID.</p>
+  </li>
+  <li>
+    <p>Когда GDB загружает вашу программу, он считывает эти Build ID для всех <code>.so</code> файлов.</p>
+  </li>
+  <li>
+    <p>Если локальных символов нет, GDB отправляет запрос по HTTP на сервер дистрибутива,
+скачивает нужные дебаг-файлы в локальный кэш (<code>~/.cache/debuginfod_client/</code>)
+и „на лету“ подгружает их в отладчик.</p>
+  </li>
+</ol>
+
+<h2 id="gdb">Главные команды управления в GDB</h2>
+
+<dl>
+  <dt><code>set debuginfod enabled on</code></dt>
+  <dd>
+    <p>Автоматически скачивать символы без лишних вопросов (y/n)</p>
+  </dd>
+  <dt><code>set debuginfod enabled off</code></dt>
+  <dd>
+    <p>Полностью отключить службу debuginfod</p>
+  </dd>
+  <dt><code>show debuginfod enabled</code></dt>
+  <dd>
+    <p>Показать текущий статус службы в этой сессии</p>
+  </dd>
+</dl>
+
+<h2 id="section-3">Связанные переменные окружения</h2>
+
+<dl>
+  <dt><code>$DEBUGINFOD_URLS</code></dt>
+  <dd>
+    <p>Содержит адреса серверов для загрузки отладочных символов (в Arch Linux: <code>https://debuginfod.archlinux.org</code>)</p>
+  </dd>
+</dl>
+
+<h1 id="Примеры">Примеры</h1>
+
+<dl>
+  <dt><code>pipe print /d *buf.constData()@1350 | tee data.txt | bat --color=never --plain</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Вывести значение указанного выражения (<code>print</code>);</p>
+
+        <p>Вместо <code>print</code> можно использовать <code>p</code>.</p>
+      </li>
+      <li>
+        <p>Вывести указанное количество байт массива (<code>ARRAY@LENGTH</code>);</p>
+      </li>
+      <li>
+        <p>Использовать десятичный формат для выводимого значения (<code>/d</code>);</p>
+      </li>
+      <li>
+        <p>Направить текстовый вывод команды GDB на ввод указанной внешней команды (<code>pipe GDB_COMMAND | LINUX_COMMAND</code>);</p>
+
+        <p>Вместо слова <code>pipe</code> можно использовать <code>|</code> (вертикальную черту).</p>
+      </li>
+      <li>
+        <p>Записать вывод GDB в файл и одновременно передать выведенные данные на ввод указанной команде (<code>tee FILE | COMMAND</code>);</p>
+      </li>
+      <li>
+        <p>Отобразить вывод GDB (<code>bat</code>), отключив окраску текста (<code>--color=never</code>) и дополнительные декоративные элементы (<code>--plain</code>).</p>
+
+        <p>Вместо <code>bat</code> можно просматривать вывод в редакторе Vim. Для чтения из
+<code>stdin</code> потребуется передать редактору флаг <code>-</code> (дефис) — <code>command | vim -</code>.</p>
+      </li>
+    </ul>
+  </dd>
+</dl>
+
+<p><code>break iobuffer.cpp:1668 if bufxml.name.toStdString().compare("Давление в пит. магистрали") == 0</code></p>
+
+<p><code>print /d buf</code></p>
+
+<h1 id="Ссылки">Ссылки</h1>
 
 <p><a href="https://stackoverflow.com/questions/6121094/how-do-i-run-a-program-with-commandline-arguments-using-gdb-within-a-bash-script">How do I run a program with commandline arguments using GDB within a Bash script? - Stack Overflow</a></p>
 
-<!-- vim: set textwidth=80 colorcolumn=80: -->
+<p><a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/index.html">Top (Debugging with GDB)</a></p>
+
 
 </main>
 <footer></footer>

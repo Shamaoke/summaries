@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang='ru'>
+<head>
+<meta charset='utf-8'>
+<link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
+<title>RSpec</title>
+</head>
+<body>
+<header>
+<h1>RSpec</h1>
+</header>
+<main>
+<ul>
+  <li>
+    <p><a href="#I">I. Элементы инфраструктуры RSpec</a></p>
+
+    <ul>
+      <li>
+        <p><a href="#1">1. Базовые элементы RSpec</a></p>
+      </li>
+      <li>
+        <p><a href="#2">2. Элементы структуры спецификации</a></p>
+      </li>
+      <li>
+        <p><a href="#3">3. Элементы примера использования субъекта</a></p>
+      </li>
+      <li>
+        <p><a href="#4">4. Элементы инфраструктуры имитации RSpec</a></p>
+      </li>
+      <li>
+        <p><a href="#5">5. Элементы вывода</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#II">II. Реализация элементов инфраструктуры RSpec</a></p>
+
+    <ul>
+      <li>
+        <p><a href="#6">6. Методы структуры спецификации</a></p>
+      </li>
+      <li>
+        <p><a href="#7">7. Методы инфраструктуры имитации</a></p>
+      </li>
+      <li>
+        <p><a href="#8">8. Методы форматирования</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#III">III. Использование элементов RSpec</a></p>
+
+    <ul>
+      <li>
+        <p><a href="#Гайд_по_использованию_дублеров">9. Гайд по использованию дублеров</a></p>
+      </li>
+      <li>
+        <p><a href="#Типы_примеров">10. Типы примеров</a></p>
+      </li>
+      <li>
+        <p><a href="#Способы_группировки_примеров">11. Способры группировки примеров</a></p>
+      </li>
+      <li>
+        <p><a href="#Использование_закрепленных_методов">12. Использование закрепленных методов</a></p>
+      </li>
+      <li>
+        <p><a href="#Использование_вспомогательных_методов">13. Использование вспомогательных методов</a></p>
+      </li>
+      <li>
+        <p><a href="#Использование_отложенных_примеров">14. Использование отложенных примеров</a></p>
+      </li>
+      <li>
+        <p><a href="#Создание_общих_примеров">15. Создание общих примеров</a></p>
+      </li>
+      <li>
+        <p><a href="#Использование_методов_сравнения">16. Использование методов сравнения</a></p>
+      </li>
+      <li>
+        <p><a href="#Имитация_объектов_и_методов">17. Имитация объектов и методов</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#IV">IV. Командная строка</a></p>
+
+    <ul>
+      <li>
+        <p><a href="#RSpec">RSpec</a></p>
+      </li>
+      <li>
+        <p><a href="#Autotest">Autotest</a></p>
+      </li>
+      <li>
+        <p><a href="#Rake">Rake</a></p>
+      </li>
+      <li>
+        <p><a href="#Rcov">Rcov</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#V">V. Расширение RSpec</a></p>
+
+    <ul>
+      <li>
+        <p><a href="#Фильтры">Фильтры</a></p>
+      </li>
+      <li>
+        <p><a href="#Макросы">Макросы</a></p>
+      </li>
+      <li>
+        <p><a href="#Основные_методы">Основные методы</a></p>
+      </li>
+      <li>
+        <p><a href="#Методы_расширения">Методы расширения</a></p>
+      </li>
+      <li>
+        <p><a href="#Пользовательские_методы_сравнения">Пользовательские методы сравнения</a></p>
+      </li>
+      <li>
+        <p><a href="#Примеры_расширения_и_настройки">Примеры расширения и настройки</a></p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h1 id="I">I. Элементы инфраструктуры RSpec</h1>
+
+<h2 id="1">1. Базовые элементы RSpec</h2>
+
+<dl>
+  <dt><strong>subject</strong> (субъект)</dt>
+  <dd>
+    <p>тестируемый объект.</p>
+  </dd>
+  <dt><strong>collaborator</strong> (объект-соучастник)</dt>
+  <dd>
+    <p>ещё не созданный вспомогательный объект.</p>
+  </dd>
+  <dt><strong>primary collaborator</strong> (первичный соучастник)</dt>
+  <dd>
+    <p>вспомогательный объект для тестируемого объекта.</p>
+  </dd>
+  <dt><strong>secondary collaborator</strong> (вторичный соучастник)</dt>
+  <dd>
+    <p>вспомогательный объект для вспомогательного объекта.</p>
+  </dd>
+</dl>
+
+<h2 id="2">2. Элементы структуры спецификации</h2>
+
+<dl>
+  <dt><strong>example group</strong> (группа примеров использования субъекта)</dt>
+  <dd>
+    <p>группа, содержащая перечень примеров использования субъекта.</p>
+  </dd>
+  <dt><strong>shared examples group</strong> (группа общих примеров использования субъекта)</dt>
+  <dd>
+    <p>группа, содержащая перечень примеров, доступная для включения в другие группы примеров.</p>
+  </dd>
+  <dt><strong>code example</strong> (пример использования)</dt>
+  <dd>
+    <p>пример использования субъекта.</p>
+  </dd>
+  <dt><strong>description</strong> (описание примера или группы примеров)</dt>
+  <dd>
+    <p>строка, представляющая некоторый аспект работы системы, который мы хотим описать.</p>
+  </dd>
+  <dt><strong>passing example</strong> (выполненный пример)</dt>
+  <dd>
+    <p>пример не давший сбоя при запуске.</p>
+  </dd>
+  <dt><strong>failed example</strong> (невыполненный пример)</dt>
+  <dd>
+    <p>пример давший сбой при запуске.</p>
+  </dd>
+  <dt><strong>pending example</strong> (отложенный пример)</dt>
+  <dd>
+    <p>отложенный пример внесенный в группу примеров.</p>
+  </dd>
+  <dt><strong>helper</strong> (вспомогательный метод)</dt>
+  <dd>
+    <p>метод, позволяющий упростить пример использования и сделать его более читабельным.</p>
+  </dd>
+  <dt><strong>hook</strong> (закрепленный метод)</dt>
+  <dd>
+    <p>метод, запускаемый в некоторый ключевой момент прогона группы примеров.</p>
+  </dd>
+</dl>
+
+<h2 id="3">3. Элементы примера использования субъекта</h2>
+
+<dl>
+  <dt><strong>expectation</strong> (ожидаемый результат)</dt>
+  <dd>
+    <p>некоторое описываемое в примере поведение, которое требуется иметь субъекту.</p>
+  </dd>
+  <dt><strong>matcher</strong> (метод сравнения)</dt>
+  <dd>
+    <p>метод, определяющий критерий сравнения и ожидаемый результат.</p>
+  </dd>
+</dl>
+
+<h2 id="4">4. Элементы инфраструктуры имитации RSpec</h2>
+
+<h3 id="4.1">4.1 Имитаторы объектов</h3>
+
+<dl>
+  <dt><strong>double</strong> (дублер)</dt>
+  <dd>
+    <p>объект, замещающий в примерe ещё не созданный вспомогательный объект.</p>
+  </dd>
+  <dt><strong>mock</strong> (имитатор)</dt>
+  <dd>
+    <p>дублер, имитирующий поведение вспомогательного объекта.</p>
+  </dd>
+  <dt><strong>stub</strong> (заглушка)</dt>
+  <dd>
+    <p>дублер, не осуществляющий имитацию поведения вспомогательного объекта.</p>
+  </dd>
+  <dt><strong>ordinary double</strong> (обычный дублер)</dt>
+  <dd>
+    <p>дублер, принимающий только определенные для него сообщения.</p>
+  </dd>
+  <dt><strong>double as null object</strong> (null-дублер)</dt>
+  <dd>
+    <p>дублер, принимающий все сообщения.</p>
+  </dd>
+  <dt><strong>extended object</strong> (расширенный объект)</dt>
+  <dd>
+    <p>объект, уже имеющийся в структуре программного интерфейса, но расширенный некоторыми методом.</p>
+  </dd>
+</dl>
+
+<h3 id="4.2">4.2 Имитаторы методов</h3>
+
+<dl>
+  <dt><strong>double method</strong> (метод-дублер)</dt>
+  <dd>
+    <p>метод, отсутствующий в оригинальном объекте или объекте-дублере, который может быть вызван или обязателен для вызова.</p>
+  </dd>
+  <dt><strong>mock method</strong> (метод-имитатор)</dt>
+  <dd>
+    <p>метод-дублер, обязательный для вызова.</p>
+  </dd>
+  <dt><strong>stub method</strong> (метод-заглушка)</dt>
+  <dd>
+    <p>метод-дублер, необязательный для вызова.</p>
+  </dd>
+  <dt><strong>argument matcher</strong> (метод сравнения аргументов)</dt>
+  <dd>
+    <p>метод определяющий критерий для ожидаемого агрумента.</p>
+  </dd>
+</dl>
+
+<h2 id="5">5. Элементы вывода</h2>
+
+<dl>
+  <dt><strong>formatter</strong> (форматировщик)</dt>
+  <dd>
+    <p>класс, форматирующий вывод результатов тестов.</p>
+  </dd>
+</dl>
+
+<h1 id="II">II. Реализация элементов инфраструктуры RSpec</h1>
+
+<h2 id="6">6. Методы структуры спецификации</h2>
+
+<h3 id="6.1">6.1 Основные методы</h3>
+
+<p><strong><code>describe</code></strong> — определить группу примеров для некоторого субъекта.</p>
+
+<p><strong><code>let</code></strong> — определить вспомогательный метод, запоминающий состояние между вызовами в разных примерах, но не в одном.</p>
+
+<p><strong><code>let!</code></strong> — определить вспомогательный метод, запоминающий состояние между вызовами в разных примерах, но не в одном и вызывать его перед каждым примером.</p>
+
+<p><strong><code>its</code></strong> — определить вложенную группу примеров, а затем сгенерировать пример на основе переданного блока.</p>
+
+<dl>
+  <dt><strong><code>subject</code></strong> — определить субъект в теле группы примеров.</dt>
+  <dd>
+    <p><strong><code>subject</code></strong> — возвратить субъект, определенный в группе примеров.</p>
+  </dd>
+</dl>
+
+<p><strong><code>example</code></strong>, <strong><code>it</code></strong>, <strong><code>specify</code></strong> — определить пример использования.</p>
+
+<p><strong><code>should</code></strong>, <strong><code>should_not</code></strong> — определить ожидаемый результат.</p>
+
+<h3 id="6.2">6.2 Методы сравнения</h3>
+
+<p><strong><code>expect to</code></strong> — ожидать изменение.</p>
+
+<p><strong><code>expect not to</code></strong> — ожидать постоянства.</p>
+
+<p><strong><code>expect to change</code></strong> — ожидать изменение некоторого признака.</p>
+
+<p><strong><code>expect to rise_error</code></strong> — ожидать вызов исключения.</p>
+
+<p><strong><code>expect to throw symbol</code></strong> — ожидать выброса символа.</p>
+
+<p><strong><code>be_within of</code></strong> — ожидать, что вещественное число находится в некотором допустимом промежутке.</p>
+
+<p><strong><code>have</code></strong> <em>(n)</em> <strong><code>items</code></strong>, <strong><code>have_exactly</code></strong> <em>(n)</em> <strong><code>items</code></strong> — ожидать, что коллекция имеет ровно указанное количество элементов.</p>
+
+<p><strong><code>have_at_least</code></strong> <em>(n)</em> <strong><code>items</code></strong> — ожидать, что коллекция имеет как минимум указанное количество элементов.</p>
+
+<p><strong><code>have_at_most</code></strong> <em>(n)</em> <strong><code>itmes</code></strong> — ожидать, что коллекция имеет максимум указанное количество элементов.</p>
+
+<h3 id="6.3">6.3 Закрепленные методы</h3>
+
+<p><strong><code>before all</code></strong> — запустить переданный блок перед запуском группы примеров.</p>
+
+<p><strong><code>before each</code></strong> — запустить переданный блок перед запуском каждого примера.</p>
+
+<p><strong><code>after all</code></strong> — запустить переданный блок после запуска группы примеров.</p>
+
+<p><strong><code>after each</code></strong> — запустить переданный блок после запуска каждого примера.</p>
+
+<p><strong><code>around each</code></strong> — запустить начальную часть переданного блока перед запуском каждого примера, а конечную — после его запуска.</p>
+
+<h3 id="6.4">6.4 Методы создания общих примеров</h3>
+
+<p><strong><code>shared_examples_for</code></strong> — создать группу общих примеров.</p>
+
+<p><strong><code>it_behaves_like</code></strong> — встроить группу общих примеров в текущую группу.</p>
+
+<h2 id="7">7. Методы инфраструктуры имитации</h2>
+
+<h3 id="7.1">7.1 Методы создания объектов-дублеров</h3>
+
+<p><strong><code>double</code></strong>, <strong><code>mock</code></strong>, <strong><code>stub</code></strong> — создать объект-дублер.</p>
+
+<p><strong><code>double as_null_object</code></strong> — создать объект-дублер, способный принимать как определенные, так и неопределенные сообщения.</p>
+
+<h3 id="7.2">7.2 Методы-дублеры</h3>
+
+<p><strong><code>stub</code></strong> — создать метод-заглушку.</p>
+
+<p><strong><code>stub_chain</code></strong> — создать цепь методов-заглушек.</p>
+
+<p><strong><code>should_receive</code></strong> — создать метод-имитатор.</p>
+
+<p><strong><code>should_not_receive</code></strong>  — создать негативный метод-имитатор.</p>
+
+<h3 id="7.3">7.3 Методы-модификаторы</h3>
+
+<p><strong><code>never</code></strong></p>
+
+<p><strong><code>once</code></strong></p>
+
+<p><strong><code>twice</code></strong></p>
+
+<p><strong><code>exactly</code></strong>(<em>n</em>)<strong><code>times</code></strong></p>
+
+<p><strong><code>at_least</code></strong>(<em>n</em>)<strong><code>times</code></strong></p>
+
+<p><strong><code>at_most</code></strong>(<em>n</em>)<strong><code>times</code></strong></p>
+
+<p><strong><code>and_return</code></strong></p>
+
+<p><strong><code>and_raise</code></strong></p>
+
+<p><strong><code>and_throw</code></strong></p>
+
+<h3 id="7.4">7.4 Методы сравнения аргументов</h3>
+
+<p><strong><code>instance_of</code></strong></p>
+
+<p><strong><code>anything</code></strong></p>
+
+<p><strong><code>any_args</code></strong></p>
+
+<p><strong><code>no_args</code></strong></p>
+
+<p><strong><code>hash_including</code></strong></p>
+
+<p><strong><code>hash_not_including</code></strong></p>
+
+<p><strong><code>//</code></strong> (регулярное выражение)</p>
+
+<p><em>пользовательский_метод_сравнения</em></p>
+
+<h2 id="8">8. Методы форматирования</h2>
+
+<p><strong><code>output</code></strong> — возвратить объект ввода-вывода.</p>
+
+<h1 id="III">III. Использование RSpec</h1>
+
+<h2 id="Гайд_по_использованию_дублеров">9. Гайд по использованию дублеров</h2>
+
+<p><strong>Изолируйте примеры от тяжелых зависимостей</strong></p>
+
+<p>Определяемые объекты в большинстве случаев зависят от других объектов. Некоторые из них имеют простую структуру и их легко создавать, однако, бывает, что объекты-зависимости сложны, взаимодействуют с сетевыми ресурсами или с БД или осуществляют прочие операции, требующие <em>значительных временных ресурсов</em>. Подобные объекты следует заменять дублерами.</p>
+
+<p><strong>Изолируйте примеры от неопределенностей</strong></p>
+
+<p>Объекты-зависимости могут в своей работе взаимодействовать с внешними системами, имеющими <em>непредсказуемые характеристики или состояния</em>. К ним относятся файлы, содержимое которых не всегда определено, сеть и сетевые ресурсы, которые в некоторый момент могут быть недоступны и прочие схожие объекты. Кроме того, работа определяемого объекта может зависеть от генератора случайных чисел, вывод которого также непостоянен. Во всех подобных случаях следует заменять объекты-зависимости дублерами.</p>
+
+<p><strong>Заменяйте ещё не созданные объекты-зависимости дублерами</strong></p>
+
+<p>В процессе определения некоторого объекта может оказаться, что он зависит от ещё не созданного объекта. Дублеры, в этом случае, во-первых, помогут избежать необходимости реализации этой зависимости и, во-вторых, будут способствовать более точному определению интерфейса будущего объекта.</p>
+
+<p><strong>Исследуйте интерфейс будущей зависимости</strong></p>
+
+<p>Одной из основных ценностей объекта-дублера является возможность более точного определения интерфейса будущего объекта-зависимости, либо уточнения этого интерфейса в уже созданном .</p>
+
+<p><strong>Фокусируйтесь на ролях, думая о дублере не как об объекте, а как об интерфейсе</strong></p>
+
+<p>При создании дублеров, следует сконцентрироваться на той роли, которую они будут выполнять. Т. е. дублер, сам по себе, не является воплощением некоторого отдельно взятого будущего объекта, а репрезентует требуемый интерфейс, который в дальнейшем может быть присущ нескольким созданным объектам. А это значить, что все эти объекты смогут выполнить ту роль, которая была определена настоящим объектом-дублером.</p>
+
+<p><strong>Фокусируйтесь в примерах на взаимодействии между объектами, а не на их структуре</strong></p>
+
+<p>Объектно-ориентированные системы основаны на интерфейсах и взаимодействиях. Структура объекта и детали его реализации не являются частью наблюдаемого поведения этого объекта. Исключение из спецификаций ссылок на внутреннее устройство объектов, делает эти спецификации более гибкими и устойчивыми к изменениям структуры того или иного объекта. Когда мы при создании дублеров фокусируемся на структуре, мы описываем объекты, когда же мы концентрируемся на взаимодействиях, мы создаем интерфейсы.</p>
+
+<p><strong>Избегайте излишней детализации</strong></p>
+
+<p>Функция дублеров — упрощение настройки контекста для примера. Если дублеров много, то настройка превращается в долгий и путанный процесс, а это признак того, что пришло время пересмотреть дизайн приложения.</p>
+
+<p><strong>По возможности, избегайте использования методов-дублеров, возвращающих объекты-дублеры</strong></p>
+
+<p>Если дублеры имеют методы, возвращающие некоторые значения, то значения эти, в большинстве случаев, должны быть настолько просты, насколько это возможно, то есть, представлять из себя обычные языковые примитивы. Необходимость создания дублеров, возвращающих другие дублеры явный признак изъяна в дизайне. Если определяемый объект сложно использовать в примере, его будет сложно использовать и в других местах.</p>
+
+<p><strong>Используйте высокоуровневые автоматизированные тесты</strong></p>
+
+<p>Комплект автоматизированных высокоуровневых тестов гарантирует, что примеры, имитирующие некоторый программный интерфейс, не останутся незамеченными, после его создания или изменения.</p>
+
+<p><strong>Не создавайте хрупких примеров</strong></p>
+
+<p>При сложности в настройке, установке объектов-дублеров, при наличии большого их количества, примеры использования объекта становятся хрупкими. Это явный признак сильных связей между объектами, что является недостатком дизайна. Чем проще объект дублер, тем проще будут впоследствии созданные объекты.</p>
+
+<h2 id="Типы_примеров">10. Типы примеров</h2>
+
+<p><strong>Основанные на описании конечного состояния</strong> <em>(State-based)</em></p>
+
+<p>Пример, в котором описывается конечное состояние некоторого объекта после проведения с ним определенных манипуляций.</p>
+
+<pre><code>object.should have(some_state)&#x000A;</code></pre>
+
+<pre><code>describe One do&#x000A;  it 'returns ok!' do&#x000A;    one = One.new&#x000A;    result = one.do_something&#x000A;    result.should eql('ok!')&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong>Основанные на описании поведения</strong> <em>(Interaction-based)</em></p>
+
+<p>Пример, в котором описывается поведение некоторого объекта в определенных условиях.</p>
+
+<pre><code>object.should_receive(some_message)&#x000A;</code></pre>
+
+<pre><code>describe One do&#x000A;  it 'gets do_something' do&#x000A;    two = double('Two')&#x000A;    two.should_receive(:do_something)&#x000A;    One.new(two)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h2 id="Способы_группировки_примеров">11. Способы группировки примеров</h2>
+
+<h3 id="Группировка_на_основе_начального_состояния">Группировка на основе начального состояния</h3>
+
+<pre><code>     1	describe Array do&#x000A;     2	  context 'when empty' do&#x000A;     3	  end&#x000A;     4	&#x000A;     5	  context 'when full' do&#x000A;     6	  end&#x000A;     7	end&#x000A;</code></pre>
+
+<h3 id="Группировка_на_основе_методов">Группировка на основе методов</h3>
+
+<pre><code>     1	describe Array do&#x000A;     2	  describe '#pop' do&#x000A;     3	  end&#x000A;     4	&#x000A;     5	  describe '#push' do&#x000A;     6	  end&#x000A;     7	end&#x000A;</code></pre>
+
+<h3 id="Группировка_на_основе_субъекта">Группировка на основе субъекта</h3>
+
+<pre><code>describe Subject do&#x000A;  context 'class' do&#x000A;    subject { Subject }&#x000A;  end&#x000A;&#x000A;  context 'instance' do&#x000A;    subject { Subject.new }&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Комбинированная_группировка">Комбинированная группировка</h3>
+
+<pre><code>describe Subject do&#x000A;  it { should do_one } # default context&#x000A;&#x000A;  context 'class' do&#x000A;    subject { Subject }&#x000A;&#x000A;    it { should do_two }&#x000A;  end&#x000A;&#x000A;  context 'some_state' do&#x000A;    # let!(:some_state) { subject.set_some_state }&#x000A;    before { subject.set_some_state }&#x000A;&#x000A;    it { should be_in_some_state }&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Создание_вложенной_группы_с_автоматически_сгенерированными_примерами">Создание вложенной группы с автоматически сгенерированными примерами</h3>
+
+<pre><code>describe [1, 2, 3, 4] do&#x000A;  its(:size)  { should == 4 }&#x000A;  its(:first) { should == 1 }&#x000A;  its(:last)  { should == 4 }&#x000A;end&#x000A;</code></pre>
+
+<h2 id="Использование_закрепленных_методов">12. Использование закрепленных методов</h2>
+
+<p><code>around</code></p>
+
+<pre><code>     1	describe 'some code' do&#x000A;     2	  around(:each) do |example|&#x000A;     3	    puts 'before'&#x000A;     4	    example.run&#x000A;     5	    puts 'after'&#x000A;     6	  end&#x000A;     7	&#x000A;     8	  it 'does one' do&#x000A;     9	    puts 'one'&#x000A;    10	  end&#x000A;    11	&#x000A;    12	  it 'does two' do&#x000A;    13	    puts 'two'&#x000A;    14	  end&#x000A;    15	&#x000A;    16	  it 'does three' do&#x000A;    17	    puts 'three'&#x000A;    18	  end&#x000A;    19	end&#x000A;</code></pre>
+
+<h2 id="Использование_вспомогательных_методов">13. Использование вспомогательных методов</h2>
+
+<p>Вспомогательные методы помогают очистить примеры от повторяющегося кода.</p>
+
+<p><strong><code>let</code>, <code>let!</code></strong><sup id="fnref:1"><a href="#fn:1" class="footnote" rel="footnote" role="doc-noteref">1</a></sup></p>
+
+<pre><code>$count = 0&#x000A;&#x000A;describe "let" do&#x000A;  let(:count) { $count += 1 }&#x000A;&#x000A;  it "memoizes the value" do&#x000A;    count.should == 1&#x000A;    count.should == 1&#x000A;  end&#x000A;&#x000A;  it "is not cached across examples" do&#x000A;    count.should == 2&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<pre><code>$count = 0&#x000A;&#x000A;describe "let!" do&#x000A;  invocation_order = []&#x000A;&#x000A;  let!(:count) do&#x000A;    invocation_order &lt;&lt; :let!&#x000A;    $count += 1&#x000A;  end&#x000A;&#x000A;  it "calls the helper method in a before hook" do&#x000A;    invocation_order &lt;&lt; :example&#x000A;    invocation_order.should == [:let!, :example]&#x000A;    count.should == 1&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p>Метод <code>let!</code> позволяет объединить вызовы метода <code>let</code> и <code>before</code>.</p>
+
+<p><em>до рефакторинга</em></p>
+
+<pre><code>let(:messsage) do&#x000A;  mock_model('Message')&#x000A;    .as_new_record&#x000A;    .as_null_object&#x000A;end&#x000A;&#x000A;before(:each) do&#x000A;  assign(:message, message)&#x000A;end&#x000A;</code></pre>
+
+<p><em>после рефакторинга</em></p>
+
+<pre><code>let!(:message) do&#x000A;  message = mock_model('Message')&#x000A;    .as_new_record&#x000A;    .as_null_object&#x000A;  assign(:message, message)&#x000A;  message&#x000A;end&#x000A;</code></pre>
+
+<p><strong>Пользовательские вспомогательные методы</strong></p>
+
+<p>Вспомогательный метод может быть определен либо в теле группы примеров,</p>
+
+<pre><code>     1	describe Thing do&#x000A;     2	  def create_thing(status)&#x000A;     3	    thing = Thing.new&#x000A;     4	    thing.set_status(status)&#x000A;     5	    yield thing&#x000A;     6	  end&#x000A;     7	&#x000A;     8	  context 'when ok' do&#x000A;     9	    it 'returns \'ok!\'' do&#x000A;    10	      create_thing('ok') do |thing|&#x000A;    11	        thing.one.should eql('ok!')&#x000A;    12	      end&#x000A;    13	    end&#x000A;    14	  end&#x000A;    15	&#x000A;    16	  context 'when fail' do&#x000A;    17	    it 'returns \'fail!\'' do&#x000A;    18	      create_thing('fail') do |thing|&#x000A;    19	        thing.one.should eql('fail!')&#x000A;    20	      end&#x000A;    21	    end&#x000A;    22	  end&#x000A;    23	end&#x000A;</code></pre>
+
+<p>либо в отдельном модуле:</p>
+
+<pre><code>     1	module UserHelpers&#x000A;     2	  def create_thing(status)&#x000A;     3	    thing = Thing.new&#x000A;     4	    thing.set_status(status)&#x000A;     5	    yield thing&#x000A;     6	  end&#x000A;     7	end&#x000A;     8	&#x000A;     9	describe Thing do&#x000A;    10	  include UserHelpers&#x000A;    11	&#x000A;    12	  context 'when ok' do&#x000A;    13	    it 'returns \'ok!\'' do&#x000A;    14	      create_thing('ok') do |thing|&#x000A;    15	        thing.one.should eql('ok!')&#x000A;    16	      end&#x000A;    17	    end&#x000A;    18	  end&#x000A;    19	&#x000A;    20	  context 'when fail' do&#x000A;    21	    it 'returns \'fail!\'' do&#x000A;    22	      create_thing('fail') do |thing|&#x000A;    23	        thing.one.should eql('fail!')&#x000A;    24	      end&#x000A;    25	    end&#x000A;    26	  end&#x000A;    27	end&#x000A;</code></pre>
+
+<p>В последнем случае потребуется включение указанного модуля в тело группы примеров.</p>
+
+<p>Если необходимо включить вспомогательные методы некоторого модуля сразу во все группы примеров, то необходимо использовать метод <code>configure</code> класса <code>RSpec</code>.</p>
+
+<pre><code>     1	RSpec.configure do |config|&#x000A;     2	  config.include(UserHelpers)&#x000A;     3	end&#x000A;</code></pre>
+
+<h2 id="Использование_отложенных_примеров">14. Использование отложенных примеров</h2>
+
+<p>В БДД есть методика, заключающаяся в содержании списка тестов, которые только предстоит написать для некоторого объекта, и, по мере прохождения этих тестов, вычеркивать их из списка. Добавление же новых тестов в список нужно осуществлять по мере их появления.</p>
+
+<p>RSpec поддерживает данную методику и позволяет откладывать непройденные тесты. Для этого нужно определить пример и не передовать ему блок:</p>
+
+<pre><code>     1	describe 'some code' do&#x000A;     2	  it 'does one'&#x000A;     3	  it 'does two'&#x000A;     4	  it 'does three'&#x000A;     5	  it 'does four'&#x000A;     6	end&#x000A;</code></pre>
+
+<p>Данный пример будет иметь следующий вывод:</p>
+
+<pre><code>some code&#x000A;  does one (PENDING: Not Yet Implemented)&#x000A;  does two (PENDING: Not Yet Implemented)&#x000A;  does three (PENDING: Not Yet Implemented)&#x000A;  does four (PENDING: Not Yet Implemented)&#x000A;&#x000A;Pending:&#x000A;  some code does one&#x000A;    # Not Yet Implemented&#x000A;    # ./example_spec.rb:2&#x000A;  some code does two&#x000A;    # Not Yet Implemented&#x000A;    # ./example_spec.rb:3&#x000A;  some code does three&#x000A;    # Not Yet Implemented&#x000A;    # ./example_spec.rb:4&#x000A;  some code does four&#x000A;    # Not Yet Implemented&#x000A;    # ./example_spec.rb:5&#x000A;&#x000A;Finished in 0.00049 seconds&#x000A;4 examples, 0 failures, 4 pending&#x000A;</code></pre>
+
+<p>В процессе работы над приложением может понадобиться внести изменения в код при наличии непройденного теста. Для осуществления этого нужно пометить непройденный тест как отложенный, используя метод <code>pending</code>, изменить код приложения и в завершении снять маркер с отложенного теста.</p>
+
+<p>Например:</p>
+
+<pre><code>     1	describe 'some code' do&#x000A;     2	  it 'does one' do&#x000A;     3	    pending 'to the future'&#x000A;     4	    'one'.should eql('one')&#x000A;     5	  end&#x000A;     6	end&#x000A;</code></pre>
+
+<p>Данный пример будет иметь следующий вывод:</p>
+
+<pre><code>some code&#x000A;  does one (PENDING: to the future)&#x000A;&#x000A;Pending:&#x000A;  some code does one&#x000A;    # to the future&#x000A;    # ./example_spec.rb:2&#x000A;&#x000A;Finished in 0.00069 seconds&#x000A;1 example, 0 failures, 1 pending&#x000A;</code></pre>
+
+<p>Третьим способом создания отложенного примера является вызов метода <code>pending</code> с переданным блоком. Этот способ используется для отладки программы.</p>
+
+<p>Например:</p>
+
+<pre><code>     1	describe 'some code' do&#x000A;     2	  it 'does one' do&#x000A;     3	    pending('bug 1') do&#x000A;     4	      'one'.should eql('one')&#x000A;     5	    end&#x000A;     6	  end&#x000A;     7	end&#x000A;</code></pre>
+
+<p>Вывод в данном примере будет зависеть от того, соответствует ли ожидаемый результат имеющeмуся или нет. В первом случае будет вызвано исключение:</p>
+
+<pre><code>some code&#x000A;  does one (FAILED - 1)&#x000A;&#x000A;Failures:&#x000A;&#x000A;  1) some code does one FIXED&#x000A;     Expected pending 'to the future' to fail. No Error was raised.&#x000A;     # ./example_spec.rb:3:in `block (2 levels) in &lt;top (required)&gt;'&#x000A;&#x000A;Finished in 0.0007 seconds&#x000A;1 example, 1 failure&#x000A;</code></pre>
+
+<p>Во-втором случае пример будет считаться отложенным:</p>
+
+<pre><code>some code&#x000A;  does one (PENDING: to the future)&#x000A;&#x000A;Pending:&#x000A;  some code does one&#x000A;    # to the future&#x000A;    # ./example_spec.rb:2&#x000A;&#x000A;Finished in 0.00073 seconds&#x000A;1 example, 0 failures, 1 pending&#x000A;</code></pre>
+
+<h2 id="Создание_общих_примеров">Создание общих примеров</h2>
+
+<p><strong><code>shared_examples_for(&lt;имя&gt;, &amp;&lt;блок&gt;)</code></strong> — установить общий пример.</p>
+
+<pre><code>     1	shared_examples_for 'any pizza' do&#x000A;     2	  it 'tastes really good' do&#x000A;     3	    @pizza.should taste_really_good&#x000A;     4	  end&#x000A;     5	&#x000A;     6	  it 'is available by the slice' do&#x000A;     7	    @pizza.should be_available_by_the_slice&#x000A;     8	  end&#x000A;     9	end&#x000A;</code></pre>
+
+<p><strong><code>it_behaves_like(&lt;имя_общего_примера&gt;)</code></strong> — включить общий пример в группу.</p>
+
+<pre><code>    10	&#x000A;    11	describe 'New York style thin crust pizza' do&#x000A;    12	  before(:each) do&#x000A;    13	    @pizza = Pizza.new(:region =&gt; 'New York',&#x000A;    14	                       :style  =&gt; 'thin crust')&#x000A;    15	  end&#x000A;    16	&#x000A;    17	  it_behaves_like 'any pizza'&#x000A;    18	&#x000A;    19	  it 'has a really great sauce' do&#x000A;    20	    @pizza.should have_a_really_great_sauce&#x000A;    21	  end&#x000A;    22	end&#x000A;    23	&#x000A;    24	describe 'Chicago style stuffed pizza' do&#x000A;    25	  before(:each) do&#x000A;    26	    @pizza = Pizza.new(:region =&gt; 'Chicago', :style =&gt; 'stuffed')&#x000A;    27	  end&#x000A;    28	&#x000A;    29	  it_behaves_like 'any pizza'&#x000A;    30	&#x000A;    31	  it 'has a ton of cheese' do&#x000A;    32	    @pizza.should have_a_ton_of_cheese&#x000A;    33	  end&#x000A;    34	end&#x000A;</code></pre>
+
+<h2 id="Использование_методов_сравнения">16. Использование методов сравнения</h2>
+
+<p><strong><code>expect to change</code></strong> — сравнить изменения объекта.</p>
+
+<pre><code>     1	# encoding: utf-8&#x000A;     2	&#x000A;     3	describe 'number' do&#x000A;     4	  describe '#succ' do&#x000A;     5	    it 'increases a number by 1' do&#x000A;     6	      n = 1&#x000A;     7	      expect {&#x000A;     8	        n = n.succ&#x000A;     9	      }.to change { n }.by(1)&#x000A;    10	    end&#x000A;    11	&#x000A;    12	    it 'increases a number to 2' do&#x000A;    13	      n = 1&#x000A;    14	      expect {&#x000A;    15	        n = n.succ&#x000A;    16	      }.to change { n }.to(2)&#x000A;    17	    end&#x000A;    18	&#x000A;    19	    it 'increases a number from 1 to 2' do&#x000A;    20	      n = 1&#x000A;    21	      expect {&#x000A;    22	        n = n.succ&#x000A;    23	      }.to change { n }.from(1).to(2)&#x000A;    24	    end&#x000A;    25	  end&#x000A;    26	end&#x000A;</code></pre>
+
+<p><strong><code>expect to raise_error</code></strong> — проверить вызов исключения.</p>
+
+<pre><code>     1	# encoding: utf-8&#x000A;     2	&#x000A;     3	describe 'a number' do&#x000A;     4	  describe '#/ (divide)' do&#x000A;     5	    it 'raises ZeroDivisionError' do&#x000A;     6	      expect {&#x000A;     7	        1/0&#x000A;     8	      }.to raise_error(ZeroDivisionError)&#x000A;     9	    end&#x000A;    10	  end&#x000A;    11	end&#x000A;</code></pre>
+
+<p><strong><code>expect to throw_symbol</code></strong> — проверить выброс символа.</p>
+
+<pre><code>     1	# encoding: utf-8&#x000A;     2	&#x000A;     3	describe 'a course' do&#x000A;     4	  context 'when full' do&#x000A;     5	    it 'doesn\'t allow students to register' do&#x000A;     6	      course = Course.new(:seats =&gt; 20)&#x000A;     7	      20.times { course.register Student.new }&#x000A;     8	      expect {&#x000A;     9	        course.register Student.new&#x000A;    10	      }.to throw_symbol(:course_full)&#x000A;    11	    end&#x000A;    12	  end&#x000A;    13	end&#x000A;</code></pre>
+
+<p><strong><code>be_within of</code></strong> — проверить, что вещественное число находится в некотором допустимом промежутке.</p>
+
+<pre><code>     1	# encoding: utf-8&#x000A;     2	&#x000A;     3	describe 'a floating point number' do&#x000A;     4	  it 'is in an acceptable delta' do&#x000A;     5	    f = 1.251&#x000A;     6	    f.should be_within(0.005).of(1.25)&#x000A;     7	  end&#x000A;     8	end&#x000A;</code></pre>
+
+<h2 id="Имитация_объектов_и_методов">17. Имитация объектов и методов</h2>
+
+<h3 id="Создание объектов-дублеров">Создание объектов-дублеров</h3>
+
+<p><strong><code>double</code></strong>, <strong><code>mock</code></strong>, <strong><code>stub</code></strong></p>
+
+<pre><code># encoding: utf-8&#x000A;&#x000A;describe 'Person' do&#x000A;  describe '#name' do&#x000A;    it 'returns the person\'s name' do&#x000A;      person = double('person', :name =&gt; 'Pavel')&#x000A;      person.name.should eql('Pavel')&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Использование_методов-дублеров">Использование методов-дублеров</h3>
+
+<p><strong><code>stub</code></strong>, <strong><code>stub with</code></strong>, <strong><code>stub and_return</code></strong></p>
+
+<pre><code># encoding: utf-8&#x000A;&#x000A;describe 'Person' do&#x000A;  before(:each) do&#x000A;    @person = double('person')&#x000A;    @person.stub(:age_for) do |what|&#x000A;      case what&#x000A;      when 'drinking' then 21&#x000A;      when 'voting'   then 18&#x000A;      end&#x000A;    end&#x000A;  end&#x000A;&#x000A;  it 'is in appropriate age for drinking' do&#x000A;    @person.age_for('drinking').should eql(21)&#x000A;  end&#x000A;&#x000A;  it 'is in appropriate age for voting' do&#x000A;    @person.age_for('voting').should eql(18)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong><code>should_not_receive</code></strong></p>
+
+<pre><code># encoding: utf-8&#x000A;&#x000A;class Statement&#x000A;  def initialize(customer, show_name)&#x000A;    @customer  = customer&#x000A;    @show_name = show_name&#x000A;  end&#x000A;&#x000A;  def generate&#x000A;    @customer.name if @show_name&#x000A;  end&#x000A;end&#x000A;&#x000A;describe Statement do&#x000A;  it 'doesn\'t get a customer\'s name' do&#x000A;    customer  = double('customer')&#x000A;    statement = Statement.new(customer, false)&#x000A;    customer.should_not_receive(:name)&#x000A;    statement.generate&#x000A;  end&#x000A;&#x000A;  it 'gets a customer\'s name' do&#x000A;    customer  = double('customer')&#x000A;    statement = Statement.new(customer, true)&#x000A;    customer.should_receive(:name)&#x000A;    statement.generate&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><strong><code>stub_chain and_return</code></strong></p>
+
+<pre><code># encoding: utf-8&#x000A;&#x000A;class Statement&#x000A;  def initialize(customer)&#x000A;    @customer = customer&#x000A;  end&#x000A;&#x000A;  def generate&#x000A;    "Statement for #{@customer.first_name.last_name}"&#x000A;  end&#x000A;end&#x000A;&#x000A;describe Statement do&#x000A;  it 'uses customer\'s first name and his last name in the header' do&#x000A;    customer = double('customer')&#x000A;    customer.stub_chain(:first_name, :last_name).and_return('Pavel Alekhin')&#x000A;    statement = Statement.new(customer)&#x000A;    statement.generate.should =~ /^Statement for Pavel Alekhin/&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Использование_пользовательского_метода_сравнения_аргумента">Использование пользовательского метода сравнения аргумента</h3>
+
+<pre><code>module GreaterThenMatcher&#x000A;  class Matcher&#x000A;    def initialize(expected)&#x000A;      @expected = expected&#x000A;    end&#x000A;&#x000A;    def description&#x000A;      "a number greather then #{@expected}"&#x000A;    end&#x000A;&#x000A;    def ==(actual)&#x000A;      actual &gt; @expected&#x000A;    end&#x000A;  end&#x000A;&#x000A;  def a_number_greater_then_three&#x000A;    Matcher.new(3)&#x000A;  end&#x000A;end&#x000A;&#x000A;class Person&#x000A;  def use(device)&#x000A;    device.add 4&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec.configure do |config|&#x000A; config.include(GreaterThenMatcher, include: 'greater then matcher')&#x000A;end&#x000A;&#x000A;describe Person, include: 'greater then matcher' do&#x000A;  it 'uses calculator' do&#x000A;    calculator = mock('calculator')&#x000A;    person     = Person.new&#x000A;&#x000A;    calculator.should_receive(:add).with(a_number_greater_then_three)&#x000A;    person.use(calculator)&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Взаимодействие_субъекта_и_боъекта_соучастника">Взаимодействие субъекта и объекта соучастника</h3>
+
+<pre><code># encoding: utf-8&#x000A;&#x000A;describe Subject do&#x000A;  it 'will be true if collaborator is true' do&#x000A;    collaborator = double('collaborator')&#x000A;    subject = Subject.new(collaborator)&#x000A;&#x000A;    collaborator.should_receive(:some_method).and_return(true)&#x000A;    subject.some_another_method.should be_true&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h1 id="IV">IV. Командная строка</h1>
+
+<h2 id="RSpec">RSpec</h2>
+
+<h3 id="Команды_вызова">Команды вызова</h3>
+
+<p><strong><code>rspec</code></strong> <em>имя</em>_spec.rb — запустить спецификацию в указанном файле.</p>
+
+<p><strong><code>rspec</code></strong> <em>имя_директории</em> — запустить спецификацию во всех файлах в указанной директории и во всех поддиректориях.</p>
+
+<p><strong><code>rspec</code></strong> <strong><code>-r</code></strong> <em>./файл_с_пользовательским_форматировщиком</em>.rb <strong><code>-f</code></strong> <em>КлассФорматировщика</em> <em>имя</em>_spec.rb — запустить спецификацию в указанном файле, применив пользовательское форматирование вывода.</p>
+
+<pre><code>$ rspec -r ./custom_formatter.rb -f CustomFormatter example_spec.rb&#x000A;</code></pre>
+
+<h3 id="Опции_командной_строки">Опции командной строки</h3>
+
+<dl>
+  <dt><strong><code>--format</code></strong>, <strong><code>-f</code></strong> – форматировать вывод определенным образом.</dt>
+  <dd>
+    <p><strong><code>documentation</code></strong>, <strong><code>d</code></strong> — в формате документации.</p>
+  </dd>
+  <dd>
+    <p><strong><code>html</code></strong>, <strong><code>h</code></strong> — в формате html.</p>
+  </dd>
+</dl>
+
+<p><strong><code>--output</code></strong> <em>имя_файла</em>, <strong><code>-o</code></strong> <em>имя_файла</em> —пернаправить вывод в файл.</p>
+
+<h3 id="Файлы_конфигурации">Файлы конфигурации</h3>
+
+<p><code>~/.rspec</code> — файл конфигурации для текущего пользователя.</p>
+
+<p><code>./.rspec</code> — файл конфигурации для текущего проекта.</p>
+
+<h3 id="Приоритет_файлов_конфигурации">Приоритет файлов конфигурации</h3>
+
+<p>опции командной строки → файл проекта → файл пользователя</p>
+
+<h3 id="Использование_RSpec_в_командной_строке">Использование RSpec в командной строке</h3>
+
+<p><em>Перенаправить вывод различного формата в разные файлы.</em></p>
+
+<pre><code>$ rspec spec/ -fp \&#x000A;              -fd -o documentation.txt \&#x000A;              -fh -o hypertext.html&#x000A;</code></pre>
+
+<h2 id="Autotest">Autotest</h2>
+
+<h3 id="Джемы">Джемы</h3>
+
+<p><strong><code>ZenTest</code></strong> — комплект утилит для облегчения тестирования.</p>
+
+<p><strong><code>autotest-rails</code></strong> — autotest-плагин для Rails.</p>
+
+<h3 id="Перечень_утилит_пакета_ZenTest">Перечень утилит пакета ZenTest</h3>
+
+<p><strong>zentest</strong></p>
+
+<p><strong>unit_diff</strong></p>
+
+<p><strong>autotest</strong></p>
+
+<p><strong>multiruby</strong></p>
+
+<h3 id="Команды_вызова">Команда вызова</h3>
+
+<p><strong><code>autotest</code></strong> — запустить утилиту autotest.</p>
+
+<h3 id="Опции_командной_строки">Опции командной строки</h3>
+
+<p><strong><code>--quiet</code></strong>, <strong><code>-q</code></strong> — не выводить сообщения о выполняемых командах.</p>
+
+<h3 id="Файлы_конфигурации">Файлы конфигурации</h3>
+
+<p><code>./.autotest</code> — файл конфигурации плагинов для текущего проекта.</p>
+
+<p><code>~/.autotest</code> — файл конфигурации плагинов для текущего пользователя.</p>
+
+<h3 id="Настройка">Настройка</h3>
+
+<h3 id="Использование_Autotest">Использование Autotest</h3>
+
+<p><em>Запустить autotest, урезав вывод сообщений о запускаемых командах.</em></p>
+
+<pre><code>$ autotest -q&#x000A;</code></pre>
+
+<h2 id="Rake">Rake</h2>
+
+<h3 id="Команда_вызова">Команда вызова</h3>
+
+<p><strong><code>rake spec</code></strong> — запустить все спецификации для текущего проекта.</p>
+
+<h3 id="Файл_конфигурации">Файл конфигурации</h3>
+
+<p><code>./Rakefile</code> — файл конфигурации для текущего проекта.</p>
+
+<h3 id="Настройка">Настройка</h3>
+
+<p><em>Настроить запуск всех спецификаций для текущего проекта.</em></p>
+
+<pre><code># ./Rakefile&#x000A;&#x000A;require 'rspec/core/rake_task'&#x000A;&#x000A;RSpec::Core::RakeTask.new #=&gt; spec task by default&#x000A;</code></pre>
+
+<p><em>Настроить запуск всех спецификаций с передачей опций командной строки.</em></p>
+
+<pre><code># ./Rakefile&#x000A;&#x000A;require 'rspec/core/rake_task'&#x000A;&#x000A;RSpec::Core::RakeTask.new do |t|&#x000A;  t.rspec_opts = ['--color', '--format documentation']&#x000A;end&#x000A;</code></pre>
+
+<p><em>Настроить запуск спецификаций в некоторой директории отдельной командой.</em></p>
+
+<pre><code># ./Rakefile&#x000A;&#x000A;require 'rspec/core/rake_task'&#x000A;&#x000A;RSpec::Core::RakeTask.new #=&gt; run all the specs&#x000A;&#x000A;RSpec::Core::RakeTask.new('spec:simple_string') do |t| #=&gt; run specs in 'spec/simple_string/'&#x000A;  t.pattern = 'spec/simple_string/**/*_spec.rb'&#x000A;end&#x000A;&#x000A;RSpec::Core::RakeTask.new('spec:simple_math') do |t| #=&gt; run spes in 'spec/simple_math/'&#x000A;  t.pattern = 'spec/simple_math/**/*_spec.rb'&#x000A;end&#x000A;</code></pre>
+
+<p><em>Настроить запуск спецификаций в некоторой директории отдельной командой, определив rake-задачи в пространстве имен.</em></p>
+
+<pre><code>require 'rspec/core/rake_task'&#x000A;&#x000A;namespace :spec do&#x000A;&#x000A;  desc 'run all specs'&#x000A;  RSpec::Core::RakeTask.new&#x000A;&#x000A;  desc 'run the simple_string specs'&#x000A;  RSpec::Core::RakeTask.new(:simple_string) do |t|&#x000A;    t.pattern = 'spec/example/simple_string/**/*_spec.rb'&#x000A;  end&#x000A;&#x000A;  desc 'run the simple_math specs'&#x000A;  RSpec::Core::RakeTask.new(:simple_math) do |t|&#x000A;    t.pattern = 'spec/example/simple_math/**/*_spec.rb'&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p>Полный перечень настроечных опций содержится в документации<sup id="fnref:2"><a href="#fn:2" class="footnote" rel="footnote" role="doc-noteref">2</a></sup>.</p>
+
+<h2 id="Rcov">Rcov</h2>
+
+<h3 id="Rcov-Команды_вызова">Команды вызова</h3>
+
+<p><strong><code>rcov --help</code></strong> — просмотреть список опций.</p>
+
+<h3 id="Rcov-Джемы">Джемы</h3>
+
+<p><strong><code>rcov</code></strong> — утилита измерения покрытия кода тестами.</p>
+
+<p><strong><code>rcov_rails</code></strong> — плагин Rcov для Rails.</p>
+
+<h3 id="Rcov-Файлы_конфигурации">Файлы конфигурации</h3>
+
+<p><code>./Rakefile</code> — файл конфигурации для текущего проекта.</p>
+
+<h3 id="Rcov-Настройка">Настройка</h3>
+
+<p><em>Настроить запуск спецификаций с выводом, включающим отчет Rcov.</em></p>
+
+<pre><code>require 'rspec/core/rake_task'&#x000A;&#x000A;RSpec::Core::RakeTask.new # run all the specs&#x000A;&#x000A;RSpec::Core::RakeTask.new('spec:rcov') do |t| # run all the specs and include the rcov report&#x000A;  t.rcov      = true&#x000A;  t.rcov_opts = [&#x000A;                 '--text-report',   # output the report to sdtout&#x000A;                 '--no-html',       # do not create the coverage directory with the html report&#x000A;                 '--exclude spec\/' # exclude specs from the report&#x000A;                ]&#x000A;end&#x000A;</code></pre>
+
+<h1 id="V">V. Расширение RSpec</h1>
+
+<h2 id="Фильтры">Фильтры</h2>
+
+<dl>
+  <dt><strong>inclusion filter</strong> (включающий фильтр)</dt>
+  <dd>
+    <p>фильтр, для примеров соответствующих условию.</p>
+  </dd>
+  <dt><strong>exclusion filter</strong> (исключающий фильтр)</dt>
+  <dd>
+    <p>фильтр, для примеров не соответствующих условию.</p>
+  </dd>
+  <dt><strong>if filter</strong> (if-фильтр)</dt>
+  <dd>
+    <p>фильтр, доступный по умолчанию, для примеров соответствующих условию.</p>
+  </dd>
+  <dt><strong>unless filter</strong> (unless-фильтр)</dt>
+  <dd>
+    <p>фильтр, доступный по умолчанию, для примеров не соответствующих условию.</p>
+  </dd>
+</dl>
+
+<h2 id="Макросы">Макросы</h2>
+
+<dl>
+  <dt><strong>macros</strong> (макрокоманда)</dt>
+  <dd>
+    <p>символьное имя, заменяемое при запуске спецификаций на заранее определенную последовательность команд.</p>
+  </dd>
+</dl>
+
+<h2 id="Основные_методы">Основные методы</h2>
+
+<p><strong><code>example</code></strong> — возвращает <code>RSpec::Core::Example</code></p>
+
+<p><strong><code>metadata</code></strong> — возвращает <code>RSpec::Core::Metadata</code></p>
+
+<p><strong><code>configure</code></strong> — передает блоку <code>RSpec::Core::Configuration</code></p>
+
+<p><strong><code>filter</code></strong>  — создать включающий фильтр.</p>
+
+<p><strong><code>exclusion_filter</code></strong> — создать исключающий фильтр.</p>
+
+<h2 id="Методы_расширения">Методы расширения</h2>
+
+<p><strong><code>extend</code></strong> — включить все методы некоторого модуля в класс RSpec::Core::ExampleGroup и таким образом сделать их доступными в блоке метода <code>describe</code>.</p>
+
+<p><strong><code>include</code></strong> — включить все методы некоторого модуля в экземпляр класса RSpec::Core::ExampleGroup и таким образом сделать их доступными в блоке метода <code>it</code>.</p>
+
+<h3 id="section">Закрепленные методы</h3>
+
+<p><strong><code>before</code></strong> — закрепить некоторое действие за определенными или всеми группами и выполнить его перед каждым комплектом, группой или отдельным примером.</p>
+
+<p><strong><code>after</code></strong> — закрепить некоторое действие за определенными или всеми группами и выполнить его после каждого комплекта, группы или отдельного примера.</p>
+
+<p><strong><code>around</code></strong> — закрепить некоторое действие за определенными или всеми группами и выполнить его перед и после отдельного примера.</p>
+
+<h2 id="Пользовательские_методы_сравнения">Пользовательские методы сравнения</h2>
+
+<p><strong><code>define</code></strong> (<strong><code>matcher</code></strong>) — определить пользовательский метод сравнения.</p>
+
+<p><strong><code>match</code></strong> (<strong><code>match_for_should</code></strong>) — определить условие для пользовательского метода сравнения. Если метод сравнения, установленный подобным образом, возвратит <code>true</code>, то пример, использующий метод <code>should</code> будет считаться пройденным, а пример с методом <code>should_not</code> не будет пройден.</p>
+
+<p><strong><code>match_for_should_not</code></strong> — определить условие для пользовательского метода сравнения. Если метод сравнения, установленный подобным образом, возвратит <code>true</code>, то пример, использующий метод <code>should</code> будет считаться непройденным, а пример с методом <code>should_not</code> будет пройден.</p>
+
+<p><strong><code>chain</code></strong> — создать присоединенный метод сравнения.</p>
+
+<p><strong><code>description</code></strong> — определить пользовательское описание для примера.</p>
+
+<p><strong><code>failure_message_for_should</code></strong> — определить пользовательское сообщение об ошибкe для метода <code>should</code>.</p>
+
+<p><strong><code>failure_message_for_should_not</code></strong> — определить пользовательское сообщение об ошибке для метода <code>should_not</code>.</p>
+
+<h3 id="Пользовательские_методы_сравнения-Протокол_методов_сравнения">Протокол методов сравнения</h3>
+
+<p><strong><code>matches?</code></strong> — определить условие для пользовательского метода сравнения. Если метод сравнения, установленный подобным образом, возвратит <code>true</code>, то пример, использующий метод <code>should</code> будет считаться пройденным, а пример с методом <code>should_not</code> не будет пройден.</p>
+
+<p><strong><code>does_not_match?</code></strong> — определить условие для пользовательского метода сравнения. Если метод сравнения, установленный подобным образом, возвратит <code>true</code>, то пример, использующий метод <code>should</code> будет считаться непройденным, а пример с методом <code>should_not</code> будет пройден.</p>
+
+<p><strong><code>description</code></strong> — определить пользовательское описание для примера.</p>
+
+<p><strong><code>failure_message_for_should</code></strong> — определить пользовательское сообщение об ошибкe для метода <code>should</code>.</p>
+
+<p><strong><code>failure_message_for_should_not</code></strong> — определить пользовательское сообщение об ошибке для метода <code>should_not</code>.</p>
+
+<h2 id="Примеры_расширения_и_настройки">Примеры расширения и настройки</h2>
+
+<h3 id="Примеры_расширения_и_настройки-Настройка">Настройка</h3>
+
+<p><em>Запустить метод конфигурации.</em></p>
+
+<pre><code>RSpec.configure { |config| }&#x000A;</code></pre>
+
+<p><em>Настроить цветной вывод.</em></p>
+
+<pre><code>RSpec.configure { |config| config.color_enabled = true }&#x000A;</code></pre>
+
+<p><em>Настроить цветной вывод не только в консоль, но и в канал, и файл.</em></p>
+
+<pre><code>RSpec.configure { |config| config.tty = true }&#x000A;</code></pre>
+
+<p><em>Настроить форматировщик.</em></p>
+
+<pre><code>RSpec.configure { |config| config.formatter = :documentation } # :progress, :html, :textmate&#x000A;</code></pre>
+
+<p><em>Передать метаданные основным методам.</em></p>
+
+<pre><code>describe 'some code', one: 1  do&#x000A;  it 'does something', two: 2 do&#x000A;    puts example.metadata[:one], #=&gt; 1&#x000A;         example.metadata[:two]  #=&gt; 2&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Примеры_расширения_и_настройки-Фильтрация">Фильтрация</h3>
+
+<p><em>Установить включающий фильтр.</em></p>
+
+<pre><code>RSpec.configure do |config|&#x000A;  config.filter = {focus: true}&#x000A;end&#x000A;&#x000A;describe 'some code' do&#x000A;  it 'does one' do&#x000A;  end&#x000A;&#x000A;  it 'does two', focus: true do&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some another code', focus: true do&#x000A;  it 'does three' do&#x000A;  end&#x000A;&#x000A;  it 'does four' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><em>Установить исключающий фильтр.</em></p>
+
+<pre><code>RSpec.configure do |config|&#x000A;  config.exclusion_filter = {slow: true}&#x000A;end&#x000A;&#x000A;describe 'some code' do&#x000A;  it 'does one' do&#x000A;  end&#x000A;&#x000A;  it 'does two', slow: true do&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some another code', slow: true do&#x000A;  it 'does three' do&#x000A;  end&#x000A;&#x000A;  it 'does four' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><em>Установить включающий фильтр, доступный по умолчанию.</em></p>
+
+<pre><code>describe 'some code' do&#x000A;  it 'does one', if: true do&#x000A;  end&#x000A;&#x000A;  it 'does two' do&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some another code', if: true do&#x000A;  it 'does three' do&#x000A;  end&#x000A;&#x000A;  it 'does four' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><em>Установить исключающий фильтр, доступный по умолчанию.</em></p>
+
+<pre><code>describe 'some code' do&#x000A;  it 'does one', unless: false do&#x000A;  end&#x000A;&#x000A;  it 'does two' do&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some another code', unless: false do&#x000A;  it 'does three' do&#x000A;  end&#x000A;&#x000A;  it 'does four' do&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><em>Установить исключающий фильтр и передать ему объект Proc в качестве значения.</em></p>
+
+<pre><code>RSpec.configure do |config|&#x000A;  config.exclusion_filter = {&#x000A;    condition: -&gt;(meta) do&#x000A;      if meta == :network_dependent&#x000A;        !true # or false depending on the network condition&#x000A;      end&#x000A;    end # if the lambda returns true&#x000A;        # then the appropriate example is excluded&#x000A;  }&#x000A;end&#x000A;&#x000A;describe 'some network dependent code' do&#x000A;   it 'does one', condition: :network_dependent do # works if network&#x000A;                                                   # is available&#x000A;   end&#x000A;&#x000A;   it 'does two' do # always works&#x000A;   end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Примеры_расширения_и_настройки-Закрепленные_методы">Закрепленные методы</h3>
+
+<p><em>Установить закрепленные методы, выполняемые до, до и после, и после комплекта, группы или отдельного примера.</em></p>
+
+<pre><code>RSpec.configure do |config|&#x000A;  config.before(:suite, mark: true) do # or before :all, or before :each&#x000A;    puts 'before'&#x000A;  end&#x000A;&#x000A;  config.around(:each, mark: true) do |example| # and only each&#x000A;    print '{ '&#x000A;    example.run&#x000A;    print " }\n"&#x000A;  end&#x000A;&#x000A;  config.after(:suite, mark: true) do # or after :all, or after :each&#x000A;    puts 'after'&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Примеры_расширения_и_настройки-Пользовательские_методы_сравнения">Пользовательские методы сравнения</h3>
+
+<p><em>Установить пользовательский метод сравнения.</em></p>
+
+<pre><code>RSpec::Matchers.define :be_a_multiple_of do |expected|&#x000A;  match do |actual|&#x000A;    actual.modulo(expected).zero?&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 9 do&#x000A;  it { should be_a_multiple_of(3) }&#x000A;  it { should_not be_a_multiple_of(4) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Установить пользовательский метод сравнения и перезаписать сообщения об ошибках для методов <code>should</code> и <code>should_not</code>.</em></p>
+
+<pre><code>RSpec::Matchers.define :be_a_multiple_of do |expected|&#x000A;  match do |actual|&#x000A;    actual.modulo(expected).zero?&#x000A;  end&#x000A;&#x000A;  failure_message_for_should do |actual|&#x000A;    "expected that #{actual} would be a multiple of #{expected}"&#x000A;  end&#x000A;&#x000A;  failure_message_for_should_not do |actual|&#x000A;    "expected that #{actual} would not be a multiple of #{expected}"&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 9 do&#x000A;  it { should_not be_a_multiple_of(3) }&#x000A;  it { should be_a_multiple_of(4) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Установить пользовательское описание для примера.</em></p>
+
+<pre><code>RSpec::Matchers.define :be_a_multiple_of do |expected|&#x000A;  match do |actual|&#x000A;    actual.modulo(expected).zero?&#x000A;  end&#x000A;&#x000A;  description do&#x000A;    "be divisible to #{expected} without a remainder"&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 9 do&#x000A;  it { should be_a_multiple_of(3) }&#x000A;  it { should_not be_a_multiple_of(4) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения, не предполагающий наличия аргументов.</em></p>
+
+<pre><code>RSpec::Matchers.define :have_two_elements do&#x000A;  match do |actual|&#x000A;    actual.length.eql?(2)&#x000A;  end&#x000A;end&#x000A;&#x000A;describe [1, 2] do&#x000A;  it { should have_two_elements }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения, предполагающий наличие нескольких аргументов.</em></p>
+
+<pre><code>RSpec::Matchers.define :be_the_sum_of do |*expected|&#x000A;  match do |actual|&#x000A;    actual.eql? expected.inject(:+)&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 10 do&#x000A;  it { should be_the_sum_of(1, 2, 3, 4) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения с использованием вспомогательного метода.</em></p>
+
+<pre><code>RSpec::Matchers.define :have_the_same_elements_as do |expected|&#x000A;  def similar?(a, b)&#x000A;    a.sort.eql?(b.sort)&#x000A;  end&#x000A;&#x000A;  match do |actual|&#x000A;    similar? actual, expected&#x000A;  end&#x000A;end&#x000A;&#x000A;describe [1, 2, 3] do&#x000A;  it { should have_the_same_elements_as([3, 2, 1]) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения с использованием вспомогательного метода, созданного с помощью метода <code>define_method</code>.</em></p>
+
+<pre><code>RSpec::Matchers.define :have_the_same_elements_as do |expected|&#x000A;  define_method :similar? do |actual|&#x000A;    actual.sort.eql?(expected.sort)&#x000A;  end&#x000A;&#x000A;  match do |actual|&#x000A;    similar? actual&#x000A;  end&#x000A;end&#x000A;&#x000A;describe [1, 2, 3] do&#x000A;  it { should have_the_same_elements_as([3, 2, 1]) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения и вспомогательный метод с использованием модуля.</em></p>
+
+<pre><code>module MyHelpers&#x000A;  extend RSpec::Matchers::DSL&#x000A;&#x000A;  def similar?(a, b)&#x000A;    a.sort.eql?(b.sort)&#x000A;  end&#x000A;&#x000A;  define :have_the_same_elements_as do |expected|&#x000A;    match do |actual|&#x000A;      similar? actual, expected&#x000A;    end&#x000A;  end&#x000A;end&#x000A;&#x000A;describe [1, 2, 3] do&#x000A;  include MyHelpers&#x000A;&#x000A;  it { should have_the_same_elements_as([3, 2, 1]) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения и вспомогательный метод в теле метода <code>describe</code>.</em></p>
+
+<pre><code>describe [1, 2, 3] do&#x000A;  extend RSpec::Matchers::DSL&#x000A;&#x000A;  def similar?(a, b)&#x000A;    a.sort.eql?(b.sort)&#x000A;  end&#x000A;&#x000A;  define :have_the_same_elements_as do |expected|&#x000A;    match do |actual|&#x000A;      similar? actual, expected&#x000A;    end&#x000A;  end&#x000A;&#x000A;  it { should have_the_same_elements_as([3, 2, 1]) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать вспомогательные методы с различными условиями для методов <code>should</code> и <code>should_not</code>.</em></p>
+
+<pre><code>RSpec::Matchers.define :contain do |*expected|&#x000A;  match_for_should do |actual|&#x000A;    expected.all? { |elm| actual.include?(elm) }&#x000A;  end&#x000A;&#x000A;  match_for_should_not do |actual|&#x000A;    expected.none? { |elm| actual.include?(elm) }&#x000A;  end&#x000A;end&#x000A;&#x000A;describe [1, 2, 3] do&#x000A;  it { should contain(1, 2, 3) }&#x000A;  it { should_not contain(4, 5, 6) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать цепь присоединенных методов.</em></p>
+
+<pre><code>RSpec::Matchers.define :be_bigger_than do |first|&#x000A;  match do |actual|&#x000A;    (actual &gt; first) &amp;&amp; (actual &lt; @second) &amp;&amp; (actual != @third)&#x000A;  end&#x000A;&#x000A;  chain :but_less_than do |second|&#x000A;    @second = second&#x000A;  end&#x000A;&#x000A;  chain :and_not_equal do |third|&#x000A;    @third = third&#x000A;  end&#x000A;&#x000A;  description do&#x000A;    "be bigger than #{first} but less than #{@second} and not equal #{@third}"&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 9 do&#x000A;  it { should be_bigger_than(8).but_less_than(11).and_not_equal(10) }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Получить доступ к методам, определенным в блоке группы примеров, в блоке метода <code>define</code>.</em></p>
+
+<pre><code>RSpec::Matchers.define :do_one do&#x000A;  match do&#x000A;    one == 'ok!'&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec::Matchers.define :do_two do&#x000A;  match do&#x000A;    two == 'ok too!'&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec::Matchers.define :do_three do&#x000A;  match do&#x000A;    three == 'ok free!'&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some object' do&#x000A;  define_method :one do&#x000A;    'ok!'&#x000A;  end&#x000A;&#x000A;  define_method :two do&#x000A;    'ok too!'&#x000A;  end&#x000A;&#x000A;  define_method :three do&#x000A;    'ok free!'&#x000A;  end&#x000A;&#x000A;  it { should do_one }&#x000A;  it { should do_two }&#x000A;  it { should do_three }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Получить доступ к методам, включенным в блок группы примеров, в блоке метода <code>define</code>.</em></p>
+
+<pre><code>RSpec::Matchers.define :do_one do&#x000A;  match do&#x000A;    one == 'ok!'&#x000A;  end&#x000A;end&#x000A;&#x000A;module MyHelpers&#x000A;  def one&#x000A;    'ok!'&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some object' do&#x000A;  include MyHelpers&#x000A;&#x000A;  it { should do_one }&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский метод сравнения, используя протокол методов сравнения.</em></p>
+
+<pre><code>class MyMatcher&#x000A;  def matches?(actual)&#x000A;    actual.eql?(true)&#x000A;  end&#x000A;&#x000A;  def description&#x000A;    'be true'&#x000A;  end&#x000A;&#x000A;  def failure_message_for_should&#x000A;    'fail!'&#x000A;  end&#x000A;&#x000A;  def failure_message_for_should_not&#x000A;    'boom!'&#x000A;  end&#x000A;end&#x000A;&#x000A;module MyMatchers&#x000A;  def do_one&#x000A;    MyMatcher.new&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec.configure do |config|&#x000A;  config.include(MyMatchers, :include =&gt; :my_matchers)&#x000A;end&#x000A;&#x000A;describe true, :include =&gt; :my_matchers do&#x000A;  it { should do_one }&#x000A;end&#x000A;&#x000A;describe false, :include =&gt; :my_matchers do&#x000A;  it { should_not do_one }&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Примеры_расширения_и_настройки-Расширение">Расширение</h3>
+
+<p><em>Расширить выбранную группу пользовательским методом.</em></p>
+
+<pre><code>module MyModule&#x000A;  def one&#x000A;    'one'&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec.configure do |config|&#x000A;  config.include(MyModule, accept: :my_module)&#x000A;end&#x000A;&#x000A;describe 'some code', accept: :my_module do&#x000A;  it 'does one' do&#x000A;    one #=&gt; one&#x000A;  end&#x000A;end&#x000A;&#x000A;describe 'some another code' do&#x000A;  it 'does two' do&#x000A;    one rescue 'boom!' #=&gt; boom!&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<h3 id="Примеры_расширения_и_настройки-Макросы">Макросы</h3>
+
+<p><em>Создать несколько макросов, использующих, предварительно созданные пользовательские методы сравнения. Перед вызовом макросов в спецификации установить некоторое значение.</em></p>
+
+<pre><code>############&#x000A;# Matchers #&#x000A;############&#x000A;&#x000A;RSpec::Matchers.define :do_one do&#x000A;  match do |actual|&#x000A;    actual.one.eql?(1)&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec::Matchers.define :do_two do&#x000A;  match do |actual|&#x000A;    actual.two.eql?(2)&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec::Matchers.define :do_three do&#x000A;  match do |actual|&#x000A;    actual.three.eql?(3)&#x000A;  end&#x000A;end&#x000A;&#x000A;############&#x000A;# Macroses #&#x000A;############&#x000A;&#x000A;module MyMacros&#x000A;  def set_some_value&#x000A;    SomeAnotherClass.value = 0&#x000A;    yield&#x000A;  end&#x000A;&#x000A;  def it_does_one&#x000A;    it { should do_one }&#x000A;  end&#x000A;&#x000A;  def it_does_two&#x000A;    it { should do_two }&#x000A;  end&#x000A;&#x000A;  def it_does_three&#x000A;    it { should do_three }&#x000A;  end&#x000A;end&#x000A;&#x000A;#################&#x000A;# Configuration #&#x000A;#################&#x000A;&#x000A;RSpec.configure do |config|&#x000A;  config.extend(MyMacros)&#x000A;end&#x000A;&#x000A;###########&#x000A;# Classes #&#x000A;###########&#x000A;&#x000A;class SomeAnotherClass&#x000A;  def self.value=(value)&#x000A;    @@value = value&#x000A;  end&#x000A;&#x000A;  def self.value&#x000A;    @@value&#x000A;  end&#x000A;end&#x000A;&#x000A;&#x000A;class SomeClass&#x000A;  def one&#x000A;    SomeAnotherClass.value += 1&#x000A;  end&#x000A;&#x000A;  def two&#x000A;    SomeAnotherClass.value += 1&#x000A;  end&#x000A;&#x000A;  def three&#x000A;    SomeAnotherClass.value += 1&#x000A;  end&#x000A;end&#x000A;&#x000A;########&#x000A;# Spec #&#x000A;########&#x000A;&#x000A;describe SomeClass do&#x000A;  set_some_value do&#x000A;    it_does_one&#x000A;    it_does_two&#x000A;    it_does_three&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать несколько макросов, использующих, предварительно созданные пользовательские методы сравнения. Перед вызовом макросов в спецификации определить субъект.</em></p>
+
+<pre><code>############&#x000A;# Matchers #&#x000A;############&#x000A;&#x000A;RSpec::Matchers.define :have_name do&#x000A;  match do |actual|&#x000A;    !actual.name.nil?&#x000A;  end&#x000A;end&#x000A;&#x000A;RSpec::Matchers.define :have_age do&#x000A;  match do |actual|&#x000A;    !actual.age.nil?&#x000A;  end&#x000A;end&#x000A;&#x000A;############&#x000A;# Macroses #&#x000A;############&#x000A;&#x000A;module MyMacros&#x000A;  def set_person&#x000A;    subject { Person.new(example.metadata[:name], example.metadata[:age]) }&#x000A;    yield&#x000A;  end&#x000A;&#x000A;  def it_has_name&#x000A;    it { should have_name }&#x000A;  end&#x000A;&#x000A;  def it_has_age&#x000A;    it { should have_age }&#x000A;  end&#x000A;end&#x000A;&#x000A;#################&#x000A;# Configuration #&#x000A;#################&#x000A;&#x000A;RSpec.configure do |config|&#x000A;  config.extend(MyMacros)&#x000A;end&#x000A;&#x000A;###########&#x000A;# Classes #&#x000A;###########&#x000A;&#x000A;class Person&#x000A;  attr_reader :name, :age&#x000A;&#x000A;  def initialize(name, age)&#x000A;    @name = name&#x000A;    @age  = age&#x000A;  end&#x000A;end&#x000A;&#x000A;########&#x000A;# Spec #&#x000A;########&#x000A;&#x000A;describe Person, name: 'Pavel', age: 31 do&#x000A;  set_person do&#x000A;    it_has_name&#x000A;    it_has_age&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<p><em>Создать пользовательский форматировщик.</em></p>
+
+<pre><code>require 'rspec/core/formatters/base_text_formatter'&#x000A;&#x000A;class CustomFormatter &lt; RSpec::Core::Formatters::BaseTextFormatter&#x000A;  def initialize(output)&#x000A;    super(output)&#x000A;  end&#x000A;&#x000A;  def start(example_count)&#x000A;    output&#x000A;      .&lt;&lt; "===============\n"&#x000A;      .&lt;&lt; "Запуск #{example_count} тестов\n"&#x000A;      .&lt;&lt; "===============\n"&#x000A;  end&#x000A;&#x000A;  def example_group_started(example_group)&#x000A;    output&#x000A;      .&lt;&lt; "Запуск группы #{example_group}\n"&#x000A;      .&lt;&lt; "\n"&#x000A;  end&#x000A;&#x000A;  def example_started(example)&#x000A;    output &lt;&lt; "Запуск примера #{example}\n"&#x000A;  end&#x000A;&#x000A;  def example_passed(example)&#x000A;    output&#x000A;      .&lt;&lt; "\033[0;32;40mПройден\033[0m #{example}\n"&#x000A;      .&lt;&lt; "\n"&#x000A;  end&#x000A;&#x000A;  def example_failed(example)&#x000A;    @failed = example&#x000A;    output&#x000A;      .&lt;&lt; "\033[0;31;40mСбой\033[0m #{example}\n"&#x000A;      .&lt;&lt; "\n"&#x000A;  end&#x000A;&#x000A;  def example_pending(example)&#x000A;    @pending = example&#x000A;    output&#x000A;      .&lt;&lt; "\033[0;33;40mОтложен\033[0m #{example}\n"&#x000A;      .&lt;&lt; "\n"&#x000A;  end&#x000A;&#x000A;  def start_dump&#x000A;    output&#x000A;      .&lt;&lt; "===============\n"&#x000A;      .&lt;&lt; "Начало выгрузки\n"&#x000A;      .&lt;&lt; "===============\n"&#x000A;  end&#x000A;&#x000A;  def dump_summary(duration, example_count, failure_count, pending_count)&#x000A;    output&#x000A;      .&lt;&lt; "Продолжительность: #{duration}\n"&#x000A;      .&lt;&lt; "Количество примеров: #{example_count}\n"&#x000A;      .&lt;&lt; "Количество сбоев: #{failure_count}\n"&#x000A;      .&lt;&lt; "Количество отложенных примеров: #{pending_count}\n"&#x000A;  end&#x000A;&#x000A;  def dump_pending&#x000A;    output&#x000A;      .&lt;&lt; "\n"&#x000A;      .&lt;&lt; "Выгрузка отложенных примеров #{@pending}\n"&#x000A;  end&#x000A;&#x000A;  def dump_failures&#x000A;    output&#x000A;      .&lt;&lt; "Выгрузка непройденных примеров #{@failed}\n"&#x000A;      .&lt;&lt; "\n"&#x000A;  end&#x000A;&#x000A;  def close&#x000A;    output&#x000A;      .&lt;&lt; "\n"&#x000A;      .&lt;&lt; "Тестирование завершено\n"&#x000A;  end&#x000A;end&#x000A;</code></pre>
+
+<div class="footnotes" role="doc-endnotes">
+  <ol>
+    <li id="fn:1">
+      <p><a href="http://relishapp.com/rspec/rspec-core/v/2-6/dir/helper-methods/let-and-let">let и let!</a> <a href="#fnref:1" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+    <li id="fn:2">
+      <p><a href="http://rubydoc.info/gems/rspec-core/2.4.0/RSpec/Core/RakeTask#rcov_opts-instance_method">RSpec::Core::RakeTask</a> <a href="#fnref:2" class="reversefootnote" role="doc-backlink">&#8617;</a></p>
+    </li>
+  </ol>
+</div>
+
+</main>
+<footer></footer>
+</body>
+</html>

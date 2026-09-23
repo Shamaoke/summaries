@@ -3,6 +3,7 @@
 <head>
 <meta charset='utf-8'>
 <link href='/summaries/stylesheet.css' rel='stylesheet'>
+<link href='/favicon.svg' rel='icon' type='image/svg+xml'>
 <title>Docker</title>
 </head>
 <body>
@@ -12,35 +13,97 @@
 <main>
 <h1 id="Содержание">Содержание</h1>
 
-<p><a href="#Терминология">Терминология</a></p>
+<ul>
+  <li>
+    <p><a href="#Терминология">Терминология</a></p>
+  </li>
+  <li>
+    <p><a href="#Перечень_пакетов">Перечень пакетов</a></p>
+  </li>
+  <li>
+    <p><a href="#Перечень_файлов">Перечень файлов</a></p>
+  </li>
+  <li>
+    <p><a href="#Перечень_команд">Перечень команд</a></p>
 
-<p><a href="#Перечень_пакетов">Перечень пакетов</a></p>
+    <ul>
+      <li>
+        <p><a href="#Перечень_команд-Образы">Образы</a></p>
+      </li>
+      <li>
+        <p><a href="#Перечень_команд-Контейнеры">Контейнеры</a></p>
+      </li>
+      <li>
+        <p><a href="#Перечень_команд-Сети">Сети</a></p>
+      </li>
+      <li>
+        <p><a href="#Перечень_команд-Журналирование">Журналирование</a></p>
+      </li>
+      <li>
+        <p><a href="#Перечень_команд-Взаимодействие_с_контейнером">Взаимодействие с контейнером</a></p>
+      </li>
+      <li>
+        <p><a href="#Перечень_команд-Реестры">Реестры</a></p>
+      </li>
+      <li>
+        <p><a href="#Перечень_команд-Системные_команды">Системные команды</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#Перечень_инструкций_сборки_образа">Перечень иструкций сборки образа</a></p>
+  </li>
+  <li>
+    <p><a href="#Контейнеры">Контейнеры</a></p>
+  </li>
+  <li>
+    <p><a href="#Образы">Образы</a></p>
+  </li>
+  <li>
+    <p><a href="#Локальные_реестры_образов">Локальные реестры образов</a></p>
+  </li>
+  <li>
+    <p><a href="#Dockerfile">Dockerfile</a></p>
+  </li>
+  <li>
+    <p><a href="#Docker_compose">Docker compose</a></p>
 
-<p><a href="#Перечень_файлов">Перечень файлов</a></p>
-
-<p><a href="#Перечень_команд">Перечень команд</a></p>
-
-<p><a href="#Перечень_инструкций_Dockerfile">Перечень иструкций Dockerfile</a></p>
-
-<p><a href="#Контейнеры">Контейнеры</a></p>
-
-<p><a href="#Образы">Образы</a></p>
-
-<p><a href="#Dockerfile">Dockerfile</a></p>
-
-<p><a href="#Примеры">Примеры</a></p>
-
-<p><a href="#Ссылки">Ссылки</a></p>
+    <ul>
+      <li>
+        <p><a href="#Docker_compose-Файл_сompose_yml">Файл <code>compose.yml</code></a></p>
+      </li>
+      <li>
+        <p><a href="#Docker_compose-Команды">Команды</a></p>
+      </li>
+      <li>
+        <p><a href="#Docker_compose-Пример_работы">Пример работы</a></p>
+      </li>
+      <li>
+        <p><a href="#Docker_compose-Ссылки">Ссылки</a></p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><a href="#Примеры">Примеры</a></p>
+  </li>
+  <li>
+    <p><a href="#Ссылки">Ссылки</a></p>
+  </li>
+</ul>
 
 <h1 id="Терминология">Терминология</h1>
 
 <dl>
   <dt><strong>Docker</strong></dt>
   <dd>
-    <p>Система управления контейнерами</p>
-  </dd>
-  <dd>
-    <p>Программная платформа для запуска приложений в контейнерах</p>
+    <ol>
+      <li>
+        <p>Система управления контейнерами</p>
+      </li>
+      <li>
+        <p>Программная платформа для запуска приложений в контейнерах</p>
+      </li>
+    </ol>
   </dd>
   <dt><strong>контейнер</strong> (<em>container</em>)</dt>
   <dd>
@@ -48,10 +111,14 @@
   </dd>
   <dt><strong>образ</strong> (<em>image</em>)</dt>
   <dd>
-    <p>Пакет с программой и всеми необходимыми зависимостями</p>
-  </dd>
-  <dd>
-    <p>Операционное окружение плюс программное приложение</p>
+    <ol>
+      <li>
+        <p>Пакет с программой и всеми необходимыми зависимостями</p>
+      </li>
+      <li>
+        <p>Операционное окружение плюс программное приложение</p>
+      </li>
+    </ol>
   </dd>
   <dt><strong>реестр</strong> (<em>registry</em>)</dt>
   <dd>
@@ -146,67 +213,58 @@
   <dd>
     <p>Внести образ из архива в локальный реестр</p>
   </dd>
-</dl>
-
-<p><code>docker image build -t|--tag IMAGE_NAME:TAG DOCKERFILE_LOCATION</code></p>
-
-<ul>
-  <li>
-    <p>Собрать образ Docker’а</p>
-  </li>
-  <li>
-    <p>Задать произвольное имя для нового образа и опционально тэг</p>
-  </li>
-  <li>
-    <p>Указать каталог с файлом Dockerfile, на основе которого будет собран данный образ</p>
-  </li>
-</ul>
-
-<pre><code>docker image build \&#x000A;  --progress {auto|plain|tty} \&#x000A;  {-t|--tag} IMAGE_NAME[:TAG] \&#x000A;    DOCKERFILE_LOCATION&#x000A;</code></pre>
-
-<ul>
-  <li>
-    <p>Собрать образ Docker’а</p>
-  </li>
-  <li>
-    <p>Установить тип диагностического вывода (<code>--progress</code>)</p>
-
-    <ul>
+  <dt><code>docker image build -t|--tag IMAGE_NAME:TAG DOCKERFILE_LOCATION</code></dt>
+  <dd>
+    <ol>
       <li>
+        <p>Собрать образ Docker’а</p>
+      </li>
+      <li>
+        <p>Задать произвольное имя для нового образа и опционально тэг</p>
+      </li>
+      <li>
+        <p>Указать каталог с файлом Dockerfile, на основе которого будет собран данный образ</p>
+      </li>
+    </ol>
+  </dd>
+  <dt><code>docker image build --progress {auto|plain|tty} {-t|--tag} IMAGE_NAME[:TAG] DOCKERFILE_LOCATION</code></dt>
+  <dd>
+    <ol>
+      <li>
+        <p>Собрать образ Docker’а</p>
+      </li>
+      <li>
+        <p>Установить тип диагностического вывода (<code>--progress</code>)</p>
+
         <p><code>auto</code> — установить автоматическое определение типа диагностического вывода</p>
-      </li>
-      <li>
+
         <p><code>plain</code> — установить обычный тип диагностического вывода</p>
-      </li>
-      <li>
+
         <p><code>tty</code> — установить вывод в терминал</p>
 
         <p>В данном случае диагностический вывод будет окрашен, на его размер будет
-установлено ограничение равное высоте текущей консоли, при превышении
-которого строки, выведенные ранее, будут усекаться.</p>
+ установлено ограничение равное высоте текущей консоли, при превышении которого
+ строки, выведенные ранее, будут усекаться.</p>
       </li>
-    </ul>
-  </li>
-  <li>
-    <p>Задать произвольное имя для нового образа и (опционально) тэг</p>
-  </li>
-  <li>
-    <p>Указать каталог с файлом Dockerfile, на основе которого будет собран образ</p>
-  </li>
-</ul>
-
-<p><code>docker image history --no-trunc IMAGE</code></p>
-
-<ul>
-  <li>
-    <p>Отобразить сборочный профиль для указанного образа в табличном формате</p>
-  </li>
-  <li>
-    <p>Не обрезать длинные строки (<code>--no-trunc</code>)</p>
-  </li>
-</ul>
-
-<dl>
+      <li>
+        <p>Задать произвольное имя для нового образа и (опционально) тэг</p>
+      </li>
+      <li>
+        <p>Указать каталог с файлом Dockerfile, на основе которого будет собран образ</p>
+      </li>
+    </ol>
+  </dd>
+  <dt><code>docker image history --no-trunc IMAGE</code></dt>
+  <dd>
+    <ol>
+      <li>
+        <p>Отобразить сборочный профиль для указанного образа в табличном формате</p>
+      </li>
+      <li>
+        <p>Не обрезать длинные строки (<code>--no-trunc</code>)</p>
+      </li>
+    </ol>
+  </dd>
   <dt><code>docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG]</code></dt>
   <dd>
     <p>Создать ссылку на образ</p>
@@ -215,135 +273,98 @@
 
 <h2 id="Перечень_команд-Контейнеры">Контейнеры</h2>
 
-<p><code>docker container run IMAGE COMMAND</code></p>
-
-<ul>
-  <li>
-    <p>Скачать образ из удаленного репозитория (<code>hub.docker.com</code> по умолчанию), если
-он отсутствует в локальном репозитории</p>
-  </li>
-  <li>
-    <p>Создать контейнер с заданными настройками из образа в локальном репозитории</p>
-  </li>
-  <li>
-    <p>Запустить контейнер</p>
-  </li>
-  <li>
-    <p>Выполнить заданную команду</p>
-  </li>
-</ul>
-
-<p><code>docker container run -i|--interactive -t|--tty 387f84126dbc 'sh'</code></p>
-
-<ul>
-  <li>
-    <p>Запустить контейнер с указанным образом (<code>387f84126dbc</code>)</p>
-  </li>
-  <li>
-    <p>Не закрывать поток стандартного ввода (STDIN) по выходу из программы,
-запущенной в контейнере (<code>--interactive</code>)</p>
-  </li>
-  <li>
-    <p>Выделить отдельный псевдотерминал (pseudo-TTY) для контейнера (<code>--tty</code>)</p>
-  </li>
-  <li>
-    <p>Выполнить указанную команду в контейнере (<code>sh</code>)</p>
-  </li>
-</ul>
-
 <dl>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/container/run/"><code>docker container run IMAGE COMMAND</code></a></dt>
+  <dd>
+    <ol>
+      <li>
+        <p>Скачать образ из удаленного репозитория (<code>hub.docker.com</code> по умолчанию), если
+он отсутствует в локальном репозитории</p>
+      </li>
+      <li>
+        <p>Создать контейнер с заданными настройками из образа в локальном репозитории</p>
+      </li>
+      <li>
+        <p>Запустить контейнер</p>
+      </li>
+      <li>
+        <p>Выполнить заданную команду</p>
+      </li>
+    </ol>
+  </dd>
+  <dt><code>docker container run -i|--interactive -t|--tty 387f84126dbc 'sh'</code></dt>
+  <dd>
+    <ol>
+      <li>
+        <p>Запустить контейнер с указанным образом (<code>387f84126dbc</code>)</p>
+      </li>
+      <li>
+        <p>Не закрывать поток стандартного ввода (STDIN) по выходу из программы,
+запущенной в контейнере (<code>--interactive</code>)</p>
+      </li>
+      <li>
+        <p>Выделить отдельный псевдотерминал (pseudo-TTY) для контейнера (<code>--tty</code>)</p>
+      </li>
+      <li>
+        <p>Выполнить указанную команду в контейнере (<code>sh</code>)</p>
+      </li>
+    </ol>
+  </dd>
   <dt><code>docker container run --rm IMAGE</code></dt>
   <dd>
     <p>Удалить контейнер по завершению его работы</p>
   </dd>
-</dl>
-
-<p><code>docker container run -i|--interactive -t|--tty --entrypoint sh 387f84126dbc</code></p>
-
-<ul>
-  <li>
+  <dt><code>docker container run -i|--interactive -t|--tty --entrypoint sh 387f84126dbc</code></dt>
+  <dd>
     <p>Запустить контейнер с указанным образом (<code>387f84126dbc</code>)</p>
-  </li>
-  <li>
+
     <p>Не закрывать поток стандартного ввода (STDIN) по выходу из программы,
 запущенной в контейнере (<code>--interactive</code>)</p>
-  </li>
-  <li>
-    <p>Выделить отдельный псевдотерминал (pseudo-TTY) для контейнера (<code>--tty</code>)</p>
-  </li>
-  <li>
-    <p>Установить команду, выполняемую при запуске контейнера (<code>--entrypoint sh</code>)</p>
-  </li>
-</ul>
 
-<dl>
+    <p>Выделить отдельный псевдотерминал (pseudo-TTY) для контейнера (<code>--tty</code>)</p>
+
+    <p>Установить команду, выполняемую при запуске контейнера (<code>--entrypoint sh</code>)</p>
+  </dd>
   <dt><code>docker container run --rm alpine watch -tn 1 'ping google.com'</code></dt>
   <dd>
     <p>Цикличиски выполнять команду <code>ping</code> в созданном контейнере</p>
   </dd>
-</dl>
-
-<p><code>docker container run -d|--detach -p|--publish 8088:80 3a29d4fe4767</code></p>
-
-<ul>
-  <li>
+  <dt><code>docker container run -d|--detach -p|--publish 8088:80 3a29d4fe4767</code></dt>
+  <dd>
     <p>Запустить контейнер с указанным образом (<code>3a29d4fe4767</code>)</p>
-  </li>
-  <li>
+
     <p>Использовать фоновый режим запуска (<code>--detach</code>)</p>
-  </li>
-  <li>
+
     <p>Связать порт хоста с портом контейнера (<code>--publish 8088:80</code>)</p>
 
     <p>Трафик, идущий на порт 8088 на локальной машине, будет передан порту 80 контейнера.</p>
-  </li>
-</ul>
-
-<dl>
+  </dd>
   <dt><code>docker container create IMAGE_ID</code></dt>
   <dd>
     <p>Создать контейнер</p>
   </dd>
-</dl>
-
-<p><code>docker container create -p|--publish 8088:80 3a29d4fe4767</code></p>
-
-<ul>
-  <li>
+  <dt><code>docker container create -p|--publish 8088:80 3a29d4fe4767</code></dt>
+  <dd>
     <p>Создать контейнер</p>
-  </li>
-  <li>
+
     <p>Связать порт хоста с портом контейнера</p>
 
     <p>Трафик, идущий на порт 8088 на локальной машине, будет передан порту 80 контейнера.</p>
-  </li>
-</ul>
-
-<p><code>docker container create -e|--env 'METHOD=HEAD' -e|--env 'HOST=linux.org.ru' 7a6ec9807bdd</code></p>
-
-<ul>
-  <li>
+  </dd>
+  <dt><code>docker container create -e|--env 'METHOD=HEAD' -e|--env 'HOST=linux.org.ru' 7a6ec9807bdd</code></dt>
+  <dd>
     <p>Создать контейнер</p>
-  </li>
-  <li>
+
     <p>Установить произвольные переменные окружения</p>
 
     <p>Программа, запущенная в контейнере будет иметь досту к заданным переменным.</p>
-  </li>
-</ul>
-
-<p><code>docker container create --network rabbit 7a6ec9807bdd</code></p>
-
-<ul>
-  <li>
+  </dd>
+  <dt><code>docker container create --network rabbit 7a6ec9807bdd</code></dt>
+  <dd>
     <p>Создать контейнер</p>
-  </li>
-  <li>
-    <p>Подключиться к указанной сети Docker’а</p>
-  </li>
-</ul>
 
-<dl>
+    <p>Подключиться к указанной сети Docker’а</p>
+  </dd>
   <dt><code>docker container ls</code></dt>
   <dd>
     <p>Вывести список запущенных контейнеров</p>
@@ -376,6 +397,18 @@
   <dd>
     <p>Остановить один или несколько контейнеров</p>
   </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/container/attach/"><code>docker container attach CONTAINER</code></a></dt>
+  <dd>
+    <p>Прикрепить стандартный ввод (<code>stdin</code>), вывод (<code>stdout</code>) и вывод ошибок
+(<code>stderr</code>) к запущенному контейнеру</p>
+
+    <p>Для остановки контейнера необходимо использовать комбинацию <code>CTRL-c</code>. Данная
+комбинация пошлет сигнал <code>SIGKILL</code> контейнеру. Если установлена опция
+<code>--sig-proxy</code> (по умолчанию она установлена), то <code>CTRL-c</code> пошлет <code>SIGINT</code>
+контейнеру. Если контейнер был запущен с опциями <code>-i|--interactive</code> и
+<code>-t|--tty</code> можно отключиться от контейнера и при этом не останавливая его с
+помощью комбинации <code>CTRL-p</code>, <code>CTRL-q</code>.</p>
+  </dd>
 </dl>
 
 <h2 id="Перечень_команд-Сети">Сети</h2>
@@ -385,9 +418,73 @@
   <dd>
     <p>Вывести перечень сетей</p>
   </dd>
-  <dt><code>docker network create NETWORK</code></dt>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/network/create"><code>docker network create NETWORK</code></a></dt>
   <dd>
     <p>Создать сеть</p>
+
+    <pre><code>docker network create \&#x000A;  -d|--driver bridge \&#x000A;  -o|--opt 'com.docker.network.bridge.name'='docker1' \&#x000A;  --label name0=value0 \&#x000A;  --label name1=value1 \&#x000A;  --attachable \&#x000A;  --scope local \&#x000A;  --subnet 10.0.42.0/24 \&#x000A;  --gateway 10.0.42.1 \&#x000A;  --ip-range 10.0.42.128/25 \&#x000A;    sample&#x000A;</code></pre>
+
+    <ol>
+      <li>
+        <p>Создать сеть с указанным именем (<code>sample</code>);</p>
+      </li>
+      <li>
+        <p>Использовать указанный драйвер (<code>-d|--driver { bridge | overlay }</code>);</p>
+
+        <p>Драйвер — это программа, которая будет осуществлять настройку сети.</p>
+
+        <p>Драйвер bridge позволяет создавать сети только в рамках одного экземпляра
+системы Docker.</p>
+
+        <p>Драйвер overlay позволяет объединять несколько хостов в одну сеть системы
+Docker.</p>
+      </li>
+      <li>
+        <p>Задать опции, специфичные для выбранного драйвера (<code>-o|--opt</code>);</p>
+
+        <p><strong>bridge</strong></p>
+
+        <p><code>com.docker.network.bridge.name</code></p>
+
+        <p>Задать имя интерфейса для моста</p>
+
+        <p>Имя интерфейса можно посмотреть, выполнив команду <code>ip address show</code>.</p>
+      </li>
+      <li>
+        <p>Установить метаданные для создаваемой сети (<code>--label name0=value0; --label name1=value1</code>);</p>
+      </li>
+      <li>
+        <p>Разрешить произвольное ручное прикрепление и открепление контейнеров к
+создаваемой сети (<code>--attachable</code>);</p>
+
+        <p>Прикрепление контейнера к сети осуществляется посредством опции <code>--network</code>
+команды <code>run</code> — <code>docker container run --network sample ...</code>.</p>
+      </li>
+      <li>
+        <p>Установить ограничения для создаваемой сети (<code>--scope local|global|swarm</code>);</p>
+
+        <p>Контейнеры, запущенные в сети системы Docker, ограниченной областью
+„local“, не доступны из сетей системы Docker, запущенных на других хостах.</p>
+
+        <p>Сеть в области „global“ создается на каждом узле кластера, но контейнеры,
+запущенные на одном узле, не доступны контейнерам, запущенным на других
+узлах.</p>
+
+        <p>Сеть в области „swarm“ создается на всём кластере или на нескольких хостах.</p>
+      </li>
+      <li>
+        <p>Установить подсеть (<code>--subnet 10.0.42.0/24</code>);</p>
+      </li>
+      <li>
+        <p>Установить адрес шлюза (<code>--gateway 10.0.42.1</code>);</p>
+
+        <p>В качестве шлюза будет выступать мост.</p>
+      </li>
+      <li>
+        <p>Задать диапазон ip-адресов, автоматически присаиваемых контейнерам,
+подключаемым к сети системы Docker (<code>--ip-range 10.0.42.128/25</code>).</p>
+      </li>
+    </ol>
   </dd>
   <dt><code>docker network rm NETWORK...</code></dt>
   <dd>
@@ -396,6 +493,45 @@
   <dt><code>docker network inspect NETWORK...</code></dt>
   <dd>
     <p>Отобразить детализированную информацию (в формате JSON) по одной или нескольким сетям</p>
+
+    <pre><code>docker network inspect sample | jq -C|--color-output | less&#x000A;</code></pre>
+
+    <ol>
+      <li>
+        <p>Вывести информацию по указанной сети;</p>
+      </li>
+      <li>
+        <p>Отформатировать и окрасить вывод;</p>
+      </li>
+      <li>
+        <p>Отобразить вывод в пейджере.</p>
+      </li>
+    </ol>
+
+    <pre><code>docker network inspect sample | jq -C '.[0] | .["Containers"]' | less&#x000A;</code></pre>
+
+    <ol>
+      <li>
+        <p>Вывести информацию по указанной сети;</p>
+      </li>
+      <li>
+        <p>Отформатировать и окрасить вывод;</p>
+      </li>
+      <li>
+        <p>Применить заданные фильтры:</p>
+
+        <p><code>.[0]</code> — первый элемент json-массива вывода;</p>
+
+        <p><code>.["Containers"]</code> — поле объекта, являющегося первым элементом массива.</p>
+      </li>
+      <li>
+        <p>Отобразить вывод в пейджере.</p>
+      </li>
+    </ol>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/container/port/"><code>docker container port CONTAINER</code></a></dt>
+  <dd>
+    <p>Вывести пары связанных портов указанного контейнера и хоста</p>
   </dd>
 </dl>
 
@@ -485,7 +621,7 @@
   </dd>
 </dl>
 
-<h2 id="Перечень_инструкций_Dockerfile">Перечень инструкций Dockerfile</h2>
+<h1 id="Перечень_инструкций_сборки_образа">Перечень инструкций сборки образа</h1>
 
 <dl>
   <dt><code>CMD</code></dt>
@@ -519,29 +655,23 @@ Dockerfile для сборки текущего образа будет допо
 Dockerfile для сборки образа <em>основанного</em> на текущем образе будет
 присутствовать запись <code>CMD ["-a", "-b", "-c"]</code>.</p>
   </dd>
-</dl>
-
-<p><code>FROM</code></p>
-
-<ul>
-  <li>
+  <dt><code>FROM</code></dt>
+  <dd>
     <p>Инициализировать новый сборочный этап</p>
 
     <p>Для каждого сборочного этапа будет создан свой собственный кэш образов.</p>
-  </li>
-  <li>
+
     <p>Установить базовый образ для текущего сборочного этапа</p>
 
     <p>В качестве базового будет использован либо локальный образ, либо, при его
 отсутствии, образ из реестра по умолчанию (Docker Hub).</p>
-  </li>
-</ul>
-
-<dl>
+  </dd>
   <dt><a href="https://docs.docker.com/reference/dockerfile/#workdir"><code>WORKDIR</code></a></dt>
   <dd>
     <p>Установить текущий рабочий каталог для последующих инструкций <code>RUN</code>, <code>CMD</code>,
 <code>ENTRYPOINT</code>, <code>COPY</code>, <code>ADD</code></p>
+
+    <p>Создать указанный каталог в случае, если он не существует</p>
   </dd>
 </dl>
 
@@ -597,7 +727,8 @@ Dockerfile для сборки образа <em>основанного</em> на
 
 <h1 id="Образы">Образы</h1>
 
-<p>Образ — это пакет с программой и всеми зависимостями.</p>
+<p>Образ — это пакет с программой, её зависимостями и операционным окружением для
+её запуска</p>
 
 <p>Образ содержит метаинформацию и полезную нагрузку. Метаинформация, в числе
 прочего, содержит профиль сборки образа.</p>
@@ -735,6 +866,98 @@ Dockerfile и хэша содержимого файла, переданного
 
 <p>[Stoneman: Learn Docker in a month of lunches, 4.5]</p>
 
+<h1 id="Локальные_реестры_образов">Локальные реестры образов</h1>
+
+<dl>
+  <dt><code>docker image pull registry:2</code></dt>
+  <dd>
+    <p>Скачать образ с реализацией реестра образов Docker’а</p>
+  </dd>
+  <dt><code>docker container run -d|--detach --restart always -p|--publish|--expose 5000:5000 --name local-registry registry:2</code></dt>
+  <dd>
+    <ol>
+      <li>
+        <p>Запустить контейнер с реализацией реестра образов Docker’а</p>
+      </li>
+      <li>
+        <p>Отсоединить контейнер от терминала, в котором он был запущен (<code>--detach</code>)</p>
+      </li>
+      <li>
+        <p>Всегда перезапускать контейнер в случае его останова (<code>--restart always</code>)</p>
+      </li>
+      <li>
+        <p>Связать порт хоста с портом контейнера (<code>--publish 5000:5000</code>)</p>
+      </li>
+      <li>
+        <p>Задать имя для контейнера (<code>--name local-registry</code>)</p>
+      </li>
+      <li>
+        <p>Указать образ:тэг для запуска в контейнере (<code>registry:2</code>)</p>
+      </li>
+    </ol>
+
+    <p>После выполнения указанной команды появится возможность загрузки образов в
+данный реестр с удаленных узлов.</p>
+  </dd>
+  <dt><code>docker image push otvsp.ru:5000/otvsp/auth_103-nginx</code></dt>
+  <dd>
+    <p>Загрузить образ в удаленный реестр</p>
+
+    <p>Для получения возможности загрузки образа в удаленный реестр, образ должен
+быть назван по следующей схеме: <code>DOMAIN:PORT/[REPOSITORY/]IMAGE</code>.</p>
+
+    <p>Для того, чтобы иметь возможность загружать образ по небезопасному соединению
+(HTTP помимо HTTPS) необходимо на клиенте внести в файл
+<code>/etc/docker/daemon.json</code> следующее содержимое.</p>
+
+    <pre><code>{&#x000A;  "insecure-registries": [&#x000A;    "otvsp.ru:5000"&#x000A;  ]&#x000A;}&#x000A;</code></pre>
+  </dd>
+  <dt><code>docker image pull localhost:5000/otvsp/auth_103-nginx</code></dt>
+  <dd>
+    <p>Добавить образ из локального реестра в список рабочих образов</p>
+  </dd>
+  <dt><code>curl -X|--request GET http://localhost:5000/v2/_catalog</code></dt>
+  <dd>
+    <p>Вывести содержимое локального реестра</p>
+  </dd>
+  <dt><code>curl -X|--request GET http://localhost:5000/v2/otvsp/auth_103-nginx/tags/list</code></dt>
+  <dd>
+    <p>Вывести перечень тэгов указанного образа из локального реестра</p>
+  </dd>
+</dl>
+
+<h2 id="Локальные_реестры_образов-Ссылки">Ссылки</h2>
+
+<ul>
+  <li>
+    <p><a href="https://hub.docker.com/_/registry">Distribution implementation for storing and distributing of container images and artifacts</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/registry/">Registry | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/cli/docker/container/run/">docker run | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/cli/docker/image/push/">docker push | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/cli/docker/image/pull/">docker pull | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://github.com/opencontainers/distribution-spec/blob/v1.0.1/spec.md">distribution-spec/spec.md at v1.0.1 · opencontainers/distribution-spec · GitHub</a></p>
+  </li>
+  <li>
+    <p><a href="https://stackoverflow.com/questions/25436742/how-to-delete-images-from-a-private-docker-registry">How to delete images from a private docker registry? - Stack Overflow</a></p>
+  </li>
+  <li>
+    <p><a href="https://stackoverflow.com/questions/31251356/how-to-get-a-list-of-images-on-docker-registry-v2">How to get a list of images on docker registry v2 - Stack Overflow</a></p>
+  </li>
+  <li>
+    <p><a href="https://www.reddit.com/r/docker/comments/1d2utpn/how_can_i_make_docker_use_http_and_not_https/">How can I make docker use http and not https? : r/docker</a></p>
+  </li>
+</ul>
+
 <h1 id="Dockerfile">Dockerfile</h1>
 
 <h2 id="Dockerfile-Основные_идеи">Основные идеи</h2>
@@ -778,6 +1001,295 @@ Dockerfile и хэша содержимого файла, переданного
 
 <p>[Stoneman: Learn Docker in a month of lunches, 4.2]</p>
 
+<h1 id="Docker_compose">Docker compose</h1>
+
+<h2 id="Docker_compose-Файл_сompose_yml">Файл <code>compose.yml</code></h2>
+
+<h3 id="Docker_compose-Файл_compose_yml-Иллюстративный_пример">Иллюстративный пример</h3>
+
+<pre><code>services:&#x000A;  main:&#x000A;    image: "ticketee.ru:5000/ticketee-main"&#x000A;    build:&#x000A;      context: .&#x000A;      network: host&#x000A;      target: main&#x000A;    networks:&#x000A;      main:&#x000A;        ipv4_address: "10.0.45.151"&#x000A;    volumes:&#x000A;      - type: volume&#x000A;        source: ticketee-db&#x000A;        target: "/home/ticketee/app/storage/"&#x000A;      - type: bind&#x000A;        source: "/home/user/.workspace/playground/rails/ticketee/log/production.log"&#x000A;        target: "/home/ticketee/app/log/production.log"&#x000A;&#x000A;  proxy:&#x000A;    image: "ticketee.ru:5000/ticketee-proxy"&#x000A;    build:&#x000A;      context: .&#x000A;      network: host&#x000A;      target: proxy&#x000A;    networks:&#x000A;      main:&#x000A;        ipv4_address: "10.0.45.141"&#x000A;    ports:&#x000A;      - "80:80"&#x000A;&#x000A;volumes:&#x000A;  ticketee-db:&#x000A;    name: ticketee.db&#x000A;    external: true&#x000A;&#x000A;networks:&#x000A;  main:&#x000A;    name: ticketee.net&#x000A;    driver: bridge&#x000A;    driver_opts:&#x000A;      com.docker.network.bridge.name: "docker-ticketee"&#x000A;    ipam:&#x000A;      config:&#x000A;        - subnet: "10.0.45.0/24"&#x000A;          ip_range: "10.0.45.128/25"&#x000A;          gateway: "10.0.45.1"&#x000A;</code></pre>
+
+<h2 id="Docker_compose-Команды">Команды</h2>
+
+<dl>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/up/"><code>docker compose up</code></a></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Собрать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать сети</p>
+      </li>
+      <li>
+        <p>Запустить контейнеры</p>
+      </li>
+      <li>
+        <p>Подключиться ко всем запущенным контейнерам</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>docker compose up {-d|--detach}</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Собрать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать сети</p>
+      </li>
+      <li>
+        <p>Запустить контейнеры</p>
+      </li>
+      <li>
+        <p>Не подключаться к запущенным контейнерам</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>docker compose up --pull never</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Не скачивать образы из репозитория</p>
+      </li>
+      <li>
+        <p>Собрать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать сети</p>
+      </li>
+      <li>
+        <p>Запустить контейнеры</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>docker compose up --attach CONTAINER</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Собрать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать контейнеры</p>
+      </li>
+      <li>
+        <p>Создать сети</p>
+      </li>
+      <li>
+        <p>Запустить контейнеры</p>
+      </li>
+      <li>
+        <p>Не подключаться к запущенным контейнерам</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/logs/"><code>docker compose logs [SERVICE]</code></a></dt>
+  <dd>
+    <p>Вывести журнал для указанного сервиса (<code>SERVICE</code>)/всех сервисов</p>
+  </dd>
+  <dt><code>docker compose logs {-f|--follow} [SERVICE]</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Вывсти журнал для указанного сервиса (<code>SERVICE</code>)/всех сервисов</p>
+      </li>
+      <li>
+        <p>Выводить новые сообщения по мере их поступления (<code>--follow</code>)</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/logs/"><code>docker compose down</code></a></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Остановить запущенные контейнеры</p>
+      </li>
+      <li>
+        <p>Удалить созданные контейнеры</p>
+      </li>
+      <li>
+        <p>Удалить созданные сети</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><code>docker compose down --rmi all</code></dt>
+  <dd>
+    <ul>
+      <li>
+        <p>Остановить запущенные контейнеры</p>
+      </li>
+      <li>
+        <p>Удалить созданные контейнеры</p>
+      </li>
+      <li>
+        <p>Удалить созданные сети</p>
+      </li>
+      <li>
+        <p>Удалить созданные образы</p>
+      </li>
+    </ul>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/build/"><code>docker compose build</code></a></dt>
+  <dd>
+    <p>Собрать или пересобрать сервисы</p>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/run/"><code>docker compose run SERVICE</code></a></dt>
+  <dd>
+    <p>Запустить указанный сервис</p>
+  </dd>
+  <dt><code>docker compose run --rm SERVICE</code></dt>
+  <dd>
+    <p>Запустить указанный сервис</p>
+
+    <p>Удалить контейнер по завершению его работы (<code>--rm</code>)</p>
+  </dd>
+  <dt><code>docker compose run --service-ports SERVICE</code></dt>
+  <dd>
+    <p>Запустить указанный сервис</p>
+
+    <p>Связать порты сервиса с портами хоста в соответствии с тем, как указано в
+файле <code>compose.yml</code></p>
+  </dd>
+  <dt><code>docker compose run --rm -i|--interactive SERVICE</code></dt>
+  <dd>
+    <p>Запустить указанный сервис</p>
+
+    <p>Удалить контейнер по завершению работы (<code>--rm</code>)</p>
+
+    <p>Использовать интерактивный режим (<code>--interactive</code>)</p>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/create/"><code>docker compose create [SERVICE...]</code></a></dt>
+  <dd>
+    <p>Создать контейнеры для указанных сервисов (или для всех сервисов, определенных
+в файле <code>compose.yml</code>, если конкретные сервисы не указаны)</p>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/start/"><code>docker compose start [SERVICE...]</code></a></dt>
+  <dd>
+    <p>Запустить существующие контейнеры для указанных сервисов (или для всех
+сервисов, определенных в файле <code>compose.yml</code>, если конкретные сервисы не указаны)</p>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/stop/"><code>docker compose stop [SERVICE...]</code></a></dt>
+  <dd>
+    <p>Остановить контейнеры для указанных сервисов, не удаляя сами контейнеры (или
+контейнеры для всех сервисов, указанных в файле <code>compose.yml</code>, если конкретные
+сервисы не указаны)</p>
+  </dd>
+  <dt><a href="https://docs.docker.com/reference/cli/docker/compose/rm/"><code>docker compose rm [SERVICE...]</code></a></dt>
+  <dd>
+    <p>Удалить контейнеры для указанных остановленных сервисов (или для всех
+остановленных сервисов, если конкретные сервисы не указаны)</p>
+  </dd>
+</dl>
+
+<h2 id="Docker_compose-Пример_работы">Пример работы</h2>
+
+<ol>
+  <li>
+    <dl>
+      <dt><code>docker compose up {-d|--detach} --pull never</code></dt>
+      <dd>
+        <ul>
+          <li>
+            <p>Собрать контейнеры</p>
+          </li>
+          <li>
+            <p>Не подключаться к запущенным контейнерам (<code>-d</code>)</p>
+          </li>
+          <li>
+            <p>Не скачивать образы из репозитория (<code>--pull never</code>)</p>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt><code>docker compose logs {-f|--follow} [SERVICE]</code></dt>
+      <dd>
+        <p>Вывести журнал для указанного сервиса (<code>SERVICE</code>)/всех сервисов</p>
+      </dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt><code>docker container exec {-i|--interactive} {-t|--tty} [CONTAINER] sh</code></dt>
+      <dd>
+        <p>Создать интерактивную (<code>-i</code>) сессию командной оболочки (<code>sh</code>) в выделенном
+терминале (<code>-t</code>) в указанном контейнере (<code>CONTAINER</code>)</p>
+
+        <p>Получив доступ к терминалу запущенного контейнера, можно осуществлять работу
+с запущенной программой в отладчике. Для этого необходимо запустить
+отладчик следующей командой: <code>gdb --pid 1 EXECUTABLE</code>.</p>
+      </dd>
+    </dl>
+  </li>
+  <li>
+    <dl>
+      <dt><code>docker compose down --rmi all</code></dt>
+      <dd>
+        <ul>
+          <li>
+            <p>Остановить запущенные контейнеры</p>
+          </li>
+          <li>
+            <p>Удалить созданные контейнеры</p>
+          </li>
+          <li>
+            <p>Удалить созданные сети</p>
+          </li>
+          <li>
+            <p>Удалить созданные образы (<code>--rmi all</code>)</p>
+          </li>
+        </ul>
+      </dd>
+    </dl>
+  </li>
+</ol>
+
+<h2 id="Docker_compose-Ссылки">Ссылки</h2>
+
+<ul>
+  <li>
+    <p><a href="https://docs.docker.com/compose/gettingstarted/">Docker Compose Quickstart | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/compose-file/build/">Compose Build Specification | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/cli/docker/compose/">docker compose | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/compose/how-tos/networking/">Networking | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/compose-file/networks/">Networks top-level elements | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/compose-file/services/#networks">Services top-level elements | networks | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/compose-file/volumes/">Volumes top-level element | Docker Docs</a></p>
+  </li>
+  <li>
+    <p><a href="https://stackoverflow.com/questions/39493490/provide-static-ip-to-docker-containers-via-docker-compose">Provide static IP to docker containers via docker-compose - Stack Overflow</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/compose-file/">Docker Docs | Compose file reference</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/reference/compose-file/services/">Docker Docs | Compose file reference → Services</a></p>
+  </li>
+</ul>
+
 <h1 id="Примеры">Примеры</h1>
 
 <p>Продолжение и разветвление сборки образа, начатой на раннем этапе, на более
@@ -808,7 +1320,7 @@ Dockerfile и хэша содержимого файла, переданного
   </li>
 </ul>
 
-<h1 id="Ссылки">Сылки</h1>
+<h1 id="Ссылки">Ссылки</h1>
 
 <ul>
   <li>
@@ -836,6 +1348,9 @@ Dockerfile и хэша содержимого файла, переданного
   </li>
   <li>
     <p><a href="https://docs.docker.com/develop/develop-images/multistage-build">Use multi-stage builds | Docker Documentation</a></p>
+  </li>
+  <li>
+    <p><a href="https://docs.docker.com/compose/">Docker Compose | Docker Docs</a></p>
   </li>
 </ul>
 
