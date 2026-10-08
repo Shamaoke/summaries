@@ -82,4 +82,6 @@ title: Summaries
 
 [Научный метод](/summaries/scientific_method)
 
+[Сетевое взаимодействие в промышленных системах](/summaries/industrial_networking)
+
 [Функциональное программирование](/summaries/functional_programming)
